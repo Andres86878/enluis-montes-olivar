@@ -148,7 +148,6 @@
             width: 100%;
         }
 
-        /* Botón de idioma minimalista */
         #lang-toggle {
             font-weight: 500;
             color: var(--blanco-texto);
@@ -371,6 +370,14 @@
             font-size: 0.95rem;
             line-height: 1.7;
             font-weight: 300;
+        }
+
+        .cv-card ul {
+            list-style-position: inside;
+            margin-top: 0.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
         }
 
         /* -------------------------------------- */
@@ -779,20 +786,20 @@
             <div class="about-wrapper">
                 <div class="bio-article-container reveal">
                     <div class="bio-quote-box">
-                        <p data-i18n="bio_quote">"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces."</p>
+                        <p data-i18n="bio_quote">"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces, including Arturo Márquez's Danzón No. 2."</p>
                         <span>— Los Angeles Times</span>
                     </div>
 
                     <div class="bio-article-content">
                         <p data-i18n="bio_p1">Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra. In 2024, he was awarded the prestigious Glenn Gould Protégé Prize, which followed his 1st Prize and Orchestra Prize at the 2022 International Conducting Competition of the University of Almería in Spain.</p>
                         
-                        <p data-i18n="bio_p2">He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral.</p>
+                        <p data-i18n="bio_p2">He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral, a tradition of the NY Phil dating back to 1992.</p>
                         
-                        <p data-i18n="bio_p3">Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra.</p>
+                        <p data-i18n="bio_p3">Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra. Upcoming debuts include The Youth Orchestra of Galicia and the Galicia Symphony both in Spain.</p>
                         
                         <p data-i18n="bio_p4">As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as "virtuosic splendor" and "a master class in musicianship." Additionally, he has served as assistant conductor at the Opéra National de Paris, collaborating with Gustavo Dudamel on Nixon in China and with Alexander Soddy on Lohengrin.</p>
                         
-                        <p data-i18n="bio_p5">Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors. A product of Venezuela's El Sistema, Enluis has led performances with the Simón Bolívar Symphony Orchestra, Juan José Landaeta Symphony, Caracas Symphony Orchestra, and the Simón Bolívar National Choir.</p>
+                        <p data-i18n="bio_p5">Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors (Summa Cum Laude), in addition to serving as Associate Conductor of the Schwob Philharmonic and Opera and the Columbus Ballet from 2022-2026. A product of Venezuela's El Sistema, Enluis has led performances with the Simón Bolívar Symphony Orchestra, Juan José Landaeta Symphony, Caracas Symphony Orchestra, and the Simón Bolívar National Choir. He conducted a landmark posthumous tribute to Maestro José Antonio Abreu, uniting members of the El Sistema family, and led a Guinness World Record-setting performance with an orchestra and chorus of 12,000 musicians, the largest ensemble of its kind.</p>
                         
                         <p data-i18n="bio_p6">He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors such as Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson and Nathalie Stutzmann. Enluis continues his studies currently pursuing a master's degree in higher education at the Libertador Experimental Pedagogical University in Venezuela.</p>
                     </div>
@@ -808,10 +815,23 @@
                                 <div>
                                     <h3 data-i18n="cv_pos1_title">Simon Bolivar Chamber Orchestra</h3>
                                     <span class="cv-role" data-i18n="cv_pos1_role">Associate Conductor</span>
+                                    <p style="color: var(--gris-texto); font-size: 0.9rem; margin-top: 0.2rem;">Caracas, Venezuela</p>
                                 </div>
                                 <span class="cv-year" data-i18n="cv_pos1_year">2024 - Present</span>
                             </div>
                             <p data-i18n="cv_pos1_desc">Member of the team of associate conductors of El Sistema, led by Gustavo Dudamel. As Associate Conductor of the SBCO, Enluis has conducted dozens of concerts, a tour in Algeria, and most recently a festival featuring Beethoven's symphonic cycle.</p>
+                        </div>
+
+                        <div class="cv-card reveal">
+                            <div class="cv-card-header">
+                                <div>
+                                    <h3 data-i18n="cv_pos2_title">Schwob Philharmonic and Opera</h3>
+                                    <span class="cv-role" data-i18n="cv_pos2_role">Associate Conductor</span>
+                                    <p style="color: var(--gris-texto); font-size: 0.9rem; margin-top: 0.2rem;">Columbus, Georgia</p>
+                                </div>
+                                <span class="cv-year">2022 - 2026</span>
+                            </div>
+                            <p data-i18n="cv_pos2_desc">As a student at the Schwob School of Music (SSoM), Enluis has conducted several concerts with the SSoM's main ensemble.</p>
                         </div>
 
                         <div class="cv-card reveal">
@@ -836,6 +856,10 @@
                                 </div>
                                 <span class="cv-year" data-i18n="cv_pos4_year">2024 - Present</span>
                             </div>
+                            <ul>
+                                <li data-i18n="cv_pos4_li1">Scheduled to conduct the Tchaikovsky Spectacular performance in August of 2027.</li>
+                                <li data-i18n="cv_pos4_li2">Conducted 8 concerts through 2 program series and covered over 15 subscription performances.</li>
+                            </ul>
                         </div>
 
                         <div class="cv-card reveal">
@@ -846,6 +870,11 @@
                                 </div>
                                 <span class="cv-year">2019&nbsp;&ndash;&nbsp;2022&nbsp;/&nbsp;2026</span>
                             </div>
+                            <ul>
+                                <li data-i18n="cv_pos5_li1">Conducted at Walt Disney Concert Hall & Hollywood Bowl.</li>
+                                <li data-i18n="cv_pos5_li2">Covered more than 20 subscription programs/performances.</li>
+                                <li data-i18n="cv_pos5_li3">Praised by critic Tony Frankel as having “virtuosic splendor” and “a master class in musicianship.”</li>
+                            </ul>
                         </div>
 
                         <div class="cv-card reveal">
@@ -856,31 +885,144 @@
                                 </div>
                                 <span class="cv-year">2023</span>
                             </div>
+                            <ul>
+                                <li data-i18n="cv_pos6_li1">Collaborated with Gustavo Dudamel on <em>Nixon in China</em>.</li>
+                                <li data-i18n="cv_pos6_li2">Collaborated with Alexander Soddy on <em>Lohengrin</em>.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title" data-i18n="cv_cat3" style="margin-top: 3rem;">Guest Conducting & Recordings</h4>
+                    <h4 class="cv-category-title" data-i18n="cv_cat2">Leadership & Artistic Directorships</h4>
                     <div class="cv-grid">
                         <div class="cv-card reveal">
-                            <h3 style="color: var(--blanco-texto); font-size: 1.1rem; margin-bottom: 0.8rem;" data-i18n="cv_guest_title">Guest Conducting Highlights</h3>
-                            <p style="margin-bottom: 0.8rem;" data-i18n="cv_guest_usa"><strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, New York Philharmonic, Schwob Philharmonic, YOLA.</p>
-                            <p data-i18n="cv_guest_intl"><strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony, Simón Bolívar Symphony & Chamber Orchestras, Bogotá Philharmonic, and major international choirs.</p>
+                            <div class="cv-card-header">
+                                <h3 data-i18n="cv_lead1_title">Jose Antonio Paez Youth Symphony Orchestra</h3>
+                                <span class="cv-year">2018 - 2020</span>
+                            </div>
+                            <p class="cv-role" style="margin-bottom: 0.5rem;" data-i18n="cv_lead1_role">Music and Artistic Director</p>
+                        </div>
+                        <div class="cv-card reveal">
+                            <div class="cv-card-header">
+                                <h3 data-i18n="cv_lead2_title">Lara Youth & Children Orchestras</h3>
+                                <span class="cv-year">2016 - 2018</span>
+                            </div>
+                            <p class="cv-role" style="margin-bottom: 0.5rem;" data-i18n="cv_lead2_role">Associate Conductor & Music Director</p>
+                        </div>
+                        <div class="cv-card reveal">
+                            <div class="cv-card-header">
+                                <h3 data-i18n="cv_lead3_title">Franco Medina Youth Symphony Orchestra</h3>
+                                <span class="cv-year">2014 - 2018</span>
+                            </div>
+                            <p class="cv-role" style="margin-bottom: 0.5rem;" data-i18n="cv_lead3_role">Music and Artistic Director</p>
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title" data-i18n="cv_cat4" style="margin-top: 3rem;">Education</h4>
-                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <h4 class="cv-category-title" data-i18n="cv_cat3">Guest Conducting & Recordings</h4>
+                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                         <div class="cv-card reveal">
-                            <h4 data-i18n="cv_edu1_title" style="margin-bottom: 0.5rem; font-weight: 500;">Columbus State University</h4>
-                            <p style="font-size: 0.85rem;" data-i18n="cv_edu1_desc">Bachelor of Arts in Music (Orchestral Conducting)</p>
+                            <h3 style="color: var(--dorado); margin-bottom: 1rem; font-family: 'Playfair Display', serif;" data-i18n="cv_guest_title">Guest Conducting Highlights</h3>
+                            <p style="margin-bottom: 1rem;" data-i18n="cv_guest_usa"><strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, New York Philharmonic, Schwob Philharmonic, YOLA.</p>
+                            <p data-i18n="cv_guest_intl"><strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony, Simón Bolívar Symphony & Chamber Orchestras, Bogotá Philharmonic, and major international choirs.</p>
+                        </div>
+
+                        <div class="cv-card reveal">
+                            <h3 style="color: var(--dorado); margin-bottom: 1rem; font-family: 'Playfair Display', serif;" data-i18n="cv_disc_title">Discography & Albums</h3>
+                            <p style="margin-bottom: 1rem;" data-i18n="cv_disc_1"><strong>“Cantata Criolla - Vive El Sistema Fest” (2025):</strong> Album with Simón Bolívar Symphony Orchestra, National Choir, and White Hand Choir.</p>
+                            <p data-i18n="cv_disc_2"><strong>“Aires de Venezuela” (2021):</strong> Produced online during COVID-19 with the Venezuelan Virtual Chamber Orchestra (founded by Enluis).</p>
+                        </div>
+                    </div>
+
+                    <h4 class="cv-category-title" data-i18n="cv_cat4">Education & Mentorship</h4>
+                    <div class="cv-list-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <div class="cv-card reveal">
+                            <h4 data-i18n="cv_edu1_title" style="color: var(--blanco-texto); font-size: 1.15rem; margin-bottom: 0.3rem;">Columbus State University</h4>
+                            <p style="color: var(--dorado); font-size: 0.85rem;">2026</p>
+                            <p style="font-size: 0.95rem; margin-top: 0.5rem;" data-i18n="cv_edu1_desc">Bachelor of Arts in Music (Orchestral Conducting & Vocal Performance)</p>
                         </div>
                         <div class="cv-card reveal">
-                            <h4 data-i18n="cv_edu2_title" style="margin-bottom: 0.5rem; font-weight: 500;">Simón Bolívar Conservatory</h4>
-                            <p style="font-size: 0.85rem;" data-i18n="cv_edu2_desc">Diploma in Orchestra Conducting</p>
+                            <h4 data-i18n="cv_edu2_title" style="color: var(--blanco-texto); font-size: 1.15rem; margin-bottom: 0.3rem;">Simón Bolívar Conservatory</h4>
+                            <p style="color: var(--dorado); font-size: 0.85rem;">2023</p>
+                            <p style="font-size: 0.95rem; margin-top: 0.5rem;" data-i18n="cv_edu2_desc">Diploma in Orchestra Conducting</p>
+                        </div>
+                        <div class="cv-card reveal">
+                            <h4 data-i18n="cv_edu3_title" style="color: var(--blanco-texto); font-size: 1.15rem; margin-bottom: 0.3rem;">Libertador Pedagogical University</h4>
+                            <p style="color: var(--dorado); font-size: 0.85rem;" data-i18n="cv_edu3_date">2028 (Expected)</p>
+                            <p style="font-size: 0.95rem; margin-top: 0.5rem;" data-i18n="cv_edu3_desc">Master Degree in Higher Education</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem;" class="cv-card reveal">
+                        <p data-i18n="cv_edu_teachers"><strong>Conducting Teachers:</strong> Teresa Hernández, José Antonio Abreu, Gregory Carreño, Paul Hostetter.</p>
+                        <p style="margin-top: 0.5rem;" data-i18n="cv_edu_masterclasses"><strong>Masterclasses:</strong> Gustavo Dudamel, Diego Matheuz, Rafael Payare, Nathalie Stutzmann, John Farrer, Leaf Bjaland, Dick van Gasteren.</p>
+                    </div>
+
+                    <h4 class="cv-category-title" data-i18n="cv_cat5">Awards & Honors</h4>
+                    <div class="cv-grid">
+                        <div class="cv-card reveal">
+                            <div class="cv-card-header">
+                                <h3 data-i18n="cv_award1">Glenn Gould Protégé Prize</h3>
+                                <span class="cv-year">2024</span>
+                            </div>
+                        </div>
+                        <div class="cv-card reveal">
+                            <div class="cv-card-header">
+                                <h3 data-i18n="cv_award2_title">International Conducting Competition (Almería, Spain)</h3>
+                                <span class="cv-year">2022</span>
+                            </div>
+                            <p class="cv-role" data-i18n="cv_award2_desc">1st Prize Winner & Orchestra Prize Winner</p>
+                        </div>
+                        <div class="cv-card reveal">
+                            <div class="cv-card-header">
+                                <h3 data-i18n="cv_award3_title">State & Municipal Orders & Medals</h3>
+                            </div>
+                            <ul style="margin-top: 0.8rem; list-style-type: disc; padding-left: 1.2rem;">
+                                <li data-i18n="cv_award3_li1">“City of Barquisimeto” Medal (2016).</li>
+                                <li data-i18n="cv_award3_li2">Decoration “Order Major General Juan Jacinto Lara” (2015).</li>
+                                <li data-i18n="cv_award3_li3">Decoration “Order Juan Fernandez de Leon” (2013).</li>
+                                <li data-i18n="cv_award3_li4">Merit Honor Medal (2012) for contributions to music education and culture.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Press -->
+    <section id="press">
+        <img src="./foto.general.enluis.5.JPG" alt="Background Press" class="bg-photo" loading="lazy">
+        <div class="bg-overlay"></div>
+        <div class="section-content reveal">
+            <h2 data-i18n="press_title">Media & Press</h2>
+            <div class="grid" style="margin-bottom: 4rem;">
+                
+                <div class="cv-card reveal">
+                    <span style="color: var(--dorado); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">El Nacional</span>
+                    <h3 style="margin: 1rem 0; font-family: 'Playfair Display', serif;" data-i18n="press_h1">“Dirigir en el Hollywood Bowl es una responsabilidad inmensa”</h3>
+                    <p style="color: var(--gris-texto); margin-bottom: 1.5rem; font-weight: 300;" data-i18n="press_p1">Entrevista exclusiva sobre el histórico debut del joven director venezolano en uno de los escenarios más importantes de EE.UU.</p>
+                    <a href="https://www.elnacional.com" target="_blank" class="text-link" data-i18n="press_link">Read full article &rarr;</a>
+                </div>
+
+                <div class="cv-card reveal" style="transition-delay: 0.1s;">
+                    <span style="color: var(--dorado); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">El Pitazo</span>
+                    <h3 style="margin: 1rem 0; font-family: 'Playfair Display', serif;" data-i18n="press_h2">“Enluis Montes: la batuta más visible del concierto por el Récord Guinness”</h3>
+                    <p style="color: var(--gris-texto); margin-bottom: 1.5rem; font-weight: 300;" data-i18n="press_p2">Reportaje sobre su liderazgo frente a la orquesta y coro más grande del mundo.</p>
+                    <a href="https://elpitazo.net" target="_blank" class="text-link" data-i18n="press_link">Read full article &rarr;</a>
+                </div>
+
+                <div class="cv-card reveal" style="transition-delay: 0.2s;">
+                    <span style="color: var(--dorado); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Venezuela Sinfónica</span>
+                    <h3 style="margin: 1rem 0; font-family: 'Playfair Display', serif;" data-i18n="press_h3">“El Sistema es una máquina de acción social”</h3>
+                    <p style="color: var(--gris-texto); margin-bottom: 1.5rem; font-weight: 300;" data-i18n="press_p3">Conversación a profundidad sobre el futuro de la dirección orquestal y las raíces musicales en Venezuela.</p>
+                    <a href="https://venezuelasinfonica.com" target="_blank" class="text-link" data-i18n="press_link">Read full article &rarr;</a>
+                </div>
+
+            </div>
+
+            <h3 data-i18n="press_kit_title">Press Kit</h3>
+            <div class="cv-card reveal">
+                <p style="font-size: 1.1rem; color: var(--blanco-texto);" data-i18n="press_kit_p1">Official material available for event organizers and journalists.</p>
+                <p style="color: var(--gris-texto); font-size: 0.9rem; margin-top: 0.5rem; font-weight: 300;" data-i18n="press_kit_p2">Includes: Biography, High-Resolution Photos, Official Logo.</p>
             </div>
         </div>
     </section>
@@ -906,136 +1048,98 @@
         <div class="section-content reveal">
             <h2 data-i18n="media_title">Multimedia</h2>
             
-            <!-- Video Library (Minimalista) -->
             <h3 style="margin-bottom: 2rem; color: var(--gris-texto); font-size: 1rem; letter-spacing: 1px;" data-i18n="media_subtitle1">VIDEO LIBRARY</h3>
             <div class="yt-grid">
-                
                 <a href="https://youtu.be/UJdhG1YkZXw" target="_blank" class="media-card yt-card reveal">
                     <div class="media-card-content">
-                        <div class="play-btn-minimal">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
+                        <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
                             <h3>Sinfonía India</h3>
                             <span class="media-composer">Carlos Chávez</span>
                         </div>
                     </div>
                     <div class="media-footer">
-                        <span class="media-action-text">
-                            <span data-i18n="yt_watch">Watch</span>
-                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                        </span>
+                        <span class="media-action-text"><span data-i18n="yt_watch">Watch</span><svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></span>
                         <span class="media-badge">YOUTUBE</span>
                     </div>
                 </a>
 
                 <a href="https://youtu.be/FEHOTvDbAPA" target="_blank" class="media-card yt-card reveal" style="transition-delay: 0.1s;">
                     <div class="media-card-content">
-                        <div class="play-btn-minimal">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
+                        <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
                             <h3>Obertura Cubana</h3>
                             <span class="media-composer">George Gershwin</span>
                         </div>
                     </div>
                     <div class="media-footer">
-                        <span class="media-action-text">
-                            <span data-i18n="yt_watch">Watch</span>
-                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                        </span>
+                        <span class="media-action-text"><span data-i18n="yt_watch">Watch</span><svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></span>
                         <span class="media-badge">YOUTUBE</span>
                     </div>
                 </a>
 
                 <a href="https://youtu.be/SjF2-zXSNmM" target="_blank" class="media-card yt-card reveal" style="transition-delay: 0.2s;">
                     <div class="media-card-content">
-                        <div class="play-btn-minimal">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
+                        <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
                             <h3>Beethoven 9</h3>
                             <span class="media-composer">Ludwig van Beethoven</span>
                         </div>
                     </div>
                     <div class="media-footer">
-                        <span class="media-action-text">
-                            <span data-i18n="yt_watch">Watch</span>
-                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                        </span>
+                        <span class="media-action-text"><span data-i18n="yt_watch">Watch</span><svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></span>
                         <span class="media-badge">YOUTUBE</span>
                     </div>
                 </a>
 
                 <a href="https://youtu.be/CeRGtSGOiCE" target="_blank" class="media-card yt-card reveal">
                     <div class="media-card-content">
-                        <div class="play-btn-minimal">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
+                        <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
                             <h3>Farias 1</h3>
                             <span class="media-composer">Orchestral Performance</span>
                         </div>
                     </div>
                     <div class="media-footer">
-                        <span class="media-action-text">
-                            <span data-i18n="yt_watch">Watch</span>
-                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                        </span>
+                        <span class="media-action-text"><span data-i18n="yt_watch">Watch</span><svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></span>
                         <span class="media-badge">YOUTUBE</span>
                     </div>
                 </a>
 
                 <a href="https://youtu.be/JuNBYHOPZ4Y" target="_blank" class="media-card yt-card reveal" style="transition-delay: 0.1s;">
                     <div class="media-card-content">
-                        <div class="play-btn-minimal">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
+                        <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
                             <h3>Concurso Almería</h3>
                             <span class="media-composer">International Competition</span>
                         </div>
                     </div>
                     <div class="media-footer">
-                        <span class="media-action-text">
-                            <span data-i18n="yt_watch">Watch</span>
-                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                        </span>
+                        <span class="media-action-text"><span data-i18n="yt_watch">Watch</span><svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></span>
                         <span class="media-badge">YOUTUBE</span>
                     </div>
                 </a>
 
                 <a href="https://youtu.be/qUz1N82fSEY" target="_blank" class="media-card yt-card reveal" style="transition-delay: 0.2s;">
                     <div class="media-card-content">
-                        <div class="play-btn-minimal">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
+                        <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
                             <h3>Sensemayá</h3>
                             <span class="media-composer">Silvestre Revueltas</span>
                         </div>
                     </div>
                     <div class="media-footer">
-                        <span class="media-action-text">
-                            <span data-i18n="yt_watch">Watch</span>
-                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                        </span>
+                        <span class="media-action-text"><span data-i18n="yt_watch">Watch</span><svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></span>
                         <span class="media-badge">YOUTUBE</span>
                     </div>
                 </a>
-
             </div>
 
-            <!-- Audio Library (Tarjetas Locales Minimalistas) -->
             <h3 style="margin-bottom: 2rem; margin-top: 4rem; color: var(--gris-texto); font-size: 1rem; letter-spacing: 1px;" data-i18n="media_subtitle2">AUDIO LIBRARY</h3>
             <div class="audio-grid">
-                
-                <!-- Audio Local 1 -->
                 <div class="media-card audio-card reveal">
                     <div class="media-card-content">
-                        <div class="play-btn-minimal">
-                            <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-                        </div>
+                        <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
                         <div class="media-info">
                             <h3>Variaciones Concertantes</h3>
                             <span class="media-composer">Alberto Ginastera</span>
@@ -1048,12 +1152,9 @@
                     </div>
                 </div>
 
-                <!-- Audio Local 2 -->
                 <div class="media-card audio-card reveal" style="transition-delay: 0.1s;">
                     <div class="media-card-content">
-                        <div class="play-btn-minimal">
-                            <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-                        </div>
+                        <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
                         <div class="media-info">
                             <h3>Sinfonía No. 36 "Linz"</h3>
                             <span class="media-composer">Wolfgang Amadeus Mozart</span>
@@ -1066,7 +1167,6 @@
                     </div>
                 </div>
 
-                <!-- Spotify Cards (Limpias) -->
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 1)</h3>
                     <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -1097,7 +1197,6 @@
         <div class="section-content reveal">
             <h2 data-i18n="contact_title">Contact & Booking</h2>
             <div style="display: flex; flex-wrap: wrap; gap: 5rem; align-items: center;">
-                
                 <div style="flex: 1.5; min-width: 300px;">
                     <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;" data-i18n="contact_mgmt">Management</h3>
                     <div class="cv-card reveal">
@@ -1122,7 +1221,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -1134,19 +1232,15 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Lógica corregida para pausas de Spotify sin parpadeos ni recargas agresivas
         document.addEventListener('DOMContentLoaded', () => {
             const audioPlayers = document.querySelectorAll('audio.media-player');
             const spotifyIframes = document.querySelectorAll('iframe.spotify-iframe');
 
             audioPlayers.forEach(audio => {
                 audio.addEventListener('play', () => {
-                    // Pausa los audios locales
                     audioPlayers.forEach(other => {
                         if (other !== audio) other.pause();
                     });
-                    
-                    // Pausa los iframes de Spotify reasignando el source limpio (sin vaciar a '')
                     spotifyIframes.forEach(iframe => {
                         const currentSrc = iframe.src;
                         iframe.src = currentSrc; 
@@ -1154,7 +1248,6 @@
                 });
             });
 
-            // Respaldo global
             window.addEventListener('blur', () => {
                 setTimeout(() => {
                     if (document.activeElement && document.activeElement.tagName === 'IFRAME') {
@@ -1164,7 +1257,6 @@
             });
         });
 
-        // TRADUCCIONES AUTOMATIZADAS
         const i18n = {
             en: {
                 nav_home: "Home", nav_about: "About", nav_press: "Press", nav_schedule: "Schedule", nav_media: "Multimedia", nav_contact: "Contact",
@@ -1172,23 +1264,27 @@
                 home_desc: "Orchestra Conductor. An artistic vision that unites technical excellence with the overflowing passion of the stage.",
                 home_btn1: "View Upcoming Events", home_btn2: "Listen to Music",
                 about_title: "Biography & Trajectory",
-                bio_quote: "\"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces.\"",
-                bio_p1: "Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra.",
-                bio_p2: "He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia.",
-                bio_p3: "Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert.",
-                bio_p4: "As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as \"virtuosic splendor\".",
-                bio_p5: "Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors.",
-                bio_p6: "He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors. He continues his studies currently pursuing a master's degree in higher education.",
+                bio_quote: "\"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces, including Arturo Márquez's Danzón No. 2.\"",
+                bio_p1: "Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra. In 2024, he was awarded the prestigious Glenn Gould Protégé Prize, which followed his 1st Prize and Orchestra Prize at the 2022 International Conducting Competition of the University of Almería in Spain.",
+                bio_p2: "He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral, a tradition of the NY Phil dating back to 1992.",
+                bio_p3: "Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra. Upcoming debuts include The Youth Orchestra of Galicia and the Galicia Symphony both in Spain.",
+                bio_p4: "As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as \"virtuosic splendor\" and \"a master class in musicianship.\" Additionally, he has served as assistant conductor at the Opéra National de Paris, collaborating with Gustavo Dudamel on Nixon in China and with Alexander Soddy on Lohengrin.",
+                bio_p5: "Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors (Summa Cum Laude), in addition to serving as Associate Conductor of the Schwob Philharmonic and Opera and the Columbus Ballet from 2022-2026. A product of Venezuela's El Sistema, Enluis has led performances with the Simón Bolívar Symphony Orchestra, Juan José Landaeta Symphony, Caracas Symphony Orchestra, and the Simón Bolívar National Choir. He conducted a landmark posthumous tribute to Maestro José Antonio Abreu, uniting members of the El Sistema family, and led a Guinness World Record-setting performance with an orchestra and chorus of 12,000 musicians, the largest ensemble of its kind.",
+                bio_p6: "He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors such as Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson and Nathalie Stutzmann. Enluis continues his studies currently pursuing a master's degree in higher education at the Libertador Experimental Pedagogical University in Venezuela.",
                 cv_title: "Professional Experience & CV", cv_cat1: "Professional Positions",
-                cv_pos1_title: "Simon Bolivar Chamber Orchestra", cv_pos1_role: "Associate Conductor", cv_pos1_year: "2024 - Present", cv_pos1_desc: "Member of the team of associate conductors of El Sistema, led by Gustavo Dudamel.",
-                cv_pos3_title: "New York Philharmonic", cv_pos3_role: "Cover Conductor & Guest Conductor", cv_pos3_year: "2025 - Present", cv_pos3_li1: "Conducted debut at Saint John the Divine in May of 2026.", cv_pos3_li2: "Covered more than 15 subscription programs.",
+                cv_pos1_title: "Simon Bolivar Chamber Orchestra", cv_pos1_role: "Associate Conductor", cv_pos1_year: "2024 - Present", cv_pos1_desc: "Member of the team of associate conductors of El Sistema, led by Gustavo Dudamel. As Associate Conductor of the SBCO, Enluis has conducted dozens of concerts, a tour in Algeria, and most recently a festival featuring Beethoven's symphonic cycle.",
+                cv_pos2_title: "Schwob Philharmonic and Opera", cv_pos2_role: "Associate Conductor", cv_pos2_desc: "As a student at the Schwob School of Music (SSoM), Enluis conducted several concerts with the SSoM's main ensemble.",
+                cv_pos3_title: "New York Philharmonic", cv_pos3_role: "Cover Conductor & Guest Conductor", cv_pos3_year: "2025 - Present", cv_pos3_li1: "Conducted debut at Saint John the Divine in May of 2026.", cv_pos3_li2: "Covered more than 15 subscription programs/performances through Spring 2026.",
                 cv_pos4_title: "San Diego Symphony", cv_pos4_role: "Conducting Fellow, Guest & Cover Conductor", cv_pos4_year: "2024 - Present",
                 cv_pos5_title: "Los Angeles Philharmonic", cv_pos5_role: "Dudamel Fellow & Guest Conductor",
                 cv_pos6_title: "Opéra National de Paris", cv_pos6_role: "Assistant Conductor (18+ weeks)",
-                cv_cat3: "Guest Conducting & Recordings", cv_guest_title: "Guest Conducting Highlights", cv_guest_usa: "<strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New York Philharmonic.", cv_guest_intl: "<strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, Bogotá Philharmonic.",
-                cv_cat4: "Education",
-                cv_edu1_title: "Columbus State University", cv_edu1_desc: "Bachelor of Arts in Music (Orchestral Conducting)",
+                cv_cat3: "Guest Conducting & Recordings", cv_guest_title: "Guest Conducting Highlights", cv_guest_usa: "<strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, New York Philharmonic, Schwob Philharmonic, YOLA.", cv_guest_intl: "<strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony, Simón Bolívar Symphony & Chamber Orchestras, Bogotá Philharmonic, and major international choirs.",
+                cv_cat4: "Education & Mentorship",
+                cv_edu1_title: "Columbus State University", cv_edu1_desc: "Bachelor of Arts in Music (Orchestral Conducting & Vocal Performance)",
                 cv_edu2_title: "Simón Bolívar Conservatory", cv_edu2_desc: "Diploma in Orchestra Conducting",
+                cv_edu3_title: "Libertador Pedagogical University", cv_edu3_date: "2028 (Expected)", cv_edu3_desc: "Master Degree in Higher Education",
+                press_title: "Media & Press", press_link: "Read full article &rarr;",
+                press_kit_title: "Press Kit", press_kit_p1: "Official material available for event organizers and journalists.", press_kit_p2: "Includes: Biography, High-Resolution Photos, Official Logo.",
                 schedule_title: "Schedule of Events", schedule_subtitle: "UPCOMING PERFORMANCES", schedule_loading: "Loading real-time schedule...",
                 media_title: "Multimedia", media_subtitle1: "VIDEO LIBRARY", media_subtitle2: "AUDIO LIBRARY",
                 yt_watch: "Watch",
@@ -1202,23 +1298,27 @@
                 home_desc: "Director de Orquesta. Una visión artística que une la excelencia técnica con la pasión desbordante del escenario.",
                 home_btn1: "Ver Eventos", home_btn2: "Escuchar Música",
                 about_title: "Biografía y Trayectoria",
-                bio_quote: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado.\"",
-                bio_p1: "El dinámico director venezolano Enluis Montes Olivar, de 29 años, está recibiendo reconocimiento internacional por su maestría y energía dinámica. Actualmente se desempeña como Director Asociado de la Orquesta de Cámara Simón Bolívar desde enero de 2024.",
-                bio_p2: "Se ha presentado con la Filarmónica de Los Ángeles, Sinfónica de San Francisco, Sinfónica de San Diego, New West Symphony, Sinfónica de Redlands, Orquesta Sinfónica Metropolitana di Bari en Italia, Orchestre National de Mulhouse en Francia, Sinfónica de Suzhou en China y la Filarmónica de Bogotá.",
-                bio_p3: "Sus compromisos para 2026 y 2027 incluyen regresar con la Filarmónica de Bogotá como director invitado y con la Sinfónica de San Diego dirigiendo su tradicional concierto de verano. También regresará como director suplente con la Filarmónica de Nueva York.",
-                bio_p4: "Como Dudamel Fellow con la Filarmónica de Los Ángeles, Enluis dirigió presentaciones en el Walt Disney Concert Hall y el Hollywood Bowl, donde la crítica elogió su trabajo como \"esplendor virtuoso\". Además, se ha desempeñado como director asistente en la Ópera Nacional de París.",
-                bio_p5: "Enluis obtuvo su Licenciatura en Música de la Universidad Estatal de Columbus en la primavera de 2026 con honores. Fruto de El Sistema de Venezuela, ha dirigido la Orquesta Sinfónica Simón Bolívar y la Sinfónica de Caracas.",
-                bio_p6: "Comenzó sus estudios formales en 2012 con Teresa Hernández, José Antonio Abreu y Gregory Carreño. Ha participado en múltiples clases magistrales con renombrados directores y actualmente cursa una maestría en educación superior.",
+                bio_quote: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar, un venezolano de 22 años. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado, en piezas cortas, incluyendo el Danzón No. 2 de Arturo Márquez.\"",
+                bio_p1: "El dinámico director venezolano Enluis Montes Olivar, de 29 años, está recibiendo reconocimiento internacional por su maestría y energía dinámica. Actualmente se desempeña como Director Asociado de la Orquesta de Cámara Simón Bolívar desde enero de 2024, Dudamel Fellow de la Sinfónica de San Diego y Director Musical y Artístico de la The Blue Morpho Orchestra. En 2024, fue galardonado con el prestigioso Premio Protégé Glenn Gould, que siguió a su 1er Premio y Premio de la Orquesta en el Concurso Internacional de Dirección de la Universidad de Almería en España en 2022.",
+                bio_p2: "Se ha presentado con la Filarmónica de Los Ángeles, Sinfónica de San Francisco, Sinfónica de San Diego, New West Symphony, Sinfónica de Redlands, Orquesta Sinfónica Metropolitana di Bari en Italia, Orchestre National de Mulhouse en Francia, Sinfónica de Suzhou en China y la Filarmónica de Bogotá en Colombia. Recientemente dirigió a la Orquesta de Cámara Simón Bolívar en una gira por Argelia y en un ciclo sinfónico completo de Beethoven en Caracas. Con la Sinfónica Simón Bolívar de Venezuela, lanzó un álbum en mayo de 2025 con música de Carreño, Castellanos y Estévez. Además, en mayo de 2026, debutó con la Filarmónica de Nueva York junto al reconocido trompetista Pacho Flores en el concierto anual de la Catedral de San Juan el Divino, una tradición de la orquesta desde 1992.",
+                bio_p3: "Sus compromisos para 2026 y 2027 incluyen regresar con la Filarmónica de Bogotá como director invitado y con la Sinfónica de San Diego dirigiendo en The Rady Shell su tradicional concierto de verano: Tchaikovsky Spectacular. También regresará como director suplente con la Filarmónica de Nueva York para una gira europea en primavera de 2026 y dirigirá un ciclo sinfónico de Brahms con la Orquesta de Cámara Simón Bolívar. Entre sus próximos debuts se encuentran la Orquesta Joven de la Sinfónica de Galicia y la Sinfónica de Galicia, ambas en España.",
+                bio_p4: "Como Dudamel Fellow durante dos temporadas con la Filarmónica de Los Ángeles, Enluis dirigió presentaciones en el Walt Disney Concert Hall y el Hollywood Bowl, donde el crítico Tony Frankel elogió su trabajo como \"esplendor virtuoso\" y \"una clase magistral de musicalidad\". Además, se ha desempeñado como director asistente en la Ópera Nacional de París, colaborando con Gustavo Dudamel en Nixon en China y con Alexander Soddy on Lohengrin.",
+                bio_p5: "Enluis obtuvo un diploma en Dirección Orquestal del Conservatorio de Música Simón Bolívar en 2023 y recibió su Licenciatura en Música de la Universidad Estatal de Columbus (EE. UU.) en la primavera de 2026 con honores (Summa Cum Laude), además de desempeñarse como Director Asociado de la Filarmónica y Ópera Schwob y el Ballet de Columbus (2022-2026). Fruto de El Sistema de Venezuela, ha dirigido la Orquesta Sinfónica Simón Bolívar, Sinfónica Juan José Landaeta, Sinfónica de Caracas y el Coro Nacional Simón Bolívar. Dirigió un emblemático homenaje póstumo al Maestro José Antonio Abreu y lideró el Récord Guinness con una orquesta y coro de 12,000 músicos.",
+                bio_p6: "Comenzó sus estudios formales en 2012 con Teresa Hernández, José Antonio Abreu, Gregory Carreño y Franka Verhagen. Ha participado en clases magistrales con Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson y Nathalie Stutzmann. Actualmente cursa una maestría en educación superior en la UPEL en Venezuela.",
                 cv_title: "Experiencia Profesional", cv_cat1: "Cargos Profesionales",
-                cv_pos1_title: "Orquesta de Cámara Simón Bolívar", cv_pos1_role: "Director Asociado", cv_pos1_year: "2024 - Presente", cv_pos1_desc: "Miembro del equipo de directores asociados de El Sistema, liderado por Gustavo Dudamel.",
-                cv_pos3_title: "Filarmónica de Nueva York", cv_pos3_role: "Director Suplente e Invitado", cv_pos3_year: "2025 - Presente", cv_pos3_li1: "Debutó en la Catedral de San Juan el Divino en mayo de 2026.", cv_pos3_li2: "Suplente en más de 15 programas de temporada.",
-                cv_pos4_title: "Sinfónica de San Diego", cv_pos4_role: "Becario de Dirección y Suplente", cv_pos4_year: "2024 - Presente",
+                cv_pos1_title: "Orquesta de Cámara Simón Bolívar", cv_pos1_role: "Director Asociado", cv_pos1_year: "2024 - Presente", cv_pos1_desc: "Miembro del equipo de directores asociados de El Sistema, liderado por Gustavo Dudamel. Ha dirigido decenas de conciertos, una gira por Argelia y recientemente un festival con el ciclo sinfónico de Beethoven.",
+                cv_pos2_title: "Filarmónica y Ópera de Schwob", cv_pos2_role: "Director Asociado", cv_pos2_desc: "Como estudiante en la Escuela de Música Schwob, Enluis ha dirigido varios conciertos con el ensamble principal.",
+                cv_pos3_title: "Filarmónica de Nueva York", cv_pos3_role: "Director Suplente e Invitado", cv_pos3_year: "2025 - Presente", cv_pos3_li1: "Debutó en la Catedral de San Juan el Divino en mayo de 2026.", cv_pos3_li2: "Suplente en más de 15 programas de temporada hasta la primavera de 2026.",
+                cv_pos4_title: "Sinfónica de San Diego", cv_pos4_role: "Becario de Dirección, Invitado y Suplente",
                 cv_pos5_title: "Filarmónica de Los Ángeles", cv_pos5_role: "Dudamel Fellow y Director Invitado",
                 cv_pos6_title: "Ópera Nacional de París", cv_pos6_role: "Director Asistente (+18 semanas)",
-                cv_cat3: "Dirección Invitada y Grabaciones", cv_guest_title: "Presentaciones Destacadas", cv_guest_usa: "<strong>EE.UU.:</strong> Filarmónica de Los Ángeles, Sinfónica de San Francisco, Sinfónica de San Diego, Filarmónica de Nueva York.", cv_guest_intl: "<strong>Internacional:</strong> Metropolitana di Bari (Italia), Nacional de Mulhouse (Francia), Sinfónica de Suzhou (China), Filarmónica de Bogotá.",
+                cv_cat3: "Dirección Invitada y Grabaciones", cv_guest_title: "Presentaciones Destacadas", cv_guest_usa: "<strong>EE.UU.:</strong> Filarmónica de Los Ángeles, Sinfónica de San Francisco, Sinfónica de San Diego, New West Symphony, Sinfónica de Redlands, Filarmónica de Nueva York, YOLA.", cv_guest_intl: "<strong>Internacional:</strong> Metropolitana di Bari (Italia), Nacional de Mulhouse (Francia), Sinfónica de Suzhou (China), Filarmónica de Bogotá, Orquestas Simón Bolívar y coros internacionales.",
                 cv_cat4: "Educación",
-                cv_edu1_title: "Universidad Estatal de Columbus", cv_edu1_desc: "Licenciatura en Música (Dirección Orquestal)",
+                cv_edu1_title: "Universidad Estatal de Columbus", cv_edu1_desc: "Licenciatura en Música (Dirección Orquestal y Ejecución Vocal)",
                 cv_edu2_title: "Conservatorio Simón Bolívar", cv_edu2_desc: "Diploma en Dirección Orquestal",
+                cv_edu3_title: "Libertador Pedagogical University", cv_edu3_date: "2028 (Esperado)", cv_edu3_desc: "Maestría en Educación Superior",
+                press_title: "Medios y Prensa", press_link: "Leer artículo completo &rarr;",
+                press_kit_title: "Kit de Prensa", press_kit_p1: "Material oficial disponible para organizadores de eventos y periodistas.", press_kit_p2: "Incluye: Biografía, Fotos en Alta Resolución y Logotipo Oficial.",
                 schedule_title: "Agenda de Eventos", schedule_subtitle: "PRÓXIMAS PRESENTACIONES", schedule_loading: "Cargando programación...",
                 media_title: "Multimedia", media_subtitle1: "VIDEOTECA", media_subtitle2: "AUDIOTECA",
                 yt_watch: "Ver video",

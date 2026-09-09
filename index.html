@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     <title>Enluis Montes Olivar | Orchestra Conductor</title>
     
-    <!-- Google Fonts: Playfair Display (Classic/Titles) and Montserrat (Modern/Text) -->
+    <!-- Google Fonts: Playfair Display & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -15,10 +16,11 @@
         :root {
             --negro-fondo: #050505;
             --negro-tarjetas: #0a0a0a;
-            --negro-bordes: #1a1a1a;
+            --negro-bordes: rgba(255, 255, 255, 0.08);
             --blanco-texto: #f4f4f4;
-            --gris-texto: #b5b5b5;
-            --dorado: #D4AF37; /* Professional Gold */
+            --gris-texto: #a8a8a8;
+            --dorado: #CBA153; /* Dorado más sobrio y elegante */
+            --rojo-youtube: #E52D27;
         }
 
         /* Base Styles & Smooth Scrolling */
@@ -54,12 +56,12 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         #splash-screen img {
             max-width: 450px; 
             width: 80%;
-            animation: fadeInLogo 1s ease-out forwards; 
+            animation: fadeInLogo 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
         .splash-hidden {
             opacity: 0;
@@ -68,7 +70,7 @@
         }
 
         @keyframes fadeInLogo {
-            0% { opacity: 0; transform: scale(0.95); }
+            0% { opacity: 0; transform: scale(0.97); }
             100% { opacity: 1; transform: scale(1); }
         }
 
@@ -85,14 +87,15 @@
             top: 0; 
             left: 0;
             width: 100%;
-            background-color: rgba(5, 5, 5, 0.98); 
+            background-color: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.4s ease; 
         }
         
         header.scrolled {
             padding: 0.4rem 5%; 
-            background-color: rgba(5, 5, 5, 0.99);
+            background-color: rgba(5, 5, 5, 0.98);
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         
@@ -106,6 +109,12 @@
             max-height: 70px; 
         }
 
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
         nav ul { 
             list-style: none; 
             display: flex; 
@@ -115,19 +124,18 @@
         nav a { 
             color: var(--blanco-texto); 
             text-decoration: none; 
-            font-size: 0.85rem; 
+            font-size: 0.8rem; 
             letter-spacing: 1px;
             text-transform: uppercase; 
             transition: all 0.3s ease;
-            padding-bottom: 5px;
-            border-bottom: 2px solid transparent;
             position: relative;
+            padding: 5px 0;
         }
         nav a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 1px;
             bottom: 0;
             left: 0;
             background-color: var(--dorado);
@@ -140,12 +148,42 @@
             width: 100%;
         }
 
+        /* Botón de idioma minimalista */
+        #lang-toggle {
+            font-weight: 500;
+            color: var(--blanco-texto);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border: 1px solid var(--negro-bordes);
+            border-radius: 4px;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+        #lang-toggle svg {
+            fill: var(--blanco-texto);
+            transition: all 0.3s ease;
+        }
+        #lang-toggle:hover {
+            color: var(--dorado);
+            border-color: var(--dorado);
+        }
+        #lang-toggle:hover svg {
+            fill: var(--dorado);
+        }
+
         /* -------------------------------------- */
-        /* SECTIONS & SEPARATORS                  */
+        /* SECTIONS                               */
         /* -------------------------------------- */
         section { 
             padding: 6rem 5%; 
-            border-bottom: 2px solid rgba(212, 175, 55, 0.25); 
+            border-bottom: 1px solid var(--negro-bordes); 
             position: relative;
             overflow: hidden;
             background-color: #000;
@@ -153,7 +191,7 @@
         
         h2 { 
             font-family: 'Playfair Display', serif;
-            font-size: 3rem; 
+            font-size: 2.8rem; 
             margin-bottom: 3rem; 
             font-weight: 400; 
             letter-spacing: 1px;
@@ -163,7 +201,7 @@
         }
         h3 { 
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem; 
             font-weight: 400;
             color: var(--blanco-texto);
@@ -177,12 +215,12 @@
         }
 
         /* -------------------------------------- */
-        /* ANIMACIONES DE APARICIÓN AL SCROLL     */
+        /* ANIMACIONES Y FONDOS                   */
         /* -------------------------------------- */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
         .reveal.active {
@@ -190,9 +228,6 @@
             transform: translateY(0);
         }
 
-        /* -------------------------------------- */
-        /* FOTOS DE FONDO TOTALES CON BRILLO      */
-        /* -------------------------------------- */
         .bg-photo {
             position: absolute;
             top: 0;
@@ -201,11 +236,9 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            filter: brightness(1.25) contrast(1.08);
+            filter: brightness(1.2) contrast(1.05);
             z-index: 1;
             pointer-events: none;
-            transform: translateZ(0);
-            backface-visibility: hidden;
         }
 
         .bg-overlay {
@@ -214,13 +247,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.45) 0%, rgba(5,5,5,0.88) 100%);
+            background: linear-gradient(to bottom, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.95) 100%);
             z-index: 1;
             pointer-events: none;
         }
 
         /* -------------------------------------- */
-        /* ESTILO BIOGRAFÍA + CV SEPARADOS        */
+        /* BIOGRAFÍA + CV                         */
         /* -------------------------------------- */
         .about-wrapper {
             max-width: 1000px;
@@ -231,16 +264,15 @@
         }
 
         .bio-article-container {
-            background-color: rgba(10, 10, 10, 0.9);
+            background-color: rgba(12, 12, 12, 0.6);
             border: 1px solid var(--negro-bordes);
             padding: 3.5rem;
-            border-radius: 6px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            border-radius: 8px;
+            backdrop-filter: blur(15px);
         }
 
         .bio-quote-box {
-            border-left: 4px solid var(--dorado);
+            border-left: 2px solid var(--dorado);
             padding-left: 2rem;
             margin-bottom: 2.5rem;
         }
@@ -248,7 +280,7 @@
         .bio-quote-box p {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.7;
             color: var(--blanco-texto);
             margin-bottom: 0.8rem;
@@ -256,26 +288,22 @@
 
         .bio-quote-box span {
             color: var(--dorado);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: 600;
         }
 
         .bio-article-content p {
             color: var(--gris-texto);
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.9;
             margin-bottom: 1.8rem;
-        }
-
-        .bio-article-content p:last-child {
-            margin-bottom: 0;
+            font-weight: 300;
         }
 
         .cv-section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--dorado);
             margin: 3rem 0 2rem 0;
             text-align: center;
@@ -283,32 +311,31 @@
 
         .cv-category-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--dorado);
+            font-size: 1.4rem;
+            color: var(--blanco-texto);
             margin: 2.5rem 0 1.5rem 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--negro-bordes);
+            padding-bottom: 0.5rem;
         }
 
         .cv-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.8rem;
+            gap: 1.5rem;
         }
 
         .cv-card {
-            background-color: rgba(10, 10, 10, 0.92);
+            background-color: rgba(15, 15, 15, 0.4);
             border: 1px solid var(--negro-bordes);
-            padding: 2.2rem;
-            border-radius: 6px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(8px);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .cv-card:hover {
-            border-color: rgba(212, 175, 55, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            border-color: rgba(203, 161, 83, 0.3);
+            background-color: rgba(20, 20, 20, 0.6);
         }
 
         .cv-card-header {
@@ -321,340 +348,280 @@
         }
 
         .cv-card-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
-            color: var(--blanco-texto);
+            font-size: 1.25rem;
             margin-bottom: 0.2rem;
         }
 
         .cv-role {
             color: var(--dorado);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 600;
         }
 
         .cv-year {
-            background-color: rgba(212, 175, 55, 0.1);
-            color: var(--dorado);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            color: var(--gris-texto);
+            font-size: 0.8rem;
+            font-weight: 500;
             letter-spacing: 1px;
         }
 
         .cv-card p, .cv-card li {
             color: var(--gris-texto);
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.7;
+            font-weight: 300;
         }
 
-        .cv-card ul {
-            list-style-position: inside;
-            margin-top: 0.6rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .cv-list-container {
+        /* -------------------------------------- */
+        /* TARJETAS PREMIUM MINIMALISTAS          */
+        /* -------------------------------------- */
+        .yt-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .cv-simple-item {
-            background-color: rgba(10, 10, 10, 0.9);
-            border: 1px solid var(--negro-bordes);
-            padding: 1.8rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .cv-simple-item:hover {
-            border-color: rgba(212, 175, 55, 0.4);
-            transform: translateY(-3px);
-        }
-
-        .cv-simple-item h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            color: var(--blanco-texto);
-            margin-bottom: 0.4rem;
-        }
-
-        /* -------------------------------------- */
-        /* MODELO DE VIDEOS (YOUTUBE)             */
-        /* -------------------------------------- */
-        .video-list-container {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            gap: 2rem;
             margin-bottom: 4rem;
-        }
-
-        .video-row-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(10, 10, 10, 0.9);
-            border: 1px solid var(--negro-bordes);
-            padding: 1.5rem 2.5rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .video-row-item:hover {
-            border-color: var(--dorado);
-            background-color: rgba(20, 20, 20, 0.95);
-            transform: translateX(5px);
-        }
-
-        .video-row-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--blanco-texto);
-        }
-
-        .video-row-link {
-            color: var(--dorado);
-            text-decoration: none;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .video-row-link:hover {
-            border-color: var(--dorado);
-        }
-
-        /* -------------------------------------- */
-        /* DISEÑO PREMIUM PARA LOS AUDIOS         */
-        /* -------------------------------------- */
-        .audio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
             position: relative;
             z-index: 2;
         }
 
-        .audio-card {
-            background: linear-gradient(145deg, rgba(12, 12, 12, 0.95), rgba(8, 8, 8, 0.98));
+        .media-card {
+            background: rgba(15, 15, 15, 0.5);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--negro-bordes);
-            border-top: 3px solid var(--dorado);
-            padding: 2.2rem;
             border-radius: 8px;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             gap: 1.5rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            transition: all 0.4s ease;
         }
 
+        .media-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Variación YouTube */
+        .yt-card:hover {
+            border-color: rgba(229, 45, 39, 0.3);
+        }
+
+        /* Variación Audio Local */
         .audio-card:hover {
-            border-color: rgba(212, 175, 55, 0.5);
-            border-top-color: var(--dorado);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.8);
+            border-color: rgba(203, 161, 83, 0.3);
         }
 
-        .audio-card-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
+        .media-card-content {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        /* Botón Play Circular Minimalista */
+        .play-btn-minimal {
+            flex-shrink: 0;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn-minimal svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--blanco-texto);
+            transition: all 0.3s ease;
+        }
+
+        /* Hover específico YouTube */
+        .yt-card:hover .play-btn-minimal {
+            background: var(--rojo-youtube);
+            border-color: var(--rojo-youtube);
+        }
+        
+        /* Hover específico Audios */
+        .audio-card:hover .play-btn-minimal {
+            background: var(--dorado);
+            border-color: var(--dorado);
+        }
+
+        .yt-card:hover .play-btn-minimal svg,
+        .audio-card:hover .play-btn-minimal svg {
+            fill: var(--negro-fondo);
+        }
+
+        .media-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .media-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
             color: var(--blanco-texto);
-            margin-bottom: 0.5rem;
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        .audio-card-header p {
+        .media-composer {
+            font-size: 0.8rem;
             color: var(--gris-texto);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
         }
 
-        .audio-card-player audio {
+        /* Footer interno de la tarjeta */
+        .media-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--negro-bordes);
+            padding-top: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .media-action-text {
+            font-size: 0.75rem;
+            color: var(--gris-texto);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .media-action-text svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--gris-texto);
+            transition: transform 0.3s ease;
+        }
+
+        .yt-card:hover .media-action-text {
+            color: var(--blanco-texto);
+        }
+        .yt-card:hover .media-action-text svg {
+            fill: var(--blanco-texto);
+            transform: translateX(4px);
+        }
+
+        .media-badge {
+            font-size: 0.65rem;
+            color: var(--gris-texto);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Reproductor de Audio nativo */
+        .audio-player-container {
+            margin-top: 0.5rem;
+        }
+        .audio-player-container audio {
             width: 100%;
+            height: 40px;
             outline: none;
-            filter: invert(90%) hue-rotate(180deg) brightness(1.15) contrast(1.1);
-            border-radius: 30px;
+            filter: invert(100%) hue-rotate(180deg) contrast(1.2);
+            border-radius: 4px;
         }
 
         /* -------------------------------------- */
-        /* SCHEDULE / CONCIERTOS DINÁMICOS        */
+        /* BOTONES GLOBALES                       */
+        /* -------------------------------------- */
+        .btn { 
+            display: inline-block; 
+            padding: 12px 30px; 
+            background-color: var(--blanco-texto); 
+            color: var(--negro-fondo); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase; 
+            margin-top: 1rem; 
+            margin-right: 1rem;
+            border: 1px solid var(--blanco-texto);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease; 
+        }
+        .btn:hover { 
+            background-color: var(--dorado); 
+            border-color: var(--dorado);
+            color: var(--negro-fondo); 
+        }
+        
+        .btn-outline { 
+            background-color: transparent; 
+            color: var(--blanco-texto); 
+        }
+        .btn-outline:hover { 
+            background-color: var(--dorado); 
+            border-color: var(--dorado);
+            color: var(--negro-fondo); 
+        }
+
+        /* -------------------------------------- */
+        /* SCHEDULE / CONCIERTOS                  */
         /* -------------------------------------- */
         .event-item {
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             padding: 2rem; 
-            background-color: rgba(10, 10, 10, 0.9); 
-            border-left: 4px solid var(--dorado); 
+            background-color: rgba(15, 15, 15, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--negro-bordes); 
+            border-radius: 8px;
             flex-wrap: wrap; 
             gap: 1.5rem;
-            position: relative;
-            z-index: 2;
             transition: all 0.3s ease;
             margin-bottom: 1.5rem;
-            backdrop-filter: blur(8px);
         }
         .event-item:hover {
-            background-color: rgba(212, 175, 55, 0.08);
-            transform: translateX(8px);
+            border-color: rgba(203, 161, 83, 0.3);
+            transform: translateX(4px);
         }
 
         #more-events {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.8s ease-out;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
         }
-
         #more-events.show {
             max-height: 4000px;
-            margin-top: 1.5rem;
         }
 
         .toggle-events-btn {
-            background-color: rgba(5, 5, 5, 0.8);
-            border: 1px solid var(--dorado);
-            color: var(--dorado);
+            background-color: transparent;
+            border: 1px solid var(--negro-bordes);
+            color: var(--gris-texto);
             padding: 12px 25px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
+            letter-spacing: 1px;
             cursor: pointer;
             border-radius: 4px;
             transition: all 0.3s ease;
             display: block;
             margin: 2.5rem auto 0 auto;
-            text-align: center;
-            backdrop-filter: blur(5px);
         }
         .toggle-events-btn:hover {
-            background-color: var(--dorado);
-            color: var(--negro-fondo);
-            transform: translateY(-2px);
-        }
-
-        /* -------------------------------------- */
-        /* BUTTONS Y BOTONES DE COPIA             */
-        /* -------------------------------------- */
-        .btn { 
-            display: inline-block; 
-            padding: 12px 30px; 
-            background-color: var(--dorado); 
-            color: var(--negro-fondo); 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase; 
-            margin-top: 1rem; 
-            margin-right: 1rem;
-            border: 1px solid var(--dorado);
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            position: relative;
-            overflow: hidden;
-        }
-        .btn:hover { 
-            background-color: transparent; 
-            color: var(--dorado); 
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
-        }
-        
-        .btn-outline { 
-            background-color: transparent; 
-            color: var(--dorado); 
-        }
-        .btn-outline:hover { 
-            background-color: var(--dorado); 
-            color: var(--negro-fondo); 
-        }
-
-        .copy-btn {
-            background-color: transparent;
-            border: 1px solid var(--dorado);
             color: var(--dorado);
-            padding: 6px 14px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .copy-btn:hover {
-            background-color: var(--dorado);
-            color: var(--negro-fondo);
-            transform: scale(1.05);
-        }
-
-        /* -------------------------------------- */
-        /* CARDS & GRIDS GENERALES                */
-        /* -------------------------------------- */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 2rem; 
-            margin-top: 2rem; 
-            position: relative;
-            z-index: 2;
-        }
-        .card { 
-            background-color: var(--negro-tarjetas); 
-            padding: 2.5rem; 
-            border: 1px solid var(--negro-bordes); 
-            border-radius: 4px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card:hover {
             border-color: var(--dorado);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-        }
-
-        /* -------------------------------------- */
-        /* FORMS                                  */
-        /* -------------------------------------- */
-        form { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 1.5rem; 
-            max-width: 600px; 
-            position: relative;
-            z-index: 2;
-        }
-        input, textarea { 
-            width: 100%; 
-            padding: 15px; 
-            background-color: var(--negro-tarjetas); 
-            border: 1px solid #333; 
-            color: var(--blanco-texto); 
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem; 
-            transition: border-color 0.3s ease;
-        }
-        input:focus, textarea:focus { 
-            outline: none; 
-            border-color: var(--dorado); 
         }
 
         /* -------------------------------------- */
@@ -682,108 +649,89 @@
             font-style: italic;
         }
         #home p {
-            font-size: 1.15rem; 
+            font-size: 1.1rem; 
             font-weight: 300;
             max-width: 600px; 
             margin-bottom: 2.5rem; 
-            color: var(--blanco-texto); 
+            color: var(--gris-texto); 
             position: relative;
             z-index: 2;
         }
 
-        /* Text Links */
-        a.text-link {
+        /* -------------------------------------- */
+        /* CONTACT & MISC                         */
+        /* -------------------------------------- */
+        .text-link {
             color: var(--dorado);
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s;
+            transition: color 0.3s;
         }
-        a.text-link:hover {
-            border-color: var(--dorado);
+        .text-link:hover {
+            color: var(--blanco-texto);
         }
 
-        /* Footer */
+        .copy-btn {
+            background-color: transparent;
+            border: 1px solid var(--negro-bordes);
+            color: var(--gris-texto);
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .copy-btn:hover {
+            color: var(--blanco-texto);
+            border-color: var(--blanco-texto);
+        }
+
         footer { 
             text-align: center; 
             padding: 3rem 2rem; 
-            font-size: 0.85rem; 
+            font-size: 0.8rem; 
             color: var(--gris-texto); 
             letter-spacing: 1px;
             text-transform: uppercase;
-            background-color: var(--negro-fondo);
-            position: relative;
-            z-index: 2;
+            background-color: #000;
         }
 
         /* -------------------------------------- */
-        /* RESPONSIVO MÁXIMO PARA CELULARES       */
+        /* RESPONSIVO                             */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body {
-                padding-top: 120px;
-            }
+            body { padding-top: 120px; }
             header {
-                padding: 0.6rem 4%;
+                padding: 0.8rem 4%;
                 flex-direction: column;
-                gap: 0.4rem;
-                align-items: center;
-            }
-            .logo-container img {
-                max-height: 60px;
-            }
-            header.scrolled .logo-container img {
-                max-height: 45px;
-            }
-            nav ul {
                 gap: 0.8rem;
-                justify-content: center;
             }
-            nav a {
-                font-size: 0.7rem;
-                letter-spacing: 0.5px;
-            }
-            section {
-                padding: 4rem 4%;
-            }
-            h2 {
-                font-size: 2.1rem;
-                margin-bottom: 2rem;
-            }
-            h3 {
-                font-size: 1.3rem;
-            }
-            #home h2 {
-                font-size: 2.2rem;
-            }
-            #home p {
-                font-size: 1rem;
-            }
-            .bio-article-container {
-                padding: 1.5rem;
-            }
-            .cv-card {
-                padding: 1.5rem;
-            }
-            .event-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1.5rem;
-                gap: 1rem;
-            }
-            .event-item .btn {
+            .nav-container {
                 width: 100%;
-                text-align: center;
-                margin-top: 0.5rem;
+                justify-content: space-between;
+                gap: 0.5rem;
             }
-            .video-row-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-                padding: 1.2rem;
+            .logo-container img { max-height: 50px; }
+            header.scrolled .logo-container img { max-height: 40px; }
+            nav ul { gap: 0.8rem; justify-content: center; }
+            nav a { font-size: 0.65rem; }
+            section { padding: 4rem 4%; }
+            h2 { font-size: 2rem; margin-bottom: 2rem; }
+            
+            #home {
+                justify-content: flex-end; 
+                padding-bottom: 4rem; 
+                min-height: 90vh;
             }
-            .card {
+            #home .section-content { margin-top: 40vh; }
+            #home h2 { font-size: 2.2rem; }
+            
+            .bio-article-container, .cv-card, .media-card, .event-item {
                 padding: 1.5rem;
             }
+            .event-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .event-item .btn { width: 100%; text-align: center; margin-top: 0.5rem; }
         }
     </style>
 </head>
@@ -801,28 +749,38 @@
                 <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
             </a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#press">Press</a></li>
-                <li><a href="#schedule">Schedule</a></li>
-                <li><a href="#multimedia">Multimedia</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#about" data-i18n="nav_about">About</a></li>
+                    <li><a href="#press" data-i18n="nav_press">Press</a></li>
+                    <li><a href="#schedule" data-i18n="nav_schedule">Schedule</a></li>
+                    <li><a href="#multimedia" data-i18n="nav_media">Multimedia</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="#" id="lang-toggle" onclick="toggleLanguage(event)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="14">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+                </svg>
+                <span id="lang-text">ES / EN</span>
+            </a>
+        </div>
     </header>
 
     <!-- 1. Home -->
     <section id="home">
         <img src="./foto.enluis.inicio.1.jpeg" alt="Background Home" class="bg-photo" loading="eager">
-        <div class="bg-overlay" style="background: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.8) 100%);"></div>
+        <div class="bg-overlay"></div>
         <div class="section-content reveal">
-            <h2>Music, tradition and <span>symphonic avant-garde</span></h2>
-            <p>Orchestra Conductor. An artistic vision that unites technical excellence with the overflowing passion of the stage.</p>
+            <h2 data-i18n="home_title">Music, tradition and <span>symphonic avant-garde</span></h2>
+            <p data-i18n="home_desc">Orchestra Conductor. An artistic vision that unites technical excellence with the overflowing passion of the stage.</p>
             <div>
-                <a href="#schedule" class="btn">View Upcoming Events</a>
-                <a href="#multimedia" class="btn btn-outline">Listen to Music</a>
+                <a href="#schedule" class="btn" data-i18n="home_btn1">View Upcoming Events</a>
+                <a href="#multimedia" class="btn btn-outline" data-i18n="home_btn2">Listen to Music</a>
             </div>
         </div>
     </section>
@@ -832,202 +790,109 @@
         <img src="./foto.general.enluis.10.JPG" alt="Background About" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
-            <h2>Biography & Trajectory</h2>
+            <h2 data-i18n="about_title">Biography & Trajectory</h2>
             
             <div class="about-wrapper">
-                <!-- BIOGRAFÍA OFICIAL CONTINUA -->
                 <div class="bio-article-container reveal">
                     <div class="bio-quote-box">
-                        <p>"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces, including Arturo Márquez's Danzón No. 2."</p>
+                        <p data-i18n="bio_quote">"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces."</p>
                         <span>— Los Angeles Times</span>
                     </div>
 
                     <div class="bio-article-content">
-                        <p>Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra. In 2024, he was awarded the prestigious Glenn Gould Protégé Prize, which followed his 1st Prize and Orchestra Prize at the 2022 International Conducting Competition of the University of Almería in Spain.</p>
+                        <p data-i18n="bio_p1">Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra. In 2024, he was awarded the prestigious Glenn Gould Protégé Prize, which followed his 1st Prize and Orchestra Prize at the 2022 International Conducting Competition of the University of Almería in Spain.</p>
                         
-                        <p>He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral, a tradition of the NY Phil dating back to 1992.</p>
+                        <p data-i18n="bio_p2">He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral.</p>
                         
-                        <p>Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra. Upcoming debuts include The Youth Orchestra of Galicia and the Galicia Symphony both in Spain.</p>
+                        <p data-i18n="bio_p3">Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra.</p>
                         
-                        <p>As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as "virtuosic splendor" and "a master class in musicianship." Additionally, he has served as assistant conductor at the Opéra National de Paris, collaborating with Gustavo Dudamel on Nixon in China and with Alexander Soddy on Lohengrin.</p>
+                        <p data-i18n="bio_p4">As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as "virtuosic splendor" and "a master class in musicianship." Additionally, he has served as assistant conductor at the Opéra National de Paris, collaborating with Gustavo Dudamel on Nixon in China and with Alexander Soddy on Lohengrin.</p>
                         
-                        <p>Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors (Summa Cum Laude), in addition to serving as Associate Conductor of the Schwob Philharmonic and Opera and the Columbus Ballet from 2022-2026. A product of Venezuela's El Sistema, Enluis has led performances with the Simón Bolívar Symphony Orchestra, Juan José Landaeta Symphony, Caracas Symphony Orchestra, and the Simón Bolívar National Choir. He conducted a landmark posthumous tribute to Maestro José Antonio Abreu, uniting members of the El Sistema family, and led a Guinness World Record-setting performance with an orchestra and chorus of 12,000 musicians, the largest ensemble of its kind.</p>
+                        <p data-i18n="bio_p5">Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors. A product of Venezuela's El Sistema, Enluis has led performances with the Simón Bolívar Symphony Orchestra, Juan José Landaeta Symphony, Caracas Symphony Orchestra, and the Simón Bolívar National Choir.</p>
                         
-                        <p>He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors such as Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson and Nathalie Stutzmann. Enluis continues his studies currently pursuing a master's degree in higher education at the Libertador Experimental Pedagogical University in Venezuela.</p>
+                        <p data-i18n="bio_p6">He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors such as Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson and Nathalie Stutzmann. Enluis continues his studies currently pursuing a master's degree in higher education at the Libertador Experimental Pedagogical University in Venezuela.</p>
                     </div>
                 </div>
 
-                <!-- CURRICULUM VITAE / TRAYECTORIA DETALLADA -->
                 <div>
-                    <h3 class="cv-section-title">Professional Experience & CV</h3>
+                    <h3 class="cv-section-title" data-i18n="cv_title">Professional Experience & CV</h3>
                     
-                    <h4 class="cv-category-title">Professional Positions</h4>
+                    <h4 class="cv-category-title" data-i18n="cv_cat1">Professional Positions</h4>
                     <div class="cv-grid">
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
                                 <div>
-                                    <h3>Simon Bolivar Chamber Orchestra</h3>
-                                    <span class="cv-role">Associate Conductor</span>
-                                    <p style="color: var(--gris-texto); font-size: 0.9rem; margin-top: 0.2rem;">Caracas, Venezuela</p>
+                                    <h3 data-i18n="cv_pos1_title">Simon Bolivar Chamber Orchestra</h3>
+                                    <span class="cv-role" data-i18n="cv_pos1_role">Associate Conductor</span>
                                 </div>
-                                <span class="cv-year">2024 - Present</span>
+                                <span class="cv-year" data-i18n="cv_pos1_year">2024 - Present</span>
                             </div>
-                            <p>Member of the team of associate conductors of El Sistema, led by Gustavo Dudamel. As Associate Conductor of the SBCO, Enluis has conducted dozens of concerts, a tour in Algeria, and most recently a festival featuring Beethoven's symphonic cycle.</p>
+                            <p data-i18n="cv_pos1_desc">Member of the team of associate conductors of El Sistema, led by Gustavo Dudamel. As Associate Conductor of the SBCO, Enluis has conducted dozens of concerts, a tour in Algeria, and most recently a festival featuring Beethoven's symphonic cycle.</p>
                         </div>
 
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
                                 <div>
-                                    <h3>Schwob Philharmonic and Opera</h3>
-                                    <span class="cv-role">Associate Conductor</span>
-                                    <p style="color: var(--gris-texto); font-size: 0.9rem; margin-top: 0.2rem;">Columbus, Georgia</p>
+                                    <h3 data-i18n="cv_pos3_title">New York Philharmonic</h3>
+                                    <span class="cv-role" data-i18n="cv_pos3_role">Cover Conductor & Guest Conductor</span>
                                 </div>
-                                <span class="cv-year">2022 - 2026</span>
-                            </div>
-                            <p>As a student at the Schwob School of Music (SSoM), Enluis conducted several concerts with the SSoM's main ensemble.</p>
-                        </div>
-
-                        <div class="cv-card reveal">
-                            <div class="cv-card-header">
-                                <div>
-                                    <h3>New York Philharmonic</h3>
-                                    <span class="cv-role">Cover Conductor & Guest Conductor</span>
-                                </div>
-                                <span class="cv-year">2025 - Present</span>
+                                <span class="cv-year" data-i18n="cv_pos3_year">2025 - Present</span>
                             </div>
                             <ul>
-                                <li>Conducted debut at Saint John the Divine in May of 2026.</li>
-                                <li>Covered more than 15 subscription programs/performances through Spring 2026.</li>
+                                <li data-i18n="cv_pos3_li1">Conducted debut at Saint John the Divine in May of 2026.</li>
+                                <li data-i18n="cv_pos3_li2">Covered more than 15 subscription programs/performances through Spring 2026.</li>
                             </ul>
                         </div>
 
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
                                 <div>
-                                    <h3>San Diego Symphony</h3>
-                                    <span class="cv-role">Conducting Fellow, Guest & Cover Conductor</span>
+                                    <h3 data-i18n="cv_pos4_title">San Diego Symphony</h3>
+                                    <span class="cv-role" data-i18n="cv_pos4_role">Conducting Fellow, Guest & Cover Conductor</span>
                                 </div>
-                                <span class="cv-year">2024 - Present</span>
+                                <span class="cv-year" data-i18n="cv_pos4_year">2024 - Present</span>
                             </div>
-                            <ul>
-                                <li>Scheduled to conduct the Tchaikovsky Spectacular performance in August of 2027.</li>
-                                <li>Conducted 8 concerts through 2 program series and covered over 15 subscription performances.</li>
-                            </ul>
                         </div>
 
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
                                 <div>
-                                    <h3>Los Angeles Philharmonic</h3>
-                                    <span class="cv-role">Dudamel Fellow & Guest Conductor</span>
+                                    <h3 data-i18n="cv_pos5_title">Los Angeles Philharmonic</h3>
+                                    <span class="cv-role" data-i18n="cv_pos5_role">Dudamel Fellow & Guest Conductor</span>
                                 </div>
-                                <span class="cv-year">2019 - 2022 / 2026</span>
+                                <span class="cv-year">2019&nbsp;&ndash;&nbsp;2022&nbsp;/&nbsp;2026</span>
                             </div>
-                            <ul>
-                                <li>Conducted at Walt Disney Concert Hall & Hollywood Bowl.</li>
-                                <li>Covered more than 20 subscription programs/performances.</li>
-                                <li>Praised by critic Tony Frankel as having “virtuosic splendor” and “a master class in musicianship.”</li>
-                            </ul>
                         </div>
 
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
                                 <div>
-                                    <h3>Opéra National de Paris</h3>
-                                    <span class="cv-role">Assistant Conductor (18+ weeks)</span>
+                                    <h3 data-i18n="cv_pos6_title">Opéra National de Paris</h3>
+                                    <span class="cv-role" data-i18n="cv_pos6_role">Assistant Conductor (18+ weeks)</span>
                                 </div>
                                 <span class="cv-year">2023</span>
                             </div>
-                            <ul>
-                                <li>Collaborated with Gustavo Dudamel on <em>Nixon in China</em>.</li>
-                                <li>Collaborated with Alexander Soddy on <em>Lohengrin</em>.</li>
-                            </ul>
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title">Leadership & Artistic Directorships</h4>
+                    <h4 class="cv-category-title" data-i18n="cv_cat3" style="margin-top: 3rem;">Guest Conducting & Recordings</h4>
                     <div class="cv-grid">
                         <div class="cv-card reveal">
-                            <div class="cv-card-header">
-                                <h3>Jose Antonio Paez Youth Symphony Orchestra</h3>
-                                <span class="cv-year">2018 - 2020</span>
-                            </div>
-                            <p class="cv-role" style="margin-bottom: 0.5rem;">Music and Artistic Director</p>
-                        </div>
-                        <div class="cv-card reveal">
-                            <div class="cv-card-header">
-                                <h3>Lara Youth & Children Orchestras</h3>
-                                <span class="cv-year">2016 - 2018</span>
-                            </div>
-                            <p class="cv-role" style="margin-bottom: 0.5rem;">Associate Conductor & Music Director</p>
-                        </div>
-                        <div class="cv-card reveal">
-                            <div class="cv-card-header">
-                                <h3>Franco Medina Youth Symphony Orchestra</h3>
-                                <span class="cv-year">2014 - 2018</span>
-                            </div>
-                            <p class="cv-role" style="margin-bottom: 0.5rem;">Music and Artistic Director</p>
+                            <h3 style="color: var(--blanco-texto); font-size: 1.1rem; margin-bottom: 0.8rem;" data-i18n="cv_guest_title">Guest Conducting Highlights</h3>
+                            <p style="margin-bottom: 0.8rem;" data-i18n="cv_guest_usa"><strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, New York Philharmonic, Schwob Philharmonic, YOLA.</p>
+                            <p data-i18n="cv_guest_intl"><strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony, Simón Bolívar Symphony & Chamber Orchestras, Bogotá Philharmonic, and major international choirs.</p>
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title">Guest Conducting & Recordings</h4>
-                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <h4 class="cv-category-title" data-i18n="cv_cat4" style="margin-top: 3rem;">Education</h4>
+                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                         <div class="cv-card reveal">
-                            <h3 style="color: var(--dorado); margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Guest Conducting Highlights</h3>
-                            <p style="margin-bottom: 1rem;"><strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, New York Philharmonic, Schwob Philharmonic, YOLA.</p>
-                            <p><strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony, Simón Bolívar Symphony & Chamber Orchestras, Bogotá Philharmonic, and major international choirs.</p>
-                        </div>
-
-                        <div class="cv-card reveal">
-                            <h3 style="color: var(--dorado); margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Discography & Albums</h3>
-                            <p style="margin-bottom: 1rem;"><strong>“Cantata Criolla - Vive El Sistema Fest” (2025):</strong> Album with Simón Bolívar Symphony Orchestra, National Choir, and White Hand Choir.</p>
-                            <p><strong>“Aires de Venezuela” (2021):</strong> Produced online during COVID-19 with the Venezuelan Virtual Chamber Orchestra (founded by Enluis).</p>
-                        </div>
-                    </div>
-
-                    <h4 class="cv-category-title">Education & Mentorship</h4>
-                    <div class="cv-list-container">
-                        <div class="cv-simple-item reveal">
-                            <h4>Columbus State University</h4>
-                            <p style="color: var(--dorado); font-size: 0.85rem;">2026</p>
-                            <p style="font-size: 0.95rem; margin-top: 0.5rem;">Bachelor of Arts in Music (Orchestral Conducting & Vocal Performance)</p>
-                        </div>
-                        <div class="cv-simple-item reveal">
-                            <h4>Simón Bolívar Conservatory</h4>
-                            <p style="color: var(--dorado); font-size: 0.85rem;">2023</p>
-                            <p style="font-size: 0.95rem; margin-top: 0.5rem;">Diploma in Orchestra Conducting</p>
-                        </div>
-                        <div class="cv-simple-item reveal">
-                            <h4>Libertador Pedagogical University</h4>
-                            <p style="color: var(--dorado); font-size: 0.85rem;">2028 (Expected)</p>
-                            <p style="font-size: 0.95rem; margin-top: 0.5rem;">Master Degree in Higher Education</p>
-                        </div>
-                    </div>
-                    <div style="margin-top: 1.5rem;" class="cv-card reveal">
-                        <p><strong>Conducting Teachers:</strong> Teresa Hernández, José Antonio Abreu, Gregory Carreño, Paul Hostetter.</p>
-                        <p style="margin-top: 0.5rem;"><strong>Masterclasses:</strong> Gustavo Dudamel, Diego Matheuz, Rafael Payare, Nathalie Stutzmann, John Farrer, Leaf Bjaland, Dick van Gasteren.</p>
-                    </div>
-
-                    <h4 class="cv-category-title">Awards & Honors</h4>
-                    <div class="cv-grid">
-                        <div class="cv-card reveal">
-                            <div class="cv-card-header">
-                                <h3>Glenn Gould Protégé Prize</h3>
-                                <span class="cv-year">2024</span>
-                            </div>
+                            <h4 data-i18n="cv_edu1_title" style="margin-bottom: 0.5rem; font-weight: 500;">Columbus State University</h4>
+                            <p style="font-size: 0.85rem;" data-i18n="cv_edu1_desc">Bachelor of Arts in Music (Orchestral Conducting)</p>
                         </div>
                         <div class="cv-card reveal">
-                            <div class="cv-card-header">
-                                <h3>International Conducting Competition (Almería, Spain)</h3>
-                                <span class="cv-year">2022</span>
-                            </div>
-                            <p class="cv-role">1st Prize Winner & Orchestra Prize Winner</p>
-                        </div>
-                        <div class="cv-card reveal">
-                            <div class="cv-card-header">
-                                <h3>State & Municipal Orders & Medals</h3>
-                            </div>
-                            <p style="margin-top: 0.5rem;">Includes the “City of Barquisimeto” Medal (2016), Decoration “Order Major General Juan Jacinto Lara” (2015), Decoration “Order Juan Fernandez de Leon” (2013), and Merit Honor Medal (2012) for contributions to music education and culture.</p>
+                            <h4 data-i18n="cv_edu2_title" style="margin-bottom: 0.5rem; font-weight: 500;">Simón Bolívar Conservatory</h4>
+                            <p style="font-size: 0.85rem;" data-i18n="cv_edu2_desc">Diploma in Orchestra Conducting</p>
                         </div>
                     </div>
                 </div>
@@ -1036,49 +901,16 @@
         </div>
     </section>
 
-    <!-- 3. Press -->
-    <section id="press">
-        <img src="./foto.general.enluis.5.JPG" alt="Background Press" class="bg-photo" loading="lazy">
-        <div class="bg-overlay"></div>
-        <div class="section-content reveal">
-            <h2>Media & Press</h2>
-            <div class="grid" style="margin-bottom: 4rem;">
-                <div class="card reveal">
-                    <span style="color: var(--dorado); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Musical Magazine - 2025</span>
-                    <h3 style="margin: 1rem 0;">"The new baton that thrills"</h3>
-                    <p style="color: var(--gris-texto); margin-bottom: 1.5rem;">Review of the impeccable direction in the classical symphonies cycle.</p>
-                    <a href="#" class="text-link">Read full article &rarr;</a>
-                </div>
-                <div class="card reveal" style="transition-delay: 0.2s;">
-                    <span style="color: var(--dorado); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Culture Daily - 2026</span>
-                    <h3 style="margin: 1rem 0;">Interview: The vision behind the podium</h3>
-                    <p style="color: var(--gris-texto); margin-bottom: 1.5rem;">Deep conversation about the technique and passion of Enluis Montes Olivar.</p>
-                    <a href="#" class="text-link">Read full article &rarr;</a>
-                </div>
-            </div>
-
-            <h3>Press Kit</h3>
-            <div class="card reveal" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
-                <div>
-                    <p style="font-size: 1.1rem;">Download the official material for event organizers and journalists.</p>
-                    <p style="color: var(--gris-texto); font-size: 0.9rem; margin-top: 0.5rem;">Includes: PDF Biography, High-Resolution Photos, Logo.</p>
-                </div>
-                <a href="#" class="btn" style="margin: 0;">Download (.ZIP)</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Schedule (Dinámico con actualización automática por fechas) -->
+    <!-- 4. Schedule -->
     <section id="schedule">
         <img src="./foto.general.enluis.11.jpeg" alt="Background Schedule" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
-            <h2>Schedule of Events</h2>
-            <h3 style="margin-bottom: 2rem; color: var(--gris-texto);">Upcoming Performances (2026)</h3>
+            <h2 data-i18n="schedule_title">Schedule of Events</h2>
+            <h3 style="margin-bottom: 2rem; color: var(--gris-texto); font-size: 1rem; letter-spacing: 1px;" data-i18n="schedule_subtitle">UPCOMING PERFORMANCES</h3>
             
-            <!-- CONTENEDOR DINÁMICO DE CONCIERTOS -->
             <div id="dynamic-schedule-container">
-                <div style="color: var(--gris-texto); font-style: italic; padding: 1rem 0;">Cargando programación en tiempo real...</div>
+                <div style="color: var(--gris-texto); font-style: italic; padding: 1rem 0;" data-i18n="schedule_loading">Loading real-time schedule...</div>
             </div>
         </div>
     </section>
@@ -1088,100 +920,187 @@
         <img src="./foto.general.enluis.6.JPG" alt="Background Multimedia" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
-            <h2>Multimedia</h2>
+            <h2 data-i18n="media_title">Multimedia</h2>
             
-            <!-- Video Library -->
-            <h3 style="margin-bottom: 2rem; color: var(--gris-texto);">Video Library / Performances</h3>
-            <div class="video-list-container">
-                <div class="video-row-item reveal">
-                    <span class="video-row-title">Sinfonía India</span>
-                    <a href="https://youtu.be/UJdhG1YkZXw" target="_blank" class="video-row-link">Ver en YouTube &rarr;</a>
-                </div>
+            <!-- Video Library (Minimalista) -->
+            <h3 style="margin-bottom: 2rem; color: var(--gris-texto); font-size: 1rem; letter-spacing: 1px;" data-i18n="media_subtitle1">VIDEO LIBRARY</h3>
+            <div class="yt-grid">
+                
+                <a href="https://youtu.be/UJdhG1YkZXw" target="_blank" class="media-card yt-card reveal">
+                    <div class="media-card-content">
+                        <div class="play-btn-minimal">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="media-info">
+                            <h3>Sinfonía India</h3>
+                            <span class="media-composer">Carlos Chávez</span>
+                        </div>
+                    </div>
+                    <div class="media-footer">
+                        <span class="media-action-text">
+                            <span data-i18n="yt_watch">Watch</span>
+                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </span>
+                        <span class="media-badge">YOUTUBE</span>
+                    </div>
+                </a>
 
-                <div class="video-row-item reveal">
-                    <span class="video-row-title">Obertura Cubana</span>
-                    <a href="https://youtu.be/FEHOTvDbAPA" target="_blank" class="video-row-link">Ver en YouTube &rarr;</a>
-                </div>
+                <a href="https://youtu.be/FEHOTvDbAPA" target="_blank" class="media-card yt-card reveal" style="transition-delay: 0.1s;">
+                    <div class="media-card-content">
+                        <div class="play-btn-minimal">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="media-info">
+                            <h3>Obertura Cubana</h3>
+                            <span class="media-composer">George Gershwin</span>
+                        </div>
+                    </div>
+                    <div class="media-footer">
+                        <span class="media-action-text">
+                            <span data-i18n="yt_watch">Watch</span>
+                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </span>
+                        <span class="media-badge">YOUTUBE</span>
+                    </div>
+                </a>
 
-                <div class="video-row-item reveal">
-                    <span class="video-row-title">Beethoven 9</span>
-                    <a href="https://youtu.be/SjF2-zXSNmM" target="_blank" class="video-row-link">Ver en YouTube &rarr;</a>
-                </div>
+                <a href="https://youtu.be/SjF2-zXSNmM" target="_blank" class="media-card yt-card reveal" style="transition-delay: 0.2s;">
+                    <div class="media-card-content">
+                        <div class="play-btn-minimal">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="media-info">
+                            <h3>Beethoven 9</h3>
+                            <span class="media-composer">Ludwig van Beethoven</span>
+                        </div>
+                    </div>
+                    <div class="media-footer">
+                        <span class="media-action-text">
+                            <span data-i18n="yt_watch">Watch</span>
+                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </span>
+                        <span class="media-badge">YOUTUBE</span>
+                    </div>
+                </a>
 
-                <div class="video-row-item reveal">
-                    <span class="video-row-title">Farias 1</span>
-                    <a href="https://youtu.be/CeRGtSGOiCE" target="_blank" class="video-row-link">Ver en YouTube &rarr;</a>
-                </div>
+                <a href="https://youtu.be/CeRGtSGOiCE" target="_blank" class="media-card yt-card reveal">
+                    <div class="media-card-content">
+                        <div class="play-btn-minimal">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="media-info">
+                            <h3>Farias 1</h3>
+                            <span class="media-composer">Orchestral Performance</span>
+                        </div>
+                    </div>
+                    <div class="media-footer">
+                        <span class="media-action-text">
+                            <span data-i18n="yt_watch">Watch</span>
+                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </span>
+                        <span class="media-badge">YOUTUBE</span>
+                    </div>
+                </a>
 
-                <div class="video-row-item reveal">
-                    <span class="video-row-title">Concurso Almería</span>
-                    <a href="https://youtu.be/JuNBYHOPZ4Y" target="_blank" class="video-row-link">Ver en YouTube &rarr;</a>
-                </div>
+                <a href="https://youtu.be/JuNBYHOPZ4Y" target="_blank" class="media-card yt-card reveal" style="transition-delay: 0.1s;">
+                    <div class="media-card-content">
+                        <div class="play-btn-minimal">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="media-info">
+                            <h3>Concurso Almería</h3>
+                            <span class="media-composer">International Competition</span>
+                        </div>
+                    </div>
+                    <div class="media-footer">
+                        <span class="media-action-text">
+                            <span data-i18n="yt_watch">Watch</span>
+                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </span>
+                        <span class="media-badge">YOUTUBE</span>
+                    </div>
+                </a>
 
-                <div class="video-row-item reveal">
-                    <span class="video-row-title">Sensemayá</span>
-                    <a href="https://youtu.be/qUz1N82fSEY" target="_blank" class="video-row-link">Ver en YouTube &rarr;</a>
-                </div>
+                <a href="https://youtu.be/qUz1N82fSEY" target="_blank" class="media-card yt-card reveal" style="transition-delay: 0.2s;">
+                    <div class="media-card-content">
+                        <div class="play-btn-minimal">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="media-info">
+                            <h3>Sensemayá</h3>
+                            <span class="media-composer">Silvestre Revueltas</span>
+                        </div>
+                    </div>
+                    <div class="media-footer">
+                        <span class="media-action-text">
+                            <span data-i18n="yt_watch">Watch</span>
+                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </span>
+                        <span class="media-badge">YOUTUBE</span>
+                    </div>
+                </a>
 
-                <div class="video-row-item reveal">
-                    <span class="video-row-title">Danzón 8</span>
-                    <a href="https://youtu.be/XTH9QT4DCPM" target="_blank" class="video-row-link">Ver en YouTube &rarr;</a>
-                </div>
             </div>
 
-            <!-- Audio Library -->
-            <h3 style="margin-bottom: 2rem; color: var(--gris-texto);">Audio Library</h3>
+            <!-- Audio Library (Tarjetas Locales Minimalistas) -->
+            <h3 style="margin-bottom: 2rem; margin-top: 4rem; color: var(--gris-texto); font-size: 1rem; letter-spacing: 1px;" data-i18n="media_subtitle2">AUDIO LIBRARY</h3>
             <div class="audio-grid">
+                
                 <!-- Audio Local 1 -->
-                <div class="audio-card reveal">
-                    <div class="audio-card-header">
-                        <h3>Variaciones Concertantes</h3>
-                        <p>Alberto Ginastera</p>
+                <div class="media-card audio-card reveal">
+                    <div class="media-card-content">
+                        <div class="play-btn-minimal">
+                            <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                        </div>
+                        <div class="media-info">
+                            <h3>Variaciones Concertantes</h3>
+                            <span class="media-composer">Alberto Ginastera</span>
+                        </div>
                     </div>
-                    <div class="audio-card-player">
-                        <audio controls preload="none">
+                    <div class="audio-player-container">
+                        <audio class="media-player" controls preload="none">
                             <source src="Variaciones Concertantes, Ginastera.nuevo.mp3" type="audio/mpeg">
-                            Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
                 </div>
 
                 <!-- Audio Local 2 -->
-                <div class="audio-card reveal" style="transition-delay: 0.1s;">
-                    <div class="audio-card-header">
-                        <h3>Sinfonía No. 36 "Linz"</h3>
-                        <p>Wolfgang Amadeus Mozart</p>
+                <div class="media-card audio-card reveal" style="transition-delay: 0.1s;">
+                    <div class="media-card-content">
+                        <div class="play-btn-minimal">
+                            <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                        </div>
+                        <div class="media-info">
+                            <h3>Sinfonía No. 36 "Linz"</h3>
+                            <span class="media-composer">Wolfgang Amadeus Mozart</span>
+                        </div>
                     </div>
-                    <div class="audio-card-player">
-                        <audio controls preload="none">
+                    <div class="audio-player-container">
+                        <audio class="media-player" controls preload="none">
                             <source src="Sinfonia No. 36 _Linz_Mozart nuevo.mp3" type="audio/mpeg">
-                            Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
                 </div>
 
-                <!-- Spotify 1 -->
-                <div class="card reveal" style="transition-delay: 0.2s; padding: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem;">Cantata Criolla (Parte 1)</h3>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <!-- Spotify Cards (Limpias) -->
+                <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
+                    <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 1)</h3>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
 
-                <!-- Spotify 2 -->
-                <div class="card reveal" style="padding: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem;">Cantata Criolla (Parte 2)</h3>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0FCRu4zdT00yMiPungrHeE?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
+                    <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 2)</h3>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/0FCRu4zdT00yMiPungrHeE?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
 
-                <!-- Spotify 3 -->
-                <div class="card reveal" style="transition-delay: 0.1s; padding: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem;">Santa Cruz de Pacairigua</h3>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4pUHrsoqicQpMNpvcj8fWN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
+                    <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Santa Cruz de Pacairigua</h3>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4pUHrsoqicQpMNpvcj8fWN?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
 
-                <!-- Spotify 4 -->
-                <div class="card reveal" style="transition-delay: 0.2s; padding: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem;">Margariteña</h3>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4lJQar8YFdcEPzRUADtAB4?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
+                    <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Margariteña</h3>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4lJQar8YFdcEPzRUADtAB4?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -1192,32 +1111,29 @@
         <img src="./foto.general.enluis.9.jpg" alt="Background Contact" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
-            <h2>Contact & Booking</h2>
+            <h2 data-i18n="contact_title">Contact & Booking</h2>
             <div style="display: flex; flex-wrap: wrap; gap: 5rem; align-items: center;">
                 
-                <!-- Management Information Panel -->
                 <div style="flex: 1.5; min-width: 300px;">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Management</h3>
-                    <div class="card reveal">
-                        <p style="color: var(--dorado); margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Spain, Portugal, Latin America, and special projects</p>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;" data-i18n="contact_mgmt">Management</h3>
+                    <div class="cv-card reveal">
+                        <p style="color: var(--dorado); margin-bottom: 2rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;" data-i18n="contact_desc">Spain, Portugal, Latin America, and special projects</p>
                         
-                        <!-- Contacto 1: Pablo Vidal -->
-                        <div style="margin-bottom: 2rem;">
-                            <h4 style="font-size: 1.3rem; color: var(--blanco-texto); margin-bottom: 0.2rem; font-family: 'Montserrat', sans-serif;">Pablo Vidal Vázquez</h4>
-                            <p style="color: var(--gris-texto); font-size: 0.95rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Consultant</p>
-                            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 8px;">
-                                <a href="mailto:pablo@diamond-artists.com?subject=Booking%20Inquiry%20-%20Enluis%20Montes%20Olivar" class="text-link" style="font-size: 1.1rem; border-bottom: 1px solid var(--dorado);">pablo@diamond-artists.com</a>
-                                <button class="copy-btn" onclick="copyToClipboard('pablo@diamond-artists.com', this)">Copiar</button>
+                        <div style="margin-bottom: 2.5rem;">
+                            <h4 style="font-size: 1.2rem; color: var(--blanco-texto); margin-bottom: 0.2rem; font-family: 'Montserrat', sans-serif;">Pablo Vidal Vázquez</h4>
+                            <p style="color: var(--gris-texto); font-size: 0.85rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px;" data-i18n="contact_role1">Consultant</p>
+                            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px;">
+                                <a href="mailto:pablo@diamond-artists.com?subject=Booking%20Inquiry%20-%20Enluis%20Montes%20Olivar" class="text-link" style="font-size: 1rem; border-bottom: 1px solid rgba(203, 161, 83, 0.3); padding-bottom: 2px;">pablo@diamond-artists.com</a>
+                                <button class="copy-btn" onclick="copyToClipboard('pablo@diamond-artists.com', this)" data-i18n="contact_copy">Copy</button>
                             </div>
                         </div>
                         
-                        <!-- Contacto 2: Luisa Martínez -->
                         <div>
-                            <h4 style="font-size: 1.3rem; color: var(--blanco-texto); margin-bottom: 0.2rem; font-family: 'Montserrat', sans-serif;">Luisa Martínez</h4>
-                            <p style="color: var(--gris-texto); font-size: 0.95rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Administrator</p>
-                            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 8px;">
-                                <a href="mailto:management@diamond-artists.com?subject=Inquiry%20-%20Enluis%20Montes%20Olivar" class="text-link" style="font-size: 1.1rem; border-bottom: 1px solid var(--dorado);">management@diamond-artists.com</a>
-                                <button class="copy-btn" onclick="copyToClipboard('management@diamond-artists.com', this)">Copiar</button>
+                            <h4 style="font-size: 1.2rem; color: var(--blanco-texto); margin-bottom: 0.2rem; font-family: 'Montserrat', sans-serif;">Luisa Martínez</h4>
+                            <p style="color: var(--gris-texto); font-size: 0.85rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px;" data-i18n="contact_role2">Administrator</p>
+                            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px;">
+                                <a href="mailto:management@diamond-artists.com?subject=Inquiry%20-%20Enluis%20Montes%20Olivar" class="text-link" style="font-size: 1rem; border-bottom: 1px solid rgba(203, 161, 83, 0.3); padding-bottom: 2px;">management@diamond-artists.com</a>
+                                <button class="copy-btn" onclick="copyToClipboard('management@diamond-artists.com', this)" data-i18n="contact_copy">Copy</button>
                             </div>
                         </div>
                     </div>
@@ -1229,45 +1145,142 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Enluis Montes Olivar. All rights reserved.</p>
+        <p data-i18n="footer_text">&copy; 2026 Enluis Montes Olivar. All rights reserved.</p>
     </footer>
 
     <!-- SCRIPTS -->
     <script>
-        // Forzar de forma estricta el inicio al actualizar o recargar
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-        window.scrollTo(0, 0);
-        
-        window.addEventListener('beforeunload', function () {
-            window.scrollTo(0, 0);
+        // Lógica corregida para pausas de Spotify sin parpadeos ni recargas agresivas
+        document.addEventListener('DOMContentLoaded', () => {
+            const audioPlayers = document.querySelectorAll('audio.media-player');
+            const spotifyIframes = document.querySelectorAll('iframe.spotify-iframe');
+
+            audioPlayers.forEach(audio => {
+                audio.addEventListener('play', () => {
+                    // Pausa los audios locales
+                    audioPlayers.forEach(other => {
+                        if (other !== audio) other.pause();
+                    });
+                    
+                    // Pausa los iframes de Spotify reasignando el source limpio (sin vaciar a '')
+                    spotifyIframes.forEach(iframe => {
+                        const currentSrc = iframe.src;
+                        iframe.src = currentSrc; 
+                    });
+                });
+            });
+
+            // Respaldo global
+            window.addEventListener('blur', () => {
+                setTimeout(() => {
+                    if (document.activeElement && document.activeElement.tagName === 'IFRAME') {
+                        audioPlayers.forEach(audio => audio.pause());
+                    }
+                }, 100);
+            });
         });
 
-        // 1. Script para remover el Splash Screen al cargar de forma fluida
+        // TRADUCCIONES AUTOMATIZADAS
+        const i18n = {
+            en: {
+                nav_home: "Home", nav_about: "About", nav_press: "Press", nav_schedule: "Schedule", nav_media: "Multimedia", nav_contact: "Contact",
+                home_title: "Music, tradition and <span>symphonic avant-garde</span>",
+                home_desc: "Orchestra Conductor. An artistic vision that unites technical excellence with the overflowing passion of the stage.",
+                home_btn1: "View Upcoming Events", home_btn2: "Listen to Music",
+                about_title: "Biography & Trajectory",
+                bio_quote: "\"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces.\"",
+                bio_p1: "Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra.",
+                bio_p2: "He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia.",
+                bio_p3: "Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert.",
+                bio_p4: "As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as \"virtuosic splendor\".",
+                bio_p5: "Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors.",
+                bio_p6: "He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors. He continues his studies currently pursuing a master's degree in higher education.",
+                cv_title: "Professional Experience & CV", cv_cat1: "Professional Positions",
+                cv_pos1_title: "Simon Bolivar Chamber Orchestra", cv_pos1_role: "Associate Conductor", cv_pos1_year: "2024 - Present", cv_pos1_desc: "Member of the team of associate conductors of El Sistema, led by Gustavo Dudamel.",
+                cv_pos3_title: "New York Philharmonic", cv_pos3_role: "Cover Conductor & Guest Conductor", cv_pos3_year: "2025 - Present", cv_pos3_li1: "Conducted debut at Saint John the Divine in May of 2026.", cv_pos3_li2: "Covered more than 15 subscription programs.",
+                cv_pos4_title: "San Diego Symphony", cv_pos4_role: "Conducting Fellow, Guest & Cover Conductor", cv_pos4_year: "2024 - Present",
+                cv_pos5_title: "Los Angeles Philharmonic", cv_pos5_role: "Dudamel Fellow & Guest Conductor",
+                cv_pos6_title: "Opéra National de Paris", cv_pos6_role: "Assistant Conductor (18+ weeks)",
+                cv_cat3: "Guest Conducting & Recordings", cv_guest_title: "Guest Conducting Highlights", cv_guest_usa: "<strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New York Philharmonic.", cv_guest_intl: "<strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, Bogotá Philharmonic.",
+                cv_cat4: "Education",
+                cv_edu1_title: "Columbus State University", cv_edu1_desc: "Bachelor of Arts in Music (Orchestral Conducting)",
+                cv_edu2_title: "Simón Bolívar Conservatory", cv_edu2_desc: "Diploma in Orchestra Conducting",
+                schedule_title: "Schedule of Events", schedule_subtitle: "UPCOMING PERFORMANCES", schedule_loading: "Loading real-time schedule...",
+                media_title: "Multimedia", media_subtitle1: "VIDEO LIBRARY", media_subtitle2: "AUDIO LIBRARY",
+                yt_watch: "Watch",
+                contact_title: "Contact & Booking", contact_mgmt: "Management", contact_desc: "Spain, Portugal, Latin America, and special projects", contact_role1: "Consultant", contact_role2: "Administrator", contact_copy: "Copy",
+                footer_text: "&copy; 2026 Enluis Montes Olivar. All rights reserved.",
+                schedule_btn: "Get Tickets", schedule_no_events: "No upcoming concerts scheduled.", schedule_more: "View Full 2026 Schedule", schedule_less: "Show less"
+            },
+            es: {
+                nav_home: "Inicio", nav_about: "Biografía", nav_press: "Prensa", nav_schedule: "Agenda", nav_media: "Multimedia", nav_contact: "Contacto",
+                home_title: "Música, tradición y <span>vanguardia sinfónica</span>",
+                home_desc: "Director de Orquesta. Una visión artística que une la excelencia técnica con la pasión desbordante del escenario.",
+                home_btn1: "Ver Eventos", home_btn2: "Escuchar Música",
+                about_title: "Biografía y Trayectoria",
+                bio_quote: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado.\"",
+                bio_p1: "El dinámico director venezolano Enluis Montes Olivar, de 29 años, está recibiendo reconocimiento internacional por su maestría y energía dinámica. Actualmente se desempeña como Director Asociado de la Orquesta de Cámara Simón Bolívar desde enero de 2024.",
+                bio_p2: "Se ha presentado con la Filarmónica de Los Ángeles, Sinfónica de San Francisco, Sinfónica de San Diego, New West Symphony, Sinfónica de Redlands, Orquesta Sinfónica Metropolitana di Bari en Italia, Orchestre National de Mulhouse en Francia, Sinfónica de Suzhou en China y la Filarmónica de Bogotá.",
+                bio_p3: "Sus compromisos para 2026 y 2027 incluyen regresar con la Filarmónica de Bogotá como director invitado y con la Sinfónica de San Diego dirigiendo su tradicional concierto de verano. También regresará como director suplente con la Filarmónica de Nueva York.",
+                bio_p4: "Como Dudamel Fellow con la Filarmónica de Los Ángeles, Enluis dirigió presentaciones en el Walt Disney Concert Hall y el Hollywood Bowl, donde la crítica elogió su trabajo como \"esplendor virtuoso\". Además, se ha desempeñado como director asistente en la Ópera Nacional de París.",
+                bio_p5: "Enluis obtuvo su Licenciatura en Música de la Universidad Estatal de Columbus en la primavera de 2026 con honores. Fruto de El Sistema de Venezuela, ha dirigido la Orquesta Sinfónica Simón Bolívar y la Sinfónica de Caracas.",
+                bio_p6: "Comenzó sus estudios formales en 2012 con Teresa Hernández, José Antonio Abreu y Gregory Carreño. Ha participado en múltiples clases magistrales con renombrados directores y actualmente cursa una maestría en educación superior.",
+                cv_title: "Experiencia Profesional", cv_cat1: "Cargos Profesionales",
+                cv_pos1_title: "Orquesta de Cámara Simón Bolívar", cv_pos1_role: "Director Asociado", cv_pos1_year: "2024 - Presente", cv_pos1_desc: "Miembro del equipo de directores asociados de El Sistema, liderado por Gustavo Dudamel.",
+                cv_pos3_title: "Filarmónica de Nueva York", cv_pos3_role: "Director Suplente e Invitado", cv_pos3_year: "2025 - Presente", cv_pos3_li1: "Debutó en la Catedral de San Juan el Divino en mayo de 2026.", cv_pos3_li2: "Suplente en más de 15 programas de temporada.",
+                cv_pos4_title: "Sinfónica de San Diego", cv_pos4_role: "Becario de Dirección y Suplente", cv_pos4_year: "2024 - Presente",
+                cv_pos5_title: "Filarmónica de Los Ángeles", cv_pos5_role: "Dudamel Fellow y Director Invitado",
+                cv_pos6_title: "Ópera Nacional de París", cv_pos6_role: "Director Asistente (+18 semanas)",
+                cv_cat3: "Dirección Invitada y Grabaciones", cv_guest_title: "Presentaciones Destacadas", cv_guest_usa: "<strong>EE.UU.:</strong> Filarmónica de Los Ángeles, Sinfónica de San Francisco, Sinfónica de San Diego, Filarmónica de Nueva York.", cv_guest_intl: "<strong>Internacional:</strong> Metropolitana di Bari (Italia), Nacional de Mulhouse (Francia), Sinfónica de Suzhou (China), Filarmónica de Bogotá.",
+                cv_cat4: "Educación",
+                cv_edu1_title: "Universidad Estatal de Columbus", cv_edu1_desc: "Licenciatura en Música (Dirección Orquestal)",
+                cv_edu2_title: "Conservatorio Simón Bolívar", cv_edu2_desc: "Diploma en Dirección Orquestal",
+                schedule_title: "Agenda de Eventos", schedule_subtitle: "PRÓXIMAS PRESENTACIONES", schedule_loading: "Cargando programación...",
+                media_title: "Multimedia", media_subtitle1: "VIDEOTECA", media_subtitle2: "AUDIOTECA",
+                yt_watch: "Ver video",
+                contact_title: "Contacto", contact_mgmt: "Representación", contact_desc: "España, Portugal, América Latina y proyectos especiales", contact_role1: "Consultor", contact_role2: "Administradora", contact_copy: "Copiar",
+                footer_text: "&copy; 2026 Enluis Montes Olivar. Todos los derechos reservados.",
+                schedule_btn: "Entradas", schedule_no_events: "No hay próximos conciertos programados.", schedule_more: "Ver programación completa", schedule_less: "Ver menos"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage(e) {
+            e.preventDefault();
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            document.getElementById('lang-text').innerText = currentLang === 'en' ? 'ES / EN' : 'EN / ES';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(i18n[currentLang][key]) {
+                    el.innerHTML = i18n[currentLang][key];
+                }
+            });
+
+            renderSchedule();
+        }
+
+        // Scripts visuales
+        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+        window.scrollTo(0, 0);
+        window.addEventListener('beforeunload', function () { window.scrollTo(0, 0); });
+
         window.addEventListener('load', function() {
             window.scrollTo(0, 0);
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 splash.classList.add('splash-hidden');
-                
-                setTimeout(() => {
-                    splash.style.display = 'none';
-                }, 300);
+                setTimeout(() => { splash.style.display = 'none'; }, 600);
             }, 800); 
         });
 
-        // 2. Script para encoger la barra de navegación al hacer scroll sin tirones
         window.addEventListener('scroll', function() {
             const header = document.getElementById('main-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
         });
 
-        // 3. Script optimizado de animaciones al hacer scroll (Debounced Scroll para cero tirones)
         let isScrolling = false;
         window.addEventListener('scroll', function() {
             if (!isScrolling) {
@@ -1291,74 +1304,43 @@
                 }
             }
         }
-        
         window.addEventListener('DOMContentLoaded', revealOnScroll);
 
-        // -------------------------------------------------------------
-        // 4. PROGRAMACIÓN DINÁMICA DE CONCIERTOS (ACTUALIZACIÓN POR FECHA)
-        // -------------------------------------------------------------
+        // AGENDA
         const concertsData = [
             { 
-                title: "New York Philharmonic & Chorus", 
+                title_en: "New York Philharmonic & Chorus", title_es: "Filarmónica de Nueva York y Coros",
                 dateStr: "2026-09-12", 
-                dateDisplay: "September 12 – 19, 2026", 
-                details: "Gustavo Dudamel, Conductor (Cover) — Adams, Di Castri, Prokofiev Symphony No. 5",
+                dateDisplay_en: "September 12 – 19, 2026", dateDisplay_es: "12 al 19 de septiembre, 2026",
+                details_en: "Gustavo Dudamel, Conductor (Cover) — Adams, Di Castri, Prokofiev Symphony No. 5", details_es: "Gustavo Dudamel, Director (Suplente) — Adams, Di Castri, Sinfonía No. 5 de Prokofiev",
                 ticketLink: "https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams"
             },
             { 
-                title: "New York Philharmonic", 
+                title_en: "New York Philharmonic", title_es: "Filarmónica de Nueva York",
                 dateStr: "2026-09-22", 
-                dateDisplay: "September 22 – 29, 2026", 
-                details: "Gustavo Dudamel, Conductor (Cover) — León (World Premiere), Mahler Symphony No. 5",
+                dateDisplay_en: "September 22 – 29, 2026", dateDisplay_es: "22 al 29 de septiembre, 2026",
+                details_en: "Gustavo Dudamel, Conductor (Cover) — León (World Premiere), Mahler Symphony No. 5", details_es: "Gustavo Dudamel, Director (Suplente) — León (Estreno Mundial), Sinfonía No. 5 de Mahler",
                 ticketLink: "#"
             },
             { 
-                title: "New York Philharmonic (Gala with Lang Lang & Yo-Yo Ma)", 
-                dateStr: "2026-10-01", 
-                dateDisplay: "October 1 – 2, 2026", 
-                details: "Gustavo Dudamel, Conductor (Cover) — Beethoven Piano Concerto No. 5, Golijov Azul",
-                ticketLink: "#"
-            },
-            { 
-                title: "New York Philharmonic European Tour", 
+                title_en: "New York Philharmonic European Tour", title_es: "Gira Europea de la Filarmónica de NY",
                 dateStr: "2026-10-09", 
-                dateDisplay: "October 9 – 22, 2026", 
-                details: "Cover Conductor",
+                dateDisplay_en: "October 9 – 22, 2026", dateDisplay_es: "9 al 22 de octubre, 2026",
+                details_en: "Cover Conductor", details_es: "Director Suplente",
                 ticketLink: "#"
             },
             { 
-                title: "New York Philharmonic", 
+                title_en: "New York Philharmonic", title_es: "Filarmónica de Nueva York",
                 dateStr: "2026-10-27", 
-                dateDisplay: "October 27 – November 07, 2026", 
-                details: "Payare & Parnther, Conductors (Cover) — Liszt, Bruckner Symphony No. 9",
+                dateDisplay_en: "Oct 27 – Nov 07, 2026", dateDisplay_es: "27 de oct al 7 de nov, 2026",
+                details_en: "Payare & Parnther, Conductors (Cover) — Liszt, Bruckner Symphony No. 9", details_es: "Payare y Parnther, Directores (Suplente) — Liszt, Sinfonía No. 9 de Bruckner",
                 ticketLink: "#"
             },
             { 
-                title: "New York Philharmonic & Chorus (Carnegie Hall)", 
-                dateStr: "2026-11-09", 
-                dateDisplay: "November 09 – 15, 2026", 
-                details: "Gustavo Dudamel, Conductor (Cover) — Puccini: Tosca (Full Opera)",
-                ticketLink: "#"
-            },
-            { 
-                title: "Simon Bolivar Chamber Orchestra", 
+                title_en: "Simon Bolivar Chamber Orchestra", title_es: "Orquesta de Cámara Simón Bolívar",
                 dateStr: "2026-11-16", 
-                dateDisplay: "November 16 – 22, 2026", 
-                details: "Revueltas, Elgar (Enigma Variations)",
-                ticketLink: "#"
-            },
-            { 
-                title: "Simon Bolivar Chamber Orchestra & Choir", 
-                dateStr: "2026-11-23", 
-                dateDisplay: "November 23 – December 05, 2026", 
-                details: "Mozart, Haydn (Missa in Angustiis)",
-                ticketLink: "#"
-            },
-            { 
-                title: "Simon Bolivar Symphony Orchestra of Venezuela", 
-                dateStr: "2026-11-30", 
-                dateDisplay: "November 30 – December 10, 2026", 
-                details: "Mahler: Symphony No. 5",
+                dateDisplay_en: "November 16 – 22, 2026", dateDisplay_es: "16 al 22 de noviembre, 2026",
+                details_en: "Revueltas, Elgar (Enigma Variations)", details_es: "Revueltas, Elgar (Variaciones Enigma)",
                 ticketLink: "#"
             }
         ];
@@ -1371,83 +1353,74 @@
             if (!container) return;
 
             if (upcoming.length === 0) {
-                container.innerHTML = '<p style="color: var(--gris-texto); font-style: italic;">No hay próximos conciertos programados próximamente.</p>';
+                container.innerHTML = `<p style="color: var(--gris-texto); font-style: italic;">${i18n[currentLang].schedule_no_events}</p>`;
                 return;
             }
 
             const top2 = upcoming.slice(0, 2);
             const rest = upcoming.slice(2);
 
-            let html = '<div style="display: flex; flex-direction: column; gap: 1.5rem;">';
+            let html = '<div style="display: flex; flex-direction: column; gap: 1rem;">';
             top2.forEach(c => {
                 html += `
                 <div class="event-item reveal active">
                     <div>
-                        <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">${c.title}</h3>
-                        <p style="color: var(--gris-texto); font-size: 0.95rem;"><strong style="color: var(--blanco-texto);">${c.dateDisplay}</strong></p>
-                        <p style="color: var(--dorado); font-size: 0.85rem; margin-top: 0.3rem;">${c.details}</p>
+                        <h3 style="margin-bottom: 0.2rem; font-size: 1.4rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
+                        <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
+                        <p style="color: var(--dorado); font-size: 0.8rem; margin-top: 0.4rem;">${currentLang === 'es' ? c.details_es : c.details_en}</p>
                     </div>
-                    <a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0;">Get Tickets</a>
+                    <a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;">${i18n[currentLang].schedule_btn}</a>
                 </div>`;
             });
             html += '</div>';
 
             if (rest.length > 0) {
+                const btnText = i18n[currentLang].schedule_more;
                 html += `
-                <button class="toggle-events-btn" onclick="toggleMoreEvents()" id="toggle-btn">Ver programación completa 2026 &darr;</button>
+                <button class="toggle-events-btn" onclick="toggleMoreEvents()" id="toggle-btn">${btnText}</button>
                 <div id="more-events">
-                    <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">`;
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">`;
                 
                 rest.forEach(c => {
                     html += `
                     <div class="event-item">
                         <div>
-                            <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">${c.title}</h3>
-                            <p style="color: var(--gris-texto); font-size: 0.95rem;"><strong style="color: var(--blanco-texto);">${c.dateDisplay}</strong></p>
-                            <p style="color: var(--dorado); font-size: 0.85rem; margin-top: 0.3rem;">${c.details}</p>
+                            <h3 style="margin-bottom: 0.2rem; font-size: 1.4rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
+                            <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
+                            <p style="color: var(--dorado); font-size: 0.8rem; margin-top: 0.4rem;">${currentLang === 'es' ? c.details_es : c.details_en}</p>
                         </div>
-                        <a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0;">Get Tickets</a>
+                        <a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;">${i18n[currentLang].schedule_btn}</a>
                     </div>`;
                 });
 
                 html += `</div></div>`;
             }
-
             container.innerHTML = html;
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            renderSchedule();
-        });
+        window.addEventListener('DOMContentLoaded', () => { renderSchedule(); });
 
         function toggleMoreEvents() {
-            const moreEvents = document.getElementById('more-events');
+            const marginEvents = document.getElementById('more-events');
             const btn = document.getElementById('toggle-btn');
-            
-            moreEvents.classList.toggle('show');
-            
-            if (moreEvents.classList.contains('show')) {
-                btn.innerHTML = 'Ver menos &uarr;';
+            marginEvents.classList.toggle('show');
+            if (marginEvents.classList.contains('show')) {
+                btn.innerHTML = i18n[currentLang].schedule_less;
             } else {
-                btn.innerHTML = 'Ver programación completa 2026 &darr;';
+                btn.innerHTML = i18n[currentLang].schedule_more;
             }
         }
 
-        // 5. Función interactiva para copiar el correo al portapapeles
         function copyToClipboard(text, buttonElement) {
             navigator.clipboard.writeText(text).then(function() {
                 const originalText = buttonElement.innerText;
-                buttonElement.innerText = '¡Copiado!';
-                buttonElement.style.backgroundColor = 'var(--dorado)';
-                buttonElement.style.color = 'var(--negro-fondo)';
+                buttonElement.innerText = currentLang === 'es' ? '¡Copiado!' : 'Copied!';
+                buttonElement.style.color = var(--blanco-texto);
                 
                 setTimeout(function() {
                     buttonElement.innerText = originalText;
-                    buttonElement.style.backgroundColor = 'transparent';
-                    buttonElement.style.color = 'var(--dorado)';
+                    buttonElement.style.color = 'var(--gris-texto)';
                 }, 2000);
-            }, function(err) {
-                console.error('Error al copiar el texto: ', err);
             });
         }
     </script>

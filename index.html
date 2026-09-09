@@ -19,7 +19,7 @@
             --negro-bordes: rgba(255, 255, 255, 0.08);
             --blanco-texto: #f4f4f4;
             --gris-texto: #a8a8a8;
-            --dorado: #CBA153; /* Dorado más sobrio y elegante */
+            --dorado: #CBA153; 
             --rojo-youtube: #E52D27;
         }
 
@@ -404,15 +404,8 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
 
-        /* Variación YouTube */
-        .yt-card:hover {
-            border-color: rgba(229, 45, 39, 0.3);
-        }
-
-        /* Variación Audio Local */
-        .audio-card:hover {
-            border-color: rgba(203, 161, 83, 0.3);
-        }
+        .yt-card:hover { border-color: rgba(229, 45, 39, 0.3); }
+        .audio-card:hover { border-color: rgba(203, 161, 83, 0.3); }
 
         .media-card-content {
             display: flex;
@@ -420,7 +413,6 @@
             gap: 1.2rem;
         }
 
-        /* Botón Play Circular Minimalista */
         .play-btn-minimal {
             flex-shrink: 0;
             width: 45px;
@@ -441,13 +433,11 @@
             transition: all 0.3s ease;
         }
 
-        /* Hover específico YouTube */
         .yt-card:hover .play-btn-minimal {
             background: var(--rojo-youtube);
             border-color: var(--rojo-youtube);
         }
         
-        /* Hover específico Audios */
         .audio-card:hover .play-btn-minimal {
             background: var(--dorado);
             border-color: var(--dorado);
@@ -481,7 +471,6 @@
             font-weight: 300;
         }
 
-        /* Footer interno de la tarjeta */
         .media-footer {
             display: flex;
             justify-content: space-between;
@@ -510,9 +499,7 @@
             transition: transform 0.3s ease;
         }
 
-        .yt-card:hover .media-action-text {
-            color: var(--blanco-texto);
-        }
+        .yt-card:hover .media-action-text { color: var(--blanco-texto); }
         .yt-card:hover .media-action-text svg {
             fill: var(--blanco-texto);
             transform: translateX(4px);
@@ -526,10 +513,7 @@
             font-weight: 500;
         }
 
-        /* Reproductor de Audio nativo */
-        .audio-player-container {
-            margin-top: 0.5rem;
-        }
+        .audio-player-container { margin-top: 0.5rem; }
         .audio-player-container audio {
             width: 100%;
             height: 40px;
@@ -1415,7 +1399,7 @@
             navigator.clipboard.writeText(text).then(function() {
                 const originalText = buttonElement.innerText;
                 buttonElement.innerText = currentLang === 'es' ? '¡Copiado!' : 'Copied!';
-                buttonElement.style.color = var(--blanco-texto);
+                buttonElement.style.color = '#f4f4f4';
                 
                 setTimeout(function() {
                     buttonElement.innerText = originalText;

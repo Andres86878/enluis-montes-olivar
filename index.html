@@ -47,7 +47,7 @@
         }
 
         /* -------------------------------------- */
-        /* AUTOMATIC SPLASH SCREEN                */
+        /* AUTOMATIC SPLASH SCREEN (RÁPIDO)       */
         /* -------------------------------------- */
         #splash-screen {
             position: fixed;
@@ -60,12 +60,12 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
         #splash-screen img {
             max-width: 350px; 
             width: 70%;
-            animation: fadeInLogo 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            animation: fadeInLogo 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
         .splash-hidden {
             opacity: 0;
@@ -103,7 +103,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         
-        /* LOGO MÁS GRANDE */
         .logo-container img {
             max-height: 140px; 
             width: auto;
@@ -272,10 +271,9 @@
             backdrop-filter: blur(15px);
         }
 
-        /* Testimonios Rotativos interactivos con diseño llamativo */
         .bio-quote-wrapper {
             border-left: 2px solid var(--dorado);
-            padding: 2.5rem 2rem 1.5rem 2rem;
+            padding: 2.5rem 3.5rem 1.5rem 3.5rem; 
             margin-bottom: 2.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -289,7 +287,26 @@
             background: rgba(203, 161, 83, 0.05);
         }
 
-        /* Etiqueta animada "TESTIMONIALS" */
+        .quote-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            color: var(--gris-texto);
+            border: none;
+            font-size: 1.5rem;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        .quote-nav-btn:hover {
+            color: var(--dorado);
+            transform: translateY(-50%) scale(1.2);
+        }
+        .quote-nav-prev { left: 5px; }
+        .quote-nav-next { right: 5px; }
+
         .quote-badge {
             position: absolute;
             top: 0;
@@ -305,6 +322,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            pointer-events: none;
         }
         
         .quote-badge-dot {
@@ -328,7 +346,11 @@
             color: var(--blanco-texto);
             margin-bottom: 1rem;
             transition: opacity 0.5s ease;
-            min-height: 80px; 
+            min-height: 80px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .bio-quote-auth {
             color: var(--dorado);
@@ -340,18 +362,18 @@
             font-weight: 600;
         }
         
-        /* Puntos de progreso */
         .quote-progress {
             display: flex; gap: 8px; margin-top: 1.5rem; justify-content: center;
         }
         .quote-progress-bar {
-            width: 30px; height: 3px; border-radius: 4px; background: rgba(255,255,255,0.1); overflow: hidden; position: relative;
+            width: 30px; height: 3px; border-radius: 4px; background: rgba(255,255,255,0.1); overflow: hidden; position: relative; cursor: pointer;
         }
+        .quote-progress-bar:hover { background: rgba(255,255,255,0.3); }
         .quote-progress-bar .fill {
             position: absolute; top: 0; left: 0; height: 100%; background: var(--dorado); width: 0%;
         }
         .quote-progress-bar.active .fill {
-            animation: fillBar 7s linear forwards;
+            animation: fillBar 8s linear forwards;
         }
         .quote-progress-bar.done .fill {
             width: 100%; opacity: 0.3;
@@ -362,7 +384,7 @@
             100% { width: 100%; }
         }
 
-        /* MODAL DE FRASES (Pantalla Completa) */
+        /* MODAL DE FRASES */
         .quote-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(5,5,5,0.96); z-index: 10000;
@@ -374,19 +396,26 @@
         .quote-modal.open { opacity: 1; visibility: visible; }
         .quote-modal-content {
             max-width: 900px; text-align: center; position: relative;
+            max-height: 80vh; overflow-y: auto; padding: 0 20px;
         }
+        .quote-modal-content::-webkit-scrollbar { display: none; }
+        .quote-modal-content { -ms-overflow-style: none; scrollbar-width: none; }
+
         .quote-modal-content p { 
-            font-size: 2.2rem; line-height: 1.5; color: var(--blanco-texto); 
+            font-size: 1.8rem; line-height: 1.6; color: var(--blanco-texto); 
             font-family: 'Playfair Display', serif; font-style: italic; 
         }
         @media (max-width: 768px) {
-            .quote-modal-content p { font-size: 1.4rem; }
+            .quote-modal-content p { font-size: 1.2rem; line-height: 1.8; }
+            .bio-quote-wrapper { padding: 2.5rem 1.5rem 1.5rem 1.5rem; }
+            .quote-nav-prev { left: 0px; font-size: 1.2rem; }
+            .quote-nav-next { right: 0px; font-size: 1.2rem; }
         }
         .quote-modal-content span { 
             display: block; margin-top: 2rem; color: var(--dorado); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; line-height: 1.6;
         }
         .close-modal { 
-            position: absolute; top: -3rem; right: 0; color: var(--gris-texto); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; 
+            position: absolute; top: -2rem; right: 0; color: var(--gris-texto); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; 
         }
         .close-modal:hover { color: var(--dorado); }
 
@@ -674,21 +703,54 @@
         /* -------------------------------------- */
         .event-item {
             display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+            flex-direction: column;
+            align-items: stretch;
             padding: 2rem; 
             background-color: rgba(15, 15, 15, 0.4);
             backdrop-filter: blur(10px);
             border: 1px solid var(--negro-bordes); 
             border-radius: 8px;
-            flex-wrap: wrap; 
-            gap: 1.5rem;
             transition: all 0.3s ease;
             margin-bottom: 1.5rem;
+            cursor: pointer;
         }
         .event-item:hover {
             border-color: rgba(203, 161, 83, 0.3);
             transform: translateX(4px);
+        }
+
+        .event-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .event-program {
+            display: none;
+            width: 100%;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--negro-bordes);
+            color: var(--gris-texto);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .event-item.open .event-program {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .event-item.open .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         #more-events {
@@ -840,14 +902,14 @@
             .bio-article-container, .cv-card, .media-card, .event-item {
                 padding: 1.5rem;
             }
-            .event-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
-            .event-item .btn { width: 100%; text-align: center; margin-top: 0.5rem; }
+            .event-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .event-top .btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- AUTOMATIC SPLASH SCREEN -->
+    <!-- AUTOMATIC SPLASH SCREEN (Súper rápido) -->
     <div id="splash-screen">
         <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
     </div>
@@ -920,6 +982,11 @@
                             <div class="quote-badge-dot"></div>
                             TESTIMONIALS
                         </div>
+                        
+                        <!-- Flechas de navegación manual -->
+                        <button class="quote-nav-btn quote-nav-prev" onclick="changeQuote(-1, event)">&#10094;</button>
+                        <button class="quote-nav-btn quote-nav-next" onclick="changeQuote(1, event)">&#10095;</button>
+
                         <div id="dynamic-quote-text" class="bio-quote-text"></div>
                         <div id="dynamic-quote-auth" class="bio-quote-auth"></div>
                         <div class="quote-progress" id="quote-dots"></div>
@@ -1026,7 +1093,7 @@
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title" data-i18n="cv_cat2">Leadership & Youth Orchestras</h4>
+                    <h4 class="cv-category-title" data-i18n="cv_cat2" style="margin-top: 3rem;">Leadership & Youth Orchestras</h4>
                     <div class="cv-grid">
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
@@ -1051,7 +1118,7 @@
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title" data-i18n="cv_cat3">Guest Conducting & Recordings</h4>
+                    <h4 class="cv-category-title" data-i18n="cv_cat3" style="margin-top: 3rem;">Guest Conducting & Recordings</h4>
                     <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                         <div class="cv-card reveal">
                             <h3 style="color: var(--dorado); margin-bottom: 1rem; font-family: 'Playfair Display', serif;" data-i18n="cv_guest_title">Guest Conducting Highlights</h3>
@@ -1066,7 +1133,7 @@
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title" data-i18n="cv_cat4">Education</h4>
+                    <h4 class="cv-category-title" data-i18n="cv_cat4" style="margin-top: 3rem;">Education</h4>
                     <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                         <div class="cv-card reveal">
                             <h4 data-i18n="cv_edu1_title" style="margin-bottom: 0.5rem; font-weight: 500;">Simón Bolívar Conservatory of Music</h4>
@@ -1089,7 +1156,7 @@
                         <p style="font-size: 1.15rem; color: var(--blanco-texto); margin-top: 0.8rem;" data-i18n="cv_edu_masterclasses"><strong>Masterclasses:</strong> Gustavo Dudamel, Diego Matheuz, Rafael Payare, Nathalie Stutzmann, John Farrer, Leaf Bjaland, Dick van Gasteren.</p>
                     </div>
 
-                    <h4 class="cv-category-title" data-i18n="cv_cat5">Awards & Honors</h4>
+                    <h4 class="cv-category-title" data-i18n="cv_cat5" style="margin-top: 3rem;">Awards & Honors</h4>
                     <div class="cv-grid">
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
@@ -1506,14 +1573,13 @@
                 footer_text: "&copy; 2026 Enluis Montes Olivar. Todos los derechos reservados.",
                 schedule_btn: "Entradas", schedule_no_events: "No hay próximos conciertos programados.", schedule_more: "Ver programación completa", schedule_less: "Ver menos",
 
-                quote_hint: "⤢ Haz clic para expandir",
                 quote_1_text: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar, un venezolano de 22 años. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado...\"",
                 quote_1_auth: "Los Angeles Times",
                 quote_2_text: "\"Es un director con gran capacidad de comunicación, técnica, inteligencia, compromiso, carisma, liderazgo, sensibilidad social y pasión que sin duda lo convierten en un musico extraordinario.\"",
                 quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Director principal invitado Orquesta de la Radio Nacional de Polonia.</span>",
                 quote_3_text: "\"Personalmente, creo que su gran talento, inteligencia, compromiso, carisma, liderazgo, sensibilidad social, pasión y dirección lo convierten sin duda en un artista extraordinario.\"",
                 quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical San Diego Symphony.<br>Director Musical Orchestre Symphonique de Montréal.</span>",
-                quote_4_text: "\"Enluis es uno de los jóvenes directores más talentosos que he visto en mi carrera. Su lenguaje gestual es fluido, ofreciendo a los músicos una intención clara, técnicamente segura, precisa y emocionalmente conectada...\"",
+                quote_4_text: "\"Enluis es uno de los jóvenes directores más talentosos que he visto en mi carrera. Su lenguaje gestual es fluido, ofreciendo a los músicos una intención clara, técnicamente segura, precisa y conectada emocionalmente. Inspira a artistas de todas las edades y habilidades a los niveles más altos, y esto se nota claramente en sus interpretaciones. Ha trabajado extensamente con instrumentistas y cantantes, y en particular, veo un enfoque vocal en su dirección que crea una cualidad de canto en el sonido. Esta técnica sin esfuerzo oculta una musicalidad sobresaliente.\"",
                 quote_4_auth: "Paul Hostetter<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Profesor de Música.<br>The Ethel Foley Distinguished Chair in Orchestral Activities.<br>Columbus State University.</span>"
             }
         };
@@ -1559,7 +1625,7 @@
                 let status = '';
                 if(i === currentQuoteIndex) status = 'active';
                 else if (i < currentQuoteIndex) status = 'done';
-                progress.innerHTML += `<div class="quote-progress-bar ${status}"><div class="fill"></div></div>`;
+                progress.innerHTML += `<div class="quote-progress-bar ${status}" onclick="goToQuote(${i}, event)"><div class="fill"></div></div>`;
             }
         }
 
@@ -1569,6 +1635,22 @@
                 currentQuoteIndex = currentQuoteIndex >= 4 ? 1 : currentQuoteIndex + 1;
                 updateQuoteDisplay();
             }, 7000); 
+        }
+
+        function changeQuote(step, e) {
+            e.stopPropagation(); 
+            clearInterval(quoteInterval);
+            currentQuoteIndex += step;
+            if(currentQuoteIndex > 4) currentQuoteIndex = 1;
+            if(currentQuoteIndex < 1) currentQuoteIndex = 4;
+            startQuoteRotation(); 
+        }
+
+        function goToQuote(index, e) {
+            e.stopPropagation(); 
+            clearInterval(quoteInterval);
+            currentQuoteIndex = index;
+            startQuoteRotation();
         }
 
         function openQuoteModal() {
@@ -1591,14 +1673,25 @@
         window.scrollTo(0, 0);
         window.addEventListener('beforeunload', function () { window.scrollTo(0, 0); });
 
-        window.addEventListener('load', function() {
-            window.scrollTo(0, 0);
+        window.addEventListener('DOMContentLoaded', () => { 
+            // Iniciar traducciones
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(i18n[currentLang][key]) {
+                    el.innerHTML = i18n[currentLang][key];
+                }
+            });
+            renderSchedule(); 
             startQuoteRotation();
+
+            // Desaparecer el splash rapido
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
-                splash.classList.add('splash-hidden');
-                setTimeout(() => { splash.style.display = 'none'; }, 600);
-            }, 800); 
+                if (splash) {
+                    splash.classList.add('splash-hidden');
+                    setTimeout(() => { splash.style.display = 'none'; }, 400);
+                }
+            }, 150); 
         });
 
         window.addEventListener('scroll', function() {
@@ -1630,71 +1723,175 @@
                 }
             }
         }
-        window.addEventListener('DOMContentLoaded', revealOnScroll);
 
-        // AGENDA CON ENLACES Y ESTILOS DE BOTONES
+        // AGENDA DETALLADA E INTERACTIVA (ESTILO ACORDEÓN)
         const concertsData = [
             { 
-                title_en: "New York Philharmonic & Chorus", title_es: "Filarmónica de Nueva York y Coros",
+                title_en: "Dudamel Conducts Prokofiev, Adams & Di Castri / New York Philharmonic", 
+                title_es: "Dudamel dirige Prokofiev, Adams y Di Castri / Filarmónica de Nueva York",
                 dateStr: "2026-09-19", 
-                dateDisplay_en: "September 12 – 19, 2026", dateDisplay_es: "12 al 19 de septiembre, 2026",
-                details_en: "Gustavo Dudamel, Conductor (Cover) — Adams, Di Castri, Prokofiev Symphony No. 5", details_es: "Gustavo Dudamel, Director (Suplente) — Adams, Di Castri, Sinfonía No. 5 de Prokofiev",
-                ticketLink: "https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams"
+                dateDisplay_en: "September 17, 18 & 19, 2026 - 7:30pm | Wu Tsai Theater, David Geffen Hall", 
+                dateDisplay_es: "17, 18 y 19 de septiembre, 2026 - 7:30pm | Wu Tsai Theater, David Geffen Hall",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Gustavo Dudamel, Conductor<br>New York Philharmonic Chorus | Malcolm J. Merriweather, Chorus Director<br>Brooklyn Youth Chorus | Dianne Berkun Menaker, Chorus Director",
+                soloists_es: "Gustavo Dudamel, Conductor<br>New York Philharmonic Chorus | Malcolm J. Merriweather, Chorus Director<br>Brooklyn Youth Chorus | Dianne Berkun Menaker, Chorus Director",
+                program_en: "<strong>John Adams</strong><br>On the Transmigration of Souls<br><br><strong>Zosha Di Castri</strong><br>Invisible House (World Premiere)<br><br><strong>Prokofiev</strong><br>Symphony No. 5",
+                program_es: "<strong>John Adams</strong><br>On the Transmigration of Souls<br><br><strong>Zosha Di Castri</strong><br>Invisible House (World Premiere)<br><br><strong>Prokofiev</strong><br>Symphony No. 5",
+                ticketLink: "https://www-nyphil-org.translate.goog/concerts-tickets/event-calendar?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc"
             },
             { 
-                title_en: "New York Philharmonic", title_es: "Filarmónica de Nueva York",
-                dateStr: "2026-09-22", 
-                dateDisplay_en: "September 22 – 29, 2026", dateDisplay_es: "22 al 29 de septiembre, 2026",
-                details_en: "Gustavo Dudamel, Conductor (Cover) — León (World Premiere), Mahler Symphony No. 5", details_es: "Gustavo Dudamel, Director (Suplente) — León (Estreno Mundial), Sinfonía No. 5 de Mahler",
+                title_en: "Dudamel Conducts Mahler & Tania León / New York Philharmonic", 
+                title_es: "Dudamel dirige Mahler & Tania León / Filarmónica de Nueva York",
+                dateStr: "2026-09-29", 
+                dateDisplay_en: "Sept 24, 25, 26, 29 (7:30pm) & Sept 27 (2:00pm) | Wu Tsai Theater", 
+                dateDisplay_es: "24, 25, 26, 29 (7:30pm) y 27 (2:00pm) de septiembre | Wu Tsai Theater",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Gustavo Dudamel, Conductor",
+                soloists_es: "Gustavo Dudamel, Conductor",
+                program_en: "<strong>Tania León</strong><br>Imágenes Mestizas (World Premiere)<br><br><strong>Mahler</strong><br>Symphony No. 5",
+                program_es: "<strong>Tania León</strong><br>Imágenes Mestizas (World Premiere)<br><br><strong>Mahler</strong><br>Symphony No. 5",
+                ticketLink: "https://www-nyphil-org.translate.goog/concerts-tickets/event-calendar?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc"
+            },
+            { 
+                title_en: "Gustavo Dudamel’s Inaugural Gala / New York Philharmonic", 
+                title_es: "Gustavo Dudamel’s Inaugural Gala / Filarmónica de Nueva York",
+                dateStr: "2026-09-30", 
+                dateDisplay_en: "September 30, 2026 - 7:00pm | Wu Tsai Theater", 
+                dateDisplay_es: "30 de septiembre, 2026 - 7:00pm | Wu Tsai Theater",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Gustavo Dudamel, Conductor<br>Sergio Tiempo, Piano<br>Brian Stokes Mitchell, Vocalist",
+                soloists_es: "Gustavo Dudamel, Conductor<br>Sergio Tiempo, Piano<br>Brian Stokes Mitchell, Vocalist",
+                program_en: "Inaugural Gala Program",
+                program_es: "Programa de Gala Inaugural",
                 ticketLink: "#"
             },
             { 
-                title_en: "New York Philharmonic (Gala with Lang Lang & Yo-Yo Ma)", title_es: "Filarmónica de Nueva York (Gala con Lang Lang y Yo-Yo Ma)",
+                title_en: "Lang Lang & Gustavo Dudamel / New York Philharmonic", 
+                title_es: "Lang Lang & Gustavo Dudamel / Filarmónica de Nueva York",
                 dateStr: "2026-10-01", 
-                dateDisplay_en: "October 1 – 2, 2026", dateDisplay_es: "1 y 2 de octubre, 2026",
-                details_en: "Gustavo Dudamel, Conductor (Cover) — Beethoven Piano Concerto No. 5, Golijov Azul", details_es: "Gustavo Dudamel, Director (Suplente) — Concierto para Piano No. 5 de Beethoven, Golijov Azul",
+                dateDisplay_en: "October 01, 2026 - 7:30pm | Wu Tsai Theater", 
+                dateDisplay_es: "01 de octubre, 2026 - 7:30pm | Wu Tsai Theater",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Gustavo Dudamel, Conductor<br>Lang Lang, Piano",
+                soloists_es: "Gustavo Dudamel, Conductor<br>Lang Lang, Piano",
+                program_en: "<strong>Zosha Di Castri</strong><br>Invisible House<br><br><strong>Mahler</strong><br>Adagietto, from Symphony No. 5<br><br><strong>Beethoven</strong><br>Piano Concerto No. 5, Emperor",
+                program_es: "<strong>Zosha Di Castri</strong><br>Invisible House<br><br><strong>Mahler</strong><br>Adagietto, from Symphony No. 5<br><br><strong>Beethoven</strong><br>Piano Concerto No. 5, Emperor",
                 ticketLink: "#"
             },
             { 
-                title_en: "New York Philharmonic European Tour", title_es: "Gira Europea de la Filarmónica de NY",
-                dateStr: "2026-10-09", 
-                dateDisplay_en: "October 9 – 22, 2026", dateDisplay_es: "9 al 22 de octubre, 2026",
-                details_en: "Cover Conductor", details_es: "Director Suplente",
+                title_en: "Yo-Yo Ma & Gustavo Dudamel / New York Philharmonic", 
+                title_es: "Yo-Yo Ma & Gustavo Dudamel / Filarmónica de Nueva York",
+                dateStr: "2026-10-02", 
+                dateDisplay_en: "October 02, 2026 - 7:30pm | Wu Tsai Theater", 
+                dateDisplay_es: "02 de octubre, 2026 - 7:30pm | Wu Tsai Theater",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Gustavo Dudamel, Conductor<br>Yo-Yo Ma, Cello<br>Michael Ward-Bergeman, Hyper-accordion<br>Cyro Baptista, Percussion<br>Jamey Haddad, Percussion",
+                soloists_es: "Gustavo Dudamel, Conductor<br>Yo-Yo Ma, Cello<br>Michael Ward-Bergeman, Hyper-accordion<br>Cyro Baptista, Percussion<br>Jamey Haddad, Percussion",
+                program_en: "<strong>Tania León</strong><br>Imágenes Mestizas<br><br><strong>Mahler</strong><br>Adagietto from Symphony No. 5<br><br><strong>Osvaldo Golijov</strong><br>Azul, for Cello and Orchestra",
+                program_es: "<strong>Tania León</strong><br>Imágenes Mestizas<br><br><strong>Mahler</strong><br>Adagietto from Symphony No. 5<br><br><strong>Osvaldo Golijov</strong><br>Azul, for Cello and Orchestra",
                 ticketLink: "#"
             },
             { 
-                title_en: "New York Philharmonic", title_es: "Filarmónica de Nueva York",
-                dateStr: "2026-10-27", 
-                dateDisplay_en: "Oct 27 – Nov 07, 2026", dateDisplay_es: "27 de oct al 7 de nov, 2026",
-                details_en: "Payare & Parnther, Conductors (Cover) — Liszt, Bruckner Symphony No. 9", details_es: "Payare y Parnther, Directores (Suplente) — Liszt, Sinfonía No. 9 de Bruckner",
+                title_en: "New York Philharmonic European Tour", 
+                title_es: "Gira Europea de la Filarmónica de NY",
+                dateStr: "2026-10-22", 
+                dateDisplay_en: "October 9 – 22, 2026 | European Tour", 
+                dateDisplay_es: "9 al 22 de octubre, 2026 | Gira Europea",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Gustavo Dudamel, Conductor",
+                soloists_es: "Gustavo Dudamel, Conductor",
+                program_en: "European Tour Repertoire",
+                program_es: "Repertorio de la Gira Europea",
                 ticketLink: "#"
             },
             { 
-                title_en: "New York Philharmonic & Chorus (Carnegie Hall)", title_es: "Filarmónica de Nueva York y Coros (Carnegie Hall)",
-                dateStr: "2026-11-09", 
-                dateDisplay_en: "November 09 – 15, 2026", dateDisplay_es: "9 al 15 de noviembre, 2026",
-                details_en: "Gustavo Dudamel, Conductor (Cover) — Puccini: Tosca (Full Opera)", details_es: "Gustavo Dudamel, Director (Suplente) — Puccini: Tosca (Ópera Completa)",
+                title_en: "Get Out in Concert / New York Philharmonic", 
+                title_es: "Get Out in Concert / Filarmónica de Nueva York",
+                dateStr: "2026-10-31", 
+                dateDisplay_en: "October 28, 29, 30 & 31, 2026 - 7:30pm | Wu Tsai Theater", 
+                dateDisplay_es: "28, 29, 30 y 31 de octubre, 2026 - 7:30pm | Wu Tsai Theater",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Anthony Parnther, Conductor<br>DC6 Singers Collective, Vocal Ensemble",
+                soloists_es: "Anthony Parnther, Conductor<br>DC6 Singers Collective, Vocal Ensemble",
+                program_en: "<strong>Michael Abels</strong><br>Get Out (score performed live to complete film)",
+                program_es: "<strong>Michael Abels</strong><br>Get Out (score performed live to complete film)",
                 ticketLink: "#"
             },
             { 
-                title_en: "Simon Bolivar Chamber Orchestra", title_es: "Orquesta de Cámara Simón Bolívar",
-                dateStr: "2026-11-16", 
-                dateDisplay_en: "November 16 – 22, 2026", dateDisplay_es: "16 al 22 de noviembre, 2026",
-                details_en: "Revueltas, Elgar (Enigma Variations)", details_es: "Revueltas, Elgar (Variaciones Enigma)",
+                title_en: "Thibaudet Performs Liszt / New York Philharmonic", 
+                title_es: "Thibaudet Performs Liszt / Filarmónica de Nueva York",
+                dateStr: "2026-11-07", 
+                dateDisplay_en: "November 4, 5 & 7, 2026 - 7:30pm | Wu Tsai Theater", 
+                dateDisplay_es: "4, 5 y 7 de noviembre, 2026 - 7:30pm | Wu Tsai Theater",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Rafael Payare, Conductor<br>Jean-Yves Thibaudet, Piano",
+                soloists_es: "Rafael Payare, Conductor<br>Jean-Yves Thibaudet, Piano",
+                program_en: "<strong>Liszt</strong><br>Concerto No. 2<br><br><strong>Bruckner</strong><br>Symphony No. 9",
+                program_es: "<strong>Liszt</strong><br>Concerto No. 2<br><br><strong>Bruckner</strong><br>Symphony No. 9",
                 ticketLink: "#"
             },
             { 
-                title_en: "Simon Bolivar Chamber Orchestra & Choir", title_es: "Orquesta de Cámara Simón Bolívar y Coros",
-                dateStr: "2026-11-23", 
-                dateDisplay_en: "November 23 – December 05, 2026", dateDisplay_es: "23 de nov al 5 de dic, 2026",
-                details_en: "Mozart, Haydn (Missa in Angustiis)", details_es: "Mozart, Haydn (Missa in Angustiis)",
+                title_en: "Dudamel Conducts Tosca at Carnegie Hall / New York Philharmonic", 
+                title_es: "Dudamel Conducts Tosca at Carnegie Hall / Filarmónica de Nueva York",
+                dateStr: "2026-11-15", 
+                dateDisplay_en: "November 13 (7:30pm) & 15 (2:00pm), 2026 | Carnegie Hall", 
+                dateDisplay_es: "13 (7:30pm) y 15 (2:00pm) de noviembre, 2026 | Carnegie Hall",
+                role_en: "As cover conductor",
+                role_es: "As cover conductor",
+                soloists_en: "Gustavo Dudamel, Conductor<br>Marina Rebeka, Jonas Kaufmann, Ludovic Tézier, Andrew Moore, Ben Brady, Ben Reisinger, Benjamin Taylor, Christopher Humbert Jr.<br>New York Philharmonic Chorus<br>Brooklyn Youth Chorus",
+                soloists_es: "Gustavo Dudamel, Conductor<br>Marina Rebeka, Jonas Kaufmann, Ludovic Tézier, Andrew Moore, Ben Brady, Ben Reisinger, Benjamin Taylor, Christopher Humbert Jr.<br>New York Philharmonic Chorus<br>Brooklyn Youth Chorus",
+                program_en: "<strong>Puccini</strong><br>Tosca (in Concert)",
+                program_es: "<strong>Puccini</strong><br>Tosca (in Concert)",
                 ticketLink: "#"
             },
             { 
-                title_en: "Simon Bolivar Symphony Orchestra of Venezuela", title_es: "Orquesta Sinfónica Simón Bolívar de Venezuela",
-                dateStr: "2026-11-30", 
-                dateDisplay_en: "November 30 – December 10, 2026", dateDisplay_es: "30 de nov al 10 de dic, 2026",
-                details_en: "Mahler: Symphony No. 5", details_es: "Mahler: Sinfonía No. 5",
+                title_en: "Celebration of the Day of La Chinita / Rafael Urdaneta Youth Symphony Orchestra and Choir", 
+                title_es: "Celebración del Día de La Chinita / Sinfónica Juvenil y Coro Rafael Urdaneta",
+                dateStr: "2026-11-18", 
+                dateDisplay_en: "November 18, 2026 | Location TBC", 
+                dateDisplay_es: "18 de noviembre, 2026 | Ubicación por confirmar",
+                role_en: "Enluis Montes Olivar, Conductor",
+                role_es: "Enluis Montes Olivar, Conductor",
+                soloists_en: "",
+                soloists_es: "",
+                program_en: "Repertoire (TBC)",
+                program_es: "Repertorio (TBC)",
+                ticketLink: "#"
+            },
+            { 
+                title_en: "Simon Bolivar Chamber Orchestra & Simon Bolivar National Choir", 
+                title_es: "Orquesta de Cámara Simón Bolívar & Coro Nacional Simón Bolívar",
+                dateStr: "2026-12-04", 
+                dateDisplay_en: "December 04, 2026 - 5:00pm | Simon Bolivar Hall, Caracas-VE", 
+                dateDisplay_es: "04 de diciembre, 2026 - 5:00pm | Sala Simón Bolívar, Caracas-VE",
+                role_en: "Enluis Montes Olivar, Conductor",
+                role_es: "Enluis Montes Olivar, Conductor",
+                soloists_en: "Soloist (TBD)",
+                soloists_es: "Solista (TBD)",
+                program_en: "<strong>Mozart</strong><br>Serenade for Winds KV. 388 cm<br><br><strong>Haydn</strong><br>Missa in Angustis",
+                program_es: "<strong>Mozart</strong><br>Serenade for Winds KV. 388 cm<br><br><strong>Haydn</strong><br>Missa in Angustis",
+                ticketLink: "#"
+            },
+            { 
+                title_en: "Simon Bolivar Symphony Orchestra of Venezuela", 
+                title_es: "Orquesta Sinfónica Simón Bolívar de Venezuela",
+                dateStr: "2026-12-10", 
+                dateDisplay_en: "December 10, 2026 - 5:00pm | Simon Bolivar Hall, Caracas-VE", 
+                dateDisplay_es: "10 de diciembre, 2026 - 5:00pm | Sala Simón Bolívar, Caracas-VE",
+                role_en: "Enluis Montes Olivar, Conductor",
+                role_es: "Enluis Montes Olivar, Conductor",
+                soloists_en: "",
+                soloists_es: "",
+                program_en: "<strong>Orbon</strong><br>Tres Versiones Sinfónicas<br><br><strong>Mahler</strong><br>Symphony No. 5",
+                program_es: "<strong>Orbon</strong><br>Tres Versiones Sinfónicas<br><br><strong>Mahler</strong><br>Symphony No. 5",
                 ticketLink: "#"
             }
         ];
@@ -1711,23 +1908,33 @@
                 return;
             }
 
-            const top2 = upcoming.slice(0, 2);
-            const rest = upcoming.slice(2);
+            const top2 = upcoming.slice(0, 3);
+            const rest = upcoming.slice(3);
 
             let html = '<div style="display: flex; flex-direction: column; gap: 1rem;">';
             top2.forEach(c => {
                 const btnHtml = c.ticketLink !== "#" 
-                    ? `<a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;">${i18n[currentLang].schedule_btn}</a>`
+                    ? `<a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;" onclick="event.stopPropagation()">${i18n[currentLang].schedule_btn}</a>`
                     : `<span class="btn btn-outline" style="margin: 0; font-size: 0.75rem; opacity: 0.4; pointer-events: none; border-color: rgba(255,255,255,0.2);">${currentLang === 'es' ? 'Próximamente' : 'Coming Soon'}</span>`;
 
                 html += `
-                <div class="event-item reveal active">
-                    <div>
-                        <h3 style="margin-bottom: 0.2rem; font-size: 1.4rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
-                        <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
-                        <p style="color: var(--dorado); font-size: 0.8rem; margin-top: 0.4rem;">${currentLang === 'es' ? c.details_es : c.details_en}</p>
+                <div class="event-item reveal active" onclick="this.classList.toggle('open')">
+                    <div class="event-top">
+                        <div>
+                            <h3 style="margin-bottom: 0.2rem; font-size: 1.3rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
+                            <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
+                            <p style="color: var(--dorado); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.role_es : c.role_en}</p>
+                            ${c.soloists_en ? `<p style="color: var(--gris-texto); font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.5;">${currentLang === 'es' ? c.soloists_es : c.soloists_en}</p>` : ''}
+                        </div>
+                        <div style="display:flex; align-items:center; gap: 15px;">
+                            ${btnHtml}
+                            <svg viewBox="0 0 24 24" width="20" height="20" style="fill: var(--dorado); transition: transform 0.3s ease;" class="accordion-arrow"><path d="M7 10l5 5 5-5z"/></svg>
+                        </div>
                     </div>
-                    ${btnHtml}
+                    <div class="event-program">
+                        <strong style="color:var(--dorado); letter-spacing: 1px;">${currentLang === 'es' ? 'PROGRAMA' : 'PROGRAM'}</strong><br><br>
+                        ${currentLang === 'es' ? c.program_es : c.program_en}
+                    </div>
                 </div>`;
             });
             html += '</div>';
@@ -1741,17 +1948,27 @@
                 
                 rest.forEach(c => {
                     const btnHtml = c.ticketLink !== "#" 
-                        ? `<a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;">${i18n[currentLang].schedule_btn}</a>`
+                        ? `<a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;" onclick="event.stopPropagation()">${i18n[currentLang].schedule_btn}</a>`
                         : `<span class="btn btn-outline" style="margin: 0; font-size: 0.75rem; opacity: 0.4; pointer-events: none; border-color: rgba(255,255,255,0.2);">${currentLang === 'es' ? 'Próximamente' : 'Coming Soon'}</span>`;
 
                     html += `
-                    <div class="event-item">
-                        <div>
-                            <h3 style="margin-bottom: 0.2rem; font-size: 1.4rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
-                            <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
-                            <p style="color: var(--dorado); font-size: 0.8rem; margin-top: 0.4rem;">${currentLang === 'es' ? c.details_es : c.details_en}</p>
+                    <div class="event-item" onclick="this.classList.toggle('open')">
+                        <div class="event-top">
+                            <div>
+                                <h3 style="margin-bottom: 0.2rem; font-size: 1.3rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
+                                <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
+                                <p style="color: var(--dorado); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.role_es : c.role_en}</p>
+                                ${c.soloists_en ? `<p style="color: var(--gris-texto); font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.5;">${currentLang === 'es' ? c.soloists_es : c.soloists_en}</p>` : ''}
+                            </div>
+                            <div style="display:flex; align-items:center; gap: 15px;">
+                                ${btnHtml}
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="fill: var(--dorado); transition: transform 0.3s ease;" class="accordion-arrow"><path d="M7 10l5 5 5-5z"/></svg>
+                            </div>
                         </div>
-                        ${btnHtml}
+                        <div class="event-program">
+                            <strong style="color:var(--dorado); letter-spacing: 1px;">${currentLang === 'es' ? 'PROGRAMA' : 'PROGRAM'}</strong><br><br>
+                            ${currentLang === 'es' ? c.program_es : c.program_en}
+                        </div>
                     </div>`;
                 });
 
@@ -1759,16 +1976,6 @@
             }
             container.innerHTML = html;
         }
-
-        window.addEventListener('DOMContentLoaded', () => { 
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(i18n[currentLang][key]) {
-                    el.innerHTML = i18n[currentLang][key];
-                }
-            });
-            renderSchedule(); 
-        });
 
         function toggleMoreEvents() {
             const marginEvents = document.getElementById('more-events');

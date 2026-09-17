@@ -6,7 +6,11 @@
     <meta name="format-detection" content="telephone=no">
     <title>Enluis Montes Olivar | Orchestra Conductor</title>
     
-    <!-- Google Fonts: Playfair Display & Montserrat -->
+    <!-- PRE-CARGA DE RECURSOS CRÍTICOS -->
+    <link rel="preload" href="Isologo Positivo PNG.png" as="image">
+    <link rel="preload" href="./foto.enluis.inicio.1.jpeg" as="image">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -59,9 +63,9 @@
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         #splash-screen img {
-            max-width: 450px; 
-            width: 80%;
-            animation: fadeInLogo 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            max-width: 350px; 
+            width: 70%;
+            animation: fadeInLogo 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
         .splash-hidden {
             opacity: 0;
@@ -90,7 +94,7 @@
             background-color: rgba(5, 5, 5, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            transition: all 0.4s ease; 
+            transition: all 0.3s ease; 
         }
         
         header.scrolled {
@@ -99,14 +103,14 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         
+        /* LOGO MÁS GRANDE */
         .logo-container img {
-            max-height: 110px; 
+            max-height: 140px; 
             width: auto;
-            transition: all 0.4s ease; 
+            transition: all 0.3s ease; 
         }
-        
         header.scrolled .logo-container img {
-            max-height: 70px; 
+            max-height: 80px; 
         }
 
         .nav-container {
@@ -164,6 +168,7 @@
             border-radius: 4px;
             background-color: transparent;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         #lang-toggle svg {
             fill: var(--blanco-texto);
@@ -213,9 +218,6 @@
             z-index: 2;
         }
 
-        /* -------------------------------------- */
-        /* ANIMACIONES Y FONDOS                   */
-        /* -------------------------------------- */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -252,7 +254,7 @@
         }
 
         /* -------------------------------------- */
-        /* BIOGRAFÍA + CV                         */
+        /* BIOGRAFÍA + ROTATING QUOTES            */
         /* -------------------------------------- */
         .about-wrapper {
             max-width: 1000px;
@@ -270,27 +272,123 @@
             backdrop-filter: blur(15px);
         }
 
-        .bio-quote-box {
+        /* Testimonios Rotativos interactivos con diseño llamativo */
+        .bio-quote-wrapper {
             border-left: 2px solid var(--dorado);
-            padding-left: 2rem;
+            padding: 2.5rem 2rem 1.5rem 2rem;
             margin-bottom: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 8px 8px 0;
+            overflow: hidden;
+        }
+        .bio-quote-wrapper:hover {
+            border-left-width: 4px;
+            background: rgba(203, 161, 83, 0.05);
         }
 
-        .bio-quote-box p {
+        /* Etiqueta animada "TESTIMONIALS" */
+        .quote-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--dorado);
+            color: var(--negro-fondo);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 4px 12px;
+            text-transform: uppercase;
+            border-bottom-right-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .quote-badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--negro-fondo);
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .bio-quote-text {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 1.15rem;
             line-height: 1.7;
             color: var(--blanco-texto);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            transition: opacity 0.5s ease;
+            min-height: 80px; 
         }
-
-        .bio-quote-box span {
+        .bio-quote-auth {
             color: var(--dorado);
             font-size: 0.75rem;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
+            transition: opacity 0.5s ease;
+            line-height: 1.5;
+            font-weight: 600;
         }
+        
+        /* Puntos de progreso */
+        .quote-progress {
+            display: flex; gap: 8px; margin-top: 1.5rem; justify-content: center;
+        }
+        .quote-progress-bar {
+            width: 30px; height: 3px; border-radius: 4px; background: rgba(255,255,255,0.1); overflow: hidden; position: relative;
+        }
+        .quote-progress-bar .fill {
+            position: absolute; top: 0; left: 0; height: 100%; background: var(--dorado); width: 0%;
+        }
+        .quote-progress-bar.active .fill {
+            animation: fillBar 7s linear forwards;
+        }
+        .quote-progress-bar.done .fill {
+            width: 100%; opacity: 0.3;
+        }
+
+        @keyframes fillBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* MODAL DE FRASES (Pantalla Completa) */
+        .quote-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5,5,5,0.96); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease;
+            padding: 2rem;
+            backdrop-filter: blur(8px);
+        }
+        .quote-modal.open { opacity: 1; visibility: visible; }
+        .quote-modal-content {
+            max-width: 900px; text-align: center; position: relative;
+        }
+        .quote-modal-content p { 
+            font-size: 2.2rem; line-height: 1.5; color: var(--blanco-texto); 
+            font-family: 'Playfair Display', serif; font-style: italic; 
+        }
+        @media (max-width: 768px) {
+            .quote-modal-content p { font-size: 1.4rem; }
+        }
+        .quote-modal-content span { 
+            display: block; margin-top: 2rem; color: var(--dorado); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; line-height: 1.6;
+        }
+        .close-modal { 
+            position: absolute; top: -3rem; right: 0; color: var(--gris-texto); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; 
+        }
+        .close-modal:hover { color: var(--dorado); }
 
         .bio-article-content p {
             color: var(--gris-texto);
@@ -473,9 +571,15 @@
         .media-composer {
             font-size: 0.8rem;
             color: var(--gris-texto);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 300;
+            line-height: 1.4;
+            margin-top: 4px;
+        }
+        
+        .media-year {
+            font-size: 0.75rem;
+            color: var(--dorado);
+            font-weight: 600;
+            margin-top: 4px;
         }
 
         .media-footer {
@@ -689,34 +793,49 @@
         }
 
         /* -------------------------------------- */
-        /* RESPONSIVO                             */
+        /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 120px; }
+            body { padding-top: 100px; }
             header {
-                padding: 0.8rem 4%;
+                padding: 1rem 5%;
                 flex-direction: column;
                 gap: 0.8rem;
             }
             .nav-container {
                 width: 100%;
-                justify-content: space-between;
-                gap: 0.5rem;
+                flex-direction: column;
+                gap: 1rem;
             }
-            .logo-container img { max-height: 50px; }
-            header.scrolled .logo-container img { max-height: 40px; }
-            nav ul { gap: 0.8rem; justify-content: center; }
-            nav a { font-size: 0.65rem; }
-            section { padding: 4rem 4%; }
-            h2 { font-size: 2rem; margin-bottom: 2rem; }
+            .logo-container img { max-height: 80px; }
+            header.scrolled .logo-container img { max-height: 55px; }
+            
+            nav {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
+                scrollbar-width: none;
+            }
+            nav::-webkit-scrollbar { display: none; }
+            nav ul { 
+                flex-wrap: nowrap; 
+                justify-content: flex-start; 
+                gap: 1.5rem; 
+                padding: 0;
+            }
+            nav a { font-size: 0.85rem; white-space: nowrap; }
+
+            section { padding: 4rem 5%; }
+            h2 { font-size: 2.2rem; margin-bottom: 2rem; }
             
             #home {
                 justify-content: flex-end; 
-                padding-bottom: 4rem; 
+                padding-bottom: 12vh; 
                 min-height: 90vh;
             }
-            #home .section-content { margin-top: 40vh; }
-            #home h2 { font-size: 2.2rem; }
+            #home .section-content { margin-top: auto; }
+            #home h2 { font-size: 2.3rem; }
             
             .bio-article-container, .cv-card, .media-card, .event-item {
                 padding: 1.5rem;
@@ -731,6 +850,15 @@
     <!-- AUTOMATIC SPLASH SCREEN -->
     <div id="splash-screen">
         <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
+    </div>
+
+    <!-- Modal de Frases/Quotes -->
+    <div id="quoteModal" class="quote-modal" onclick="closeQuoteModal(event)">
+        <div class="quote-modal-content">
+            <span class="close-modal">&times;</span>
+            <p id="modal-quote-text"></p>
+            <span id="modal-quote-auth"></span>
+        </div>
     </div>
 
     <!-- Main Navigation -->
@@ -764,10 +892,10 @@
 
     <!-- 1. Home -->
     <section id="home">
-        <img src="./foto.enluis.inicio.1.jpeg" alt="Background Home" class="bg-photo" loading="eager">
+        <img src="./foto.enluis.inicio.1.jpeg" alt="Background Home" class="bg-photo" fetchpriority="high">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
-            <h2 data-i18n="home_title">Music, tradition and <span>symphonic avant-garde</span></h2>
+            <h2 data-i18n="home_title">Passion and energy at the service of <span>music</span></h2>
             <p data-i18n="home_desc">Orchestra Conductor. An artistic vision that unites technical excellence with the overflowing passion of the stage.</p>
             <div>
                 <a href="#schedule" class="btn" data-i18n="home_btn1">View Upcoming Events</a>
@@ -781,13 +909,20 @@
         <img src="./foto.general.enluis.10.JPG" alt="Background About" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
-            <h2 data-i18n="about_title">Biography & Trajectory</h2>
+            <h2 data-i18n="about_title">Biography</h2>
             
             <div class="about-wrapper">
                 <div class="bio-article-container reveal">
-                    <div class="bio-quote-box">
-                        <p data-i18n="bio_quote">"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces, including Arturo Márquez's Danzón No. 2."</p>
-                        <span>— Los Angeles Times</span>
+                    
+                    <!-- Carrusel de Frases Rotativas -->
+                    <div class="bio-quote-wrapper" onclick="openQuoteModal()">
+                        <div class="quote-badge">
+                            <div class="quote-badge-dot"></div>
+                            TESTIMONIALS
+                        </div>
+                        <div id="dynamic-quote-text" class="bio-quote-text"></div>
+                        <div id="dynamic-quote-auth" class="bio-quote-auth"></div>
+                        <div class="quote-progress" id="quote-dots"></div>
                     </div>
 
                     <div class="bio-article-content">
@@ -808,7 +943,6 @@
                 <div>
                     <h3 class="cv-section-title" data-i18n="cv_title">Professional Experience & CV</h3>
                     
-                    <h4 class="cv-category-title" data-i18n="cv_cat1">Professional Positions</h4>
                     <div class="cv-grid">
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
@@ -892,7 +1026,7 @@
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title" data-i18n="cv_cat2">Leadership & Artistic Directorships</h4>
+                    <h4 class="cv-category-title" data-i18n="cv_cat2">Leadership & Youth Orchestras</h4>
                     <div class="cv-grid">
                         <div class="cv-card reveal">
                             <div class="cv-card-header">
@@ -921,8 +1055,8 @@
                     <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                         <div class="cv-card reveal">
                             <h3 style="color: var(--dorado); margin-bottom: 1rem; font-family: 'Playfair Display', serif;" data-i18n="cv_guest_title">Guest Conducting Highlights</h3>
-                            <p style="margin-bottom: 1rem;" data-i18n="cv_guest_usa"><strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, New York Philharmonic, Schwob Philharmonic, YOLA.</p>
-                            <p data-i18n="cv_guest_intl"><strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony, Simón Bolívar Symphony & Chamber Orchestras, Bogotá Philharmonic, and major international choirs.</p>
+                            <p style="margin-bottom: 0.8rem; line-height: 1.6;" data-i18n="cv_guest_usa"><strong>USA:</strong> New York Philharmonic, Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Schwob Philharmonic, The Blue Morpho Orchestra, YOLA.</p>
+                            <p style="line-height: 1.6;" data-i18n="cv_guest_intl"><strong>Asia / Europe / Latin America:</strong> Orquesta Sinfónica della Citta Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony Orchestra, Simón Bolívar Chamber Orchestra, Simon Bolivar Symphony Orchestra of Venezuela, Juan Jose Landaeta Symphony Orchestra, Bogotá Philharmonic, Simon Bolivar National Choir and White Hands Choir.</p>
                         </div>
 
                         <div class="cv-card reveal">
@@ -932,27 +1066,27 @@
                         </div>
                     </div>
 
-                    <h4 class="cv-category-title" data-i18n="cv_cat4">Education & Mentorship</h4>
-                    <div class="cv-list-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <h4 class="cv-category-title" data-i18n="cv_cat4">Education</h4>
+                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                         <div class="cv-card reveal">
-                            <h4 data-i18n="cv_edu1_title" style="color: var(--blanco-texto); font-size: 1.15rem; margin-bottom: 0.3rem;">Columbus State University</h4>
-                            <p style="color: var(--dorado); font-size: 0.85rem;">2026</p>
-                            <p style="font-size: 0.95rem; margin-top: 0.5rem;" data-i18n="cv_edu1_desc">Bachelor of Arts in Music (Orchestral Conducting & Vocal Performance)</p>
-                        </div>
-                        <div class="cv-card reveal">
-                            <h4 data-i18n="cv_edu2_title" style="color: var(--blanco-texto); font-size: 1.15rem; margin-bottom: 0.3rem;">Simón Bolívar Conservatory</h4>
+                            <h4 data-i18n="cv_edu1_title" style="margin-bottom: 0.5rem; font-weight: 500;">Simón Bolívar Conservatory of Music</h4>
                             <p style="color: var(--dorado); font-size: 0.85rem;">2023</p>
-                            <p style="font-size: 0.95rem; margin-top: 0.5rem;" data-i18n="cv_edu2_desc">Diploma in Orchestra Conducting</p>
+                            <p style="font-size: 0.85rem; margin-top: 0.5rem;" data-i18n="cv_edu1_desc">Diploma in Orchestra Conducting</p>
                         </div>
                         <div class="cv-card reveal">
-                            <h4 data-i18n="cv_edu3_title" style="color: var(--blanco-texto); font-size: 1.15rem; margin-bottom: 0.3rem;">Libertador Pedagogical University</h4>
+                            <h4 data-i18n="cv_edu2_title" style="margin-bottom: 0.5rem; font-weight: 500;">Columbus State University</h4>
+                            <p style="color: var(--dorado); font-size: 0.85rem;">2026</p>
+                            <p style="font-size: 0.85rem; margin-top: 0.5rem;" data-i18n="cv_edu2_desc">Bachelor of Arts in Music (Orchestral Conducting & Vocal Performance)</p>
+                        </div>
+                        <div class="cv-card reveal">
+                            <h4 data-i18n="cv_edu3_title" style="margin-bottom: 0.5rem; font-weight: 500;">Libertador Experimental Pedagogical University</h4>
                             <p style="color: var(--dorado); font-size: 0.85rem;" data-i18n="cv_edu3_date">2028 (Expected)</p>
-                            <p style="font-size: 0.95rem; margin-top: 0.5rem;" data-i18n="cv_edu3_desc">Master Degree in Higher Education</p>
+                            <p style="font-size: 0.85rem; margin-top: 0.5rem;" data-i18n="cv_edu3_desc">Master Degree in Higher Education</p>
                         </div>
                     </div>
                     <div style="margin-top: 1.5rem;" class="cv-card reveal">
-                        <p data-i18n="cv_edu_teachers"><strong>Conducting Teachers:</strong> Teresa Hernández, José Antonio Abreu, Gregory Carreño, Paul Hostetter.</p>
-                        <p style="margin-top: 0.5rem;" data-i18n="cv_edu_masterclasses"><strong>Masterclasses:</strong> Gustavo Dudamel, Diego Matheuz, Rafael Payare, Nathalie Stutzmann, John Farrer, Leaf Bjaland, Dick van Gasteren.</p>
+                        <p style="font-size: 1.15rem; color: var(--blanco-texto);" data-i18n="cv_edu_teachers"><strong>Conducting Teachers:</strong> Teresa Hernández, José Antonio Abreu, Gregory Carreño, Paul Hostetter.</p>
+                        <p style="font-size: 1.15rem; color: var(--blanco-texto); margin-top: 0.8rem;" data-i18n="cv_edu_masterclasses"><strong>Masterclasses:</strong> Gustavo Dudamel, Diego Matheuz, Rafael Payare, Nathalie Stutzmann, John Farrer, Leaf Bjaland, Dick van Gasteren.</p>
                     </div>
 
                     <h4 class="cv-category-title" data-i18n="cv_cat5">Awards & Honors</h4>
@@ -978,7 +1112,7 @@
                                 <li data-i18n="cv_award3_li1">“City of Barquisimeto” Medal (2016).</li>
                                 <li data-i18n="cv_award3_li2">Decoration “Order Major General Juan Jacinto Lara” (2015).</li>
                                 <li data-i18n="cv_award3_li3">Decoration “Order Juan Fernandez de Leon” (2013).</li>
-                                <li data-i18n="cv_award3_li4">Merit Honor Medal (2012) for contributions to music education and culture.</li>
+                                <li data-i18n="cv_award3_li4">Merit Honor Medal (2012).</li>
                             </ul>
                         </div>
                     </div>
@@ -1018,12 +1152,6 @@
                 </div>
 
             </div>
-
-            <h3 data-i18n="press_kit_title">Press Kit</h3>
-            <div class="cv-card reveal">
-                <p style="font-size: 1.1rem; color: var(--blanco-texto);" data-i18n="press_kit_p1">Official material available for event organizers and journalists.</p>
-                <p style="color: var(--gris-texto); font-size: 0.9rem; margin-top: 0.5rem; font-weight: 300;" data-i18n="press_kit_p2">Includes: Biography, High-Resolution Photos, Official Logo.</p>
-            </div>
         </div>
     </section>
 
@@ -1050,12 +1178,15 @@
             
             <h3 style="margin-bottom: 2rem; color: var(--gris-texto); font-size: 1rem; letter-spacing: 1px;" data-i18n="media_subtitle1">VIDEO LIBRARY</h3>
             <div class="yt-grid">
+                
                 <a href="https://youtu.be/UJdhG1YkZXw" target="_blank" class="media-card yt-card reveal">
                     <div class="media-card-content">
                         <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
                             <h3>Sinfonía India</h3>
                             <span class="media-composer">Carlos Chávez</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Schowb Philharmonic</span>
+                            <span class="media-year">2026</span>
                         </div>
                     </div>
                     <div class="media-footer">
@@ -1068,8 +1199,10 @@
                     <div class="media-card-content">
                         <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
-                            <h3>Obertura Cubana</h3>
+                            <h3>Cuban Overture</h3>
                             <span class="media-composer">George Gershwin</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Juan Jose Landaeta Symphony</span>
+                            <span class="media-year">2026</span>
                         </div>
                     </div>
                     <div class="media-footer">
@@ -1082,8 +1215,10 @@
                     <div class="media-card-content">
                         <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
-                            <h3>Beethoven 9</h3>
+                            <h3>Symphony no. 9 "Coral"</h3>
                             <span class="media-composer">Ludwig van Beethoven</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Simon Bolivar Chamber Orchestra<br>Simon Bolivar National Choir<br>Angel Sauce Youth Choir</span>
+                            <span class="media-year">2025</span>
                         </div>
                     </div>
                     <div class="media-footer">
@@ -1096,8 +1231,10 @@
                     <div class="media-card-content">
                         <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
-                            <h3>Farias 1</h3>
-                            <span class="media-composer">Orchestral Performance</span>
+                            <h3>Symphony No.1 "Textos del Abya Yala"</h3>
+                            <span class="media-composer">Farias</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Simon Bolivar Chamber Orchestra</span>
+                            <span class="media-year">2024</span>
                         </div>
                     </div>
                     <div class="media-footer">
@@ -1110,8 +1247,10 @@
                     <div class="media-card-content">
                         <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                         <div class="media-info">
-                            <h3>Concurso Almería</h3>
-                            <span class="media-composer">International Competition</span>
+                            <h3>Final of 2nd Int. Conducting Competition</h3>
+                            <span class="media-composer">University of Almeria</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">University of Almeria Symphony</span>
+                            <span class="media-year">2022</span>
                         </div>
                     </div>
                     <div class="media-footer">
@@ -1126,6 +1265,8 @@
                         <div class="media-info">
                             <h3>Sensemayá</h3>
                             <span class="media-composer">Silvestre Revueltas</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Schowb Philharmonic</span>
+                            <span class="media-year">2022</span>
                         </div>
                     </div>
                     <div class="media-footer">
@@ -1137,12 +1278,15 @@
 
             <h3 style="margin-bottom: 2rem; margin-top: 4rem; color: var(--gris-texto); font-size: 1rem; letter-spacing: 1px;" data-i18n="media_subtitle2">AUDIO LIBRARY</h3>
             <div class="audio-grid">
+                
                 <div class="media-card audio-card reveal">
                     <div class="media-card-content">
                         <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
                         <div class="media-info">
                             <h3>Variaciones Concertantes</h3>
                             <span class="media-composer">Alberto Ginastera</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Suzhou Symphony</span>
+                            <span class="media-year">2026</span>
                         </div>
                     </div>
                     <div class="audio-player-container">
@@ -1156,8 +1300,10 @@
                     <div class="media-card-content">
                         <div class="play-btn-minimal"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
                         <div class="media-info">
-                            <h3>Sinfonía No. 36 "Linz"</h3>
+                            <h3>Symphony No. 36 "Linz"</h3>
                             <span class="media-composer">Wolfgang Amadeus Mozart</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Suzhou Symphony</span>
+                            <span class="media-year">2026</span>
                         </div>
                     </div>
                     <div class="audio-player-container">
@@ -1257,78 +1403,124 @@
             });
         });
 
+        // -------------------------
+        // DICCIONARIO BILINGÜE
+        // -------------------------
         const i18n = {
             en: {
                 nav_home: "Home", nav_about: "About", nav_press: "Press", nav_schedule: "Schedule", nav_media: "Multimedia", nav_contact: "Contact",
-                home_title: "Music, tradition and <span>symphonic avant-garde</span>",
+                home_title: "Passion and energy at the service of <span>music</span>",
                 home_desc: "Orchestra Conductor. An artistic vision that unites technical excellence with the overflowing passion of the stage.",
                 home_btn1: "View Upcoming Events", home_btn2: "Listen to Music",
-                about_title: "Biography & Trajectory",
-                bio_quote: "\"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces, including Arturo Márquez's Danzón No. 2.\"",
+                
+                about_title: "Biography",
                 bio_p1: "Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra. In 2024, he was awarded the prestigious Glenn Gould Protégé Prize, which followed his 1st Prize and Orchestra Prize at the 2022 International Conducting Competition of the University of Almería in Spain.",
                 bio_p2: "He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral, a tradition of the NY Phil dating back to 1992.",
                 bio_p3: "Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra. Upcoming debuts include The Youth Orchestra of Galicia and the Galicia Symphony both in Spain.",
                 bio_p4: "As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as \"virtuosic splendor\" and \"a master class in musicianship.\" Additionally, he has served as assistant conductor at the Opéra National de Paris, collaborating with Gustavo Dudamel on Nixon in China and with Alexander Soddy on Lohengrin.",
                 bio_p5: "Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors (Summa Cum Laude), in addition to serving as Associate Conductor of the Schwob Philharmonic and Opera and the Columbus Ballet from 2022-2026. A product of Venezuela's El Sistema, Enluis has led performances with the Simón Bolívar Symphony Orchestra, Juan José Landaeta Symphony, Caracas Symphony Orchestra, and the Simón Bolívar National Choir. He conducted a landmark posthumous tribute to Maestro José Antonio Abreu, uniting members of the El Sistema family, and led a Guinness World Record-setting performance with an orchestra and chorus of 12,000 musicians, the largest ensemble of its kind.",
                 bio_p6: "He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors such as Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson and Nathalie Stutzmann. Enluis continues his studies currently pursuing a master's degree in higher education at the Libertador Experimental Pedagogical University in Venezuela.",
-                cv_title: "Professional Experience & CV", cv_cat1: "Professional Positions",
+                
+                cv_title: "Professional Experience & CV",
                 cv_pos1_title: "Simon Bolivar Chamber Orchestra", cv_pos1_role: "Associate Conductor", cv_pos1_year: "2024 - Present", cv_pos1_desc: "Member of the team of associate conductors of El Sistema, led by Gustavo Dudamel. As Associate Conductor of the SBCO, Enluis has conducted dozens of concerts, a tour in Algeria, and most recently a festival featuring Beethoven's symphonic cycle.",
                 cv_pos2_title: "Schwob Philharmonic and Opera", cv_pos2_role: "Associate Conductor", cv_pos2_desc: "As a student at the Schwob School of Music (SSoM), Enluis conducted several concerts with the SSoM's main ensemble.",
                 cv_pos3_title: "New York Philharmonic", cv_pos3_role: "Cover Conductor & Guest Conductor", cv_pos3_year: "2025 - Present", cv_pos3_li1: "Conducted debut at Saint John the Divine in May of 2026.", cv_pos3_li2: "Covered more than 15 subscription programs/performances through Spring 2026.",
                 cv_pos4_title: "San Diego Symphony", cv_pos4_role: "Conducting Fellow, Guest & Cover Conductor", cv_pos4_year: "2024 - Present",
                 cv_pos5_title: "Los Angeles Philharmonic", cv_pos5_role: "Dudamel Fellow & Guest Conductor",
                 cv_pos6_title: "Opéra National de Paris", cv_pos6_role: "Assistant Conductor (18+ weeks)",
-                cv_cat3: "Guest Conducting & Recordings", cv_guest_title: "Guest Conducting Highlights", cv_guest_usa: "<strong>USA:</strong> Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, New York Philharmonic, Schwob Philharmonic, YOLA.", cv_guest_intl: "<strong>International:</strong> Orquesta Sinfónica Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony, Simón Bolívar Symphony & Chamber Orchestras, Bogotá Philharmonic, and major international choirs.",
-                cv_cat4: "Education & Mentorship",
-                cv_edu1_title: "Columbus State University", cv_edu1_desc: "Bachelor of Arts in Music (Orchestral Conducting & Vocal Performance)",
-                cv_edu2_title: "Simón Bolívar Conservatory", cv_edu2_desc: "Diploma in Orchestra Conducting",
-                cv_edu3_title: "Libertador Pedagogical University", cv_edu3_date: "2028 (Expected)", cv_edu3_desc: "Master Degree in Higher Education",
+                
+                cv_cat2: "Leadership & Youth Orchestras",
+                cv_lead1_title: "Jose Antonio Paez Youth Symphony Orchestra", cv_lead1_role: "Music and Artistic Director",
+                cv_lead2_title: "Lara Youth & Children Orchestras", cv_lead2_role: "Associate Conductor & Music Director",
+                cv_lead3_title: "Franco Medina Youth Symphony Orchestra", cv_lead3_role: "Music and Artistic Director",
+                
+                cv_cat3: "Guest Conducting & Recordings", cv_guest_title: "Guest Conducting Highlights", 
+                cv_guest_usa: "<strong>USA:</strong> New York Philharmonic, Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Schwob Philharmonic, The Blue Morpho Orchestra, YOLA.", 
+                cv_guest_intl: "<strong>Asia / Latin America / Europe:</strong> Orquesta Sinfónica della Citta Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony Orchestra, Simón Bolívar Chamber Orchestra, Simon Bolivar Symphony Orchestra of Venezuela, Juan Jose Landaeta Symphony Orchestra, Bogotá Philharmonic, Simon Bolivar National Choir and White Hands Choir.",
+                
+                cv_cat4: "Education",
+                cv_edu1_title: "Simón Bolívar Conservatory of Music", cv_edu1_desc: "Diploma in Orchestra Conducting",
+                cv_edu2_title: "Columbus State University", cv_edu2_desc: "Bachelor of Arts in Music (Orchestral Conducting & Vocal Performance)",
+                cv_edu3_title: "Libertador Experimental Pedagogical University", cv_edu3_date: "2028 (Expected)", cv_edu3_desc: "Master Degree in Higher Education",
+                
                 press_title: "Media & Press", press_link: "Read full article &rarr;",
-                press_kit_title: "Press Kit", press_kit_p1: "Official material available for event organizers and journalists.", press_kit_p2: "Includes: Biography, High-Resolution Photos, Official Logo.",
+                
                 schedule_title: "Schedule of Events", schedule_subtitle: "UPCOMING PERFORMANCES", schedule_loading: "Loading real-time schedule...",
                 media_title: "Multimedia", media_subtitle1: "VIDEO LIBRARY", media_subtitle2: "AUDIO LIBRARY",
                 yt_watch: "Watch",
                 contact_title: "Contact & Booking", contact_mgmt: "Management", contact_desc: "Spain, Portugal, Latin America, and special projects", contact_role1: "Consultant", contact_role2: "Administrator", contact_copy: "Copy",
                 footer_text: "&copy; 2026 Enluis Montes Olivar. All rights reserved.",
-                schedule_btn: "Get Tickets", schedule_no_events: "No upcoming concerts scheduled.", schedule_more: "View Full 2026 Schedule", schedule_less: "Show less"
+                schedule_btn: "Get Tickets", schedule_no_events: "No upcoming concerts scheduled.", schedule_more: "View Full 2026 Schedule", schedule_less: "Show less",
+                
+                quote_1_text: "\"This warmup concert was conducted by a new Dudamel fellow, Enluis Montes Olivar, a 22-year-old Venezuelan. He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy in short pieces, including Arturo Márquez's Danzón No. 2.\"",
+                quote_1_auth: "Los Angeles Times",
+                quote_2_text: "\"He is a conductor with great communication skills, technique, intelligence, commitment, charisma, leadership, social sensitivity and passion that undoubtedly make him an extraordinary musician.\"",
+                quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Music Director Royal Liverpool Philharmonic.<br>Principal Guest Conductor Polish National Radio Symphony Orchestra.</span>",
+                quote_3_text: "\"Personally, I believe that his great talent, intelligence, commitment, charisma, leadership, social sensitivity, passion and conducting undoubtedly make him an extraordinary artist.\"",
+                quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Music Director San Diego Symphony.<br>Music Director Orchestre Symphonique de Montréal.</span>",
+                quote_4_text: "\"Enluis is one of the most gifted young conductors have seen through my career. His gestual language is fluent, offering musicians clear intent that is technically secure, precise, and emotionally connected. He inspires artists that of all ages and abilities to the highest levels... This effortless technique belies outstanding musicianship.\"",
+                quote_4_auth: "Paul Hostetter<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Professor of Music.<br>The Ethel Foley Distinguished Chair in Orchestral Activities.<br>Columbus State University.</span>"
             },
             es: {
                 nav_home: "Inicio", nav_about: "Biografía", nav_press: "Prensa", nav_schedule: "Agenda", nav_media: "Multimedia", nav_contact: "Contacto",
-                home_title: "Música, tradición y <span>vanguardia sinfónica</span>",
+                home_title: "Pasión y energía al servicio de la <span>música</span>",
                 home_desc: "Director de Orquesta. Una visión artística que une la excelencia técnica con la pasión desbordante del escenario.",
                 home_btn1: "Ver Eventos", home_btn2: "Escuchar Música",
-                about_title: "Biografía y Trayectoria",
-                bio_quote: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar, un venezolano de 22 años. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado, en piezas cortas, incluyendo el Danzón No. 2 de Arturo Márquez.\"",
+                
+                about_title: "Biografía",
                 bio_p1: "El dinámico director venezolano Enluis Montes Olivar, de 29 años, está recibiendo reconocimiento internacional por su maestría y energía dinámica. Actualmente se desempeña como Director Asociado de la Orquesta de Cámara Simón Bolívar desde enero de 2024, Dudamel Fellow de la Sinfónica de San Diego y Director Musical y Artístico de la The Blue Morpho Orchestra. En 2024, fue galardonado con el prestigioso Premio Protégé Glenn Gould, que siguió a su 1er Premio y Premio de la Orquesta en el Concurso Internacional de Dirección de la Universidad de Almería en España en 2022.",
                 bio_p2: "Se ha presentado con la Filarmónica de Los Ángeles, Sinfónica de San Francisco, Sinfónica de San Diego, New West Symphony, Sinfónica de Redlands, Orquesta Sinfónica Metropolitana di Bari en Italia, Orchestre National de Mulhouse en Francia, Sinfónica de Suzhou en China y la Filarmónica de Bogotá en Colombia. Recientemente dirigió a la Orquesta de Cámara Simón Bolívar en una gira por Argelia y en un ciclo sinfónico completo de Beethoven en Caracas. Con la Sinfónica Simón Bolívar de Venezuela, lanzó un álbum en mayo de 2025 con música de Carreño, Castellanos y Estévez. Además, en mayo de 2026, debutó con la Filarmónica de Nueva York junto al reconocido trompetista Pacho Flores en el concierto anual de la Catedral de San Juan el Divino, una tradición de la orquesta desde 1992.",
                 bio_p3: "Sus compromisos para 2026 y 2027 incluyen regresar con la Filarmónica de Bogotá como director invitado y con la Sinfónica de San Diego dirigiendo en The Rady Shell su tradicional concierto de verano: Tchaikovsky Spectacular. También regresará como director suplente con la Filarmónica de Nueva York para una gira europea en primavera de 2026 y dirigirá un ciclo sinfónico de Brahms con la Orquesta de Cámara Simón Bolívar. Entre sus próximos debuts se encuentran la Orquesta Joven de la Sinfónica de Galicia y la Sinfónica de Galicia, ambas en España.",
                 bio_p4: "Como Dudamel Fellow durante dos temporadas con la Filarmónica de Los Ángeles, Enluis dirigió presentaciones en el Walt Disney Concert Hall y el Hollywood Bowl, donde el crítico Tony Frankel elogió su trabajo como \"esplendor virtuoso\" y \"una clase magistral de musicalidad\". Además, se ha desempeñado como director asistente en la Ópera Nacional de París, colaborando con Gustavo Dudamel en Nixon en China y con Alexander Soddy on Lohengrin.",
                 bio_p5: "Enluis obtuvo un diploma en Dirección Orquestal del Conservatorio de Música Simón Bolívar en 2023 y recibió su Licenciatura en Música de la Universidad Estatal de Columbus (EE. UU.) en la primavera de 2026 con honores (Summa Cum Laude), además de desempeñarse como Director Asociado de la Filarmónica y Ópera Schwob y el Ballet de Columbus (2022-2026). Fruto de El Sistema de Venezuela, ha dirigido la Orquesta Sinfónica Simón Bolívar, Sinfónica Juan José Landaeta, Sinfónica de Caracas y el Coro Nacional Simón Bolívar. Dirigió un emblemático homenaje póstumo al Maestro José Antonio Abreu y lideró el Récord Guinness con una orquesta y coro de 12,000 músicos.",
                 bio_p6: "Comenzó sus estudios formales en 2012 con Teresa Hernández, José Antonio Abreu, Gregory Carreño y Franka Verhagen. Ha participado en clases magistrales con Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson y Nathalie Stutzmann. Actualmente cursa una maestría en educación superior en la UPEL en Venezuela.",
-                cv_title: "Experiencia Profesional", cv_cat1: "Cargos Profesionales",
+                
+                cv_title: "Experiencia Profesional",
                 cv_pos1_title: "Orquesta de Cámara Simón Bolívar", cv_pos1_role: "Director Asociado", cv_pos1_year: "2024 - Presente", cv_pos1_desc: "Miembro del equipo de directores asociados de El Sistema, liderado por Gustavo Dudamel. Ha dirigido decenas de conciertos, una gira por Argelia y recientemente un festival con el ciclo sinfónico de Beethoven.",
                 cv_pos2_title: "Filarmónica y Ópera de Schwob", cv_pos2_role: "Director Asociado", cv_pos2_desc: "Como estudiante en la Escuela de Música Schwob, Enluis ha dirigido varios conciertos con el ensamble principal.",
                 cv_pos3_title: "Filarmónica de Nueva York", cv_pos3_role: "Director Suplente e Invitado", cv_pos3_year: "2025 - Presente", cv_pos3_li1: "Debutó en la Catedral de San Juan el Divino en mayo de 2026.", cv_pos3_li2: "Suplente en más de 15 programas de temporada hasta la primavera de 2026.",
                 cv_pos4_title: "Sinfónica de San Diego", cv_pos4_role: "Becario de Dirección, Invitado y Suplente",
                 cv_pos5_title: "Filarmónica de Los Ángeles", cv_pos5_role: "Dudamel Fellow y Director Invitado",
                 cv_pos6_title: "Ópera Nacional de París", cv_pos6_role: "Director Asistente (+18 semanas)",
-                cv_cat3: "Dirección Invitada y Grabaciones", cv_guest_title: "Presentaciones Destacadas", cv_guest_usa: "<strong>EE.UU.:</strong> Filarmónica de Los Ángeles, Sinfónica de San Francisco, Sinfónica de San Diego, New West Symphony, Sinfónica de Redlands, Filarmónica de Nueva York, YOLA.", cv_guest_intl: "<strong>Internacional:</strong> Metropolitana di Bari (Italia), Nacional de Mulhouse (Francia), Sinfónica de Suzhou (China), Filarmónica de Bogotá, Orquestas Simón Bolívar y coros internacionales.",
+                
+                cv_cat2: "Liderazgo y Orquestas Juveniles",
+                cv_lead1_title: "Orquesta Sinfónica Juvenil José Antonio Páez", cv_lead1_role: "Director Musical y Artístico",
+                cv_lead2_title: "Orquestas Juvenil e Infantil de Lara", cv_lead2_role: "Director Asociado y Musical",
+                cv_lead3_title: "Orquesta Sinfónica Juvenil Franco Medina", cv_lead3_role: "Director Musical y Artístico",
+                
+                cv_cat3: "Dirección Invitada y Grabaciones", cv_guest_title: "Presentaciones Destacadas", 
+                cv_guest_usa: "<strong>EE.UU.:</strong> New York Philharmonic, Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Schwob Philharmonic, The Blue Morpho Orchestra, YOLA.", 
+                cv_guest_intl: "<strong>Asia / Latinoamérica / Europa:</strong> Orquesta Sinfónica della Citta Metropolitana di Bari, Orchestre National de Mulhouse, Suzhou Symphony, El Sistema Japan Youth Symphony Orchestra, Simón Bolívar Chamber Orchestra, Simon Bolivar Symphony Orchestra of Venezuela, Juan Jose Landaeta Symphony Orchestra, Bogotá Philharmonic, Simon Bolivar National Choir and White Hands Choir.",
+                
                 cv_cat4: "Educación",
-                cv_edu1_title: "Universidad Estatal de Columbus", cv_edu1_desc: "Licenciatura en Música (Dirección Orquestal y Ejecución Vocal)",
-                cv_edu2_title: "Conservatorio Simón Bolívar", cv_edu2_desc: "Diploma en Dirección Orquestal",
-                cv_edu3_title: "Libertador Pedagogical University", cv_edu3_date: "2028 (Esperado)", cv_edu3_desc: "Maestría en Educación Superior",
+                cv_edu1_title: "Conservatorio de Música Simón Bolívar", cv_edu1_desc: "Diploma en Dirección Orquestal",
+                cv_edu2_title: "Universidad Estatal de Columbus", cv_edu2_desc: "Licenciatura en Música (Dirección Orquestal y Ejecución Vocal)",
+                cv_edu3_title: "Universidad Pedagógica Libertador", cv_edu3_date: "2028 (Esperado)", cv_edu3_desc: "Maestría en Educación Superior",
+                
                 press_title: "Medios y Prensa", press_link: "Leer artículo completo &rarr;",
-                press_kit_title: "Kit de Prensa", press_kit_p1: "Material oficial disponible para organizadores de eventos y periodistas.", press_kit_p2: "Incluye: Biografía, Fotos en Alta Resolución y Logotipo Oficial.",
+                
                 schedule_title: "Agenda de Eventos", schedule_subtitle: "PRÓXIMAS PRESENTACIONES", schedule_loading: "Cargando programación...",
                 media_title: "Multimedia", media_subtitle1: "VIDEOTECA", media_subtitle2: "AUDIOTECA",
                 yt_watch: "Ver video",
                 contact_title: "Contacto", contact_mgmt: "Representación", contact_desc: "España, Portugal, América Latina y proyectos especiales", contact_role1: "Consultor", contact_role2: "Administradora", contact_copy: "Copiar",
                 footer_text: "&copy; 2026 Enluis Montes Olivar. Todos los derechos reservados.",
-                schedule_btn: "Entradas", schedule_no_events: "No hay próximos conciertos programados.", schedule_more: "Ver programación completa", schedule_less: "Ver menos"
+                schedule_btn: "Entradas", schedule_no_events: "No hay próximos conciertos programados.", schedule_more: "Ver programación completa", schedule_less: "Ver menos",
+
+                quote_hint: "⤢ Haz clic para expandir",
+                quote_1_text: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar, un venezolano de 22 años. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado...\"",
+                quote_1_auth: "Los Angeles Times",
+                quote_2_text: "\"Es un director con gran capacidad de comunicación, técnica, inteligencia, compromiso, carisma, liderazgo, sensibilidad social y pasión que sin duda lo convierten en un musico extraordinario.\"",
+                quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Director principal invitado Orquesta de la Radio Nacional de Polonia.</span>",
+                quote_3_text: "\"Personalmente, creo que su gran talento, inteligencia, compromiso, carisma, liderazgo, sensibilidad social, pasión y dirección lo convierten sin duda en un artista extraordinario.\"",
+                quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical San Diego Symphony.<br>Director Musical Orchestre Symphonique de Montréal.</span>",
+                quote_4_text: "\"Enluis es uno de los jóvenes directores más talentosos que he visto en mi carrera. Su lenguaje gestual es fluido, ofreciendo a los músicos una intención clara, técnicamente segura, precisa y emocionalmente conectada...\"",
+                quote_4_auth: "Paul Hostetter<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Profesor de Música.<br>The Ethel Foley Distinguished Chair in Orchestral Activities.<br>Columbus State University.</span>"
             }
         };
 
         let currentLang = 'en';
+        let currentQuoteIndex = 1;
+        let quoteInterval;
 
         function toggleLanguage(e) {
             e.preventDefault();
@@ -1342,7 +1534,56 @@
                 }
             });
 
+            updateQuoteDisplay();
             renderSchedule();
+        }
+
+        // LÓGICA DE ROTACIÓN DE FRASES
+        function updateQuoteDisplay() {
+            const textEl = document.getElementById('dynamic-quote-text');
+            const authEl = document.getElementById('dynamic-quote-auth');
+            
+            textEl.style.opacity = 0;
+            authEl.style.opacity = 0;
+            
+            setTimeout(() => {
+                textEl.innerHTML = i18n[currentLang][`quote_${currentQuoteIndex}_text`];
+                authEl.innerHTML = i18n[currentLang][`quote_${currentQuoteIndex}_auth`];
+                textEl.style.opacity = 1;
+                authEl.style.opacity = 1;
+            }, 300);
+
+            const progress = document.getElementById('quote-dots');
+            progress.innerHTML = '';
+            for(let i=1; i<=4; i++) {
+                let status = '';
+                if(i === currentQuoteIndex) status = 'active';
+                else if (i < currentQuoteIndex) status = 'done';
+                progress.innerHTML += `<div class="quote-progress-bar ${status}"><div class="fill"></div></div>`;
+            }
+        }
+
+        function startQuoteRotation() {
+            updateQuoteDisplay();
+            quoteInterval = setInterval(() => {
+                currentQuoteIndex = currentQuoteIndex >= 4 ? 1 : currentQuoteIndex + 1;
+                updateQuoteDisplay();
+            }, 7000); 
+        }
+
+        function openQuoteModal() {
+            const modal = document.getElementById('quoteModal');
+            document.getElementById('modal-quote-text').innerHTML = i18n[currentLang][`quote_${currentQuoteIndex}_text`];
+            document.getElementById('modal-quote-auth').innerHTML = i18n[currentLang][`quote_${currentQuoteIndex}_auth`];
+            modal.classList.add('open');
+            clearInterval(quoteInterval); 
+        }
+
+        function closeQuoteModal(e) {
+            if(e.target.classList.contains('quote-modal') || e.target.classList.contains('close-modal')) {
+                document.getElementById('quoteModal').classList.remove('open');
+                startQuoteRotation(); 
+            }
         }
 
         // Scripts visuales
@@ -1352,6 +1593,7 @@
 
         window.addEventListener('load', function() {
             window.scrollTo(0, 0);
+            startQuoteRotation();
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 splash.classList.add('splash-hidden');
@@ -1390,11 +1632,11 @@
         }
         window.addEventListener('DOMContentLoaded', revealOnScroll);
 
-        // AGENDA
+        // AGENDA CON ENLACES Y ESTILOS DE BOTONES
         const concertsData = [
             { 
                 title_en: "New York Philharmonic & Chorus", title_es: "Filarmónica de Nueva York y Coros",
-                dateStr: "2026-09-12", 
+                dateStr: "2026-09-19", 
                 dateDisplay_en: "September 12 – 19, 2026", dateDisplay_es: "12 al 19 de septiembre, 2026",
                 details_en: "Gustavo Dudamel, Conductor (Cover) — Adams, Di Castri, Prokofiev Symphony No. 5", details_es: "Gustavo Dudamel, Director (Suplente) — Adams, Di Castri, Sinfonía No. 5 de Prokofiev",
                 ticketLink: "https://www.nyphil.org/concerts-tickets/2627/dudamel-conducts-prokofiev-and-john-adams"
@@ -1404,6 +1646,13 @@
                 dateStr: "2026-09-22", 
                 dateDisplay_en: "September 22 – 29, 2026", dateDisplay_es: "22 al 29 de septiembre, 2026",
                 details_en: "Gustavo Dudamel, Conductor (Cover) — León (World Premiere), Mahler Symphony No. 5", details_es: "Gustavo Dudamel, Director (Suplente) — León (Estreno Mundial), Sinfonía No. 5 de Mahler",
+                ticketLink: "#"
+            },
+            { 
+                title_en: "New York Philharmonic (Gala with Lang Lang & Yo-Yo Ma)", title_es: "Filarmónica de Nueva York (Gala con Lang Lang y Yo-Yo Ma)",
+                dateStr: "2026-10-01", 
+                dateDisplay_en: "October 1 – 2, 2026", dateDisplay_es: "1 y 2 de octubre, 2026",
+                details_en: "Gustavo Dudamel, Conductor (Cover) — Beethoven Piano Concerto No. 5, Golijov Azul", details_es: "Gustavo Dudamel, Director (Suplente) — Concierto para Piano No. 5 de Beethoven, Golijov Azul",
                 ticketLink: "#"
             },
             { 
@@ -1421,10 +1670,31 @@
                 ticketLink: "#"
             },
             { 
+                title_en: "New York Philharmonic & Chorus (Carnegie Hall)", title_es: "Filarmónica de Nueva York y Coros (Carnegie Hall)",
+                dateStr: "2026-11-09", 
+                dateDisplay_en: "November 09 – 15, 2026", dateDisplay_es: "9 al 15 de noviembre, 2026",
+                details_en: "Gustavo Dudamel, Conductor (Cover) — Puccini: Tosca (Full Opera)", details_es: "Gustavo Dudamel, Director (Suplente) — Puccini: Tosca (Ópera Completa)",
+                ticketLink: "#"
+            },
+            { 
                 title_en: "Simon Bolivar Chamber Orchestra", title_es: "Orquesta de Cámara Simón Bolívar",
                 dateStr: "2026-11-16", 
                 dateDisplay_en: "November 16 – 22, 2026", dateDisplay_es: "16 al 22 de noviembre, 2026",
                 details_en: "Revueltas, Elgar (Enigma Variations)", details_es: "Revueltas, Elgar (Variaciones Enigma)",
+                ticketLink: "#"
+            },
+            { 
+                title_en: "Simon Bolivar Chamber Orchestra & Choir", title_es: "Orquesta de Cámara Simón Bolívar y Coros",
+                dateStr: "2026-11-23", 
+                dateDisplay_en: "November 23 – December 05, 2026", dateDisplay_es: "23 de nov al 5 de dic, 2026",
+                details_en: "Mozart, Haydn (Missa in Angustiis)", details_es: "Mozart, Haydn (Missa in Angustiis)",
+                ticketLink: "#"
+            },
+            { 
+                title_en: "Simon Bolivar Symphony Orchestra of Venezuela", title_es: "Orquesta Sinfónica Simón Bolívar de Venezuela",
+                dateStr: "2026-11-30", 
+                dateDisplay_en: "November 30 – December 10, 2026", dateDisplay_es: "30 de nov al 10 de dic, 2026",
+                details_en: "Mahler: Symphony No. 5", details_es: "Mahler: Sinfonía No. 5",
                 ticketLink: "#"
             }
         ];
@@ -1446,6 +1716,10 @@
 
             let html = '<div style="display: flex; flex-direction: column; gap: 1rem;">';
             top2.forEach(c => {
+                const btnHtml = c.ticketLink !== "#" 
+                    ? `<a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;">${i18n[currentLang].schedule_btn}</a>`
+                    : `<span class="btn btn-outline" style="margin: 0; font-size: 0.75rem; opacity: 0.4; pointer-events: none; border-color: rgba(255,255,255,0.2);">${currentLang === 'es' ? 'Próximamente' : 'Coming Soon'}</span>`;
+
                 html += `
                 <div class="event-item reveal active">
                     <div>
@@ -1453,7 +1727,7 @@
                         <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
                         <p style="color: var(--dorado); font-size: 0.8rem; margin-top: 0.4rem;">${currentLang === 'es' ? c.details_es : c.details_en}</p>
                     </div>
-                    <a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;">${i18n[currentLang].schedule_btn}</a>
+                    ${btnHtml}
                 </div>`;
             });
             html += '</div>';
@@ -1466,6 +1740,10 @@
                     <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">`;
                 
                 rest.forEach(c => {
+                    const btnHtml = c.ticketLink !== "#" 
+                        ? `<a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;">${i18n[currentLang].schedule_btn}</a>`
+                        : `<span class="btn btn-outline" style="margin: 0; font-size: 0.75rem; opacity: 0.4; pointer-events: none; border-color: rgba(255,255,255,0.2);">${currentLang === 'es' ? 'Próximamente' : 'Coming Soon'}</span>`;
+
                     html += `
                     <div class="event-item">
                         <div>
@@ -1473,7 +1751,7 @@
                             <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
                             <p style="color: var(--dorado); font-size: 0.8rem; margin-top: 0.4rem;">${currentLang === 'es' ? c.details_es : c.details_en}</p>
                         </div>
-                        <a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;">${i18n[currentLang].schedule_btn}</a>
+                        ${btnHtml}
                     </div>`;
                 });
 
@@ -1482,7 +1760,15 @@
             container.innerHTML = html;
         }
 
-        window.addEventListener('DOMContentLoaded', () => { renderSchedule(); });
+        window.addEventListener('DOMContentLoaded', () => { 
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(i18n[currentLang][key]) {
+                    el.innerHTML = i18n[currentLang][key];
+                }
+            });
+            renderSchedule(); 
+        });
 
         function toggleMoreEvents() {
             const marginEvents = document.getElementById('more-events');

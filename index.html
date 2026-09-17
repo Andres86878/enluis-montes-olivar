@@ -6,6 +6,14 @@
     <meta name="format-detection" content="telephone=no">
     <title>Enluis Montes Olivar | Orchestra Conductor</title>
     
+    <!-- FORZAR EL INICIO AL RECARGAR (ANTES DE QUE CARGUE LA PÁGINA) -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+
     <!-- PRE-CARGA DE RECURSOS CRÍTICOS -->
     <link rel="preload" href="Isologo Positivo PNG.png" as="image">
     <link rel="preload" href="./foto.enluis.inicio.1.jpeg" as="image">
@@ -47,7 +55,7 @@
         }
 
         /* -------------------------------------- */
-        /* AUTOMATIC SPLASH SCREEN (RÁPIDO)       */
+        /* AUTOMATIC SPLASH SCREEN (ULTRA RÁPIDO) */
         /* -------------------------------------- */
         #splash-screen {
             position: fixed;
@@ -271,6 +279,7 @@
             backdrop-filter: blur(15px);
         }
 
+        /* Testimonios Rotativos interactivos con diseño llamativo */
         .bio-quote-wrapper {
             border-left: 2px solid var(--dorado);
             padding: 2.5rem 3.5rem 1.5rem 3.5rem; 
@@ -287,6 +296,7 @@
             background: rgba(203, 161, 83, 0.05);
         }
 
+        /* Botones de navegación de testimonios */
         .quote-nav-btn {
             position: absolute;
             top: 50%;
@@ -307,6 +317,7 @@
         .quote-nav-prev { left: 5px; }
         .quote-nav-next { right: 5px; }
 
+        /* Etiqueta animada "TESTIMONIALS" */
         .quote-badge {
             position: absolute;
             top: 0;
@@ -362,6 +373,7 @@
             font-weight: 600;
         }
         
+        /* Puntos de progreso */
         .quote-progress {
             display: flex; gap: 8px; margin-top: 1.5rem; justify-content: center;
         }
@@ -384,7 +396,7 @@
             100% { width: 100%; }
         }
 
-        /* MODAL DE FRASES */
+        /* MODAL DE FRASES (Pantalla Completa) */
         .quote-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(5,5,5,0.96); z-index: 10000;
@@ -699,7 +711,7 @@
         }
 
         /* -------------------------------------- */
-        /* SCHEDULE / CONCIERTOS                  */
+        /* SCHEDULE / CONCIERTOS (TIPO ACORDEÓN)  */
         /* -------------------------------------- */
         .event-item {
             display: flex; 
@@ -909,7 +921,7 @@
 </head>
 <body>
 
-    <!-- AUTOMATIC SPLASH SCREEN (Súper rápido) -->
+    <!-- AUTOMATIC SPLASH SCREEN -->
     <div id="splash-screen">
         <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
     </div>
@@ -1382,22 +1394,22 @@
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 1)</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 2)</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/0FCRu4zdT00yMiPungrHeE?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/0FCRu4zdT00yMiPungrHeE?utm_source=generator" width="100%" height="152" frameBorder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Santa Cruz de Pacairigua</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4pUHrsoqicQpMNpvcj8fWN?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4pUHrsoqicQpMNpvcj8fWN?utm_source=generator" width="100%" height="152" frameBorder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Margariteña</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4lJQar8YFdcEPzRUADtAB4?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4lJQar8YFdcEPzRUADtAB4?utm_source=generator" width="100%" height="152" frameBorder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
             </div>
         </div>
@@ -1579,7 +1591,7 @@
                 quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Director principal invitado Orquesta de la Radio Nacional de Polonia.</span>",
                 quote_3_text: "\"Personalmente, creo que su gran talento, inteligencia, compromiso, carisma, liderazgo, sensibilidad social, pasión y dirección lo convierten sin duda en un artista extraordinario.\"",
                 quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical San Diego Symphony.<br>Director Musical Orchestre Symphonique de Montréal.</span>",
-                quote_4_text: "\"Enluis es uno de los jóvenes directores más talentosos que he visto en mi carrera. Su lenguaje gestual es fluido, ofreciendo a los músicos una intención clara, técnicamente segura, precisa y conectada emocionalmente. Inspira a artistas de todas las edades y habilidades a los niveles más altos, y esto se nota claramente en sus interpretaciones. Ha trabajado extensamente con instrumentistas y cantantes, y en particular, veo un enfoque vocal en su dirección que crea una cualidad de canto en el sonido. Esta técnica sin esfuerzo oculta una musicalidad sobresaliente.\"",
+                quote_4_text: "\"Enluis es uno de los jóvenes directores más talentosos que he visto en mi carrera. Su lenguaje gestual es fluido, ofreciendo a los músicos una intención clara, técnicamente segura, precisa y conectada emocionalmente. Inspira a artistas de todas las edades y habilidades a los niveles más altos...\"",
                 quote_4_auth: "Paul Hostetter<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Profesor de Música.<br>The Ethel Foley Distinguished Chair in Orchestral Activities.<br>Columbus State University.</span>"
             }
         };
@@ -1668,11 +1680,6 @@
             }
         }
 
-        // Scripts visuales
-        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-        window.scrollTo(0, 0);
-        window.addEventListener('beforeunload', function () { window.scrollTo(0, 0); });
-
         window.addEventListener('DOMContentLoaded', () => { 
             // Iniciar traducciones
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1683,15 +1690,23 @@
             });
             renderSchedule(); 
             startQuoteRotation();
+        });
 
-            // Desaparecer el splash rapido
-            setTimeout(function() {
-                const splash = document.getElementById('splash-screen');
-                if (splash) {
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+            
+            // Desaparecer el splash ULTRA rapido
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                setTimeout(function() {
                     splash.classList.add('splash-hidden');
                     setTimeout(() => { splash.style.display = 'none'; }, 400);
-                }
-            }, 150); 
+                }, 100); 
+            }
+        });
+        
+        window.addEventListener('beforeunload', function () {
+            window.scrollTo(0, 0);
         });
 
         window.addEventListener('scroll', function() {
@@ -1952,8 +1967,8 @@
                         : `<span class="btn btn-outline" style="margin: 0; font-size: 0.75rem; opacity: 0.4; pointer-events: none; border-color: rgba(255,255,255,0.2);">${currentLang === 'es' ? 'Próximamente' : 'Coming Soon'}</span>`;
 
                     html += `
-                    <div class="event-item" onclick="this.classList.toggle('open')">
-                        <div class="event-top">
+                    <div class="event-item">
+                        <div class="event-top" onclick="this.parentElement.classList.toggle('open')">
                             <div>
                                 <h3 style="margin-bottom: 0.2rem; font-size: 1.3rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
                                 <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>

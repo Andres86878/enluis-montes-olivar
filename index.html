@@ -52,7 +52,7 @@
             font-family: 'Montserrat', sans-serif;
             line-height: 1.85; 
             overflow-x: hidden;
-            padding-top: 150px;
+            padding-top: 140px;
         }
 
         /* -------------------------------------- */
@@ -113,13 +113,13 @@
         }
         
         .logo-container img {
-            max-height: 110px; 
+            max-height: 100px; 
             width: auto;
             transition: all 0.3s ease; 
             cursor: pointer;
         }
         header.scrolled .logo-container img {
-            max-height: 70px; 
+            max-height: 60px; 
         }
 
         .nav-container {
@@ -189,6 +189,81 @@
         }
         #lang-toggle:hover svg {
             fill: var(--dorado);
+        }
+
+        /* Botón de Menú Móvil en el Centro (Oculto en PC) */
+        .mobile-menu-trigger {
+            display: none;
+            background: rgba(203, 161, 83, 0.12);
+            border: 1px solid rgba(203, 161, 83, 0.5);
+            color: var(--dorado);
+            padding: 9px 18px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-trigger:hover {
+            background: var(--dorado);
+            color: var(--negro-fondo);
+        }
+
+        /* Panel Desplegable Móvil */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-menu-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: transparent;
+            border: none;
+            color: var(--blanco-texto);
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+        .mobile-menu-links {
+            list-style: none;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .mobile-menu-links a {
+            color: var(--blanco-texto);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-links a:hover {
+            color: var(--dorado);
         }
 
         /* -------------------------------------- */
@@ -1016,60 +1091,21 @@
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 140px; }
+            body { padding-top: 110px; }
             header {
-                padding: 0.7rem 4%;
-                flex-direction: column;
-                gap: 8px;
-                align-items: stretch;
-            }
-            .header-mobile-row {
-                display: flex;
+                padding: 0.8rem 5%;
                 justify-content: space-between;
                 align-items: center;
-                width: 100%;
             }
-            .logo-container img { max-height: 62px; }
-            header.scrolled .logo-container img { max-height: 44px; }
+            .logo-container img { max-height: 55px; }
+            header.scrolled .logo-container img { max-height: 40px; }
             
-            /* Menú en el centro grande y claro, expandido a todo el ancho con scroll suave */
             .nav-container {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-top: 1px solid rgba(255, 255, 255, 0.08);
-                padding-top: 8px;
-                padding-bottom: 2px;
-            }
-            
-            nav {
-                width: 100%;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                text-align: center;
-            }
-            nav::-webkit-scrollbar { display: none; }
-            
-            nav ul { 
-                flex-wrap: nowrap; 
-                justify-content: center; 
-                gap: 1.6rem; 
-                padding: 2px 0;
-            }
-            nav a { 
-                font-size: 0.82rem; 
-                white-space: nowrap; 
-                font-weight: 600;
-                letter-spacing: 1.2px;
+                display: none;
             }
 
-            #lang-toggle {
-                padding: 5px 12px;
-                font-size: 0.72rem;
-                flex-shrink: 0;
-                font-weight: 600;
+            .mobile-menu-trigger {
+                display: inline-flex;
             }
 
             section { padding: 4.5rem 4%; }
@@ -1089,7 +1125,7 @@
                 max-width: 100%;
             }
             .hero-title-name {
-                font-size: 2.3rem;
+                font-size: 2.2rem;
                 margin-bottom: 0.6rem;
                 line-height: 1.15;
             }
@@ -1154,6 +1190,22 @@
         </svg>
     </a>
 
+    <!-- Menú Desplegable Móvil -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">&times;</button>
+        <ul class="mobile-menu-links">
+            <li><a href="#home" onclick="toggleMobileMenu()" data-i18n="nav_home">Home</a></li>
+            <li><a href="#about" onclick="toggleMobileMenu()" data-i18n="nav_about">About</a></li>
+            <li><a href="#press" onclick="toggleMobileMenu()" data-i18n="nav_press">Press</a></li>
+            <li><a href="#schedule" onclick="toggleMobileMenu()" data-i18n="nav_schedule">Schedule</a></li>
+            <li><a href="#multimedia" onclick="toggleMobileMenu()" data-i18n="nav_media">Multimedia</a></li>
+            <li><a href="#contact" onclick="toggleMobileMenu()" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <div style="margin-top: 1rem;">
+            <a href="#" id="lang-toggle-modal" onclick="toggleLanguage(event); toggleMobileMenu();" style="color: var(--dorado); text-decoration: none; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">ES / EN</a>
+        </div>
+    </div>
+
     <!-- Modal de Frases/Quotes -->
     <div id="quoteModal" class="quote-modal" onclick="closeQuoteModal(event)">
         <div class="quote-modal-content">
@@ -1165,21 +1217,17 @@
 
     <!-- Main Navigation -->
     <header id="main-header">
-        <div class="header-mobile-row">
-            <div class="logo-container">
-                <a href="#home">
-                    <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
-                </a>
-            </div>
-            <!-- Idioma a la derecha en celular -->
-            <a href="#" id="lang-toggle-mobile" class="lang-toggle-mobile-class" onclick="toggleLanguage(event)" style="display:none;">
-                <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="14">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-                </svg>
-                <span id="lang-text-mobile">ES / EN</span>
+        <div class="logo-container">
+            <a href="#home">
+                <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
             </a>
         </div>
+
+        <!-- Botón Menú Móvil en el Centro -->
+        <button class="mobile-menu-trigger" onclick="toggleMobileMenu()">
+            <span>MENU</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
 
         <div class="nav-container">
             <nav>
@@ -1203,26 +1251,32 @@
         </div>
     </header>
 
-    <!-- Script adaptativo para separar idioma en móvil -->
     <script>
-        function checkMobileLang() {
-            const langToggleDesktop = document.getElementById('lang-toggle');
-            let langToggleMobile = document.getElementById('lang-toggle-mobile');
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        // Lógica adaptativa para pasar el botón de idioma a la derecha en móvil junto al menú
+        function checkMobileHeader() {
+            const langToggle = document.getElementById('lang-toggle');
+            const header = document.getElementById('main-header');
             if(window.innerWidth <= 768) {
-                if(langToggleDesktop && !document.getElementById('lang-toggle-mobile')) {
-                    langToggleMobile = langToggleDesktop.cloneNode(true);
-                    langToggleMobile.id = 'lang-toggle-mobile';
-                    langToggleMobile.style.display = 'flex';
-                    document.querySelector('.header-mobile-row').appendChild(langToggleMobile);
-                    langToggleDesktop.style.display = 'none';
+                if(langToggle && !document.getElementById('lang-toggle-mobile-right')) {
+                    const mobileLang = langToggle.cloneNode(true);
+                    mobileLang.id = 'lang-toggle-mobile-right';
+                    mobileLang.style.display = 'flex';
+                    header.insertBefore(mobileLang, header.querySelector('.nav-container'));
+                    langToggle.style.display = 'none';
                 }
             } else {
-                if(langToggleDesktop) langToggleDesktop.style.display = 'flex';
-                if(langToggleMobile) langToggleMobile.remove();
+                if(langToggle) langToggle.style.display = 'flex';
+                const mobileLangRight = document.getElementById('lang-toggle-mobile-right');
+                if(mobileLangRight) mobileLangRight.remove();
             }
         }
-        window.addEventListener('resize', checkMobileLang);
-        window.addEventListener('DOMContentLoaded', checkMobileLang);
+        window.addEventListener('resize', checkMobileHeader);
+        window.addEventListener('DOMContentLoaded', checkMobileHeader);
     </script>
 
     <!-- 1. Home -->
@@ -1861,7 +1915,7 @@
                 quote_1_text: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar, un venezolano de 22 años. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado...\"",
                 quote_1_auth: "Los Angeles Times",
                 quote_2_text: "\"Es un director con gran capacidad de comunicación, técnica, inteligencia, compromiso, carisma, liderazgo, sensibilidad social y pasión que sin duda lo convierten en un musico extraordinario.\"",
-                quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Director principal invitado Orquesta de la Radio Nacional de Polonia.</span>",
+                quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Principal Guest Conductor Orquesta de la Radio Nacional de Polonia.</span>",
                 quote_3_text: "\"Personalmente, creo que su gran talento, inteligencia, compromiso, carisma, liderazgo, sensibilidad social, pasión y dirección lo convierten sin duda en un artista extraordinario.\"",
                 quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical San Diego Symphony.<br>Director Musical Orchestre Symphonique de Montréal.</span>",
                 quote_4_text: "\"Enluis es uno de los jóvenes directores más talentosos que he visto en mi carrera. Su lenguaje gestual es fluido, ofreciendo a los músicos una intención clara, técnicamente segura, precisa y conectada emocionalmente. Inspira a artistas de todas las edades y habilidades a los niveles más altos...\"",

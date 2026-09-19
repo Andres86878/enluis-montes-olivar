@@ -112,14 +112,15 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         
+        /* LOGO MÁS GRANDE Y PROTAGÓNICO */
         .logo-container img {
-            max-height: 130px; 
+            max-height: 150px; 
             width: auto;
             transition: all 0.3s ease; 
             cursor: pointer;
         }
         header.scrolled .logo-container img {
-            max-height: 80px; 
+            max-height: 90px; 
         }
 
         .nav-container {
@@ -161,35 +162,35 @@
             width: 100%;
         }
 
-        /* Selector de idiomas limpio y sin tonos azules */
-        #lang-toggle, #lang-toggle-desktop {
+        /* SELECTOR DE IDIOMAS (FORZADO SIN AZUL, ESTILO LIMPIO Y DORADO) */
+        #lang-toggle, #lang-toggle-mobile-right {
             font-weight: 500;
-            color: var(--blanco-texto);
+            color: var(--blanco-texto) !important;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 6px;
-            text-decoration: none;
-            font-size: 0.75rem;
+            text-decoration: none !important;
+            font-size: 0.78rem;
             letter-spacing: 1px;
             text-transform: uppercase;
             padding: 8px 14px;
-            border: 1px solid rgba(203, 161, 83, 0.4);
-            border-radius: 4px;
-            background-color: transparent;
+            border: 1.5px solid rgba(203, 161, 83, 0.5);
+            border-radius: 6px;
+            background-color: rgba(15, 15, 15, 0.6);
             transition: all 0.3s ease;
             white-space: nowrap;
         }
-        #lang-toggle svg, #lang-toggle-desktop svg {
+        #lang-toggle svg, #lang-toggle-mobile-right svg {
             fill: var(--dorado);
             transition: all 0.3s ease;
         }
-        #lang-toggle:hover, #lang-toggle-desktop:hover {
-            color: var(--dorado);
+        #lang-toggle:hover, #lang-toggle-mobile-right:hover {
+            color: var(--dorado) !important;
             border-color: var(--dorado);
             background-color: var(--dorado-suave);
         }
-        #lang-toggle:hover svg, #lang-toggle-desktop:hover svg {
+        #lang-toggle:hover svg, #lang-toggle-mobile-right:hover svg {
             fill: var(--blanco-texto);
         }
 
@@ -199,9 +200,9 @@
             background: rgba(203, 161, 83, 0.12);
             border: 1px solid rgba(203, 161, 83, 0.5);
             color: var(--dorado);
-            padding: 9px 18px;
+            padding: 10px 20px;
             border-radius: 6px;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
@@ -1093,12 +1094,12 @@
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 130px; }
+            body { padding-top: 140px; }
             header {
                 padding: 0.8rem 4%;
             }
-            .logo-container img { max-height: 65px; }
-            header.scrolled .logo-container img { max-height: 45px; }
+            .logo-container img { max-height: 85px; } /* Logo más grande en celular */
+            header.scrolled .logo-container img { max-height: 55px; }
             
             .nav-container {
                 display: none;
@@ -1229,7 +1230,6 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
 
-        <!-- Selector de Idiomas a la Derecha en Móvil (Clonado dinámicamente) o Barra normal en PC -->
         <div class="nav-container">
             <nav>
                 <ul>
@@ -1258,7 +1258,7 @@
             menu.classList.toggle('open');
         }
 
-        // Lógica adaptativa para colocar el idioma a la derecha en celular
+        // Lógica adaptativa para colocar el idioma limpio a la derecha en celular
         function checkMobileHeaderLayout() {
             const header = document.getElementById('main-header');
             const langDesktop = document.getElementById('lang-toggle');
@@ -1917,7 +1917,7 @@
                 quote_1_text: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar, un venezolano de 22 años. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado...\"",
                 quote_1_auth: "Los Angeles Times",
                 quote_2_text: "\"Es un director con gran capacidad de comunicación, técnica, inteligencia, compromiso, carisma, liderazgo, sensibilidad social y pasión que sin duda lo convierten en un musico extraordinario.\"",
-                quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Principal Guest Conductor Orquesta de la Radio Nacional de Polonia.</span>",
+                quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Director principal invitado Orquesta de la Radio Nacional de Polonia.</span>",
                 quote_3_text: "\"Personalmente, creo que su gran talento, inteligencia, compromiso, carisma, liderazgo, sensibilidad social, pasión y dirección lo convierten sin duda en un artista extraordinario.\"",
                 quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical San Diego Symphony.<br>Director Musical Orchestre Symphonique de Montréal.</span>",
                 quote_4_text: "\"Enluis es uno de los jóvenes directores más talentosos que he visto en mi carrera. Su lenguaje gestual es fluido, ofreciendo a los músicos una intención clara, técnicamente segura, precisa y conectada emocionalmente. Inspira a artistas de todas las edades y habilidades a los niveles más altos...\"",

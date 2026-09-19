@@ -52,7 +52,7 @@
             font-family: 'Montserrat', sans-serif;
             line-height: 1.85; 
             overflow-x: hidden;
-            padding-top: 150px;
+            padding-top: 130px;
         }
 
         /* -------------------------------------- */
@@ -107,19 +107,19 @@
         }
         
         header.scrolled {
-            padding: 0.4rem 5%; 
+            padding: 0.5rem 5%; 
             background-color: rgba(5, 5, 5, 0.99);
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         
         .logo-container img {
-            max-height: 110px; 
+            max-height: 100px; 
             width: auto;
             transition: all 0.3s ease; 
             cursor: pointer;
         }
         header.scrolled .logo-container img {
-            max-height: 70px; 
+            max-height: 60px; 
         }
 
         .nav-container {
@@ -189,6 +189,28 @@
         }
         #lang-toggle:hover svg {
             fill: var(--dorado);
+        }
+
+        /* Botón de Menú Hamburguesa Profesional (Oculto en PC) */
+        .menu-toggle-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--negro-bordes);
+            border-radius: 6px;
+            padding: 8px 10px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 42px;
+            height: 38px;
+            z-index: 1001;
+        }
+        .menu-toggle-btn span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--blanco-texto);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* -------------------------------------- */
@@ -1016,7 +1038,7 @@
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 135px; }
+            body { padding-top: 130px; }
             header {
                 padding: 0.6rem 4%;
                 flex-direction: column;
@@ -1029,9 +1051,10 @@
                 align-items: center;
                 width: 100%;
             }
-            .logo-container img { max-height: 58px; }
-            header.scrolled .logo-container img { max-height: 42px; }
+            .logo-container img { max-height: 55px; }
+            header.scrolled .logo-container img { max-height: 40px; }
             
+            /* Dos filas limpias con indicador visual lateral para deslizar */
             .nav-container {
                 width: 100%;
                 display: flex;
@@ -1039,6 +1062,16 @@
                 align-items: center;
                 border-top: 1px solid rgba(255, 255, 255, 0.06);
                 padding-top: 6px;
+                position: relative;
+            }
+            .nav-container::after {
+                content: '‹ ›';
+                color: var(--dorado);
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+                opacity: 0.6;
+                padding-left: 6px;
+                flex-shrink: 0;
             }
             
             nav {

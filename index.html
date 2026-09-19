@@ -39,7 +39,7 @@
         /* Base Styles & Smooth Scrolling */
         html { 
             scroll-behavior: smooth; 
-            scroll-padding-top: 110px; 
+            scroll-padding-top: 100px; 
         }
         * { 
             margin: 0; 
@@ -107,7 +107,7 @@
         }
         
         header.scrolled {
-            padding: 0.5rem 5%; 
+            padding: 0.4rem 5%; 
             background-color: rgba(5, 5, 5, 0.99);
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
@@ -1032,7 +1032,6 @@
             .logo-container img { max-height: 58px; }
             header.scrolled .logo-container img { max-height: 42px; }
             
-            /* Dos líneas limpias para el menú móvil con indicador sutil de desplazamiento */
             .nav-container {
                 width: 100%;
                 display: flex;
@@ -1040,16 +1039,6 @@
                 align-items: center;
                 border-top: 1px solid rgba(255, 255, 255, 0.06);
                 padding-top: 6px;
-                position: relative;
-            }
-            .nav-container::after {
-                content: '‹ ›';
-                color: var(--dorado);
-                font-size: 0.75rem;
-                letter-spacing: 2px;
-                opacity: 0.6;
-                padding-left: 6px;
-                flex-shrink: 0;
             }
             
             nav {

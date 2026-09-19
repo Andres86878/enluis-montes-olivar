@@ -191,6 +191,23 @@
             fill: var(--dorado);
         }
 
+        /* Indicador visual de scroll móvil (Oculto en PC) */
+        .scroll-hint {
+            display: none;
+            font-size: 0.65rem;
+            color: var(--dorado);
+            letter-spacing: 2px;
+            text-align: center;
+            padding-bottom: 3px;
+            text-transform: uppercase;
+            animation: pulseHint 2s infinite;
+        }
+
+        @keyframes pulseHint {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
         /* -------------------------------------- */
         /* SECTIONS GENERALES                     */
         /* -------------------------------------- */
@@ -948,7 +965,7 @@
             position: relative;
         }
 
-        /* LOGO DE INSTAGRAM FLOTANTE PERMANENTE ABAJO A LA DERECHA */
+        /* LOGO DE INSTAGRAM FLOTANTE PERMANENTE ABAJO A LA DERECHA (@emontesolivar) */
         .instagram-floating-btn {
             position: fixed;
             bottom: 25px;
@@ -987,29 +1004,32 @@
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 140px; }
+            body { padding-top: 135px; }
             header {
-                padding: 0.8rem 4%;
+                padding: 0.6rem 4%;
                 flex-direction: column;
-                gap: 0.6rem;
+                gap: 4px;
                 align-items: stretch;
             }
-            .header-top-row {
+            .logo-container img { max-height: 52px; }
+            header.scrolled .logo-container img { max-height: 38px; }
+            
+            /* Cabecera superior móvil: Logo a la izquierda, Idioma a la derecha */
+            .header-mobile-top {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
             }
-            .logo-container img { max-height: 55px; }
-            header.scrolled .logo-container img { max-height: 42px; }
-            
+
+            /* Barra de menú en dos líneas con scroll elegante */
             .nav-container {
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-top: 1px solid var(--negro-bordes);
-                padding-top: 6px;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                padding-top: 4px;
             }
             
             nav {
@@ -1023,11 +1043,11 @@
             nav ul { 
                 flex-wrap: nowrap; 
                 justify-content: flex-start; 
-                gap: 1.2rem; 
+                gap: 1.4rem; 
                 padding: 2px 0;
             }
             nav a { 
-                font-size: 0.7rem; 
+                font-size: 0.72rem; 
                 white-space: nowrap; 
             }
 
@@ -1035,15 +1055,18 @@
                 padding: 3px 8px;
                 font-size: 0.65rem;
                 flex-shrink: 0;
-                margin-left: 8px;
+            }
+
+            .scroll-hint {
+                display: block;
             }
 
             section { padding: 4.5rem 4%; }
-            h2 { font-size: 2rem; margin-bottom: 2rem; }
+            h2 { font-size: 1.9rem; margin-bottom: 2rem; }
             
             #home {
-                min-height: 85vh;
-                padding: 40px 4% 3.5rem 4%;
+                min-height: 82vh;
+                padding: 35px 4% 3rem 4%;
                 justify-content: center;
                 align-items: flex-start;
             }
@@ -1055,19 +1078,19 @@
                 max-width: 100%;
             }
             .hero-title-name {
-                font-size: 2.3rem;
+                font-size: 2.15rem;
                 margin-bottom: 0.6rem;
-                line-height: 1.12;
+                line-height: 1.15;
             }
             .hero-sub-motto {
-                letter-spacing: 1.5px;
-                margin-bottom: 0.9rem;
-                font-size: 0.82rem;
+                letter-spacing: 1.4px;
+                margin-bottom: 0.8rem;
+                font-size: 0.8rem;
             }
             #home p {
-                font-size: 0.88rem;
-                margin-bottom: 1.6rem;
-                line-height: 1.65;
+                font-size: 0.85rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.6;
             }
             .hero-cta-container {
                 flex-direction: column;
@@ -1078,8 +1101,8 @@
                 width: 100%;
                 text-align: center;
                 margin-right: 0;
-                padding: 12px 20px;
-                font-size: 0.75rem;
+                padding: 11px 18px;
+                font-size: 0.72rem;
             }
             
             .bio-article-container, .cv-card, .media-card, .event-item {
@@ -1094,14 +1117,14 @@
             .quote-nav-next { right: 0px; font-size: 1.2rem; }
 
             .instagram-floating-btn {
-                width: 46px;
-                height: 46px;
-                bottom: 18px;
-                right: 18px;
+                width: 48px;
+                height: 48px;
+                bottom: 20px;
+                right: 20px;
             }
             .instagram-floating-btn svg {
-                width: 20px;
-                height: 20px;
+                width: 22px;
+                height: 22px;
             }
         }
     </style>
@@ -1113,8 +1136,8 @@
         <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
     </div>
 
-    <!-- LOGOTIPO DE INSTAGRAM PERMANENTE ABAJO A LA DERECHA (FLOTANTE) -->
-    <a href="https://instagram.com/tu_usuario" target="_blank" class="instagram-floating-btn" aria-label="Instagram Profile">
+    <!-- LOGOTIPO DE INSTAGRAM PERMANENTE ABAJO A LA DERECHA (@emontesolivar) -->
+    <a href="https://instagram.com/emontesolivar" target="_blank" class="instagram-floating-btn" aria-label="Instagram Profile">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
         </svg>
@@ -1131,13 +1154,13 @@
 
     <!-- Main Navigation -->
     <header id="main-header">
-        <div class="header-top-row">
+        <div class="header-mobile-top">
             <div class="logo-container">
                 <a href="#home">
                     <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
                 </a>
             </div>
-            <!-- Selector de idioma visible junto al logo en móviles -->
+            <!-- Idioma arriba a la derecha en celular junto al logo -->
             <a href="#" id="lang-toggle-mobile" class="lang-toggle-mobile-class" onclick="toggleLanguage(event)" style="display:none;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="14">
                     <path d="M0 0h24v24H0z" fill="none"/>
@@ -1169,7 +1192,7 @@
         </div>
     </header>
 
-    <!-- Script adaptativo para mostrar idioma junto al logo solo en móvil -->
+    <!-- Script adaptativo para separar idioma en móvil -->
     <script>
         function checkMobileLang() {
             const langToggleDesktop = document.getElementById('lang-toggle');
@@ -1179,7 +1202,7 @@
                     langToggleMobile = langToggleDesktop.cloneNode(true);
                     langToggleMobile.id = 'lang-toggle-mobile';
                     langToggleMobile.style.display = 'flex';
-                    document.querySelector('.header-top-row').appendChild(langToggleMobile);
+                    document.querySelector('.header-mobile-top').appendChild(langToggleMobile);
                     langToggleDesktop.style.display = 'none';
                 }
             } else {

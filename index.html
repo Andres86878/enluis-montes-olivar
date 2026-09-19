@@ -52,7 +52,7 @@
             font-family: 'Montserrat', sans-serif;
             line-height: 1.85; 
             overflow-x: hidden;
-            padding-top: 140px;
+            padding-top: 150px;
         }
 
         /* -------------------------------------- */
@@ -113,13 +113,13 @@
         }
         
         .logo-container img {
-            max-height: 100px; 
+            max-height: 130px; 
             width: auto;
             transition: all 0.3s ease; 
             cursor: pointer;
         }
         header.scrolled .logo-container img {
-            max-height: 60px; 
+            max-height: 80px; 
         }
 
         .nav-container {
@@ -161,7 +161,8 @@
             width: 100%;
         }
 
-        #lang-toggle {
+        /* Selector de idiomas limpio y sin tonos azules */
+        #lang-toggle, #lang-toggle-desktop {
             font-weight: 500;
             color: var(--blanco-texto);
             cursor: pointer;
@@ -172,26 +173,27 @@
             font-size: 0.75rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            padding: 6px 12px;
-            border: 1px solid var(--negro-bordes);
+            padding: 8px 14px;
+            border: 1px solid rgba(203, 161, 83, 0.4);
             border-radius: 4px;
             background-color: transparent;
             transition: all 0.3s ease;
             white-space: nowrap;
         }
-        #lang-toggle svg {
-            fill: var(--blanco-texto);
+        #lang-toggle svg, #lang-toggle-desktop svg {
+            fill: var(--dorado);
             transition: all 0.3s ease;
         }
-        #lang-toggle:hover {
+        #lang-toggle:hover, #lang-toggle-desktop:hover {
             color: var(--dorado);
             border-color: var(--dorado);
+            background-color: var(--dorado-suave);
         }
-        #lang-toggle:hover svg {
-            fill: var(--dorado);
+        #lang-toggle:hover svg, #lang-toggle-desktop:hover svg {
+            fill: var(--blanco-texto);
         }
 
-        /* Botón de Menú Móvil en el Centro (Oculto en PC) */
+        /* Botón de Menú Móvil en el Centro */
         .mobile-menu-trigger {
             display: none;
             background: rgba(203, 161, 83, 0.12);
@@ -1091,14 +1093,12 @@
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 110px; }
+            body { padding-top: 130px; }
             header {
-                padding: 0.8rem 5%;
-                justify-content: space-between;
-                align-items: center;
+                padding: 0.8rem 4%;
             }
-            .logo-container img { max-height: 55px; }
-            header.scrolled .logo-container img { max-height: 40px; }
+            .logo-container img { max-height: 65px; }
+            header.scrolled .logo-container img { max-height: 45px; }
             
             .nav-container {
                 display: none;
@@ -1229,6 +1229,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
 
+        <!-- Selector de Idiomas a la Derecha en Móvil (Clonado dinámicamente) o Barra normal en PC -->
         <div class="nav-container">
             <nav>
                 <ul>
@@ -1257,26 +1258,27 @@
             menu.classList.toggle('open');
         }
 
-        // Lógica adaptativa para pasar el botón de idioma a la derecha en móvil junto al menú
-        function checkMobileHeader() {
-            const langToggle = document.getElementById('lang-toggle');
+        // Lógica adaptativa para colocar el idioma a la derecha en celular
+        function checkMobileHeaderLayout() {
             const header = document.getElementById('main-header');
+            const langDesktop = document.getElementById('lang-toggle');
+            let langMobileRight = document.getElementById('lang-toggle-mobile-right');
+
             if(window.innerWidth <= 768) {
-                if(langToggle && !document.getElementById('lang-toggle-mobile-right')) {
-                    const mobileLang = langToggle.cloneNode(true);
-                    mobileLang.id = 'lang-toggle-mobile-right';
-                    mobileLang.style.display = 'flex';
-                    header.insertBefore(mobileLang, header.querySelector('.nav-container'));
-                    langToggle.style.display = 'none';
+                if(langDesktop && !document.getElementById('lang-toggle-mobile-right')) {
+                    langMobileRight = langDesktop.cloneNode(true);
+                    langMobileRight.id = 'lang-toggle-mobile-right';
+                    langMobileRight.style.display = 'flex';
+                    header.appendChild(langMobileRight);
+                    langDesktop.style.display = 'none';
                 }
             } else {
-                if(langToggle) langToggle.style.display = 'flex';
-                const mobileLangRight = document.getElementById('lang-toggle-mobile-right');
-                if(mobileLangRight) mobileLangRight.remove();
+                if(langDesktop) langDesktop.style.display = 'flex';
+                if(langMobileRight) langMobileRight.remove();
             }
         }
-        window.addEventListener('resize', checkMobileHeader);
-        window.addEventListener('DOMContentLoaded', checkMobileHeader);
+        window.addEventListener('resize', checkMobileHeaderLayout);
+        window.addEventListener('DOMContentLoaded', checkMobileHeaderLayout);
     </script>
 
     <!-- 1. Home -->

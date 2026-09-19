@@ -52,7 +52,7 @@
             font-family: 'Montserrat', sans-serif;
             line-height: 1.85; 
             overflow-x: hidden;
-            padding-top: 130px;
+            padding-top: 150px;
         }
 
         /* -------------------------------------- */
@@ -92,7 +92,7 @@
         /* -------------------------------------- */
         header { 
             border-bottom: 1px solid var(--negro-bordes); 
-            padding: 1rem 5%; 
+            padding: 0.8rem 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -101,25 +101,25 @@
             left: 0;
             width: 100%;
             background-color: rgba(5, 5, 5, 0.95);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease; 
         }
         
         header.scrolled {
-            padding: 0.6rem 5%; 
+            padding: 0.4rem 5%; 
             background-color: rgba(5, 5, 5, 0.98);
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         
         .logo-container img {
-            max-height: 95px; 
+            max-height: 110px; 
             width: auto;
             transition: all 0.3s ease; 
             cursor: pointer;
         }
         header.scrolled .logo-container img {
-            max-height: 60px; 
+            max-height: 70px; 
         }
 
         .nav-container {
@@ -175,7 +175,7 @@
             padding: 6px 12px;
             border: 1px solid var(--negro-bordes);
             border-radius: 4px;
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: transparent;
             transition: all 0.3s ease;
             white-space: nowrap;
         }
@@ -189,28 +189,6 @@
         }
         #lang-toggle:hover svg {
             fill: var(--dorado);
-        }
-
-        /* Botón de Menú Hamburguesa (Exclusivo Celular) */
-        .menu-toggle-btn {
-            display: none;
-            background: transparent;
-            border: 1px solid var(--negro-bordes);
-            border-radius: 6px;
-            padding: 8px;
-            cursor: pointer;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 40px;
-            height: 36px;
-            z-index: 1001;
-        }
-        .menu-toggle-btn span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: var(--blanco-texto);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* -------------------------------------- */
@@ -279,7 +257,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.5) 0%, rgba(5,5,5,0.92) 100%);
+            background: linear-gradient(to bottom, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.95) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -288,14 +266,14 @@
         /* HERO SECTION                           */
         /* -------------------------------------- */
         #home { 
-            min-height: 90vh; 
+            min-height: 85vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: flex-start; 
         }
         #home .bg-photo {
-            object-position: center 20%;
+            object-position: center top;
         }
         #home .section-content {
             opacity: 1 !important;
@@ -956,14 +934,10 @@
         }
 
         /* -------------------------------------- */
-        /* FOOTER & INSTAGRAM LINK                */
+        /* FOOTER & INSTAGRAM FLOTANTE PERMANENTE */
         /* -------------------------------------- */
         footer { 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+            text-align: center;
             padding: 3rem 5%; 
             font-size: 0.8rem; 
             color: var(--gris-texto); 
@@ -971,46 +945,49 @@
             text-transform: uppercase;
             background-color: #000;
             border-top: 1px solid var(--negro-bordes);
+            position: relative;
         }
 
-        .footer-social {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .instagram-icon-link {
+        /* LOGO DE INSTAGRAM FLOTANTE PERMANENTE ABAJO A LA DERECHA */
+        .instagram-floating-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            width: 42px;
-            height: 42px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            border: 1px solid var(--negro-bordes);
-            background-color: rgba(15, 15, 15, 0.5);
-            transition: all 0.3s ease;
+            background: rgba(10, 10, 10, 0.85);
+            border: 1.5px solid rgba(203, 161, 83, 0.6);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(203, 161, 83, 0.2);
+            z-index: 9998;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .instagram-icon-link svg {
-            width: 20px;
-            height: 20px;
+        .instagram-floating-btn svg {
+            width: 24px;
+            height: 24px;
             fill: var(--dorado);
             transition: transform 0.3s ease, fill 0.3s ease;
         }
-        .instagram-icon-link:hover {
+        .instagram-floating-btn:hover {
             border-color: var(--dorado);
-            background-color: var(--dorado-suave);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(203, 161, 83, 0.25);
+            background-color: rgba(203, 161, 83, 0.15);
+            transform: translateY(-5s) scale(1.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(203, 161, 83, 0.4);
         }
-        .instagram-icon-link:hover svg {
+        .instagram-floating-btn:hover svg {
             fill: var(--blanco-texto);
-            transform: scale(1.1);
+            transform: scale(1.12);
         }
 
         /* -------------------------------------- */
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 110px; }
+            body { padding-top: 120px; }
             header {
                 padding: 0.7rem 4%;
             }
@@ -1018,52 +995,48 @@
             header.scrolled .logo-container img { max-height: 35px; }
             
             .nav-container {
-                position: fixed;
-                top: 70px;
-                left: 0;
                 width: 100%;
-                background-color: rgba(5, 5, 5, 0.98);
-                backdrop-filter: blur(15px);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 1rem;
-                gap: 1.5rem;
-                border-bottom: 1px solid var(--negro-bordes);
-                transform: translateY(-150%);
-                transition: transform 0.4s ease;
-                z-index: 999;
-                display: flex;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 4px 0 8px 0;
+                scrollbar-width: none;
+                gap: 1rem;
+                justify-content: flex-start;
+                background: rgba(5, 5, 5, 0.98);
+                border-top: 1px solid var(--negro-bordes);
+                position: fixed;
+                top: 60px;
+                left: 0;
+                padding-left: 4%;
+                padding-right: 4%;
             }
-            .nav-container.mobile-open {
-                transform: translateY(0);
-            }
+            .nav-container::-webkit-scrollbar { display: none; }
             
-            .menu-toggle-btn {
-                display: flex;
+            nav {
+                width: 100%;
             }
-            .menu-toggle-btn.active span:nth-child(1) {
-                transform: translateY(7px) rotate(45deg);
+            nav ul { 
+                flex-wrap: nowrap; 
+                gap: 1rem; 
+                justify-content: flex-start;
             }
-            .menu-toggle-btn.active span:nth-child(2) {
-                opacity: 0;
-            }
-            .menu-toggle-btn.active span:nth-child(3) {
-                transform: translateY(-7px) rotate(-45deg);
+            nav a { 
+                font-size: 0.7rem; 
+                white-space: nowrap; 
             }
 
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.2rem;
+            #lang-toggle {
+                padding: 3px 8px;
+                font-size: 0.65rem;
+                flex-shrink: 0;
             }
-            nav a { font-size: 0.9rem; }
 
             section { padding: 4rem 4%; }
-            h2 { font-size: 2rem; margin-bottom: 2rem; }
+            h2 { font-size: 1.85rem; margin-bottom: 2rem; }
             
             #home {
-                min-height: 82vh;
-                padding: 60px 4% 3rem 4%;
+                min-height: 80vh;
+                padding: 30px 4% 3rem 4%;
                 justify-content: center;
                 align-items: flex-start;
             }
@@ -1075,31 +1048,31 @@
                 max-width: 100%;
             }
             .hero-title-name {
-                font-size: 2.1rem;
-                margin-bottom: 0.6rem;
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
                 line-height: 1.15;
             }
             .hero-sub-motto {
-                letter-spacing: 1.5px;
-                margin-bottom: 0.8rem;
-                font-size: 0.8rem;
+                letter-spacing: 1.2px;
+                margin-bottom: 0.7rem;
+                font-size: 0.78rem;
             }
             #home p {
-                font-size: 0.85rem;
-                margin-bottom: 1.5rem;
+                font-size: 0.82rem;
+                margin-bottom: 1.4rem;
                 line-height: 1.6;
             }
             .hero-cta-container {
                 flex-direction: column;
                 width: 100%;
-                gap: 0.7rem;
+                gap: 0.6rem;
             }
             .hero-cta-container .btn {
                 width: 100%;
                 text-align: center;
                 margin-right: 0;
-                padding: 11px 18px;
-                font-size: 0.72rem;
+                padding: 10px 16px;
+                font-size: 0.7rem;
             }
             
             .bio-article-container, .cv-card, .media-card, .event-item {
@@ -1114,13 +1087,19 @@
             .quote-nav-next { right: 0px; font-size: 1.2rem; }
 
             footer {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.2rem;
                 padding: 2.5rem 5%;
             }
-            .footer-social {
-                justify-content: center;
+
+            /* Ajuste del botón flotante en móviles para que no tape contenido crítico */
+            .instagram-floating-btn {
+                width: 46px;
+                height: 46px;
+                bottom: 18px;
+                right: 18px;
+            }
+            .instagram-floating-btn svg {
+                width: 20px;
+                height: 20px;
             }
         }
     </style>
@@ -1131,6 +1110,13 @@
     <div id="splash-screen">
         <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
     </div>
+
+    <!-- LOGOTIPO DE INSTAGRAM PERMANENTE ABAJO A LA DERECHA (FLOTANTE) -->
+    <a href="https://instagram.com/tu_usuario" target="_blank" class="instagram-floating-btn" aria-label="Instagram Profile">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+    </a>
 
     <!-- Modal de Frases/Quotes -->
     <div id="quoteModal" class="quote-modal" onclick="closeQuoteModal(event)">
@@ -1148,24 +1134,15 @@
                 <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
             </a>
         </div>
-        
-        <!-- Botón Menú Hamburguesa (Visible solo en celular) -->
-        <button class="menu-toggle-btn" id="menu-btn" onclick="toggleMobileMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <!-- Contenedor del menú: en PC se ve barra completa, en cel desliza con hamburguesa -->
-        <div class="nav-container" id="nav-dropdown">
+        <div class="nav-container">
             <nav>
                 <ul>
-                    <li><a href="#home" onclick="closeMobileMenu()" data-i18n="nav_home">Home</a></li>
-                    <li><a href="#about" onclick="closeMobileMenu()" data-i18n="nav_about">About</a></li>
-                    <li><a href="#press" onclick="closeMobileMenu()" data-i18n="nav_press">Press</a></li>
-                    <li><a href="#schedule" onclick="closeMobileMenu()" data-i18n="nav_schedule">Schedule</a></li>
-                    <li><a href="#multimedia" onclick="closeMobileMenu()" data-i18n="nav_media">Multimedia</a></li>
-                    <li><a href="#contact" onclick="closeMobileMenu()" data-i18n="nav_contact">Contact</a></li>
+                    <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#about" data-i18n="nav_about">About</a></li>
+                    <li><a href="#press" data-i18n="nav_press">Press</a></li>
+                    <li><a href="#schedule" data-i18n="nav_schedule">Schedule</a></li>
+                    <li><a href="#multimedia" data-i18n="nav_media">Multimedia</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
                 </ul>
             </nav>
             
@@ -1670,13 +1647,6 @@
     <!-- Footer -->
     <footer>
         <p data-i18n="footer_text">&copy; 2026 Enluis Montes Olivar. All rights reserved.</p>
-        <div class="footer-social">
-            <a href="https://instagram.com/tu_usuario" target="_blank" class="instagram-icon-link" aria-label="Instagram Profile">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-            </a>
-        </div>
     </footer>
 
     <!-- SCRIPTS -->
@@ -1822,7 +1792,7 @@
                 quote_1_text: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar, un venezolano de 22 años. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado...\"",
                 quote_1_auth: "Los Angeles Times",
                 quote_2_text: "\"Es un director con gran capacidad de comunicación, técnica, inteligencia, compromiso, carisma, liderazgo, sensibilidad social y pasión que sin duda lo convierten en un musico extraordinario.\"",
-                quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Principal Guest Conductor Polish National Radio Symphony Orchestra.</span>",
+                quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Director principal invitado Orquesta de la Radio Nacional de Polonia.</span>",
                 quote_3_text: "\"Personalmente, creo que su gran talento, inteligencia, compromiso, carisma, liderazgo, sensibilidad social, pasión y dirección lo convierten sin duda en un artista extraordinario.\"",
                 quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical San Diego Symphony.<br>Director Musical Orchestre Symphonique de Montréal.</span>",
                 quote_4_text: "\"Enluis es uno de los jóvenes directores más talentosos que he visto en mi carrera. Su lenguaje gestual es fluido, ofreciendo a los músicos una intención clara, técnicamente segura, precisa y conectada emocionalmente. Inspira a artistas de todas las edades y habilidades a los niveles más altos...\"",

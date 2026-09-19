@@ -162,15 +162,15 @@
             width: 100%;
         }
 
-        /* SELECTOR DE IDIOMAS (FORZADO SIN AZUL, ESTILO LIMPIO Y DORADO) */
-        #lang-toggle, #lang-toggle-mobile-right {
+        /* SELECTOR DE IDIOMAS (LIMPIO, SIN AZUL, DORADO/BLANCO) */
+        .lang-btn {
             font-weight: 500;
-            color: var(--blanco-texto) !important;
+            color: var(--blanco-texto);
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 6px;
-            text-decoration: none !important;
+            text-decoration: none;
             font-size: 0.78rem;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -181,16 +181,16 @@
             transition: all 0.3s ease;
             white-space: nowrap;
         }
-        #lang-toggle svg, #lang-toggle-mobile-right svg {
+        .lang-btn svg {
             fill: var(--dorado);
             transition: all 0.3s ease;
         }
-        #lang-toggle:hover, #lang-toggle-mobile-right:hover {
-            color: var(--dorado) !important;
+        .lang-btn:hover {
+            color: var(--dorado);
             border-color: var(--dorado);
             background-color: var(--dorado-suave);
         }
-        #lang-toggle:hover svg, #lang-toggle-mobile-right:hover svg {
+        .lang-btn:hover svg {
             fill: var(--blanco-texto);
         }
 
@@ -200,7 +200,7 @@
             background: rgba(203, 161, 83, 0.12);
             border: 1px solid rgba(203, 161, 83, 0.5);
             color: var(--dorado);
-            padding: 10px 20px;
+            padding: 9px 18px;
             border-radius: 6px;
             font-size: 0.82rem;
             letter-spacing: 2px;
@@ -1094,11 +1094,11 @@
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 140px; }
+            body { padding-top: 130px; }
             header {
                 padding: 0.8rem 4%;
             }
-            .logo-container img { max-height: 85px; } /* Logo más grande en celular */
+            .logo-container img { max-height: 85px; } /* Logo grande en celular */
             header.scrolled .logo-container img { max-height: 55px; }
             
             .nav-container {
@@ -1203,7 +1203,7 @@
             <li><a href="#contact" onclick="toggleMobileMenu()" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div style="margin-top: 1rem;">
-            <a href="#" id="lang-toggle-modal" onclick="toggleLanguage(event); toggleMobileMenu();" style="color: var(--dorado); text-decoration: none; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">ES / EN</a>
+            <a href="#" id="lang-toggle-modal" class="lang-btn" onclick="toggleLanguage(event); toggleMobileMenu();">ES / EN</a>
         </div>
     </div>
 
@@ -1242,7 +1242,7 @@
                 </ul>
             </nav>
             
-            <a href="#" id="lang-toggle" onclick="toggleLanguage(event)">
+            <a href="#" id="lang-toggle" class="lang-btn" onclick="toggleLanguage(event)">
                 <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="14">
                     <path d="M0 0h24v24H0z" fill="none"/>
                     <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
@@ -1258,7 +1258,7 @@
             menu.classList.toggle('open');
         }
 
-        // Lógica adaptativa para colocar el idioma limpio a la derecha en celular
+        // Lógica adaptativa para colocar el selector de idiomas a la derecha en celular
         function checkMobileHeaderLayout() {
             const header = document.getElementById('main-header');
             const langDesktop = document.getElementById('lang-toggle');

@@ -937,8 +937,8 @@
         /* FOOTER & INSTAGRAM FLOTANTE PERMANENTE */
         /* -------------------------------------- */
         footer { 
-            text-align: center;
-            padding: 3rem 5%; 
+            text-align: center; 
+            padding: 3rem 2rem; 
             font-size: 0.8rem; 
             color: var(--gris-texto); 
             letter-spacing: 1px;
@@ -975,7 +975,7 @@
         .instagram-floating-btn:hover {
             border-color: var(--dorado);
             background-color: rgba(203, 161, 83, 0.15);
-            transform: translateY(-5s) scale(1.08);
+            transform: translateY(-3px) scale(1.08);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(203, 161, 83, 0.4);
         }
         .instagram-floating-btn:hover svg {
@@ -987,38 +987,44 @@
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 120px; }
+            body { padding-top: 140px; }
             header {
-                padding: 0.7rem 4%;
+                padding: 0.8rem 4%;
+                flex-direction: column;
+                gap: 0.6rem;
+                align-items: stretch;
             }
-            .logo-container img { max-height: 45px; }
-            header.scrolled .logo-container img { max-height: 35px; }
+            .header-top-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+            .logo-container img { max-height: 55px; }
+            header.scrolled .logo-container img { max-height: 42px; }
             
             .nav-container {
                 width: 100%;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding: 4px 0 8px 0;
-                scrollbar-width: none;
-                gap: 1rem;
-                justify-content: flex-start;
-                background: rgba(5, 5, 5, 0.98);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 border-top: 1px solid var(--negro-bordes);
-                position: fixed;
-                top: 60px;
-                left: 0;
-                padding-left: 4%;
-                padding-right: 4%;
+                padding-top: 6px;
             }
-            .nav-container::-webkit-scrollbar { display: none; }
             
             nav {
                 width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
             }
+            nav::-webkit-scrollbar { display: none; }
+            
             nav ul { 
                 flex-wrap: nowrap; 
-                gap: 1rem; 
-                justify-content: flex-start;
+                justify-content: flex-start; 
+                gap: 1.2rem; 
+                padding: 2px 0;
             }
             nav a { 
                 font-size: 0.7rem; 
@@ -1029,14 +1035,15 @@
                 padding: 3px 8px;
                 font-size: 0.65rem;
                 flex-shrink: 0;
+                margin-left: 8px;
             }
 
-            section { padding: 4rem 4%; }
-            h2 { font-size: 1.85rem; margin-bottom: 2rem; }
+            section { padding: 4.5rem 4%; }
+            h2 { font-size: 2rem; margin-bottom: 2rem; }
             
             #home {
-                min-height: 80vh;
-                padding: 30px 4% 3rem 4%;
+                min-height: 85vh;
+                padding: 40px 4% 3.5rem 4%;
                 justify-content: center;
                 align-items: flex-start;
             }
@@ -1048,31 +1055,31 @@
                 max-width: 100%;
             }
             .hero-title-name {
-                font-size: 2rem;
-                margin-bottom: 0.5rem;
-                line-height: 1.15;
+                font-size: 2.3rem;
+                margin-bottom: 0.6rem;
+                line-height: 1.12;
             }
             .hero-sub-motto {
-                letter-spacing: 1.2px;
-                margin-bottom: 0.7rem;
-                font-size: 0.78rem;
+                letter-spacing: 1.5px;
+                margin-bottom: 0.9rem;
+                font-size: 0.82rem;
             }
             #home p {
-                font-size: 0.82rem;
-                margin-bottom: 1.4rem;
-                line-height: 1.6;
+                font-size: 0.88rem;
+                margin-bottom: 1.6rem;
+                line-height: 1.65;
             }
             .hero-cta-container {
                 flex-direction: column;
                 width: 100%;
-                gap: 0.6rem;
+                gap: 0.7rem;
             }
             .hero-cta-container .btn {
                 width: 100%;
                 text-align: center;
                 margin-right: 0;
-                padding: 10px 16px;
-                font-size: 0.7rem;
+                padding: 12px 20px;
+                font-size: 0.75rem;
             }
             
             .bio-article-container, .cv-card, .media-card, .event-item {
@@ -1086,11 +1093,6 @@
             .quote-nav-prev { left: 0px; font-size: 1.2rem; }
             .quote-nav-next { right: 0px; font-size: 1.2rem; }
 
-            footer {
-                padding: 2.5rem 5%;
-            }
-
-            /* Ajuste del botón flotante en móviles para que no tape contenido crítico */
             .instagram-floating-btn {
                 width: 46px;
                 height: 46px;
@@ -1129,11 +1131,22 @@
 
     <!-- Main Navigation -->
     <header id="main-header">
-        <div class="logo-container">
-            <a href="#home">
-                <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
+        <div class="header-top-row">
+            <div class="logo-container">
+                <a href="#home">
+                    <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
+                </a>
+            </div>
+            <!-- Selector de idioma visible junto al logo en móviles -->
+            <a href="#" id="lang-toggle-mobile" class="lang-toggle-mobile-class" onclick="toggleLanguage(event)" style="display:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="14">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+                </svg>
+                <span id="lang-text-mobile">ES / EN</span>
             </a>
         </div>
+
         <div class="nav-container">
             <nav>
                 <ul>
@@ -1155,6 +1168,28 @@
             </a>
         </div>
     </header>
+
+    <!-- Script adaptativo para mostrar idioma junto al logo solo en móvil -->
+    <script>
+        function checkMobileLang() {
+            const langToggleDesktop = document.getElementById('lang-toggle');
+            let langToggleMobile = document.getElementById('lang-toggle-mobile');
+            if(window.innerWidth <= 768) {
+                if(langToggleDesktop && !document.getElementById('lang-toggle-mobile')) {
+                    langToggleMobile = langToggleDesktop.cloneNode(true);
+                    langToggleMobile.id = 'lang-toggle-mobile';
+                    langToggleMobile.style.display = 'flex';
+                    document.querySelector('.header-top-row').appendChild(langToggleMobile);
+                    langToggleDesktop.style.display = 'none';
+                }
+            } else {
+                if(langToggleDesktop) langToggleDesktop.style.display = 'flex';
+                if(langToggleMobile) langToggleMobile.remove();
+            }
+        }
+        window.addEventListener('resize', checkMobileLang);
+        window.addEventListener('DOMContentLoaded', checkMobileLang);
+    </script>
 
     <!-- 1. Home -->
     <section id="home">
@@ -1588,22 +1623,22 @@
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 1)</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 2)</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/0FCRu4zdT00yMiPungrHeE?utm_source=generator" width="100%" height="152" frameBorder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/0FCRu4zdT00yMiPungrHeE?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Santa Cruz de Pacairigua</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4pUHrsoqicQpMNpvcj8fWN?utm_source=generator" width="100%" height="152" frameBorder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4pUHrsoqicQpMNpvcj8fWN?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Margariteña</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4lJQar8YFdcEPzRUADtAB4?utm_source=generator" width="100%" height="152" frameBorder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4lJQar8YFdcEPzRUADtAB4?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
             </div>
         </div>
@@ -1625,7 +1660,7 @@
                             <h4 style="font-size: 1.2rem; color: var(--blanco-texto); margin-bottom: 0.2rem; font-family: 'Montserrat', sans-serif;">Pablo Vidal Vázquez</h4>
                             <p style="color: var(--gris-texto); font-size: 0.85rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px;" data-i18n="contact_role1">Consultant</p>
                             <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px;">
-                                <a href="mailto:pablo@diamond-artists.com?subject=Booking%20Inquiry%20-%20Enluis%20Montes%20Olivar" class="text-link" style="font-size: 1rem; border-bottom: 1px solid rgba(203, 161, 83, 0.3); padding-bottom: 2px;">pablo@diamond-artists.com</a>
+                                <a href="mailto:pablo@diamond-artists.com?subject=Booking%20Inquiry%20-%20Enluis%20Montes%20Olivar" class="text-link">pablo@diamond-artists.com</a>
                                 <button class="copy-btn" onclick="copyToClipboard('pablo@diamond-artists.com', this)" data-i18n="contact_copy">Copy</button>
                             </div>
                         </div>
@@ -1634,7 +1669,7 @@
                             <h4 style="font-size: 1.2rem; color: var(--blanco-texto); margin-bottom: 0.2rem; font-family: 'Montserrat', sans-serif;">Luisa Martínez</h4>
                             <p style="color: var(--gris-texto); font-size: 0.85rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px;" data-i18n="contact_role2">Administrator</p>
                             <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px;">
-                                <a href="mailto:management@diamond-artists.com?subject=Inquiry%20-%20Enluis%20Montes%20Olivar" class="text-link" style="font-size: 1rem; border-bottom: 1px solid rgba(203, 161, 83, 0.3); padding-bottom: 2px;">management@diamond-artists.com</a>
+                                <a href="mailto:management@diamond-artists.com?subject=Inquiry%20-%20Enluis%20Montes%20Olivar" class="text-link">management@diamond-artists.com</a>
                                 <button class="copy-btn" onclick="copyToClipboard('management@diamond-artists.com', this)" data-i18n="contact_copy">Copy</button>
                             </div>
                         </div>

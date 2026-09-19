@@ -52,7 +52,7 @@
             font-family: 'Montserrat', sans-serif;
             line-height: 1.85; 
             overflow-x: hidden;
-            padding-top: 130px;
+            padding-top: 150px;
         }
 
         /* -------------------------------------- */
@@ -107,19 +107,19 @@
         }
         
         header.scrolled {
-            padding: 0.5rem 5%; 
+            padding: 0.4rem 5%; 
             background-color: rgba(5, 5, 5, 0.99);
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         
         .logo-container img {
-            max-height: 100px; 
+            max-height: 110px; 
             width: auto;
             transition: all 0.3s ease; 
             cursor: pointer;
         }
         header.scrolled .logo-container img {
-            max-height: 60px; 
+            max-height: 70px; 
         }
 
         .nav-container {
@@ -191,26 +191,79 @@
             fill: var(--dorado);
         }
 
-        /* Botón de Menú Hamburguesa Profesional (Oculto en PC) */
-        .menu-toggle-btn {
+        /* Botón de Menú Móvil Profesional (Oculto en PC) */
+        .mobile-menu-trigger {
             display: none;
-            background: transparent;
-            border: 1px solid var(--negro-bordes);
-            border-radius: 6px;
-            padding: 8px 10px;
+            background: rgba(203, 161, 83, 0.1);
+            border: 1px solid rgba(203, 161, 83, 0.4);
+            color: var(--dorado);
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
             cursor: pointer;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 42px;
-            height: 38px;
-            z-index: 1001;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
         }
-        .menu-toggle-btn span {
-            display: block;
+        .mobile-menu-trigger:hover {
+            background: var(--dorado);
+            color: var(--negro-fondo);
+        }
+
+        /* Panel Desplegable Móvil */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 2px;
-            background-color: var(--blanco-texto);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 100vh;
+            background-color: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-menu-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: transparent;
+            border: none;
+            color: var(--blanco-texto);
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+        .mobile-menu-links {
+            list-style: none;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .mobile-menu-links a {
+            color: var(--blanco-texto);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-links a:hover {
+            color: var(--dorado);
         }
 
         /* -------------------------------------- */
@@ -1038,66 +1091,19 @@
         /* RESPONSIVO MÁXIMO PARA CELULARES       */
         /* -------------------------------------- */
         @media (max-width: 768px) {
-            body { padding-top: 130px; }
+            body { padding-top: 95px; }
             header {
                 padding: 0.6rem 4%;
-                flex-direction: column;
-                gap: 6px;
-                align-items: stretch;
             }
-            .header-mobile-top {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-            .logo-container img { max-height: 55px; }
-            header.scrolled .logo-container img { max-height: 40px; }
+            .logo-container img { max-height: 48px; }
+            header.scrolled .logo-container img { max-height: 36px; }
             
-            /* Dos filas limpias con indicador visual lateral para deslizar */
             .nav-container {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-top: 1px solid rgba(255, 255, 255, 0.06);
-                padding-top: 6px;
-                position: relative;
-            }
-            .nav-container::after {
-                content: '‹ ›';
-                color: var(--dorado);
-                font-size: 0.75rem;
-                letter-spacing: 2px;
-                opacity: 0.6;
-                padding-left: 6px;
-                flex-shrink: 0;
-            }
-            
-            nav {
-                width: 100%;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
-            nav::-webkit-scrollbar { display: none; }
-            
-            nav ul { 
-                flex-wrap: nowrap; 
-                justify-content: flex-start; 
-                gap: 1.5rem; 
-                padding: 2px 0;
-            }
-            nav a { 
-                font-size: 0.75rem; 
-                white-space: nowrap; 
-                font-weight: 500;
+                display: none;
             }
 
-            #lang-toggle {
-                padding: 4px 10px;
-                font-size: 0.68rem;
-                flex-shrink: 0;
+            .mobile-menu-trigger {
+                display: inline-flex;
             }
 
             section { padding: 4.5rem 4%; }
@@ -1117,7 +1123,7 @@
                 max-width: 100%;
             }
             .hero-title-name {
-                font-size: 2.3rem;
+                font-size: 2.2rem;
                 margin-bottom: 0.6rem;
                 line-height: 1.15;
             }
@@ -1182,6 +1188,22 @@
         </svg>
     </a>
 
+    <!-- Menú Desplegable Móvil -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">&times;</button>
+        <ul class="mobile-menu-links">
+            <li><a href="#home" onclick="toggleMobileMenu()" data-i18n="nav_home">Home</a></li>
+            <li><a href="#about" onclick="toggleMobileMenu()" data-i18n="nav_about">About</a></li>
+            <li><a href="#press" onclick="toggleMobileMenu()" data-i18n="nav_press">Press</a></li>
+            <li><a href="#schedule" onclick="toggleMobileMenu()" data-i18n="nav_schedule">Schedule</a></li>
+            <li><a href="#multimedia" onclick="toggleMobileMenu()" data-i18n="nav_media">Multimedia</a></li>
+            <li><a href="#contact" onclick="toggleMobileMenu()" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <div style="margin-top: 1rem;">
+            <a href="#" id="lang-toggle-modal" onclick="toggleLanguage(event); toggleMobileMenu();" style="color: var(--dorado); text-decoration: none; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">ES / EN</a>
+        </div>
+    </div>
+
     <!-- Modal de Frases/Quotes -->
     <div id="quoteModal" class="quote-modal" onclick="closeQuoteModal(event)">
         <div class="quote-modal-content">
@@ -1193,21 +1215,17 @@
 
     <!-- Main Navigation -->
     <header id="main-header">
-        <div class="header-mobile-top">
-            <div class="logo-container">
-                <a href="#home">
-                    <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
-                </a>
-            </div>
-            <!-- Idioma arriba a la derecha en celular junto al logo -->
-            <a href="#" id="lang-toggle-mobile" class="lang-toggle-mobile-class" onclick="toggleLanguage(event)" style="display:none;">
-                <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="14">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-                </svg>
-                <span id="lang-text-mobile">ES / EN</span>
+        <div class="logo-container">
+            <a href="#home">
+                <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
             </a>
         </div>
+
+        <!-- Botón Menú Móvil -->
+        <button class="mobile-menu-trigger" onclick="toggleMobileMenu()">
+            <span>MENU</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
 
         <div class="nav-container">
             <nav>
@@ -1231,26 +1249,11 @@
         </div>
     </header>
 
-    <!-- Script adaptativo para separar idioma en móvil -->
     <script>
-        function checkMobileLang() {
-            const langToggleDesktop = document.getElementById('lang-toggle');
-            let langToggleMobile = document.getElementById('lang-toggle-mobile');
-            if(window.innerWidth <= 768) {
-                if(langToggleDesktop && !document.getElementById('lang-toggle-mobile')) {
-                    langToggleMobile = langToggleDesktop.cloneNode(true);
-                    langToggleMobile.id = 'lang-toggle-mobile';
-                    langToggleMobile.style.display = 'flex';
-                    document.querySelector('.header-mobile-top').appendChild(langToggleMobile);
-                    langToggleDesktop.style.display = 'none';
-                }
-            } else {
-                if(langToggleDesktop) langToggleDesktop.style.display = 'flex';
-                if(langToggleMobile) langToggleMobile.remove();
-            }
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
         }
-        window.addEventListener('resize', checkMobileLang);
-        window.addEventListener('DOMContentLoaded', checkMobileLang);
     </script>
 
     <!-- 1. Home -->

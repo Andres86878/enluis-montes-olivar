@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>Enluis Montes Olivar | Orchestra Conductor</title>
+    <meta name="description" content="Enluis Montes Olivar, Venezuelan orchestra conductor. Biography, press, upcoming concerts, multimedia and booking contact.">
+    <meta property="og:title" content="Enluis Montes Olivar | Orchestra Conductor">
+    <meta property="og:description" content="Passion and energy at the service of music.">
+    <meta property="og:image" content="./foto.enluis.inicio.1.jpeg">
+    <meta name="theme-color" content="#050505">
+    <link rel="icon" type="image/png" href="Isologo Positivo PNG.png">
     
     <!-- FORZAR EL INICIO AL RECARGAR -->
     <script>
@@ -69,12 +75,12 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
         }
         #splash-screen img {
             max-width: 350px; 
             width: 70%;
-            animation: fadeInLogo 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            animation: fadeInLogo 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
         .splash-hidden {
             opacity: 0;
@@ -335,17 +341,20 @@
         /* -------------------------------------- */
         /* HERO SECTION                           */
         /* -------------------------------------- */
-        #home { 
+        .home-hero { 
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 5%;
             min-height: 85vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: flex-start; 
         }
-        #home .bg-photo {
+        .home-hero .bg-photo {
             object-position: center top;
         }
-        #home .section-content {
+        .home-hero .section-content {
             opacity: 1 !important;
             transform: none !important;
             max-width: 850px;
@@ -385,7 +394,7 @@
             opacity: 0.95;
         }
 
-        #home p {
+        .home-hero p {
             font-size: clamp(0.95rem, 1.1vw, 1.1rem); 
             font-weight: 300;
             line-height: 1.85;
@@ -1098,16 +1107,16 @@
             section { padding: 4.5rem 4%; }
             h2 { font-size: 2rem; margin-bottom: 2rem; }
             
-            #home {
+            .home-hero {
                 min-height: 82vh;
                 padding: 35px 4% 3rem 4%;
                 justify-content: center;
                 align-items: flex-start;
             }
-            #home .bg-photo {
+            .home-hero .bg-photo {
                 object-position: center 15%;
             }
-            #home .section-content { 
+            .home-hero .section-content { 
                 margin-top: 0;
                 max-width: 100%;
             }
@@ -1121,7 +1130,7 @@
                 margin-bottom: 0.9rem;
                 font-size: 0.82rem;
             }
-            #home p {
+            .home-hero p {
                 font-size: 0.88rem;
                 margin-bottom: 1.6rem;
                 line-height: 1.65;
@@ -1161,13 +1170,549 @@
                 height: 22px;
             }
         }
+
+        /* -------------------------------------- */
+        /* SECCIONES COMO PÁGINAS SEPARADAS       */
+        /* -------------------------------------- */
+        html { scroll-behavior: auto; }
+        #splash-screen { z-index: 10001; }
+        .splash-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .splash-bar {
+            width: 140px;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+        .splash-bar span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: var(--dorado);
+        }
+        #splash-screen.loading .splash-bar span {
+            animation: splashBar 0.45s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+        @keyframes splashBar { to { width: 100%; } }
+        .splash-label {
+            margin-top: 1rem;
+            min-height: 1.2em;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        #splash-screen.loading .splash-label { opacity: 1; }
+
+        .page-section:not(.active) { display: none !important; }
+        .page-section.active {
+            display: block;
+            min-height: calc(100vh - 150px);
+            border-bottom: none;
+        }
+        #home.page-section.active { display: block; padding: 0; }
+        .page-section.active .section-content {
+            animation: pageIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        @keyframes pageIn {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Encabezado de cada página: número + línea dorada */
+        .page-kicker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gris-texto);
+            margin-bottom: 1rem;
+        }
+        .page-kicker b { color: var(--dorado); font-weight: 600; }
+        .page-kicker::after {
+            content: '';
+            flex: 0 0 60px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--dorado), transparent);
+        }
+
+        /* Ítem activo en el menú */
+        nav a.active { color: var(--dorado); }
+        nav a.active::after { width: 100%; }
+        .mobile-menu-links a.active { color: var(--dorado); }
+
+        /* Barra Anterior / Siguiente */
+        .page-pager {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 1rem;
+            padding: 2.2rem 5%;
+            background: var(--negro-fondo);
+            border-top: 1px solid var(--negro-bordes);
+        }
+        .pager-link {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-decoration: none;
+            color: var(--blanco-texto);
+            padding: 0.6rem 0;
+            transition: color 0.3s ease;
+        }
+        .pager-next { text-align: right; align-items: flex-end; }
+        .pager-link.hidden { visibility: hidden; }
+        .pager-dir {
+            font-size: 0.68rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gris-texto);
+        }
+        .pager-prev .pager-dir::before { content: '\2190\00a0\00a0'; color: var(--dorado); }
+        .pager-next .pager-dir::after { content: '\00a0\00a0\2192'; color: var(--dorado); }
+        .pager-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+        }
+        .pager-link:hover .pager-name { color: var(--dorado); }
+        .pager-count {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--dorado);
+            border: 1px solid rgba(203,161,83,0.35);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+        @media (max-width: 768px) {
+            .page-section.active { min-height: calc(100vh - 110px); }
+            .page-pager { padding: 1.6rem 4%; gap: 0.6rem; }
+            .pager-name { font-size: 1.05rem; }
+            .pager-dir { font-size: 0.6rem; letter-spacing: 2px; }
+            .pager-count { font-size: 0.65rem; padding: 4px 10px; letter-spacing: 2px; }
+        }
+
+        /* -------------------------------------- */
+        /* HOME: CONTENIDO ADICIONAL              */
+        /* -------------------------------------- */
+        .home-more {
+            position: relative;
+            background: var(--negro-fondo);
+            padding: 5rem 5% 5rem;
+        }
+        .home-block { max-width: 1200px; margin: 0 auto; }
+        .home-label {
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .home-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--negro-bordes);
+        }
+
+        /* Próximo concierto + cita destacada */
+        .home-feature {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+        .next-concert {
+            background: var(--negro-tarjetas);
+            border: 1px solid var(--negro-bordes);
+            border-top: 2px solid var(--dorado);
+            border-radius: 8px;
+            padding: 2.5rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .nc-date {
+            flex: 0 0 auto;
+            text-align: center;
+            border: 1px solid rgba(203,161,83,0.4);
+            border-radius: 6px;
+            padding: 0.9rem 1.1rem;
+            min-width: 88px;
+        }
+        .nc-date .nc-month {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dorado);
+        }
+        .nc-date .nc-day {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            line-height: 1.1;
+            color: var(--blanco-texto);
+        }
+        .nc-date .nc-day.nc-range { font-size: 1.6rem; padding: 0.35rem 0; }
+        .nc-date .nc-year {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--gris-texto);
+        }
+        .nc-body h3 { font-size: 1.35rem; line-height: 1.35; margin-bottom: 0.6rem; }
+        .nc-body .nc-when { font-size: 0.85rem; color: var(--blanco-texto); line-height: 1.6; margin-bottom: 0.3rem; }
+        .nc-body .nc-role { font-size: 0.85rem; color: var(--dorado); font-weight: 600; margin-bottom: 1.5rem; }
+        .nc-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .nc-actions .btn { margin: 0; font-size: 0.72rem; padding: 10px 20px; }
+
+        .home-quote {
+            position: relative;
+            border-left: 2px solid var(--dorado);
+            padding: 1rem 0 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .home-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -2.2rem;
+            left: 1.4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 7rem;
+            color: var(--dorado);
+            opacity: 0.18;
+            line-height: 1;
+        }
+        .home-quote p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: var(--blanco-texto);
+            margin-bottom: 1.2rem;
+        }
+        .home-quote cite {
+            font-style: normal;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .home-feature { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .home-hero { padding: 35px 4% 5rem 4%; }
+            .home-more { padding: 3.5rem 4% 3.5rem; }
+            .home-feature { margin-bottom: 3.5rem; }
+            .next-concert { flex-direction: column; padding: 1.6rem; gap: 1.2rem; }
+            .nc-date { display: flex; gap: 0.6rem; align-items: baseline; padding: 0.5rem 0.9rem; min-width: 0; }
+            .nc-date .nc-day { font-size: 1.5rem; }
+            .nc-actions .btn { width: 100%; text-align: center; }
+            .home-quote p { font-size: 1.1rem; }
+        }
+
+        /* -------------------------------------- */
+        /* EFECTOS 3D                             */
+        /* -------------------------------------- */
+
+        /* Entrada de cada sección con perspectiva */
+        @keyframes pageIn {
+            from { opacity: 0; transform: perspective(1400px) rotateX(10deg) translateY(50px) scale(0.97); }
+            to   { opacity: 1; transform: perspective(1400px) rotateX(0) translateY(0) scale(1); }
+        }
+        .page-section.active .section-content { transform-origin: 50% 0; }
+
+        /* Parallax de la foto principal */
+        .home-hero .bg-photo {
+            transform: scale(1.12) translate3d(var(--px, 0px), calc(var(--py, 0px) + var(--sy, 0px)), 0);
+            transition: transform 0.25s ease-out;
+            will-change: transform;
+        }
+        .home-hero .hero-inner-3d {
+            transform: translate3d(calc(var(--px, 0px) * -0.6), calc(var(--py, 0px) * -0.6), 0);
+            transition: transform 0.25s ease-out;
+        }
+        .hero-title-name {
+            text-shadow: 0 2px 0 rgba(0,0,0,0.35), 0 12px 30px rgba(0,0,0,0.55);
+        }
+
+        /* Botones con profundidad */
+        .btn {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.25), 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 0 rgba(0,0,0,0.25), 0 18px 30px rgba(203,161,83,0.25);
+        }
+        .btn:active { transform: translateY(1px); box-shadow: 0 2px 0 rgba(0,0,0,0.25); }
+
+        /* Tarjetas que se inclinan con el mouse */
+        .tilt.tilt {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease !important;
+            will-change: transform;
+        }
+        .tilt.tilt:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(203,161,83,0.25); }
+        .tilt-glare {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,0.10), transparent 55%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+        .tilt:hover .tilt-glare { opacity: 1; }
+
+        /* Aparición 3D al hacer scroll */
+        .r3d, .r3d-group > * {
+            opacity: 0;
+            transform: perspective(1000px) rotateX(28deg) translateY(50px);
+            transform-origin: 50% 100%;
+            transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: var(--d, 0s);
+        }
+        .r3d.in, .r3d-group.in > * { opacity: 1; transform: none; }
+        .r3d-group.in > .tilt { transition-delay: 0s; }
+
+        /* Cita giratoria */
+        .home-quote { perspective: 1000px; }
+        .hq-stage { display: grid; }
+        .hq-item {
+            grid-area: 1 / 1;
+            align-self: center;
+            opacity: 0;
+            transform: rotateX(-75deg) translateZ(-40px);
+            transform-origin: 50% 0;
+            transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            backface-visibility: hidden;
+        }
+        .hq-item.leaving { transform: rotateX(75deg) translateZ(-40px); transform-origin: 50% 100%; }
+        .hq-item.active { opacity: 1; transform: none; pointer-events: auto; }
+        .hq-item p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--blanco-texto);
+            margin-bottom: 1.2rem;
+        }
+        .hq-item cite {
+            display: block;
+            font-style: normal;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            font-weight: 600;
+            line-height: 1.6;
+        }
+        .hq-item cite span { color: var(--gris-texto); text-transform: none; display: inline-block; margin-top: 4px; }
+        .hq-controls { display: flex; align-items: center; gap: 0.8rem; margin-top: 1.6rem; }
+        .hq-arrow {
+            background: none;
+            border: 1px solid var(--negro-bordes);
+            color: var(--dorado);
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .hq-arrow:hover { border-color: var(--dorado); background: var(--dorado-suave); }
+        .hq-dots { display: flex; gap: 6px; }
+        .hq-dot {
+            width: 28px; height: 3px;
+            background: rgba(255,255,255,0.12);
+            border: none; padding: 0;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .hq-dot::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: var(--dorado);
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+        .hq-dot.done::after { transform: scaleX(1); }
+        .hq-dot.active::after { animation: hqFill var(--hq-time, 7s) linear forwards; }
+        .home-quote.paused .hq-dot.active::after { animation-play-state: paused; }
+        @keyframes hqFill { to { transform: scaleX(1); } }
+
+        /* Logo de la pantalla de carga con giro 3D */
+        @keyframes fadeInLogo {
+            0% { opacity: 0; transform: perspective(800px) rotateY(-35deg) scale(0.9); }
+            100% { opacity: 1; transform: perspective(800px) rotateY(0) scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hq-item p { font-size: 1.05rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .r3d, .r3d-group > * { opacity: 1; transform: none; transition: none; }
+            .home-hero .bg-photo { transform: none; }
+        }
+
+        /* -------------------------------------- */
+        /* DESCUBRIR (minimalista)                */
+        /* -------------------------------------- */
+        .scroll-cue {
+            position: absolute;
+            left: 50%;
+            bottom: 1.6rem;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--gris-texto);
+            transition: color 0.4s ease;
+        }
+        .scroll-cue:hover { color: var(--blanco-texto); }
+        .cue-text {
+            font-size: 0.6rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            padding-left: 5px;
+        }
+        .cue-line {
+            position: relative;
+            width: 1px;
+            height: 48px;
+            background: rgba(255,255,255,0.12);
+            overflow: hidden;
+        }
+        .cue-line::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 1px; height: 45%;
+            background: var(--dorado);
+            animation: cueDrop 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+        }
+        @keyframes cueDrop {
+            0%   { transform: translateY(-100%); }
+            100% { transform: translateY(230%); }
+        }
+
+        /* -------------------------------------- */
+        /* RECORRE EL SITIO (lista minimalista)   */
+        /* -------------------------------------- */
+        .home-explore {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--negro-bordes);
+        }
+        .explore-row {
+            position: relative;
+            display: grid;
+            grid-template-columns: 60px 1fr 1.2fr 40px;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.6rem 0;
+            text-decoration: none;
+            color: var(--blanco-texto);
+            border-bottom: 1px solid var(--negro-bordes);
+        }
+        .explore-row::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: -1px;
+            width: 100%; height: 1px;
+            background: var(--dorado);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .explore-row:hover::after { transform: scaleX(1); }
+        .explore-row .ex-num {
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            color: var(--gris-texto);
+            transition: color 0.4s ease;
+        }
+        .explore-row .ex-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 400;
+            line-height: 1.2;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+        }
+        .explore-row .ex-desc {
+            font-size: 0.85rem;
+            color: var(--gris-texto);
+            font-weight: 300;
+            opacity: 0.6;
+            transition: opacity 0.4s ease;
+        }
+        .explore-row .ex-arrow {
+            justify-self: end;
+            position: relative;
+            width: 22px; height: 1px;
+            background: var(--gris-texto);
+            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
+        }
+        .explore-row .ex-arrow::after {
+            content: '';
+            position: absolute;
+            right: 0; top: -3px;
+            width: 7px; height: 7px;
+            border-top: 1px solid currentColor;
+            border-right: 1px solid currentColor;
+            color: var(--gris-texto);
+            transform: rotate(45deg);
+            transition: color 0.4s ease;
+        }
+        .explore-row:hover .ex-num { color: var(--dorado); }
+        .explore-row:hover .ex-title { transform: translateX(12px); color: var(--dorado); }
+        .explore-row:hover .ex-desc { opacity: 1; }
+        .explore-row:hover .ex-arrow { width: 40px; background: var(--dorado); }
+        .explore-row:hover .ex-arrow::after { color: var(--dorado); }
+
+        @media (max-width: 768px) {
+            .explore-row { grid-template-columns: 34px 1fr 30px; gap: 0.8rem; padding: 1.2rem 0; }
+            .explore-row .ex-desc { display: none; }
+            .explore-row .ex-title { font-size: 1.35rem; }
+            .scroll-cue { bottom: 1rem; }
+            .cue-line { height: 36px; }
+        }
     </style>
 </head>
 <body>
 
     <!-- AUTOMATIC SPLASH SCREEN -->
     <div id="splash-screen">
-        <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
+        <div class="splash-inner">
+            <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
+            <div class="splash-bar"><span></span></div>
+            <p class="splash-label" id="splash-label"></p>
+        </div>
     </div>
 
     <!-- LOGOTIPO DE INSTAGRAM FLOTANTE PERMANENTE ABAJO A LA DERECHA (@emontesolivar) -->
@@ -1268,10 +1813,11 @@
     </script>
 
     <!-- 1. Home -->
-    <section id="home">
+    <section id="home" class="page-section">
+      <div class="home-hero">
         <img src="./foto.enluis.inicio.1.jpeg" alt="Background Home" class="bg-photo" fetchpriority="high">
         <div class="bg-overlay"></div>
-        <div class="section-content">
+        <div class="section-content"><div class="hero-inner-3d">
             <h1 class="hero-title-name">Enluis <span>Montes Olivar</span></h1>
             <div class="hero-divider"></div>
             <span class="hero-sub-motto" data-i18n="home_title">Passion and energy at the service of music</span>
@@ -1280,11 +1826,77 @@
                 <a href="#schedule" class="btn" data-i18n="home_btn1">View Upcoming Events</a>
                 <a href="#multimedia" class="btn btn-outline" data-i18n="home_btn2">Listen to Music</a>
             </div>
+        </div></div>
+        <a href="#" class="scroll-cue" onclick="event.preventDefault(); document.getElementById('home-more').scrollIntoView({behavior:'smooth'})" aria-label="Scroll">
+            <span class="cue-text" data-i18n="home_scroll">Discover</span>
+            <span class="cue-line"></span>
+        </a>
+      </div>
+
+      <!-- CONTENIDO ADICIONAL DEL INICIO -->
+      <div class="home-more" id="home-more">
+        <div class="home-block">
+
+            <!-- Próximo concierto + cita -->
+            <div class="home-feature r3d-group">
+                <div>
+                    <div class="home-label" data-i18n="home_next_label">Next performance</div>
+                    <div id="home-next-concert"></div>
+                </div>
+                <div>
+                    <div class="home-label" data-i18n="home_press_label">They say</div>
+                    <div class="home-quote" id="home-quote" onmouseenter="pauseHomeQuotes(true)" onmouseleave="pauseHomeQuotes(false)">
+                        <div class="hq-stage" id="hq-stage"></div>
+                        <div class="hq-controls">
+                            <button class="hq-arrow" onclick="stepHomeQuote(-1)" aria-label="Previous">&#8249;</button>
+                            <div class="hq-dots" id="hq-dots"></div>
+                            <button class="hq-arrow" onclick="stepHomeQuote(1)" aria-label="Next">&#8250;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explorar secciones -->
+            <div class="home-label r3d" data-i18n="home_explore_label">Explore</div>
+            <div class="home-explore r3d-group" role="navigation" aria-label="Sections">
+                <a href="#about" class="explore-row">
+                    <span class="ex-num">02</span>
+                    <span class="ex-title" data-i18n="nav_about"></span>
+                    <span class="ex-desc" data-i18n="ex_about"></span>
+                    <span class="ex-arrow" aria-hidden="true"></span>
+                </a>
+                <a href="#press" class="explore-row">
+                    <span class="ex-num">03</span>
+                    <span class="ex-title" data-i18n="nav_press"></span>
+                    <span class="ex-desc" data-i18n="ex_press"></span>
+                    <span class="ex-arrow" aria-hidden="true"></span>
+                </a>
+                <a href="#schedule" class="explore-row">
+                    <span class="ex-num">04</span>
+                    <span class="ex-title" data-i18n="nav_schedule"></span>
+                    <span class="ex-desc" data-i18n="ex_schedule"></span>
+                    <span class="ex-arrow" aria-hidden="true"></span>
+                </a>
+                <a href="#multimedia" class="explore-row">
+                    <span class="ex-num">05</span>
+                    <span class="ex-title" data-i18n="nav_media"></span>
+                    <span class="ex-desc" data-i18n="ex_media"></span>
+                    <span class="ex-arrow" aria-hidden="true"></span>
+                </a>
+                <a href="#contact" class="explore-row">
+                    <span class="ex-num">06</span>
+                    <span class="ex-title" data-i18n="nav_contact"></span>
+                    <span class="ex-desc" data-i18n="ex_contact"></span>
+                    <span class="ex-arrow" aria-hidden="true"></span>
+                </a>
+            </div>
+
         </div>
+      </div>
     </section>
 
     <!-- 2. About -->
-    <section id="about">
+    <section id="about" class="page-section">
         <img src="./foto.general.enluis.10.JPG" alt="Background About" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
@@ -1314,7 +1926,7 @@
                         
                         <p data-i18n="bio_p2">He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral, a tradition of the NY Phil dating back to 1992.</p>
                         
-                        <p data-i18n="bio_p3">Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra. Upcoming debuts include The Youth Orchestra of Galicia and the Galicia Symphony both in Spain.</p>
+                        <p data-i18n="bio_p3">Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guest conductor and the San Diego Symphony as a conducting fellow and guest conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra. Upcoming debuts include The Youth Orchestra of Galicia and the Galicia Symphony both in Spain.</p>
                         
                         <p data-i18n="bio_p4">As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as "virtuosic splendor" and "a master class in musicianship." Additionally, he has served as assistant conductor at the Opéra National de Paris, collaborating with Gustavo Dudamel on Nixon in China and with Alexander Soddy on Lohengrin.</p>
                         
@@ -1507,7 +2119,7 @@
     </section>
 
     <!-- 3. Press -->
-    <section id="press">
+    <section id="press" class="page-section">
         <img src="./foto.general.enluis.5.JPG" alt="Background Press" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
@@ -1540,7 +2152,7 @@
     </section>
 
     <!-- 4. Schedule -->
-    <section id="schedule">
+    <section id="schedule" class="page-section">
         <img src="./foto.general.enluis.11.jpeg" alt="Background Schedule" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
@@ -1554,7 +2166,7 @@
     </section>
 
     <!-- 5. Multimedia -->
-    <section id="multimedia">
+    <section id="multimedia" class="page-section">
         <img src="./foto.general.enluis.6.JPG" alt="Background Multimedia" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
@@ -1699,29 +2311,29 @@
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 1)</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe loading="lazy" class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/6X89KSz4qSz6PphhL49mjW?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Cantata Criolla (Parte 2)</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/0FCRu4zdT00yMiPungrHeE?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe loading="lazy" class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/0FCRu4zdT00yMiPungrHeE?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Santa Cruz de Pacairigua</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4pUHrsoqicQpMNpvcj8fWN?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe loading="lazy" class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4pUHrsoqicQpMNpvcj8fWN?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
 
                 <div class="media-card reveal" style="padding: 1.5rem; justify-content: center;">
                     <h3 style="font-size: 1rem; margin-bottom: 0.8rem; font-weight: 500;">Margariteña</h3>
-                    <iframe class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4lJQar8YFdcEPzRUADtAB4?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe loading="lazy" class="media-player spotify-iframe" style="border-radius:8px" src="https://open.spotify.com/embed/track/4lJQar8YFdcEPzRUADtAB4?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 6. Contact -->
-    <section id="contact">
+    <section id="contact" class="page-section">
         <img src="./foto.general.enluis.9.jpg" alt="Background Contact" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
@@ -1754,6 +2366,19 @@
             </div>
         </div>
     </section>
+
+    <!-- NAVEGACIÓN ENTRE SECCIONES (Anterior / Siguiente) -->
+    <div class="page-pager" id="page-pager">
+        <a href="#" class="pager-link pager-prev" id="pager-prev">
+            <span class="pager-dir" data-i18n="pager_prev">Previous</span>
+            <span class="pager-name" id="pager-prev-name"></span>
+        </a>
+        <div class="pager-count" id="pager-count">01 / 06</div>
+        <a href="#" class="pager-link pager-next" id="pager-next">
+            <span class="pager-dir" data-i18n="pager_next">Next</span>
+            <span class="pager-name" id="pager-next-name"></span>
+        </a>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1792,6 +2417,11 @@
         // -------------------------
         const i18n = {
             en: {
+                pager_prev: "Previous", pager_next: "Next", loading_page: "Loading",
+                home_scroll: "Discover", home_next_label: "Next performance", home_press_label: "They say", home_explore_label: "Explore the site",
+                home_quote: "\"He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy.\"",
+                ex_about: "Career, training and professional experience.", ex_schedule: "Upcoming concerts and repertoire.", ex_press: "Interviews and articles in the media.", ex_media: "Videos and recordings of his performances.", ex_contact: "Management and booking inquiries.",
+                home_all_events: "Full schedule", home_months: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
                 nav_home: "Home", nav_about: "About", nav_press: "Press", nav_schedule: "Schedule", nav_media: "Multimedia", nav_contact: "Contact",
                 home_title: "Passion and energy at the service of music",
                 home_desc: "An artistic vision that unites technical excellence with the overflowing passion of the stage.",
@@ -1800,7 +2430,7 @@
                 about_title: "Biography",
                 bio_p1: "Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra. In 2024, he was awarded the prestigious Glenn Gould Protégé Prize, which followed his 1st Prize and Orchestra Prize at the 2022 International Conducting Competition of the University of Almería in Spain.",
                 bio_p2: "He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral, a tradition of the NY Phil dating back to 1992.",
-                bio_p3: "Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guess conductor and the San Diego Symphony as a conducting fellow and guess conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra. Upcoming debuts include The Youth Orchestra of Galicia and the Galicia Symphony both in Spain.",
+                bio_p3: "Upcoming appearances in 2026 and 2027 include returning engagement with the Bogota Philharmonic as guest conductor and the San Diego Symphony as a conducting fellow and guest conductor at The Rady Shell including conducting the traditional summer concert: Tchaikovsky Spectacular. He will also return as cover conductor with the New York Philharmonic over an European tour in spring of 2026 and he will lead a Symphonic Brahms Cycle with the Simón Bolívar Chamber Orchestra. Upcoming debuts include The Youth Orchestra of Galicia and the Galicia Symphony both in Spain.",
                 bio_p4: "As a two seasons Dudamel Fellow with the Los Angeles Philharmonic, Enluis conducted performances at both Walt Disney Concert Hall and the Hollywood Bowl, where critic Tony Frankel praised his work as \"virtuosic splendor\" and \"a master class in musicianship.\" Additionally, he has served as assistant conductor at the Opéra National de Paris, collaborating with Gustavo Dudamel on Nixon in China and with Alexander Soddy on Lohengrin.",
                 bio_p5: "Enluis received a diploma in Orchestral Conducting from the Simón Bolívar Conservatory of Music in 2023 and he also received his Bachelor of Arts in Music from Columbus State University, USA in spring of 2026 with honors (Summa Cum Laude), in addition to serving as Associate Conductor of the Schwob Philharmonic and Opera and the Columbus Ballet from 2022-2026. A product of Venezuela's El Sistema, Enluis has led performances with the Simón Bolívar Symphony Orchestra, Juan José Landaeta Symphony, Caracas Symphony Orchestra, and the Simón Bolívar National Choir. He conducted a landmark posthumous tribute to Maestro José Antonio Abreu, uniting members of the El Sistema family, and led a Guinness World Record-setting performance with an orchestra and chorus of 12,000 musicians, the largest ensemble of its kind.",
                 bio_p6: "He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors such as Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson and Nathalie Stutzmann. Enluis continues his studies currently pursuing a master's degree in higher education at the Libertador Experimental Pedagogical University in Venezuela.",
@@ -1847,10 +2477,15 @@
                 quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Music Director Royal Liverpool Philharmonic.<br>Principal Guest Conductor Polish National Radio Symphony Orchestra.</span>",
                 quote_3_text: "\"Personally, I believe that his great talent, intelligence, commitment, charisma, leadership, social sensitivity, passion and conducting undoubtedly make him an extraordinary artist.\"",
                 quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Music Director San Diego Symphony.<br>Music Director Orchestre Symphonique de Montréal.</span>",
-                quote_4_text: "\"Enluis is one of the most gifted young conductors have seen through my career. His gestual language is fluent, offering musicians clear intent that is technically secure, precise, and emotionally connected. He inspires artists that of all ages and abilities to the highest levels... This effortless technique belies outstanding musicianship.\"",
+                quote_4_text: "\"Enluis is one of the most gifted young conductors I have seen through my career. His gestual language is fluent, offering musicians clear intent that is technically secure, precise, and emotionally connected. He inspires artists that of all ages and abilities to the highest levels... This effortless technique belies outstanding musicianship.\"",
                 quote_4_auth: "Paul Hostetter<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Professor of Music.<br>The Ethel Foley Distinguished Chair in Orchestral Activities.<br>Columbus State University.</span>"
             },
             es: {
+                pager_prev: "Anterior", pager_next: "Siguiente", loading_page: "Cargando",
+                home_scroll: "Descubrir", home_next_label: "Próxima presentación", home_press_label: "Dicen de él", home_explore_label: "Recorre el sitio",
+                home_quote: "\"Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado.\"",
+                ex_about: "Trayectoria, formación y experiencia profesional.", ex_schedule: "Próximos conciertos y repertorio.", ex_press: "Entrevistas y artículos en los medios.", ex_media: "Videos y grabaciones de sus presentaciones.", ex_contact: "Representación y contrataciones.",
+                home_all_events: "Ver agenda completa", home_months: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
                 nav_home: "Inicio", nav_about: "Biografía", nav_press: "Prensa", nav_schedule: "Agenda", nav_media: "Multimedia", nav_contact: "Contacto",
                 home_title: "Pasión y energía al servicio de la música",
                 home_desc: "Una visión artística que une la excelencia técnica con la pasión desbordante del escenario.",
@@ -1888,7 +2523,7 @@
                 
                 press_title: "Medios y Prensa", press_link: "Leer artículo completo &rarr;",
                 
-                schedule_title: "Schedule of Events", schedule_subtitle: "PRÓXIMAS PRESENTACIONES", schedule_loading: "Cargando programación...",
+                schedule_title: "Agenda de Eventos", schedule_subtitle: "PRÓXIMAS PRESENTACIONES", schedule_loading: "Cargando programación...",
                 schedule_view_rep: "Ver Repertorio",
                 schedule_hide_rep: "Ocultar Repertorio",
                 schedule_tickets_soon: "Entradas Próximamente",
@@ -1896,13 +2531,13 @@
                 schedule_program_label: "REPERTORIO",
                 media_title: "Multimedia", media_subtitle1: "VIDEOTECA", media_subtitle2: "AUDIOTECA",
                 yt_watch: "Ver video",
-                contact_title: "Contacto", contact_mgmt: "Representación", contact_desc: "Spain, Portugal, Latin America, and special projects", contact_role1: "Consultor", contact_role2: "Administradora", contact_copy: "Copiar",
+                contact_title: "Contacto", contact_mgmt: "Representación", contact_desc: "España, Portugal, Latinoamérica y proyectos especiales", contact_role1: "Consultor", contact_role2: "Administradora", contact_copy: "Copiar",
                 footer_text: "&copy; 2026 Enluis Montes Olivar. Todos los derechos reservados.",
                 schedule_no_events: "No hay próximos conciertos programados.", schedule_more: "Ver programación completa", schedule_less: "Ver menos",
 
                 quote_1_text: "\"Este concierto de preparación fue dirigido por un nuevo becario Dudamel, Enluis Montes Olivar, un venezolano de 22 años. Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado...\"",
                 quote_1_auth: "Los Angeles Times",
-                quote_2_text: "\"Es un director con gran capacidad de comunicación, técnica, inteligencia, compromiso, carisma, liderazgo, sensibilidad social y pasión que sin duda lo convierten en un musico extraordinario.\"",
+                quote_2_text: "\"Es un director con gran capacidad de comunicación, técnica, inteligencia, compromiso, carisma, liderazgo, sensibilidad social y pasión que sin duda lo convierten en un músico extraordinario.\"",
                 quote_2_auth: "Domingo Hindoyan<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical Royal Liverpool Philharmonic.<br>Director principal invitado Orquesta de la Radio Nacional de Polonia.</span>",
                 quote_3_text: "\"Personalmente, creo que su gran talento, inteligencia, compromiso, carisma, liderazgo, sensibilidad social, pasión y dirección lo convierten sin duda en un artista extraordinario.\"",
                 quote_3_auth: "Rafael Payare<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Director Musical San Diego Symphony.<br>Director Musical Orchestre Symphonique de Montréal.</span>",
@@ -1929,8 +2564,12 @@
                 }
             });
 
+            document.documentElement.lang = currentLang;
             updateQuoteDisplay();
             renderSchedule();
+            updatePager();
+            renderHomeQuotes();
+            if (currentPage && currentPage !== 'home') document.title = pageLabel(currentPage) + ' | Enluis Montes Olivar';
         }
 
         // LÓGICA DE ROTACIÓN DE FRASES
@@ -2008,17 +2647,42 @@
             startQuoteRotation();
         });
 
-        window.addEventListener('load', function() {
-            window.scrollTo(0, 0);
-            
-            setTimeout(function() {
-                const splash = document.getElementById('splash-screen');
-                if (splash) {
+        // PANTALLA DE CARGA INICIAL RÁPIDA:
+        // se oculta apenas están listos el logo y la foto principal (máximo 1.5 s),
+        // sin esperar videos, Spotify ni fotos de otras secciones.
+        (function() {
+            const start = Date.now();
+            let done = false;
+            function hideSplash() {
+                if (done) return;
+                done = true;
+                const wait = Math.max(0, 350 - (Date.now() - start)); // el logo se ve al menos un instante
+                setTimeout(() => {
+                    const splash = document.getElementById('splash-screen');
+                    if (!splash) return;
                     splash.classList.add('splash-hidden');
-                    setTimeout(() => { splash.style.display = 'none'; }, 600);
-                }
-            }, 600); 
-        });
+                    setTimeout(() => { splash.style.display = 'none'; }, 350);
+                }, wait);
+            }
+            function whenReady(img) {
+                return new Promise(res => {
+                    if (!img || img.complete) return res();
+                    img.addEventListener('load', res, { once: true });
+                    img.addEventListener('error', res, { once: true });
+                });
+            }
+            document.addEventListener('DOMContentLoaded', () => {
+                window.scrollTo(0, 0);
+                const page = document.getElementById(getPageFromHash());
+                const critical = [
+                    document.querySelector('.logo-container img'),
+                    page ? page.querySelector('.bg-photo') : null
+                ];
+                if (page) { const bg = page.querySelector('.bg-photo'); if (bg) bg.loading = 'eager'; }
+                Promise.all(critical.map(whenReady)).then(hideSplash);
+            });
+            setTimeout(hideSplash, 1500); // límite de seguridad
+        })();
         
         window.addEventListener('beforeunload', function () {
             window.scrollTo(0, 0);
@@ -2041,7 +2705,7 @@
                 dateDisplay_en: "Sept. 17–19, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall", 
                 dateDisplay_es: "17–19 sept. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Gustavo Dudamel, Conductor<br>New York Philharmonic Chorus | Malcolm J. Merriweather, Chorus Director<br>Brooklyn Youth Chorus | Dianne Berkun Menaker, Chorus Director",
                 soloists_es: "Gustavo Dudamel, Conductor<br>New York Philharmonic Chorus | Malcolm J. Merriweather, Chorus Director<br>Brooklyn Youth Chorus | Dianne Berkun Menaker, Chorus Director",
                 program_en: "<strong>John Adams</strong><br>On the Transmigration of Souls<br><br><strong>Zosha Di Castri</strong><br>Invisible House (World Premiere)<br><br><strong>Sergei Prokofiev</strong><br>Symphony No. 5",
@@ -2055,7 +2719,7 @@
                 dateDisplay_en: "Sept. 24–29, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall", 
                 dateDisplay_es: "24–29 sept. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Gustavo Dudamel, Conductor",
                 soloists_es: "Gustavo Dudamel, Conductor",
                 program_en: "<strong>Tania León</strong><br>Imágenes Mestizas (World Premiere)<br><br><strong>Gustav Mahler</strong><br>Symphony No. 5",
@@ -2069,7 +2733,7 @@
                 dateDisplay_en: "Sept. 30, 2026 — 7:00 PM | Wu Tsai Theater, David Geffen Hall", 
                 dateDisplay_es: "30 sept. 2026 — 7:00 PM | Wu Tsai Theater, David Geffen Hall",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Gustavo Dudamel, Conductor<br>Sergio Tiempo, Piano<br>Brian Stokes Mitchell, Vocalist",
                 soloists_es: "Gustavo Dudamel, Conductor<br>Sergio Tiempo, Piano<br>Brian Stokes Mitchell, Vocalist",
                 program_en: "Inaugural Gala Program",
@@ -2083,7 +2747,7 @@
                 dateDisplay_en: "Oct. 01, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall", 
                 dateDisplay_es: "01 oct. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Gustavo Dudamel, Conductor<br>Lang Lang, Piano",
                 soloists_es: "Gustavo Dudamel, Conductor<br>Lang Lang, Piano",
                 program_en: "<strong>Zosha Di Castri</strong><br>Invisible House<br><br><strong>Gustav Mahler</strong><br>Adagietto, from Symphony No. 5<br><br><strong>Ludwig van Beethoven</strong><br>Piano Concerto No. 5, Emperor",
@@ -2097,7 +2761,7 @@
                 dateDisplay_en: "Oct. 02, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall", 
                 dateDisplay_es: "02 oct. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Gustavo Dudamel, Conductor<br>Yo-Yo Ma, Cello<br>Michael Ward-Bergeman, Hyper-accordion<br>Cyro Baptista, Percussion<br>Jamey Haddad, Percussion",
                 soloists_es: "Gustavo Dudamel, Conductor<br>Yo-Yo Ma, Cello<br>Michael Ward-Bergeman, Hyper-accordion<br>Cyro Baptista, Percussion<br>Jamey Haddad, Percussion",
                 program_en: "<strong>Tania León</strong><br>Imágenes Mestizas<br><br><strong>Gustav Mahler</strong><br>Adagietto from Symphony No. 5<br><br><strong>Osvaldo Golijov</strong><br>Azul, for Cello and Orchestra",
@@ -2111,7 +2775,7 @@
                 dateDisplay_en: "Oct. 09–22, 2026 | European Tour", 
                 dateDisplay_es: "9–22 oct. 2026 | Gira Europea",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Gustavo Dudamel, Conductor",
                 soloists_es: "Gustavo Dudamel, Conductor",
                 program_en: "European Tour Repertoire",
@@ -2125,7 +2789,7 @@
                 dateDisplay_en: "Oct. 28–31, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall", 
                 dateDisplay_es: "28–31 oct. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Anthony Parnther, Conductor<br>DC6 Singers Collective, Vocal Ensemble",
                 soloists_es: "Anthony Parnther, Conductor<br>DC6 Singers Collective, Vocal Ensemble",
                 program_en: "<strong>Michael Abels</strong><br>Get Out (score performed live to complete film)",
@@ -2139,7 +2803,7 @@
                 dateDisplay_en: "Nov. 04–07, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall", 
                 dateDisplay_es: "4–7 nov. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Rafael Payare, Conductor<br>Jean-Yves Thibaudet, Piano",
                 soloists_es: "Rafael Payare, Conductor<br>Jean-Yves Thibaudet, Piano",
                 program_en: "<strong>Franz Liszt</strong><br>Concerto No. 2<br><br><strong>Anton Bruckner</strong><br>Symphony No. 9",
@@ -2153,7 +2817,7 @@
                 dateDisplay_en: "Nov. 13–15, 2026 | Carnegie Hall", 
                 dateDisplay_es: "13–15 nov. 2026 | Carnegie Hall",
                 role_en: "As cover conductor",
-                role_es: "As cover conductor",
+                role_es: "Como director suplente (cover)",
                 soloists_en: "Gustavo Dudamel, Conductor<br>Marina Rebeka, Jonas Kaufmann, Ludovic Tézier, Andrew Moore, Ben Brady, Ben Reisinger, Benjamin Taylor, Christopher Humbert Jr.<br>New York Philharmonic Chorus<br>Brooklyn Youth Chorus",
                 soloists_es: "Gustavo Dudamel, Conductor<br>Marina Rebeka, Jonas Kaufmann, Ludovic Tézier, Andrew Moore, Ben Brady, Ben Reisinger, Benjamin Taylor, Christopher Humbert Jr.<br>New York Philharmonic Chorus<br>Brooklyn Youth Chorus",
                 program_en: "<strong>Giacomo Puccini</strong><br>Tosca (in Concert)",
@@ -2167,7 +2831,7 @@
                 dateDisplay_en: "Nov. 18, 2026 | Location TBC", 
                 dateDisplay_es: "18 nov. 2026 | Ubicación por confirmar",
                 role_en: "Enluis Montes Olivar, Conductor",
-                role_es: "Enluis Montes Olivar, Conductor",
+                role_es: "Enluis Montes Olivar, director",
                 soloists_en: "",
                 soloists_es: "",
                 program_en: "Repertoire (TBC)",
@@ -2181,7 +2845,7 @@
                 dateDisplay_en: "Dec. 04, 2026 — 5:00 PM | Simon Bolivar Hall, Caracas-VE", 
                 dateDisplay_es: "04 dic. 2026 — 5:00 PM | Sala Simón Bolívar, Caracas-VE",
                 role_en: "Enluis Montes Olivar, Conductor",
-                role_es: "Enluis Montes Olivar, Conductor",
+                role_es: "Enluis Montes Olivar, director",
                 soloists_en: "Soloist (TBD)",
                 soloists_es: "Solista (TBD)",
                 program_en: "<strong>Wolfgang Amadeus Mozart</strong><br>Serenade for Winds KV. 388 cm<br><br><strong>Joseph Haydn</strong><br>Missa in Angustis",
@@ -2195,7 +2859,7 @@
                 dateDisplay_en: "Dec. 10, 2026 — 5:00 PM | Simon Bolivar Hall, Caracas-VE", 
                 dateDisplay_es: "10 dic. 2026 — 5:00 PM | Sala Simón Bolívar, Caracas-VE",
                 role_en: "Enluis Montes Olivar, Conductor",
-                role_es: "Enluis Montes Olivar, Conductor",
+                role_es: "Enluis Montes Olivar, director",
                 soloists_en: "",
                 soloists_es: "",
                 program_en: "<strong>Julián Orbón</strong><br>Tres Versiones Sinfónicas<br><br><strong>Gustav Mahler</strong><br>Symphony No. 5",
@@ -2212,7 +2876,7 @@
                 dateDisplay_en: "Jan. 08, 2027 — 8:22 PM | Palacio de la Ópera, A Coruña, Spain", 
                 dateDisplay_es: "08 ene. 2027 — 8:22 PM | Palacio de la Ópera, A Coruña, España",
                 role_en: "Enluis Montes Olivar, conductor",
-                role_es: "Enluis Montes Olivar, conductor",
+                role_es: "Enluis Montes Olivar, director",
                 soloists_en: "",
                 soloists_es: "",
                 program_en: "<strong>George Gershwin</strong><br>An American in Paris<br><br><strong>Sergei Prokofiev</strong><br>Symphony No. 5",
@@ -2226,7 +2890,7 @@
                 dateDisplay_en: "Jan. 15, 2027 — 5:00 PM | Simon Bolivar Hall, Caracas-VE", 
                 dateDisplay_es: "15 ene. 2027 — 5:00 PM | Sala Simón Bolívar, Caracas-VE",
                 role_en: "Enluis Montes Olivar, conductor",
-                role_es: "Enluis Montes Olivar, conductor",
+                role_es: "Enluis Montes Olivar, director",
                 soloists_en: "Eugenio Carreño Jr., trumpet",
                 soloists_es: "Eugenio Carreño Jr., trompeta",
                 program_en: "Repertoire: TBD",
@@ -2235,7 +2899,46 @@
             }
         ];
 
+        function renderHomeNextConcert() {
+            const box = document.getElementById('home-next-concert');
+            if (!box) return;
+            const t = new Date();
+            const today = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+            const next = concertsData.filter(c => new Date(c.dateStr + 'T00:00:00') >= today)
+                                     .sort((a, b) => a.dateStr.localeCompare(b.dateStr))[0];
+            const L = i18n[currentLang];
+            if (!next) {
+                box.innerHTML = `<div class="next-concert"><div class="nc-body"><p class="nc-when">${L.schedule_no_events}</p></div></div>`;
+                return;
+            }
+            const d = new Date(next.dateStr + 'T00:00:00');
+            // Muestra el rango de días (ej. 24–29) tomado del texto de la fecha
+            const m = (next.dateDisplay_en || '').match(/^[A-Za-z]+\.?\s+(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?/);
+            const dayText = m ? (m[2] ? `${+m[1]}–${+m[2]}` : `${+m[1]}`) : `${d.getDate()}`;
+            const tickets = next.ticketLink && next.ticketLink !== '#'
+                ? `<a href="${next.ticketLink}" target="_blank" rel="noopener" class="btn">${L.schedule_btn}</a>` : '';
+            box.innerHTML = `
+                <div class="next-concert">
+                    <div class="nc-date">
+                        <span class="nc-month">${L.home_months[d.getMonth()]}</span>
+                        <span class="nc-day${dayText.length > 2 ? ' nc-range' : ''}">${dayText}</span>
+                        <span class="nc-year">${d.getFullYear()}</span>
+                    </div>
+                    <div class="nc-body">
+                        <h3>${currentLang === 'es' ? next.title_es : next.title_en}</h3>
+                        <p class="nc-when">${currentLang === 'es' ? next.dateDisplay_es : next.dateDisplay_en}</p>
+                        <p class="nc-role">${currentLang === 'es' ? next.role_es : next.role_en}</p>
+                        <div class="nc-actions">
+                            ${tickets}
+                            <a href="#schedule" class="btn btn-outline">${L.home_all_events}</a>
+                        </div>
+                    </div>
+                </div>`;
+            if (window.initTilt) initTilt();
+        }
+
         function renderSchedule() {
+            renderHomeNextConcert();
             const today = new Date();
             const upcoming = concertsData.filter(c => new Date(c.dateStr) >= new Date(today.getFullYear(), today.getMonth(), today.getDate()));
             
@@ -2320,6 +3023,7 @@
                 html += `</div></div>`;
             }
             container.innerHTML = html;
+            if (window.initTilt) initTilt();
         }
 
         function toggleEventAccordion(element) {
@@ -2357,6 +3061,254 @@
                 }, 2000);
             });
         }
-    </script>
-</body>
-</html>
+
+        /* ======================================================= */
+        /* NAVEGACIÓN POR SECCIONES SEPARADAS + PANTALLA DE CARGA  */
+        /* ======================================================= */
+        const PAGES = ['home', 'about', 'press', 'schedule', 'multimedia', 'contact'];
+        const PAGE_KEYS = { home: 'nav_home', about: 'nav_about', press: 'nav_press', schedule: 'nav_schedule', multimedia: 'nav_media', contact: 'nav_contact' };
+        let currentPage = null;
+        let isNavigating = false;
+
+        function pageLabel(id) {
+            return i18n[currentLang][PAGE_KEYS[id]] || id;
+        }
+
+        function getPageFromHash() {
+            const id = (location.hash || '').replace('#', '');
+            return PAGES.includes(id) ? id : 'home';
+        }
+
+        // Detiene audio y videos al salir de una sección
+        function stopMediaIn(sectionEl) {
+            if (!sectionEl) return;
+            sectionEl.querySelectorAll('audio, video').forEach(m => m.pause());
+            sectionEl.querySelectorAll('iframe').forEach(f => { const src = f.src; f.src = src; });
+        }
+
+        // Añade un número de página (01, 02...) encima de cada título
+        function addKickers() {
+            PAGES.forEach((id, i) => {
+                if (id === 'home') return;
+                const sec = document.getElementById(id);
+                const h2 = sec && sec.querySelector('.section-content > h2');
+                if (h2 && !sec.querySelector('.page-kicker')) {
+                    const k = document.createElement('div');
+                    k.className = 'page-kicker';
+                    k.innerHTML = '<span><b>' + String(i + 1).padStart(2, '0') + '</b> / ' + String(PAGES.length).padStart(2, '0') + '</span>';
+                    h2.parentNode.insertBefore(k, h2);
+                }
+            });
+        }
+
+        function updatePager() {
+            if (!currentPage) return;
+            const i = PAGES.indexOf(currentPage);
+            const prev = PAGES[i - 1], next = PAGES[i + 1];
+            const prevEl = document.getElementById('pager-prev');
+            const nextEl = document.getElementById('pager-next');
+            prevEl.classList.toggle('hidden', !prev);
+            nextEl.classList.toggle('hidden', !next);
+            if (prev) { prevEl.setAttribute('href', '#' + prev); document.getElementById('pager-prev-name').innerHTML = pageLabel(prev); }
+            if (next) { nextEl.setAttribute('href', '#' + next); document.getElementById('pager-next-name').innerHTML = pageLabel(next); }
+            document.getElementById('pager-count').textContent = String(i + 1).padStart(2, '0') + ' / ' + String(PAGES.length).padStart(2, '0');
+        }
+
+        function activatePage(id) {
+            const old = currentPage ? document.getElementById(currentPage) : null;
+            if (old && currentPage !== id) stopMediaIn(old);
+            PAGES.forEach(p => document.getElementById(p).classList.toggle('active', p === id));
+            document.querySelectorAll('nav a, .mobile-menu-links a').forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+            });
+            currentPage = id;
+            updatePager();
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            const titles = { home: 'Enluis Montes Olivar | Orchestra Conductor' };
+            document.title = titles[id] || (pageLabel(id) + ' | Enluis Montes Olivar');
+        }
+
+        // Muestra la pantalla de carga (logo) y luego la sección elegida
+        function showPage(id, withSplash = true) {
+            if (!PAGES.includes(id)) id = 'home';
+            if (!withSplash) { activatePage(id); return; }
+            if (id === currentPage) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+            if (isNavigating) return;
+            isNavigating = true;
+
+            const splash = document.getElementById('splash-screen');
+            const img = splash.querySelector('img');
+            document.getElementById('splash-label').innerHTML = pageLabel(id);
+
+            splash.style.display = 'flex';
+            splash.classList.remove('loading');
+            img.style.animation = 'none';
+            void splash.offsetWidth; // reinicia animaciones
+            img.style.animation = '';
+            splash.classList.remove('splash-hidden');
+            splash.classList.add('loading');
+
+            setTimeout(() => {
+                activatePage(id);
+                splash.classList.add('splash-hidden');
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    splash.classList.remove('loading');
+                    isNavigating = false;
+                }, 350);
+            }, 450);
+        }
+
+        // Intercepta todos los enlaces internos (#about, #press, etc.)
+        document.addEventListener('click', function(e) {
+            const a = e.target.closest('a[href^="#"]');
+            if (!a) return;
+            const id = a.getAttribute('href').slice(1);
+            if (!PAGES.includes(id)) return;
+            e.preventDefault();
+            if (id !== currentPage) history.pushState(null, '', '#' + id);
+            showPage(id);
+        });
+
+        // Botones Atrás / Adelante del navegador
+        window.addEventListener('popstate', () => showPage(getPageFromHash()));
+
+        window.addEventListener('DOMContentLoaded', () => {
+            addKickers();
+            activatePage(getPageFromHash());
+        });
+
+        /* ======================================================= */
+        /* CITA GIRATORIA DEL INICIO                               */
+        /* ======================================================= */
+        let hqIndex = 0, hqTimer = null, hqPaused = false;
+        const HQ_TIME = 7000, HQ_TOTAL = 4;
+
+        function renderHomeQuotes() {
+            const stage = document.getElementById('hq-stage');
+            if (!stage) return;
+            const L = i18n[currentLang];
+            let html = '';
+            for (let i = 1; i <= HQ_TOTAL; i++) {
+                html += `<blockquote class="hq-item${i - 1 === hqIndex ? ' active' : ''}"><p>${L['quote_' + i + '_text']}</p><cite>${L['quote_' + i + '_auth']}</cite></blockquote>`;
+            }
+            stage.innerHTML = html;
+            renderHqDots();
+        }
+        function renderHqDots() {
+            const dots = document.getElementById('hq-dots');
+            if (!dots) return;
+            dots.style.setProperty('--hq-time', HQ_TIME + 'ms');
+            let h = '';
+            for (let i = 0; i < HQ_TOTAL; i++) {
+                const st = i === hqIndex ? 'active' : (i < hqIndex ? 'done' : '');
+                h += `<button class="hq-dot ${st}" onclick="goHomeQuote(${i})" aria-label="Quote ${i + 1}"></button>`;
+            }
+            dots.innerHTML = h;
+        }
+        function goHomeQuote(i) {
+            const items = document.querySelectorAll('#hq-stage .hq-item');
+            if (!items.length) return;
+            i = (i + HQ_TOTAL) % HQ_TOTAL;
+            const old = items[hqIndex];
+            if (old && i !== hqIndex) {
+                old.classList.remove('active');
+                old.classList.add('leaving');
+                setTimeout(() => old.classList.remove('leaving'), 800);
+            }
+            hqIndex = i;
+            items[hqIndex].classList.add('active');
+            renderHqDots();
+            restartHqTimer();
+        }
+        function stepHomeQuote(d) { goHomeQuote(hqIndex + d); }
+        function restartHqTimer() {
+            clearTimeout(hqTimer);
+            if (hqPaused) return;
+            hqTimer = setTimeout(() => goHomeQuote(hqIndex + 1), HQ_TIME);
+        }
+        function pauseHomeQuotes(p) {
+            hqPaused = p;
+            document.getElementById('home-quote').classList.toggle('paused', p);
+            if (p) clearTimeout(hqTimer); else { renderHqDots(); restartHqTimer(); }
+        }
+
+        /* ======================================================= */
+        /* EFECTOS 3D: inclinación, parallax y aparición           */
+        /* ======================================================= */
+        const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        window.initTilt = function() {
+            if (!canHover || reduceMotion) return;
+            document.querySelectorAll('.next-concert, .cv-card, .media-card, .event-item').forEach(el => {
+                if (el.dataset.tilt) return;
+                el.dataset.tilt = '1';
+                el.classList.add('tilt');
+                const max = el.classList.contains('explore-card') ? 16 : (el.classList.contains('event-item') ? 3 : 7);
+                const glare = document.createElement('span');
+                glare.className = 'tilt-glare';
+                el.appendChild(glare);
+                let raf = null;
+                el.addEventListener('mousemove', e => {
+                    const r = el.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+                    cancelAnimationFrame(raf);
+                    raf = requestAnimationFrame(() => {
+                        el.style.transform = `perspective(900px) rotateX(${(0.5 - y) * max}deg) rotateY(${(x - 0.5) * max}deg) scale3d(1.02,1.02,1.02)`;
+                        el.style.setProperty('--gx', (x * 100) + '%');
+                        el.style.setProperty('--gy', (y * 100) + '%');
+                    });
+                });
+                el.addEventListener('mouseleave', () => {
+                    cancelAnimationFrame(raf);
+                    el.style.transform = '';
+                });
+            });
+        };
+
+        function initHeroParallax() {
+            const hero = document.querySelector('.home-hero');
+            if (!hero || reduceMotion) return;
+            if (canHover) {
+                hero.addEventListener('mousemove', e => {
+                    const r = hero.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width - 0.5;
+                    const y = (e.clientY - r.top) / r.height - 0.5;
+                    hero.style.setProperty('--px', (x * -24) + 'px');
+                    hero.style.setProperty('--py', (y * -16) + 'px');
+                });
+                hero.addEventListener('mouseleave', () => {
+                    hero.style.setProperty('--px', '0px');
+                    hero.style.setProperty('--py', '0px');
+                });
+            }
+            window.addEventListener('scroll', () => {
+                if (currentPage !== 'home') return;
+                hero.style.setProperty('--sy', Math.min(window.scrollY * 0.25, 200) + 'px');
+            }, { passive: true });
+        }
+
+        function initReveal3D() {
+            const groups = document.querySelectorAll('.r3d, .r3d-group');
+            document.querySelectorAll('.r3d-group').forEach(g => {
+                [...g.children].forEach((c, i) => c.style.setProperty('--d', (i * 0.12) + 's'));
+            });
+            if (!('IntersectionObserver' in window) || reduceMotion) {
+                groups.forEach(g => g.classList.add('in'));
+                return;
+            }
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(en => {
+                    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+                });
+            }, { threshold: 0.15 });
+            groups.forEach(g => io.observe(g));
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderHomeQuotes();
+            restartHqTimer();
+            initTilt();
+            initHeroParallax();
+            initReveal3D();

@@ -82,6 +82,9 @@
             width: 70%;
             animation: fadeInLogo 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
+        /* Red de seguridad: la pantalla de carga inicial se quita sola a los 3 s */
+        #splash-screen.boot { animation: splashFailsafe 0.35s ease 3s forwards; }
+        @keyframes splashFailsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
         .splash-hidden {
             opacity: 0;
             visibility: hidden;
@@ -1707,13 +1710,22 @@
 <body>
 
     <!-- AUTOMATIC SPLASH SCREEN -->
-    <div id="splash-screen">
+    <div id="splash-screen" class="boot">
         <div class="splash-inner">
             <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
             <div class="splash-bar"><span></span></div>
             <p class="splash-label" id="splash-label"></p>
         </div>
     </div>
+
+    <script>
+        // Seguridad: si algo falla, la pantalla de carga se quita igual
+        setTimeout(function () {
+            if (window.__splashDone) return;
+            var sp = document.getElementById('splash-screen');
+            if (sp) { sp.classList.add('splash-hidden'); setTimeout(function () { sp.style.display = 'none'; }, 350); }
+        }, 2500);
+    </script>
 
     <!-- LOGOTIPO DE INSTAGRAM FLOTANTE PERMANENTE ABAJO A LA DERECHA (@emontesolivar) -->
     <a href="https://instagram.com/emontesolivar" target="_blank" class="instagram-floating-btn" aria-label="Instagram Profile">
@@ -2656,6 +2668,7 @@
             function hideSplash() {
                 if (done) return;
                 done = true;
+                window.__splashDone = true;
                 const wait = Math.max(0, 350 - (Date.now() - start)); // el logo se ve al menos un instante
                 setTimeout(() => {
                     const splash = document.getElementById('splash-screen');
@@ -3123,7 +3136,7 @@
             });
             currentPage = id;
             updatePager();
-            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            try { window.scrollTo(0, 0); } catch (err) {}
             const titles = { home: 'Enluis Montes Olivar | Orchestra Conductor' };
             document.title = titles[id] || (pageLabel(id) + ' | Enluis Montes Olivar');
         }
@@ -3132,7 +3145,7 @@
         function showPage(id, withSplash = true) {
             if (!PAGES.includes(id)) id = 'home';
             if (!withSplash) { activatePage(id); return; }
-            if (id === currentPage) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+            if (id === currentPage) { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (err) { window.scrollTo(0, 0); } return; }
             if (isNavigating) return;
             isNavigating = true;
 
@@ -3140,6 +3153,7 @@
             const img = splash.querySelector('img');
             document.getElementById('splash-label').innerHTML = pageLabel(id);
 
+            splash.classList.remove('boot');
             splash.style.display = 'flex';
             splash.classList.remove('loading');
             img.style.animation = 'none';
@@ -3149,7 +3163,7 @@
             splash.classList.add('loading');
 
             setTimeout(() => {
-                activatePage(id);
+                try { activatePage(id); } catch (err) { console.error(err); }
                 splash.classList.add('splash-hidden');
                 setTimeout(() => {
                     splash.style.display = 'none';
@@ -3312,3 +3326,7 @@
             initTilt();
             initHeroParallax();
             initReveal3D();
+        });
+    </script>
+</body>
+</html>

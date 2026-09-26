@@ -8,9 +8,9 @@
     <meta name="description" content="Enluis Montes Olivar, Venezuelan orchestra conductor. Biography, press, upcoming concerts, multimedia and booking contact.">
     <meta property="og:title" content="Enluis Montes Olivar | Orchestra Conductor">
     <meta property="og:description" content="Passion and energy at the service of music.">
-    <meta property="og:image" content="img/inicio.jpg">
+    <meta property="og:image" content="inicio.jpg">
     <meta name="theme-color" content="#050505">
-    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     
     <!-- FORZAR EL INICIO AL RECARGAR -->
     <script>
@@ -22,8 +22,8 @@
     </script>
 
     <!-- PRE-CARGA DE RECURSOS CRÍTICOS -->
-    <link rel="preload" href="img/logo.png" as="image">
-    <link rel="preload" href="img/inicio.jpg" as="image" imagesrcset="img/inicio-movil.jpg 900w, img/inicio.jpg 2000w" imagesizes="100vw">
+    <link rel="preload" href="logo.png" as="image">
+    <link rel="preload" href="inicio.jpg" as="image" imagesrcset="inicio-movil.jpg 900w, inicio.jpg 2000w" imagesizes="100vw">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -803,7 +803,7 @@
             transition: max-height 0.8s ease-out;
         }
         #more-events.show {
-            max-height: 4000px;
+            max-height: none;
         }
 
         .toggle-events-btn {
@@ -1995,6 +1995,69 @@
             .event-main { flex-basis: 100%; }
             .about-chips { margin: -1rem -5% 1.8rem; padding: 0.7rem 5%; }
         }
+
+        /* ---------- Crédito Kromatik ---------- */
+        .km-credit {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 2.2rem;
+            padding-top: 2rem;
+            text-decoration: none;
+        }
+        .km-credit::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            width: 40px; height: 1px;
+            margin-left: -20px;
+            background: linear-gradient(90deg, #00E5FF, #7B4DFF, #FF2E88);
+            opacity: 0.6;
+            transition: width 0.5s ease, margin-left 0.5s ease, opacity 0.5s ease;
+        }
+        .km-label {
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gris-texto);
+            opacity: 0.7;
+            transition: opacity 0.4s ease;
+        }
+        .km-logo {
+            height: 20px;
+            width: auto;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 0 rgba(123,77,255,0));
+            transition: opacity 0.4s ease, filter 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .km-credit:hover .km-logo {
+            opacity: 1;
+            transform: translateY(-2px);
+            filter: drop-shadow(0 4px 14px rgba(123,77,255,0.55));
+        }
+        .km-credit:hover .km-label { opacity: 1; }
+        .km-credit:hover::before { width: 120px; margin-left: -60px; opacity: 1; }
+        footer { display: flex; flex-direction: column; align-items: center; }
+        @media (max-width: 768px) { .km-logo { height: 17px; } }
+        /* ---------- Repertorio más legible ---------- */
+        .event-program { line-height: 1.7; font-size: 0.95rem; }
+        .event-program strong {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: var(--dorado);
+            letter-spacing: 0.3px;
+        }
+        .event-program > strong:first-child {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+        }
+        @media (max-width: 768px) {
+            .event-program { padding: 1.2rem 1.1rem; margin-top: 1.2rem; font-size: 0.9rem; }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -2003,7 +2066,7 @@
       "name": "Enluis Montes Olivar",
       "jobTitle": "Orchestra Conductor",
       "nationality": "Venezuelan",
-      "image": "img/inicio.jpg",
+      "image": "inicio.jpg",
       "sameAs": ["https://instagram.com/emontesolivar"],
       "award": ["Glenn Gould Protégé Prize"]
     }
@@ -2065,7 +2128,7 @@
     <header id="main-header">
         <div class="logo-container">
             <a href="#home">
-                <img src="img/logo.png" alt="Enluis Montes Olivar Logo">
+                <img src="logo.png" alt="Enluis Montes Olivar Logo">
             </a>
         </div>
 
@@ -2129,7 +2192,7 @@
     <!-- 1. Home -->
     <section id="home" class="page-section">
       <div class="home-hero">
-        <img src="img/inicio.jpg" srcset="img/inicio-movil.jpg 900w, img/inicio.jpg 2000w" sizes="100vw" alt="Background Home" class="bg-photo" fetchpriority="high">
+        <img src="inicio.jpg" srcset="inicio-movil.jpg 900w, inicio.jpg 2000w" sizes="100vw" alt="Background Home" class="bg-photo" fetchpriority="high">
         <div class="bg-overlay"></div>
         <div class="section-content"><div class="hero-inner-3d">
             <h1 class="hero-title-name">Enluis <span>Montes Olivar</span></h1>
@@ -2211,7 +2274,7 @@
 
     <!-- 2. About -->
     <section id="about" class="page-section">
-        <img src="img/biografia.jpg" srcset="img/biografia-movil.jpg 900w, img/biografia.jpg 2000w" sizes="100vw" alt="Background About" class="bg-photo" loading="lazy">
+        <img src="biografia.jpg" srcset="biografia-movil.jpg 900w, biografia.jpg 2000w" sizes="100vw" alt="Background About" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="about_title">Biography</h2>
@@ -2439,7 +2502,7 @@
 
     <!-- 3. Press -->
     <section id="press" class="page-section">
-        <img src="img/prensa.jpg" srcset="img/prensa-movil.jpg 900w, img/prensa.jpg 2000w" sizes="100vw" alt="Background Press" class="bg-photo" loading="lazy">
+        <img src="prensa.jpg" srcset="prensa-movil.jpg 900w, prensa.jpg 2000w" sizes="100vw" alt="Background Press" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="press_title">Media & Press</h2>
@@ -2472,7 +2535,7 @@
 
     <!-- 4. Schedule -->
     <section id="schedule" class="page-section">
-        <img src="img/agenda.jpg" srcset="img/agenda-movil.jpg 900w, img/agenda.jpg 2000w" sizes="100vw" alt="Background Schedule" class="bg-photo" loading="lazy">
+        <img src="agenda.jpg" srcset="agenda-movil.jpg 900w, agenda.jpg 2000w" sizes="100vw" alt="Background Schedule" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="schedule_title">Schedule of Events</h2>
@@ -2486,7 +2549,7 @@
 
     <!-- 5. Multimedia -->
     <section id="multimedia" class="page-section">
-        <img src="img/multimedia.jpg" srcset="img/multimedia-movil.jpg 900w, img/multimedia.jpg 2000w" sizes="100vw" alt="Background Multimedia" class="bg-photo" loading="lazy">
+        <img src="multimedia.jpg" srcset="multimedia-movil.jpg 900w, multimedia.jpg 2000w" sizes="100vw" alt="Background Multimedia" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="media_title">Multimedia</h2>
@@ -2653,7 +2716,7 @@
 
     <!-- 6. Contact -->
     <section id="contact" class="page-section">
-        <img src="img/contacto.jpg" srcset="img/contacto-movil.jpg 900w, img/contacto.jpg 2000w" sizes="100vw" alt="Background Contact" class="bg-photo" loading="lazy">
+        <img src="contacto.jpg" srcset="contacto-movil.jpg 900w, contacto.jpg 2000w" sizes="100vw" alt="Background Contact" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="contact_title">Contact & Booking</h2>
@@ -2707,6 +2770,10 @@
             <a href="#contact" data-i18n="nav_contact">Contact</a>
         </div>
         <p data-i18n="footer_text">&copy; 2026 Enluis Montes Olivar. All rights reserved.</p>
+        <a class="km-credit" href="https://wa.me/584125302211?text=Hola%20Kromatik%2C%20vi%20la%20web%20de%20Enluis%20Montes%20Olivar" target="_blank" rel="noopener">
+            <span class="km-label" data-i18n="km_label">Design &amp; development</span>
+            <svg class="km-logo" role="img" aria-label="Kromatik" xmlns="http://www.w3.org/2000/svg" viewBox="0 -25 940.0 150"><g transform="translate(0,-25) scale(1.5) translate(-14,-10)"><defs><linearGradient id="km-gStemh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00E5FF"/><stop offset="1" stop-color="#7B4DFF"/></linearGradient><linearGradient id="km-gUph" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7B4DFF"/><stop offset="1" stop-color="#FF2E88"/></linearGradient><linearGradient id="km-gLowh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B1FA8"/><stop offset="1" stop-color="#7B4DFF"/></linearGradient><linearGradient id="km-gFaceth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><polygon points="49.80,66.20 67.20,48.80 108.00,110.00 76.50,110.00" fill="url(#km-gLowh)"/><polygon points="14.00,10.00 38.00,10.00 38.00,110.00 14.00,110.00" fill="url(#km-gStemh)"/><polygon points="43.00,44.00 77.00,10.00 106.00,10.00 43.00,73.00" fill="url(#km-gUph)"/><polygon points="14.00,10.00 38.00,10.00 14.00,110.00" fill="#fff" opacity=".12"/><polygon points="43.00,44.00 77.00,10.00 106.00,10.00" fill="#fff" opacity=".14"/><polygon points="49.80,66.20 67.20,48.80 76.50,110.00" fill="#000" opacity=".22"/></g><g transform="translate(203.0,0)"><defs><clipPath id="km-caph"><rect x="-10" y="0" width="757" height="100"/></clipPath><linearGradient id="km-gOh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00E5FF"/><stop offset=".5" stop-color="#7B4DFF"/><stop offset="1" stop-color="#FF2E88"/></linearGradient></defs><g transform="translate(0,0)" clip-path="url(#km-caph)"><path transform="translate(0,0)" d="M7.5,-20 V120 M11.5,70 L77.5,-20 M33.5,43 L69.5,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(90,0)" d="M7.5,120 V7.5 H38 A25.5 25.5 0 0 1 38 58.5 H7.5 M34,58.5 L66,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(182,0)" d="M50,7.5 A42.5 42.5 0 1 1 49.99,7.5 Z" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(308,0)" d="M7.5,120 V9.5 L47,76 L86.5,9.5 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(428,0)" d="M0,122 L41,2 L82,122" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(536,0)" d="M-4,7.5 H74 M35,7.5 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(632,0)" d="M7.5,-20 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(673,0)" d="M7.5,-20 V120 M11.5,70 L77.5,-20 M33.5,43 L69.5,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/></g></g></svg>
+        </a>
     </footer>
 
     <!-- SCRIPTS -->
@@ -2742,6 +2809,7 @@
         const i18n = {
             en: {
                 chip_bio: "Biography", chip_exp: "Experience", chip_lead: "Leadership", chip_guest: "Guest & Recordings", chip_edu: "Education", chip_awards: "Awards",
+                km_label: "Design &amp; development",
                 pager_prev: "Previous", pager_next: "Next", loading_page: "Loading", bio_more: "Read full biography", bio_less: "Show less", follow_title: "Follow",
                 home_scroll: "Discover", home_next_label: "Next performance", home_press_label: "They say", home_explore_label: "Explore the site",
                 home_quote: "\"He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy.\"",
@@ -2807,6 +2875,7 @@
             },
             es: {
                 chip_bio: "Biografía", chip_exp: "Experiencia", chip_lead: "Liderazgo", chip_guest: "Invitaciones y discos", chip_edu: "Educación", chip_awards: "Premios",
+                km_label: "Diseño y desarrollo",
                 pager_prev: "Anterior", pager_next: "Siguiente", loading_page: "Cargando", bio_more: "Leer biografía completa", bio_less: "Ver menos", follow_title: "Síguelo",
                 home_scroll: "Descubrir", home_next_label: "Próxima presentación", home_press_label: "Dicen de él", home_explore_label: "Recorre el sitio",
                 home_quote: "\"Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado.\"",
@@ -3165,17 +3234,17 @@
                 ticketLink: "#"
             },
             { 
-                title_en: "Simon Bolivar Chamber Orchestra & Simon Bolivar National Choir", 
-                title_es: "Orquesta de Cámara Simón Bolívar & Coro Nacional Simón Bolívar",
+                title_en: "Simon Bolivar Chamber Orchestra", 
+                title_es: "Orquesta de Cámara Simón Bolívar",
                 dateStr: "2026-12-04", 
                 dateDisplay_en: "Dec. 04, 2026 — 5:00 PM | Simon Bolivar Hall, Caracas-VE", 
                 dateDisplay_es: "04 dic. 2026 — 5:00 PM | Sala Simón Bolívar, Caracas-VE",
                 role_en: "Enluis Montes Olivar, Conductor",
                 role_es: "Enluis Montes Olivar, director",
-                soloists_en: "Soloist (TBD)",
-                soloists_es: "Solista (TBD)",
-                program_en: "<strong>Wolfgang Amadeus Mozart</strong><br>Serenade for Winds KV. 388 cm<br><br><strong>Joseph Haydn</strong><br>Missa in Angustis",
-                program_es: "<strong>Wolfgang Amadeus Mozart</strong><br>Serenade for Winds KV. 388 cm<br><br><strong>Joseph Haydn</strong><br>Missa in Angustis",
+                soloists_en: "",
+                soloists_es: "",
+                program_en: "<strong>Wolfgang Amadeus Mozart</strong><br>Serenade for Winds in C minor, K. 388<br><br><strong>Antonín Dvořák</strong><br>Symphony No. 7 in D minor, Op. 70",
+                program_es: "<strong>Wolfgang Amadeus Mozart</strong><br>Serenata para vientos en do menor, K. 388<br><br><strong>Antonín Dvořák</strong><br>Sinfonía n.º 7 en re menor, Op. 70",
                 ticketLink: "#"
             },
             { 
@@ -3188,8 +3257,8 @@
                 role_es: "Enluis Montes Olivar, director",
                 soloists_en: "",
                 soloists_es: "",
-                program_en: "<strong>Julián Orbón</strong><br>Tres Versiones Sinfónicas<br><br><strong>Gustav Mahler</strong><br>Symphony No. 5",
-                program_es: "<strong>Julián Orbón</strong><br>Tres Versiones Sinfónicas<br><br><strong>Gustav Mahler</strong><br>Symphony No. 5",
+                program_en: "<strong>Ludwig van Beethoven</strong><br>Leonore Overture No. 3, Op. 72b<br><br><strong>Gustav Mahler</strong><br>Symphony No. 5",
+                program_es: "<strong>Ludwig van Beethoven</strong><br>Obertura Leonora n.º 3, Op. 72b<br><br><strong>Gustav Mahler</strong><br>Sinfonía n.º 5",
                 ticketLink: "#"
             },
             /* =================================================== */
@@ -3376,7 +3445,16 @@
         function toggleMoreEvents() {
             const marginEvents = document.getElementById('more-events');
             const btn = document.getElementById('toggle-btn');
-            marginEvents.classList.toggle('show');
+            if (!marginEvents.classList.contains('show')) {
+                marginEvents.style.maxHeight = marginEvents.scrollHeight + 'px';
+                marginEvents.classList.add('show');
+                setTimeout(() => { if (marginEvents.classList.contains('show')) marginEvents.style.maxHeight = 'none'; }, 800);
+            } else {
+                marginEvents.style.maxHeight = marginEvents.scrollHeight + 'px';
+                void marginEvents.offsetHeight;
+                marginEvents.classList.remove('show');
+                marginEvents.style.maxHeight = '0px';
+            }
             if (marginEvents.classList.contains('show')) {
                 btn.innerHTML = i18n[currentLang].schedule_less;
             } else {

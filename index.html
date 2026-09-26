@@ -15,6 +15,12 @@
     <!-- FORZAR EL INICIO AL RECARGAR -->
     <script>
         document.documentElement.className += ' js';
+        // Al recargar la página, siempre volver a Inicio
+        try {
+            var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+            var isReload = nav ? nav.type === 'reload' : (performance.navigation && performance.navigation.type === 1);
+            if (isReload && location.hash) history.replaceState(null, '', location.pathname + location.search);
+        } catch (e) {}
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
@@ -2058,6 +2064,139 @@
         @media (max-width: 768px) {
             .event-program { padding: 1.2rem 1.1rem; margin-top: 1.2rem; font-size: 0.9rem; }
         }
+
+        /* ====================================== */
+        /* PORTADA: NOMBRE + FOTO (rediseño)      */
+        /* ====================================== */
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.72rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.1rem;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            width: 28px; height: 1px;
+            background: var(--dorado);
+        }
+        .hero-title-name .hn-first { color: #fff; font-style: normal; }
+        .hero-title-name .hn-last { font-style: italic; color: var(--dorado); }
+        .hn-first, .hn-last {
+            display: inline-block;
+            animation: nameIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .hn-last { animation-delay: 0.12s; }
+        .hero-eyebrow { animation: nameIn 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        @keyframes nameIn {
+            from { opacity: 0; transform: translateY(0.35em); filter: blur(6px); }
+            to   { opacity: 1; transform: none; filter: blur(0); }
+        }
+
+        @media (max-width: 768px) {
+            .home-hero {
+                min-height: calc(100svh - var(--header-h));
+                padding: 0 6% 5rem;
+                justify-content: flex-end;
+            }
+            /* Foto arriba, sola, con la cara libre */
+            .home-hero .bg-photo {
+                height: 68%;
+                object-position: 50% 6%;
+                animation: heroZoom 14s ease-out both;
+            }
+            .js .home-hero .bg-photo.ready { animation: heroZoom 14s ease-out both; }
+            @keyframes heroZoom { from { transform: scale(1.14); } to { transform: scale(1.02); } }
+            .home-hero .bg-overlay {
+                background: linear-gradient(to bottom,
+                    rgba(5,5,5,0.15) 0%,
+                    rgba(5,5,5,0) 22%,
+                    rgba(5,5,5,0) 38%,
+                    rgba(5,5,5,0.75) 55%,
+                    rgba(5,5,5,1) 67%,
+                    rgba(5,5,5,1) 100%);
+            }
+            .home-hero .hero-inner-3d { transform: none; }
+
+            /* Nombre grande, en dos líneas, siempre dentro de la pantalla */
+            .hero-eyebrow { font-size: 0.62rem; letter-spacing: 4px; margin-bottom: 0.7rem; }
+            .hero-title-name {
+                font-size: clamp(2.3rem, 12.2vw, 3.6rem);
+                line-height: 0.98;
+                letter-spacing: -0.5px;
+                margin-bottom: 1rem;
+                text-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            }
+            .hero-title-name .hn-first,
+            .hero-title-name .hn-last { display: block; white-space: nowrap; }
+            .hero-divider { margin-bottom: 1rem; }
+            .hero-sub-motto { font-size: 0.72rem; letter-spacing: 2.5px; line-height: 1.6; margin-bottom: 0.7rem; }
+            .home-hero p { font-size: 0.86rem; line-height: 1.6; margin-bottom: 1.5rem; }
+
+            /* Botones lado a lado */
+            .hero-cta-container { flex-direction: row; gap: 0.6rem; }
+            .hero-cta-container .btn {
+                flex: 1;
+                width: auto;
+                padding: 13px 8px;
+                font-size: 0.66rem;
+                letter-spacing: 1px;
+                text-align: center;
+            }
+            .scroll-cue { display: none; }
+        }
+        @media (max-width: 360px) {
+            .home-hero p { display: none; }
+        }
+        @media (min-width: 769px) {
+            .hero-title-name { font-size: clamp(2.8rem, 4.6vw, 4.8rem); }
+            .home-hero .section-content { max-width: min(850px, 54vw); }
+        }
+
+        /* ====================================== */
+        /* PORTADA CELULAR v3: foto y nombre       */
+        /* separados (sin mezclar dorado y cara)   */
+        /* ====================================== */
+        @media (max-width: 768px) {
+            .home-hero {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                min-height: 0;
+                padding: 0 0 4.5rem;
+            }
+            .home-hero .bg-photo {
+                position: relative;
+                inset: auto;
+                display: block;
+                width: 100%;
+                height: min(58svh, 125vw);
+                object-position: 50% 12%;
+                transform: none !important;
+                animation: none !important;
+            }
+            .js .home-hero .bg-photo.ready { animation: none !important; }
+            .home-hero .bg-overlay {
+                inset: 0 0 auto 0;
+                height: min(58svh, 125vw);
+                background: linear-gradient(to bottom,
+                    rgba(5,5,5,0.35) 0%,
+                    rgba(5,5,5,0) 18%,
+                    rgba(5,5,5,0) 62%,
+                    rgba(5,5,5,0.85) 88%,
+                    rgba(5,5,5,1) 100%);
+            }
+            .home-hero .section-content {
+                position: relative;
+                z-index: 2;
+                margin-top: -1.6rem;
+                padding: 0 6%;
+            }
+            .hero-title-name { text-shadow: none; }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -2195,7 +2334,8 @@
         <img src="inicio.jpg" srcset="inicio-movil.jpg 900w, inicio.jpg 2000w" sizes="100vw" alt="Background Home" class="bg-photo" fetchpriority="high">
         <div class="bg-overlay"></div>
         <div class="section-content"><div class="hero-inner-3d">
-            <h1 class="hero-title-name">Enluis <span>Montes Olivar</span></h1>
+            <span class="hero-eyebrow" data-i18n="home_eyebrow">Orchestra Conductor</span>
+            <h1 class="hero-title-name"><span class="hn-first">Enluis</span> <span class="hn-last">Montes Olivar</span></h1>
             <div class="hero-divider"></div>
             <span class="hero-sub-motto" data-i18n="home_title">Passion and energy at the service of music</span>
             <p data-i18n="home_desc">An artistic vision that unites technical excellence with the overflowing passion of the stage.</p>
@@ -2810,6 +2950,7 @@
             en: {
                 chip_bio: "Biography", chip_exp: "Experience", chip_lead: "Leadership", chip_guest: "Guest & Recordings", chip_edu: "Education", chip_awards: "Awards",
                 km_label: "Design &amp; development",
+                home_eyebrow: "Orchestra Conductor",
                 pager_prev: "Previous", pager_next: "Next", loading_page: "Loading", bio_more: "Read full biography", bio_less: "Show less", follow_title: "Follow",
                 home_scroll: "Discover", home_next_label: "Next performance", home_press_label: "They say", home_explore_label: "Explore the site",
                 home_quote: "\"He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy.\"",
@@ -2876,6 +3017,7 @@
             es: {
                 chip_bio: "Biografía", chip_exp: "Experiencia", chip_lead: "Liderazgo", chip_guest: "Invitaciones y discos", chip_edu: "Educación", chip_awards: "Premios",
                 km_label: "Diseño y desarrollo",
+                home_eyebrow: "Director de Orquesta",
                 pager_prev: "Anterior", pager_next: "Siguiente", loading_page: "Cargando", bio_more: "Leer biografía completa", bio_less: "Ver menos", follow_title: "Síguelo",
                 home_scroll: "Descubrir", home_next_label: "Próxima presentación", home_press_label: "Dicen de él", home_explore_label: "Recorre el sitio",
                 home_quote: "\"Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado.\"",

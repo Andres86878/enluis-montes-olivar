@@ -8,12 +8,13 @@
     <meta name="description" content="Enluis Montes Olivar, Venezuelan orchestra conductor. Biography, press, upcoming concerts, multimedia and booking contact.">
     <meta property="og:title" content="Enluis Montes Olivar | Orchestra Conductor">
     <meta property="og:description" content="Passion and energy at the service of music.">
-    <meta property="og:image" content="./foto.enluis.inicio.1.jpeg">
+    <meta property="og:image" content="img/inicio.jpg">
     <meta name="theme-color" content="#050505">
-    <link rel="icon" type="image/png" href="Isologo Positivo PNG.png">
+    <link rel="icon" type="image/png" href="img/logo.png">
     
     <!-- FORZAR EL INICIO AL RECARGAR -->
     <script>
+        document.documentElement.className += ' js';
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
@@ -21,13 +22,15 @@
     </script>
 
     <!-- PRE-CARGA DE RECURSOS CRÍTICOS -->
-    <link rel="preload" href="Isologo Positivo PNG.png" as="image">
-    <link rel="preload" href="./foto.enluis.inicio.1.jpeg" as="image">
+    <link rel="preload" href="img/logo.png" as="image">
+    <link rel="preload" href="img/inicio.jpg" as="image" imagesrcset="img/inicio-movil.jpg 900w, img/inicio.jpg 2000w" imagesizes="100vw">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
 
     <style>
         /* Color Variables */
@@ -75,15 +78,15 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.35s ease, visibility 0.35s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         #splash-screen img {
-            max-width: 350px; 
-            width: 70%;
-            animation: fadeInLogo 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            max-width: 280px; 
+            width: 62%;
+            animation: fadeInLogo 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
         /* Red de seguridad: la pantalla de carga inicial se quita sola a los 3 s */
-        #splash-screen.boot { animation: splashFailsafe 0.35s ease 3s forwards; }
+        #splash-screen.boot { animation: splashFailsafe 0.3s ease 1.8s forwards; }
         @keyframes splashFailsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
         .splash-hidden {
             opacity: 0;
@@ -827,7 +830,7 @@
         /* -------------------------------------- */
         .yt-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
             position: relative;
@@ -1199,7 +1202,7 @@
             background: var(--dorado);
         }
         #splash-screen.loading .splash-bar span {
-            animation: splashBar 0.45s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            animation: splashBar 0.25s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
         @keyframes splashBar { to { width: 100%; } }
         .splash-label {
@@ -1705,14 +1708,313 @@
             .scroll-cue { bottom: 1rem; }
             .cue-line { height: 36px; }
         }
+
+        /* ====================================== */
+        /* PULIDO GENERAL + CELULAR               */
+        /* ====================================== */
+        :root { --header-h: 150px; }
+        body { padding-top: var(--header-h); }
+        html { scroll-padding-top: calc(var(--header-h) + 10px); }
+
+        /* Header más compacto */
+        .logo-container img { max-height: 110px; }
+        header.scrolled .logo-container img { max-height: 70px; }
+        header { padding: 0.6rem 5%; }
+        header.scrolled {
+            background-color: rgba(5,5,5,0.92);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+        }
+
+        /* Fotos de fondo: más contraste para leer mejor */
+        .bg-overlay {
+            background: linear-gradient(to bottom, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.9) 45%, rgba(5,5,5,0.97) 100%);
+        }
+        #contact .bg-overlay, #press .bg-overlay {
+            background: linear-gradient(to bottom, rgba(5,5,5,0.8) 0%, rgba(5,5,5,0.92) 50%, rgba(5,5,5,0.98) 100%);
+        }
+        .home-hero .bg-overlay {
+            background:
+                linear-gradient(90deg, rgba(5,5,5,0.88) 0%, rgba(5,5,5,0.55) 45%, rgba(5,5,5,0.15) 100%),
+                linear-gradient(to bottom, rgba(5,5,5,0) 60%, rgba(5,5,5,1) 100%);
+        }
+        @media (min-width: 769px) {
+            .home-hero .bg-photo { left: auto; right: 0; width: 66%; object-position: 50% 20%; }
+            .home-hero .bg-overlay {
+                background:
+                    linear-gradient(90deg, rgba(5,5,5,1) 0%, rgba(5,5,5,1) 34%, rgba(5,5,5,0.55) 52%, rgba(5,5,5,0.1) 75%, rgba(5,5,5,0.25) 100%),
+                    linear-gradient(to bottom, rgba(5,5,5,0) 65%, rgba(5,5,5,1) 100%);
+            }
+        }
+
+        /* Tarjetas con efecto vidrio */
+        .cv-card, .media-card, .event-item, .bio-article-container, .next-concert {
+            background-color: rgba(12,12,12,0.72);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Prensa: cuadrícula real */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 1.5rem;
+        }
+        .grid .cv-card { display: flex; flex-direction: column; }
+        .grid .cv-card .text-link { margin-top: auto; align-self: flex-start; }
+
+        /* Biografía: leer más */
+        .bio-article-content { position: relative; }
+        .bio-article-content.collapsed p:nth-of-type(n+3) { display: none; }
+        .bio-article-content.collapsed::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 90px;
+            background: linear-gradient(to bottom, rgba(12,12,12,0), rgba(12,12,12,0.95));
+            pointer-events: none;
+        }
+        .bio-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1.5rem;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--dorado);
+            padding: 4px 0;
+            color: var(--dorado);
+            font-family: inherit;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .bio-toggle svg { transition: transform 0.3s ease; }
+        .bio-toggle.open svg { transform: rotate(180deg); }
+
+        /* Videos con miniatura */
+        .yt-thumb {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            margin: -2rem -2rem 0;
+            border-radius: 8px 8px 0 0;
+            background: #111 center / cover no-repeat;
+            overflow: hidden;
+        }
+        .yt-thumb::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.55));
+            transition: background 0.4s ease;
+        }
+        .yt-thumb .yt-play {
+            position: absolute;
+            left: 50%; top: 50%;
+            width: 58px; height: 58px;
+            margin: -29px 0 0 -29px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.6);
+            background: rgba(5,5,5,0.35);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+        }
+        .yt-thumb .yt-play svg { width: 20px; height: 20px; fill: #fff; margin-left: 3px; }
+        .yt-card:hover .yt-thumb::before { background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.35)); }
+        .yt-card:hover .yt-play { transform: scale(1.1); background: var(--dorado); border-color: var(--dorado); }
+        .yt-card.has-thumb .play-btn-minimal { display: none; }
+
+        /* Pie de página */
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gris-texto);
+        }
+        .footer-social a { color: var(--dorado); text-decoration: none; }
+        .footer-social a:hover { color: var(--blanco-texto); }
+
+        /* ---------- CELULAR ---------- */
+        @media (max-width: 768px) {
+            header { padding: 0.5rem 4%; }
+            .logo-container img { max-height: 80px; }
+            header.scrolled .logo-container img { max-height: 58px; }
+            .mobile-menu-trigger { padding: 8px 14px; font-size: 0.72rem; letter-spacing: 1.5px; }
+            #lang-toggle-mobile-right { padding: 7px 10px; font-size: 0.7rem; }
+
+            section { padding: 3rem 5%; }
+            h2 { font-size: 2.1rem; line-height: 1.2; margin-bottom: 1.8rem; }
+            h3 { line-height: 1.35; }
+
+            /* Portada: foto arriba, texto abajo (no tapa la cara) */
+            .home-hero {
+                min-height: calc(100svh - var(--header-h));
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 2rem 5% 6.5rem;
+            }
+            .home-hero .bg-photo { object-position: 58% 10%; }
+            .home-hero .bg-overlay {
+                background: linear-gradient(to bottom, rgba(5,5,5,0.05) 0%, rgba(5,5,5,0.25) 35%, rgba(5,5,5,0.88) 62%, rgba(5,5,5,1) 100%);
+            }
+            .hero-title-name { font-size: 2.5rem; }
+            .home-more { padding: 3rem 5%; }
+
+            /* Biografía sin doble marco para ganar espacio */
+            .bio-article-container {
+                padding: 0;
+                border: none;
+                background: transparent;
+                -webkit-backdrop-filter: none;
+                backdrop-filter: none;
+            }
+            .bio-article-content.collapsed::after { background: linear-gradient(to bottom, rgba(5,5,5,0), rgba(5,5,5,0.97)); }
+            .bio-quote-wrapper { padding: 2.6rem 1.2rem 1.4rem 1.4rem; }
+            .quote-nav-btn { display: none; }
+            .bio-quote-text { -webkit-line-clamp: 6; font-size: 1.05rem; }
+            .about-wrapper { gap: 3rem; }
+            .about-wrapper h2, #about h2 { text-align: left !important; }
+
+            .cv-card, .media-card, .event-item { padding: 1.4rem; }
+            .yt-thumb { margin: -1.4rem -1.4rem 0; }
+            .yt-grid { gap: 1.2rem; }
+            .grid { gap: 1rem; }
+
+            /* Contacto: correos que caben en pantalla */
+            #contact .text-link { font-size: 0.9rem; word-break: break-all; }
+            #contact [style*="gap: 5rem"] { gap: 2rem !important; }
+            #contact [style*="min-width: 300px"] { min-width: 0 !important; }
+
+            .page-pager { padding: 1.4rem 5%; }
+            footer { padding: 2rem 5%; }
+            .instagram-floating-btn { width: 44px; height: 44px; bottom: 16px; right: 16px; }
+        }
+        @media (max-width: 380px) {
+            .hero-title-name { font-size: 2.1rem; }
+            h2 { font-size: 1.85rem; }
+            .mobile-menu-trigger span { display: none; }
+        }
+        .js .bg-photo { opacity: 0; transition: opacity 0.6s ease, transform 0.25s ease-out; }
+        .js .bg-photo.ready { opacity: 1; }
+
+        /* ---------- Agenda: insignia de fecha ---------- */
+        .event-top { flex-wrap: nowrap; align-items: center; }
+        .event-main { flex: 1; min-width: 0; }
+        .ev-date {
+            flex: 0 0 auto;
+            width: 86px;
+            text-align: center;
+            border: 1px solid rgba(203,161,83,0.4);
+            border-radius: 6px;
+            padding: 0.7rem 0.4rem;
+            align-self: flex-start;
+        }
+        .ev-date span { display: block; }
+        .ev-m { font-size: 0.66rem; letter-spacing: 3px; text-transform: uppercase; color: var(--dorado); }
+        .ev-d { font-family: 'Playfair Display', serif; font-size: 2rem; line-height: 1.15; color: var(--blanco-texto); }
+        .ev-d.ev-range { font-size: 1.35rem; padding: 0.3rem 0; }
+        .ev-y { font-size: 0.66rem; letter-spacing: 2px; color: var(--gris-texto); }
+
+        /* ---------- Biografía: accesos rápidos ---------- */
+        #about { overflow: clip; }
+        .about-chips {
+            position: sticky;
+            top: calc(var(--hdr-live, 90px) - 1px);
+            z-index: 20;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding: 0.8rem 0;
+            margin: -1.5rem 0 2.5rem;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.96) 70%, rgba(5,5,5,0));
+        }
+        .about-chips::-webkit-scrollbar { display: none; }
+        .about-chips a {
+            flex: 0 0 auto;
+            padding: 7px 14px;
+            border: 1px solid var(--negro-bordes);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gris-texto);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        .about-chips a:hover { color: var(--blanco-texto); border-color: rgba(203,161,83,0.5); }
+        .about-chips a.on { color: var(--negro-fondo); background: var(--dorado); border-color: var(--dorado); }
+        .chip-target { scroll-margin-top: 50px; }
+
+        .cv-category-title, .cv-section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400 !important;
+            color: var(--dorado) !important;
+            letter-spacing: 0.5px;
+        }
+        .cv-category-title { font-size: 1.6rem; }
+
+        /* ---------- Accesibilidad ---------- */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--dorado);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        body.menu-open { overflow: hidden; }
+        .mobile-menu-links li {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu-overlay.open .mobile-menu-links li { opacity: 1; transform: none; }
+        .mobile-menu-overlay.open .mobile-menu-links li:nth-child(2) { transition-delay: 0.05s; }
+        .mobile-menu-overlay.open .mobile-menu-links li:nth-child(3) { transition-delay: 0.1s; }
+        .mobile-menu-overlay.open .mobile-menu-links li:nth-child(4) { transition-delay: 0.15s; }
+        .mobile-menu-overlay.open .mobile-menu-links li:nth-child(5) { transition-delay: 0.2s; }
+        .mobile-menu-overlay.open .mobile-menu-links li:nth-child(6) { transition-delay: 0.25s; }
+        .mobile-menu-overlay { background-color: rgba(5,5,5,0.99); }
+
+        @media (max-width: 768px) {
+            .event-top { flex-wrap: wrap; }
+            .ev-date {
+                width: auto;
+                display: inline-flex;
+                align-items: baseline;
+                gap: 0.5rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .ev-d, .ev-d.ev-range { font-size: 1.3rem; padding: 0; }
+            .event-main { flex-basis: 100%; }
+            .about-chips { margin: -1rem -5% 1.8rem; padding: 0.7rem 5%; }
+        }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Enluis Montes Olivar",
+      "jobTitle": "Orchestra Conductor",
+      "nationality": "Venezuelan",
+      "image": "img/inicio.jpg",
+      "sameAs": ["https://instagram.com/emontesolivar"],
+      "award": ["Glenn Gould Protégé Prize"]
+    }
+    </script>
 </head>
 <body>
 
     <!-- AUTOMATIC SPLASH SCREEN -->
     <div id="splash-screen" class="boot">
         <div class="splash-inner">
-            <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
+            <img src="data:image/png;base64,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" alt="Enluis Montes Olivar Logo">
             <div class="splash-bar"><span></span></div>
             <p class="splash-label" id="splash-label"></p>
         </div>
@@ -1724,7 +2026,7 @@
             if (window.__splashDone) return;
             var sp = document.getElementById('splash-screen');
             if (sp) { sp.classList.add('splash-hidden'); setTimeout(function () { sp.style.display = 'none'; }, 350); }
-        }, 2500);
+        }, 1500);
     </script>
 
     <!-- LOGOTIPO DE INSTAGRAM FLOTANTE PERMANENTE ABAJO A LA DERECHA (@emontesolivar) -->
@@ -1763,7 +2065,7 @@
     <header id="main-header">
         <div class="logo-container">
             <a href="#home">
-                <img src="Isologo Positivo PNG.png" alt="Enluis Montes Olivar Logo">
+                <img src="img/logo.png" alt="Enluis Montes Olivar Logo">
             </a>
         </div>
 
@@ -1827,7 +2129,7 @@
     <!-- 1. Home -->
     <section id="home" class="page-section">
       <div class="home-hero">
-        <img src="./foto.enluis.inicio.1.jpeg" alt="Background Home" class="bg-photo" fetchpriority="high">
+        <img src="img/inicio.jpg" srcset="img/inicio-movil.jpg 900w, img/inicio.jpg 2000w" sizes="100vw" alt="Background Home" class="bg-photo" fetchpriority="high">
         <div class="bg-overlay"></div>
         <div class="section-content"><div class="hero-inner-3d">
             <h1 class="hero-title-name">Enluis <span>Montes Olivar</span></h1>
@@ -1909,10 +2211,11 @@
 
     <!-- 2. About -->
     <section id="about" class="page-section">
-        <img src="./foto.general.enluis.10.JPG" alt="Background About" class="bg-photo" loading="lazy">
+        <img src="img/biografia.jpg" srcset="img/biografia-movil.jpg 900w, img/biografia.jpg 2000w" sizes="100vw" alt="Background About" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="about_title">Biography</h2>
+            <nav class="about-chips" id="about-chips" aria-label="Biography sections"></nav>
             
             <div class="about-wrapper">
                 <div class="bio-article-container reveal">
@@ -1933,7 +2236,7 @@
                         <div class="quote-progress" id="quote-dots"></div>
                     </div>
 
-                    <div class="bio-article-content">
+                    <div class="bio-article-content collapsed" id="bio-content">
                         <p data-i18n="bio_p1">Dynamic Venezuelan conductor Enluis Montes Olivar, 29, is receiving international acclaim for his artistry and dynamic energy. He currently serves as Associate Conductor of the Simón Bolívar Chamber Orchestra since January of 2024, Conducting Fellow of the San Diego Symphony and Music and Artistic Director of The Blue Morpho Orchestra. In 2024, he was awarded the prestigious Glenn Gould Protégé Prize, which followed his 1st Prize and Orchestra Prize at the 2022 International Conducting Competition of the University of Almería in Spain.</p>
                         
                         <p data-i18n="bio_p2">He has appeared with the Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Orquesta Sinfónica Metropolitana di Bari in Italy, Orchestre National de Mulhouse in France, the Suzhou Symphony Orchestra in China and with the Bogota Philharmonic in Colombia. He recently led the Simón Bolívar Chamber Orchestra on tour in Algeria and in a complete Symphonic Beethoven Cycle in Caracas. With the Simón Bolívar Symphony Orchestra of Venezuela, he has released an album in May of 2025 featuring music of Carreño, Castellanos and Estevez. Additionally, in May 2026, Montes Olivar made his debut with the New York Philharmonic alongside the internationally renowned trumpeter Pacho Flores at the annual concert at St. John the Divine Cathedral, a tradition of the NY Phil dating back to 1992.</p>
@@ -1946,6 +2249,10 @@
                         
                         <p data-i18n="bio_p6">He began his formal conducting studies in 2012 with Teresa Hernández, José Antonio Abreu, Gregory Carreño, and Franka Verhagen, and has participated in masterclasses with renowned conductors such as Dick van Gasteren, Eduardo Marturet, Diego Matheuz, Roberto Zambrano, John Farrer, Leaf Bjaland, Mark Churchill, Marc Moncusí, Luis Mauricio Carneiro, David Cubek, Ransom Wilson and Nathalie Stutzmann. Enluis continues his studies currently pursuing a master's degree in higher education at the Libertador Experimental Pedagogical University in Venezuela.</p>
                     </div>
+                    <button class="bio-toggle" id="bio-toggle" onclick="toggleBio()">
+                        <span data-i18n="bio_more">Read full biography</span>
+                        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                    </button>
                 </div>
 
                 <div>
@@ -2060,7 +2367,7 @@
                     </div>
 
                     <h4 class="cv-category-title" data-i18n="cv_cat3" style="margin-top: 3rem;">Guest Conducting & Recordings</h4>
-                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
                         <div class="cv-card reveal">
                             <h3 style="color: var(--dorado); margin-bottom: 1rem; font-family: 'Playfair Display', serif;" data-i18n="cv_guest_title">Guest Conducting Highlights</h3>
                             <p style="margin-bottom: 0.8rem; line-height: 1.6;" data-i18n="cv_guest_usa"><strong>USA:</strong> New York Philharmonic, Los Angeles Philharmonic, San Francisco Symphony, San Diego Symphony, New West Symphony, Redlands Symphony, Schwob Philharmonic, The Blue Morpho Orchestra, YOLA.</p>
@@ -2075,7 +2382,7 @@
                     </div>
 
                     <h4 class="cv-category-title" data-i18n="cv_cat4" style="margin-top: 3rem;">Education</h4>
-                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="cv-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));">
                         <div class="cv-card reveal">
                             <h4 data-i18n="cv_edu1_title" style="margin-bottom: 0.5rem; font-weight: 500;">Simón Bolívar Conservatory of Music</h4>
                             <p style="color: var(--dorado); font-size: 0.85rem;">2023</p>
@@ -2132,7 +2439,7 @@
 
     <!-- 3. Press -->
     <section id="press" class="page-section">
-        <img src="./foto.general.enluis.5.JPG" alt="Background Press" class="bg-photo" loading="lazy">
+        <img src="img/prensa.jpg" srcset="img/prensa-movil.jpg 900w, img/prensa.jpg 2000w" sizes="100vw" alt="Background Press" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="press_title">Media & Press</h2>
@@ -2165,7 +2472,7 @@
 
     <!-- 4. Schedule -->
     <section id="schedule" class="page-section">
-        <img src="./foto.general.enluis.11.jpeg" alt="Background Schedule" class="bg-photo" loading="lazy">
+        <img src="img/agenda.jpg" srcset="img/agenda-movil.jpg 900w, img/agenda.jpg 2000w" sizes="100vw" alt="Background Schedule" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="schedule_title">Schedule of Events</h2>
@@ -2179,7 +2486,7 @@
 
     <!-- 5. Multimedia -->
     <section id="multimedia" class="page-section">
-        <img src="./foto.general.enluis.6.JPG" alt="Background Multimedia" class="bg-photo" loading="lazy">
+        <img src="img/multimedia.jpg" srcset="img/multimedia-movil.jpg 900w, img/multimedia.jpg 2000w" sizes="100vw" alt="Background Multimedia" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="media_title">Multimedia</h2>
@@ -2193,7 +2500,7 @@
                         <div class="media-info">
                             <h3>Sinfonía India</h3>
                             <span class="media-composer">Carlos Chávez</span>
-                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Schowb Philharmonic</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Schwob Philharmonic</span>
                             <span class="media-year">2026</span>
                         </div>
                     </div>
@@ -2273,7 +2580,7 @@
                         <div class="media-info">
                             <h3>Sensemayá</h3>
                             <span class="media-composer">Silvestre Revueltas</span>
-                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Schowb Philharmonic</span>
+                            <span class="media-composer" style="color:var(--blanco-texto); font-weight:500;">Schwob Philharmonic</span>
                             <span class="media-year">2022</span>
                         </div>
                     </div>
@@ -2346,7 +2653,7 @@
 
     <!-- 6. Contact -->
     <section id="contact" class="page-section">
-        <img src="./foto.general.enluis.9.jpg" alt="Background Contact" class="bg-photo" loading="lazy">
+        <img src="img/contacto.jpg" srcset="img/contacto-movil.jpg 900w, img/contacto.jpg 2000w" sizes="100vw" alt="Background Contact" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="contact_title">Contact & Booking</h2>
@@ -2394,6 +2701,11 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-social">
+            <a href="https://instagram.com/emontesolivar" target="_blank" rel="noopener">Instagram</a>
+            <span>·</span>
+            <a href="#contact" data-i18n="nav_contact">Contact</a>
+        </div>
         <p data-i18n="footer_text">&copy; 2026 Enluis Montes Olivar. All rights reserved.</p>
     </footer>
 
@@ -2429,7 +2741,8 @@
         // -------------------------
         const i18n = {
             en: {
-                pager_prev: "Previous", pager_next: "Next", loading_page: "Loading",
+                chip_bio: "Biography", chip_exp: "Experience", chip_lead: "Leadership", chip_guest: "Guest & Recordings", chip_edu: "Education", chip_awards: "Awards",
+                pager_prev: "Previous", pager_next: "Next", loading_page: "Loading", bio_more: "Read full biography", bio_less: "Show less", follow_title: "Follow",
                 home_scroll: "Discover", home_next_label: "Next performance", home_press_label: "They say", home_explore_label: "Explore the site",
                 home_quote: "\"He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy.\"",
                 ex_about: "Career, training and professional experience.", ex_schedule: "Upcoming concerts and repertoire.", ex_press: "Interviews and articles in the media.", ex_media: "Videos and recordings of his performances.", ex_contact: "Management and booking inquiries.",
@@ -2493,7 +2806,8 @@
                 quote_4_auth: "Paul Hostetter<br><span style='font-size:0.65rem; font-weight:normal; letter-spacing:0'>Professor of Music.<br>The Ethel Foley Distinguished Chair in Orchestral Activities.<br>Columbus State University.</span>"
             },
             es: {
-                pager_prev: "Anterior", pager_next: "Siguiente", loading_page: "Cargando",
+                chip_bio: "Biografía", chip_exp: "Experiencia", chip_lead: "Liderazgo", chip_guest: "Invitaciones y discos", chip_edu: "Educación", chip_awards: "Premios",
+                pager_prev: "Anterior", pager_next: "Siguiente", loading_page: "Cargando", bio_more: "Leer biografía completa", bio_less: "Ver menos", follow_title: "Síguelo",
                 home_scroll: "Descubrir", home_next_label: "Próxima presentación", home_press_label: "Dicen de él", home_explore_label: "Recorre el sitio",
                 home_quote: "\"Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado.\"",
                 ex_about: "Trayectoria, formación y experiencia profesional.", ex_schedule: "Próximos conciertos y repertorio.", ex_press: "Entrevistas y artículos en los medios.", ex_media: "Videos y grabaciones de sus presentaciones.", ex_contact: "Representación y contrataciones.",
@@ -2581,6 +2895,8 @@
             renderSchedule();
             updatePager();
             renderHomeQuotes();
+            const bt = document.getElementById('bio-toggle');
+            if (bt) bt.querySelector('span').innerHTML = i18n[currentLang][bt.classList.contains('open') ? 'bio_less' : 'bio_more'];
             if (currentPage && currentPage !== 'home') document.title = pageLabel(currentPage) + ' | Enluis Montes Olivar';
         }
 
@@ -2669,12 +2985,12 @@
                 if (done) return;
                 done = true;
                 window.__splashDone = true;
-                const wait = Math.max(0, 350 - (Date.now() - start)); // el logo se ve al menos un instante
+                const wait = Math.max(0, 250 - (Date.now() - start)); // el logo se ve al menos un instante
                 setTimeout(() => {
                     const splash = document.getElementById('splash-screen');
                     if (!splash) return;
                     splash.classList.add('splash-hidden');
-                    setTimeout(() => { splash.style.display = 'none'; }, 350);
+                    setTimeout(() => { splash.style.display = 'none'; }, 300);
                 }, wait);
             }
             function whenReady(img) {
@@ -2687,14 +3003,11 @@
             document.addEventListener('DOMContentLoaded', () => {
                 window.scrollTo(0, 0);
                 const page = document.getElementById(getPageFromHash());
-                const critical = [
-                    document.querySelector('.logo-container img'),
-                    page ? page.querySelector('.bg-photo') : null
-                ];
+                const critical = [document.querySelector('#splash-screen img')];
                 if (page) { const bg = page.querySelector('.bg-photo'); if (bg) bg.loading = 'eager'; }
                 Promise.all(critical.map(whenReady)).then(hideSplash);
             });
-            setTimeout(hideSplash, 1500); // límite de seguridad
+            setTimeout(hideSplash, 700); // límite de seguridad
         })();
         
         window.addEventListener('beforeunload', function () {
@@ -2912,6 +3225,15 @@
             }
         ];
 
+        // Insignia de fecha (mes / días / año) para cada concierto
+        function dateBadge(c) {
+            const d = new Date(c.dateStr + 'T00:00:00');
+            const m = (c.dateDisplay_en || '').match(/^[A-Za-z]+\.?\s+(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?/);
+            const day = m ? (m[2] ? `${+m[1]}–${+m[2]}` : `${+m[1]}`) : `${d.getDate()}`;
+            const L = i18n[currentLang];
+            return `<div class="ev-date"><span class="ev-m">${L.home_months[d.getMonth()]}</span><span class="ev-d${day.length > 2 ? ' ev-range' : ''}">${day}</span><span class="ev-y">${d.getFullYear()}</span></div>`;
+        }
+
         function renderHomeNextConcert() {
             const box = document.getElementById('home-next-concert');
             if (!box) return;
@@ -2975,7 +3297,7 @@
                 html += `
                 <div class="event-item reveal" onclick="toggleEventAccordion(this)">
                     <div class="event-top">
-                        <div>
+                        ${dateBadge(c)}<div class="event-main">
                             <h3 style="margin-bottom: 0.3rem; font-size: 1.3rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
                             <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
                             <p style="color: var(--dorado); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.role_es : c.role_en}</p>
@@ -3012,7 +3334,7 @@
                     html += `
                     <div class="event-item" onclick="toggleEventAccordion(this)">
                         <div class="event-top">
-                            <div>
+                            ${dateBadge(c)}<div class="event-main">
                                 <h3 style="margin-bottom: 0.3rem; font-size: 1.3rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
                                 <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
                                 <p style="color: var(--dorado); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.role_es : c.role_en}</p>
@@ -3169,8 +3491,8 @@
                     splash.style.display = 'none';
                     splash.classList.remove('loading');
                     isNavigating = false;
-                }, 350);
-            }, 450);
+                }, 250);
+            }, 250);
         }
 
         // Intercepta todos los enlaces internos (#about, #press, etc.)
@@ -3326,6 +3648,147 @@
             initTilt();
             initHeroParallax();
             initReveal3D();
+        });
+
+        /* ======================================================= */
+        /* ALTURA DEL HEADER, BIOGRAFÍA Y MINIATURAS DE YOUTUBE     */
+        /* ======================================================= */
+        function syncHeaderHeight() {
+            const h = document.getElementById('main-header');
+            if (!h || h.classList.contains('scrolled')) return;
+            document.documentElement.style.setProperty('--header-h', h.offsetHeight + 'px');
+        }
+        window.addEventListener('resize', syncHeaderHeight);
+        window.addEventListener('load', syncHeaderHeight);
+        document.addEventListener('DOMContentLoaded', () => {
+            syncHeaderHeight();
+            const logo = document.querySelector('.logo-container img');
+            if (logo && !logo.complete) logo.addEventListener('load', syncHeaderHeight);
+
+            document.querySelectorAll('a.yt-card').forEach(card => {
+                const m = card.href.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+                if (!m) return;
+                const t = document.createElement('div');
+                t.className = 'yt-thumb';
+                t.style.backgroundImage = `url(https://i.ytimg.com/vi/${m[1]}/hqdefault.jpg)`;
+                t.innerHTML = '<span class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>';
+                card.insertBefore(t, card.firstChild);
+                card.classList.add('has-thumb');
+            });
+        });
+
+        function toggleBio() {
+            const c = document.getElementById('bio-content');
+            const b = document.getElementById('bio-toggle');
+            const open = c.classList.toggle('collapsed') === false;
+            b.classList.toggle('open', open);
+            b.querySelector('span').innerHTML = i18n[currentLang][open ? 'bio_less' : 'bio_more'];
+            if (!open) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // Las fotos de fondo aparecen suavemente apenas terminan de cargar
+        (function () {
+            function mark(img) { img.classList.add('ready'); }
+            function watch() {
+                document.querySelectorAll('.bg-photo').forEach(img => {
+                    if (img.complete && img.naturalWidth) mark(img);
+                    else { img.addEventListener('load', () => mark(img), { once: true }); img.addEventListener('error', () => mark(img), { once: true }); }
+                });
+            }
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
+            setTimeout(() => document.querySelectorAll('.bg-photo').forEach(mark), 4000);
+        })();
+
+        /* ======================================================= */
+        /* BIOGRAFÍA: ACCESOS RÁPIDOS                              */
+        /* ======================================================= */
+        const CHIPS = [
+            ['chip_bio', '.bio-article-container'],
+            ['chip_exp', '[data-i18n="cv_title"]'],
+            ['chip_lead', '[data-i18n="cv_cat2"]'],
+            ['chip_guest', '[data-i18n="cv_cat3"]'],
+            ['chip_edu', '[data-i18n="cv_cat4"]'],
+            ['chip_awards', '[data-i18n="cv_cat5"]']
+        ];
+        function buildChips() {
+            const bar = document.getElementById('about-chips');
+            if (!bar) return;
+            bar.innerHTML = '';
+            CHIPS.forEach(([key, sel], i) => {
+                const target = document.querySelector('#about ' + sel);
+                if (!target) return;
+                target.id = target.id || 'cv-part-' + i;
+                target.classList.add('chip-target');
+                const a = document.createElement('a');
+                a.href = '#' + target.id;
+                a.dataset.i18n = key;
+                a.innerHTML = i18n[currentLang][key];
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    if (key === 'chip_exp' || key === 'chip_bio') { /* nada extra */ }
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                bar.appendChild(a);
+            });
+        }
+        function updateChips() {
+            const bar = document.getElementById('about-chips');
+            if (!bar || currentPage !== 'about') return;
+            const line = (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr-live')) || 90) + 140;
+            let active = null;
+            bar.querySelectorAll('a').forEach(a => {
+                const t = document.getElementById(a.getAttribute('href').slice(1));
+                if (t && t.getBoundingClientRect().top <= line) active = a;
+            });
+            bar.querySelectorAll('a').forEach(a => a.classList.toggle('on', a === (active || bar.firstChild)));
+            if (active) {
+                const l = active.offsetLeft - bar.offsetLeft - 16;
+                if (Math.abs(bar.scrollLeft - l) > 40) bar.scrollTo({ left: l, behavior: 'smooth' });
+            }
+        }
+        function syncLiveHeader() {
+            const h = document.getElementById('main-header');
+            if (h) document.documentElement.style.setProperty('--hdr-live', h.offsetHeight + 'px');
+        }
+        window.addEventListener('scroll', () => { syncLiveHeader(); updateChips(); }, { passive: true });
+        window.addEventListener('resize', syncLiveHeader);
+        document.addEventListener('DOMContentLoaded', () => { buildChips(); syncLiveHeader(); updateChips(); });
+
+        /* ======================================================= */
+        /* IDIOMA: RECORDAR ELECCIÓN / ESPAÑOL AUTOMÁTICO          */
+        /* ======================================================= */
+        document.addEventListener('DOMContentLoaded', () => {
+            let saved = null;
+            try { saved = localStorage.getItem('emo_lang'); } catch (e) {}
+            const browserEs = /^es\b/i.test(navigator.language || '');
+            const want = saved || (browserEs ? 'es' : 'en');
+            if (want !== currentLang) {
+                const btn = document.getElementById('lang-toggle');
+                if (btn) toggleLanguage({ preventDefault() {} });
+            }
+            document.documentElement.lang = currentLang;
+        });
+        const _origToggleLanguage = toggleLanguage;
+        toggleLanguage = function (e) {
+            _origToggleLanguage(e);
+            try { localStorage.setItem('emo_lang', currentLang); } catch (err) {}
+            const mob = document.getElementById('lang-toggle-mobile-right');
+            if (mob) { const t = mob.querySelector('#lang-text, span'); if (t) t.innerText = currentLang === 'en' ? 'ES / EN' : 'EN / ES'; }
+        };
+
+        /* ======================================================= */
+        /* MENÚ MÓVIL: bloquear scroll y cerrar con Esc            */
+        /* ======================================================= */
+        const _origToggleMobileMenu = toggleMobileMenu;
+        toggleMobileMenu = function () {
+            _origToggleMobileMenu();
+            document.body.classList.toggle('menu-open', document.getElementById('mobileMenu').classList.contains('open'));
+        };
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Escape') return;
+            const m = document.getElementById('mobileMenu');
+            if (m && m.classList.contains('open')) toggleMobileMenu();
+            const q = document.getElementById('quoteModal');
+            if (q && q.classList.contains('open')) closeQuoteModal({ target: q });
         });
     </script>
 </body>

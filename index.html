@@ -29,7 +29,8 @@
 
     <!-- PRE-CARGA DE RECURSOS CRÍTICOS -->
     <link rel="preload" href="logo.png" as="image">
-    <link rel="preload" href="inicio.jpg" as="image" imagesrcset="inicio-movil.jpg 900w, inicio.jpg 2000w" imagesizes="100vw">
+    <link rel="preload" href="inicio-movil.jpg?v=4" as="image" media="(max-width: 768px)">
+    <link rel="preload" href="inicio.jpg" as="image" media="(min-width: 769px)">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2157,45 +2158,66 @@
         }
 
         /* ====================================== */
-        /* PORTADA CELULAR v3: foto y nombre       */
-        /* separados (sin mezclar dorado y cara)   */
+        /* PORTADA CELULAR v4: foto completa,      */
+        /* nombre encima sobre sombra oscura       */
         /* ====================================== */
         @media (max-width: 768px) {
             .home-hero {
+                position: relative;
                 display: flex;
                 flex-direction: column;
-                justify-content: flex-start;
-                min-height: 0;
-                padding: 0 0 4.5rem;
+                justify-content: flex-end;
+                min-height: max(calc(100svh - var(--header-h)), 158vw);
+                padding: 0 6% 4.8rem;
+                overflow: hidden;
             }
             .home-hero .bg-photo {
-                position: relative;
-                inset: auto;
-                display: block;
+                position: absolute;
+                inset: 0;
                 width: 100%;
-                height: min(58svh, 125vw);
-                object-position: 50% 12%;
-                transform: none !important;
-                animation: none !important;
+                height: 100%;
+                object-position: 50% 0%;
+                transform-origin: 50% 0%;
+                transform: none;
+                animation: heroZoomM 12s ease-out both;
             }
-            .js .home-hero .bg-photo.ready { animation: none !important; }
+            .js .home-hero .bg-photo.ready { animation: heroZoomM 12s ease-out both; }
+            @keyframes heroZoomM { from { transform: scale(1.07); } to { transform: scale(1); } }
+            /* Cara limpia arriba; sombra progresiva donde va el texto */
             .home-hero .bg-overlay {
-                inset: 0 0 auto 0;
-                height: min(58svh, 125vw);
-                background: linear-gradient(to bottom,
-                    rgba(5,5,5,0.35) 0%,
-                    rgba(5,5,5,0) 18%,
-                    rgba(5,5,5,0) 62%,
-                    rgba(5,5,5,0.85) 88%,
-                    rgba(5,5,5,1) 100%);
+                inset: 0;
+                height: auto;
+                background:
+                    linear-gradient(to bottom,
+                        rgba(5,5,5,0.3) 0%,
+                        rgba(5,5,5,0) 10%,
+                        rgba(5,5,5,0) 40%,
+                        rgba(5,5,5,0.45) 52%,
+                        rgba(5,5,5,0.8) 64%,
+                        rgba(5,5,5,0.95) 78%,
+                        #050505 100%);
             }
-            .home-hero .section-content {
-                position: relative;
-                z-index: 2;
-                margin-top: -1.6rem;
-                padding: 0 6%;
+            .home-hero .section-content { position: relative; z-index: 2; margin: 0; padding: 0; }
+            .hero-title-name {
+                font-size: clamp(2.2rem, 11.5vw, 3.4rem);
+                text-shadow: 0 2px 18px rgba(0,0,0,0.85);
             }
-            .hero-title-name { text-shadow: none; }
+            .hero-title-name .hn-last {
+                background: linear-gradient(100deg, #e9cf92 0%, #CBA153 45%, #a8803a 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                text-shadow: none;
+                filter: drop-shadow(0 2px 12px rgba(0,0,0,0.9));
+                padding-right: 0.08em;
+            }
+            .hero-eyebrow { text-shadow: 0 1px 8px rgba(0,0,0,0.9); }
+            .home-hero p { display: none; }
+            .hero-sub-motto { margin-bottom: 1.4rem; text-shadow: 0 1px 8px rgba(0,0,0,0.9); }
+        }
+        .instagram-floating-btn { transition: opacity 0.35s ease, transform 0.35s ease; }
+        @media (max-width: 768px) {
+            body.hide-ig .instagram-floating-btn { opacity: 0; transform: translateY(12px); pointer-events: none; }
         }
     </style>
     <script type="application/ld+json">
@@ -2331,7 +2353,10 @@
     <!-- 1. Home -->
     <section id="home" class="page-section">
       <div class="home-hero">
-        <img src="inicio.jpg" srcset="inicio-movil.jpg 900w, inicio.jpg 2000w" sizes="100vw" alt="Background Home" class="bg-photo" fetchpriority="high">
+        <picture>
+            <source media="(max-width: 768px)" srcset="inicio-movil.jpg?v=4">
+            <img src="inicio.jpg" alt="Enluis Montes Olivar" class="bg-photo" fetchpriority="high">
+        </picture>
         <div class="bg-overlay"></div>
         <div class="section-content"><div class="hero-inner-3d">
             <span class="hero-eyebrow" data-i18n="home_eyebrow">Orchestra Conductor</span>
@@ -4010,6 +4035,14 @@
             const q = document.getElementById('quoteModal');
             if (q && q.classList.contains('open')) closeQuoteModal({ target: q });
         });
+        // En el celular, el botón de Instagram no tapa los botones de la portada
+        function syncIgButton() {
+            document.body.classList.toggle('hide-ig', currentPage === 'home' && window.scrollY < window.innerHeight * 0.6);
+        }
+        window.addEventListener('scroll', syncIgButton, { passive: true });
+        document.addEventListener('click', () => setTimeout(syncIgButton, 800));
+        window.addEventListener('popstate', () => setTimeout(syncIgButton, 800));
+        document.addEventListener('DOMContentLoaded', () => setTimeout(syncIgButton, 50));
     </script>
 </body>
 </html>

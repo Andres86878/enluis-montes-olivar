@@ -29,8 +29,8 @@
 
     <!-- PRE-CARGA DE RECURSOS CRÍTICOS -->
     <link rel="preload" href="logo.png" as="image">
-    <link rel="preload" href="inicio-movil.jpg?v=4" as="image" media="(max-width: 768px)">
-    <link rel="preload" href="inicio.jpg" as="image" media="(min-width: 769px)">
+    <link rel="preload" href="inicio-movil.jpg?v=5" as="image" media="(max-width: 768px)">
+    <link rel="preload" href="inicio.jpg?v=5" as="image" media="(min-width: 769px)">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2219,6 +2219,8 @@
         @media (max-width: 768px) {
             body.hide-ig .instagram-floating-btn { opacity: 0; transform: translateY(12px); pointer-events: none; }
         }
+        /* Foto de portada: colores naturales y nítidos */
+        .home-hero .bg-photo { filter: contrast(1.04) saturate(1.05); image-rendering: auto; }
     </style>
     <script type="application/ld+json">
     {
@@ -2354,8 +2356,8 @@
     <section id="home" class="page-section">
       <div class="home-hero">
         <picture>
-            <source media="(max-width: 768px)" srcset="inicio-movil.jpg?v=4">
-            <img src="inicio.jpg" alt="Enluis Montes Olivar" class="bg-photo" fetchpriority="high">
+            <source media="(max-width: 768px)" srcset="inicio-movil.jpg?v=5">
+            <img src="inicio.jpg?v=5" alt="Enluis Montes Olivar" class="bg-photo" fetchpriority="high">
         </picture>
         <div class="bg-overlay"></div>
         <div class="section-content"><div class="hero-inner-3d">
@@ -2439,7 +2441,7 @@
 
     <!-- 2. About -->
     <section id="about" class="page-section">
-        <img src="biografia.jpg" srcset="biografia-movil.jpg 900w, biografia.jpg 2000w" sizes="100vw" alt="Background About" class="bg-photo" loading="lazy">
+        <img src="biografia.jpg?v=5" srcset="biografia-movil.jpg?v=5 1400w, biografia.jpg?v=5 2400w" sizes="100vw" alt="Background About" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="about_title">Biography</h2>
@@ -2667,7 +2669,7 @@
 
     <!-- 3. Press -->
     <section id="press" class="page-section">
-        <img src="prensa.jpg" srcset="prensa-movil.jpg 900w, prensa.jpg 2000w" sizes="100vw" alt="Background Press" class="bg-photo" loading="lazy">
+        <img src="prensa.jpg?v=5" srcset="prensa-movil.jpg?v=5 1400w, prensa.jpg?v=5 2400w" sizes="100vw" alt="Background Press" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="press_title">Media & Press</h2>
@@ -2700,7 +2702,7 @@
 
     <!-- 4. Schedule -->
     <section id="schedule" class="page-section">
-        <img src="agenda.jpg" srcset="agenda-movil.jpg 900w, agenda.jpg 2000w" sizes="100vw" alt="Background Schedule" class="bg-photo" loading="lazy">
+        <img src="agenda.jpg?v=5" srcset="agenda-movil.jpg?v=5 1400w, agenda.jpg?v=5 2400w" sizes="100vw" alt="Background Schedule" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="schedule_title">Schedule of Events</h2>
@@ -2714,7 +2716,7 @@
 
     <!-- 5. Multimedia -->
     <section id="multimedia" class="page-section">
-        <img src="multimedia.jpg" srcset="multimedia-movil.jpg 900w, multimedia.jpg 2000w" sizes="100vw" alt="Background Multimedia" class="bg-photo" loading="lazy">
+        <img src="multimedia.jpg?v=5" srcset="multimedia-movil.jpg?v=5 1400w, multimedia.jpg?v=5 2400w" sizes="100vw" alt="Background Multimedia" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="media_title">Multimedia</h2>
@@ -2881,7 +2883,7 @@
 
     <!-- 6. Contact -->
     <section id="contact" class="page-section">
-        <img src="contacto.jpg" srcset="contacto-movil.jpg 900w, contacto.jpg 2000w" sizes="100vw" alt="Background Contact" class="bg-photo" loading="lazy">
+        <img src="contacto.jpg?v=5" srcset="contacto-movil.jpg?v=5 1400w, contacto.jpg?v=5 2400w" sizes="100vw" alt="Background Contact" class="bg-photo" loading="lazy">
         <div class="bg-overlay"></div>
         <div class="section-content reveal">
             <h2 data-i18n="contact_title">Contact & Booking</h2>

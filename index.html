@@ -2221,6 +2221,183 @@
         }
         /* Foto de portada: colores naturales y nítidos */
         .home-hero .bg-photo { filter: contrast(1.04) saturate(1.05); image-rendering: auto; }
+
+        /* ---------- Archivo de conciertos pasados ---------- */
+        .past-archive { margin-top: 3.5rem; border-top: 1px solid var(--negro-bordes); }
+        .past-head {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.4rem 0;
+            background: none;
+            border: none;
+            color: var(--blanco-texto);
+            cursor: pointer;
+            font-family: inherit;
+            text-align: left;
+        }
+        .past-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+        .past-count {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--dorado);
+            border: 1px solid rgba(203,161,83,0.4);
+            border-radius: 20px;
+            padding: 2px 10px;
+        }
+        .past-head svg { margin-left: auto; color: var(--dorado); transition: transform 0.35s ease; }
+        .past-archive.open .past-head svg { transform: rotate(180deg); }
+        .past-body { display: none; padding-bottom: 1rem; }
+        .past-archive.open .past-body { display: block; animation: fadeInProgram 0.4s ease both; }
+        .past-year {
+            display: flex; align-items: center; gap: 1rem;
+            margin: 1.4rem 0 1rem;
+            font-size: 0.72rem; letter-spacing: 4px; color: var(--gris-texto);
+        }
+        .past-year::after { content: ''; flex: 1; height: 1px; background: var(--negro-bordes); }
+        .event-item.past { opacity: 0.72; border-left-color: rgba(255,255,255,0.15) !important; }
+        .event-item.past:hover { opacity: 1; }
+        .event-item.past .ev-date { border-color: rgba(255,255,255,0.15); }
+        .event-item.past .ev-m { color: var(--gris-texto); }
+        .past-tag {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gris-texto);
+            border: 1px solid var(--negro-bordes);
+            border-radius: 4px;
+            padding: 10px 16px;
+            white-space: nowrap;
+        }
+        @media (max-width: 768px) {
+            .past-title { font-size: 1.25rem; }
+            .past-tag { text-align: center; }
+        }
+
+        /* ---------- Agenda: pestañas + Presentaciones anteriores ---------- */
+        #schedule h3[data-i18n="schedule_subtitle"] { display: none; }
+        .sched-tabs {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            padding: 4px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(203,161,83,0.35);
+            border-radius: 40px;
+            background: rgba(10,10,10,0.7);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            max-width: 620px;
+            scroll-margin-top: calc(var(--hdr-live, 90px) + 20px);
+        }
+        .sched-tab {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 14px;
+            border: none;
+            border-radius: 40px;
+            background: transparent;
+            color: var(--gris-texto);
+            font-family: inherit;
+            font-size: 0.74rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s ease, background 0.4s ease, box-shadow 0.4s ease;
+        }
+        .sched-tab b {
+            font-weight: 600;
+            font-size: 0.68rem;
+            letter-spacing: 0;
+            min-width: 22px;
+            padding: 2px 7px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sched-tab:hover:not(:disabled) { color: var(--blanco-texto); }
+        .sched-tab.on {
+            color: var(--negro-fondo);
+            background: linear-gradient(135deg, #e3c27c, var(--dorado) 55%, #a9813c);
+            box-shadow: 0 6px 20px rgba(203,161,83,0.3);
+        }
+        .sched-tab.on b { background: rgba(0,0,0,0.18); color: var(--negro-fondo); }
+        .sched-tab:disabled { opacity: 0.35; cursor: default; }
+        .sched-panel { display: none; }
+        .sched-panel.on { display: block; animation: fadeInProgram 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+        .past-teaser {
+            position: relative;
+            width: 100%;
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.6rem 1.8rem;
+            text-align: left;
+            font-family: inherit;
+            color: var(--blanco-texto);
+            cursor: pointer;
+            border: 1px solid rgba(203,161,83,0.45);
+            border-radius: 10px;
+            background:
+                radial-gradient(120% 140% at 0% 0%, rgba(203,161,83,0.22), transparent 55%),
+                rgba(12,12,12,0.8);
+            overflow: hidden;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .past-teaser::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -60%;
+            width: 40%; height: 100%;
+            background: linear-gradient(100deg, transparent, rgba(255,255,255,0.08), transparent);
+            animation: teaserShine 4s ease-in-out infinite;
+        }
+        @keyframes teaserShine { 0%, 60% { left: -60%; } 100% { left: 130%; } }
+        .past-teaser:hover { transform: translateY(-3px); border-color: var(--dorado); box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(203,161,83,0.3); }
+        .pt-icon {
+            flex: 0 0 auto;
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--negro-fondo);
+            background: linear-gradient(135deg, #e3c27c, var(--dorado) 55%, #a9813c);
+        }
+        .pt-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+        .pt-text small { font-size: 0.66rem; letter-spacing: 3px; text-transform: uppercase; color: var(--dorado); }
+        .pt-text strong { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.35rem; line-height: 1.3; }
+        .pt-text em { font-style: normal; font-size: 0.78rem; color: var(--gris-texto); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .pt-arrow { margin-left: auto; font-size: 1.4rem; color: var(--dorado); transition: transform 0.35s ease; }
+        .past-teaser:hover .pt-arrow { transform: translateX(6px); }
+
+        .past-intro { color: var(--gris-texto); font-size: 0.9rem; max-width: 640px; margin-bottom: 1rem; }
+        .past-year {
+            display: flex; align-items: baseline; gap: 1rem;
+            margin: 2rem 0 1rem;
+        }
+        .past-year span {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(203,161,83,0.7);
+        }
+        .past-year i { font-style: normal; font-size: 0.7rem; letter-spacing: 2px; color: var(--gris-texto); }
+        .past-year::after { content: ''; flex: 1; height: 1px; background: var(--negro-bordes); align-self: center; }
+        .past-list { display: flex; flex-direction: column; gap: 0.8rem; }
+        .event-item.past { opacity: 0.9; }
+
+        @media (max-width: 768px) {
+            .sched-tab { font-size: 0.62rem; letter-spacing: 1px; padding: 12px 8px; gap: 6px; }
+            .past-teaser { padding: 1.2rem; gap: 0.9rem; }
+            .pt-icon { width: 42px; height: 42px; }
+            .pt-text strong { font-size: 1.1rem; }
+            .past-year span { font-size: 2.3rem; }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -2937,7 +3114,7 @@
             <a href="#contact" data-i18n="nav_contact">Contact</a>
         </div>
         <p data-i18n="footer_text">&copy; 2026 Enluis Montes Olivar. All rights reserved.</p>
-        <a class="km-credit" href="https://andres86878.github.io/kromatik/" aria-label="Kromatik: diseño y desarrollo web" target="_blank" rel="noopener">
+        <a class="km-credit" href="https://kromatikweb.com" aria-label="Kromatik: diseño y desarrollo web" target="_blank" rel="noopener">
             <span class="km-label" data-i18n="km_label">Design &amp; development</span>
             <svg class="km-logo" role="img" aria-label="Kromatik" xmlns="http://www.w3.org/2000/svg" viewBox="0 -25 940.0 150"><g transform="translate(0,-25) scale(1.5) translate(-14,-10)"><defs><linearGradient id="km-gStemh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00E5FF"/><stop offset="1" stop-color="#7B4DFF"/></linearGradient><linearGradient id="km-gUph" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7B4DFF"/><stop offset="1" stop-color="#FF2E88"/></linearGradient><linearGradient id="km-gLowh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B1FA8"/><stop offset="1" stop-color="#7B4DFF"/></linearGradient><linearGradient id="km-gFaceth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><polygon points="49.80,66.20 67.20,48.80 108.00,110.00 76.50,110.00" fill="url(#km-gLowh)"/><polygon points="14.00,10.00 38.00,10.00 38.00,110.00 14.00,110.00" fill="url(#km-gStemh)"/><polygon points="43.00,44.00 77.00,10.00 106.00,10.00 43.00,73.00" fill="url(#km-gUph)"/><polygon points="14.00,10.00 38.00,10.00 14.00,110.00" fill="#fff" opacity=".12"/><polygon points="43.00,44.00 77.00,10.00 106.00,10.00" fill="#fff" opacity=".14"/><polygon points="49.80,66.20 67.20,48.80 76.50,110.00" fill="#000" opacity=".22"/></g><g transform="translate(203.0,0)"><defs><clipPath id="km-caph"><rect x="-10" y="0" width="757" height="100"/></clipPath><linearGradient id="km-gOh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00E5FF"/><stop offset=".5" stop-color="#7B4DFF"/><stop offset="1" stop-color="#FF2E88"/></linearGradient></defs><g transform="translate(0,0)" clip-path="url(#km-caph)"><path transform="translate(0,0)" d="M7.5,-20 V120 M11.5,70 L77.5,-20 M33.5,43 L69.5,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(90,0)" d="M7.5,120 V7.5 H38 A25.5 25.5 0 0 1 38 58.5 H7.5 M34,58.5 L66,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(182,0)" d="M50,7.5 A42.5 42.5 0 1 1 49.99,7.5 Z" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(308,0)" d="M7.5,120 V9.5 L47,76 L86.5,9.5 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(428,0)" d="M0,122 L41,2 L82,122" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(536,0)" d="M-4,7.5 H74 M35,7.5 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(632,0)" d="M7.5,-20 V120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/><path transform="translate(673,0)" d="M7.5,-20 V120 M11.5,70 L77.5,-20 M33.5,43 L69.5,120" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/></g></g></svg>
         </a>
@@ -2978,6 +3155,7 @@
                 chip_bio: "Biography", chip_exp: "Experience", chip_lead: "Leadership", chip_guest: "Guest & Recordings", chip_edu: "Education", chip_awards: "Awards",
                 km_label: "Design &amp; development",
                 home_eyebrow: "Orchestra Conductor",
+                past_title: "Previous Performances", past_done: "Performed", tab_upcoming: "Upcoming", past_teaser: "Explore the {n} concerts already performed", past_teaser_one: "Explore the concert already performed", past_last: "Latest", past_intro: "An archive that grows with every concert: each performance moves here automatically the day after it takes place.",
                 pager_prev: "Previous", pager_next: "Next", loading_page: "Loading", bio_more: "Read full biography", bio_less: "Show less", follow_title: "Follow",
                 home_scroll: "Discover", home_next_label: "Next performance", home_press_label: "They say", home_explore_label: "Explore the site",
                 home_quote: "\"He was a firebrand on the podium who whipped the kids up into a spirited and contagious, yet impressively disciplined, frenzy.\"",
@@ -3045,6 +3223,7 @@
                 chip_bio: "Biografía", chip_exp: "Experiencia", chip_lead: "Liderazgo", chip_guest: "Invitaciones y discos", chip_edu: "Educación", chip_awards: "Premios",
                 km_label: "Diseño y desarrollo",
                 home_eyebrow: "Director de Orquesta",
+                past_title: "Presentaciones anteriores", past_done: "Realizado", tab_upcoming: "Próximas", past_teaser: "Descubre los {n} conciertos ya realizados", past_teaser_one: "Descubre el concierto ya realizado", past_last: "Más reciente", past_intro: "Un archivo que crece con cada concierto: cada presentación pasa aquí automáticamente al día siguiente de realizarse.",
                 pager_prev: "Anterior", pager_next: "Siguiente", loading_page: "Cargando", bio_more: "Leer biografía completa", bio_less: "Ver menos", follow_title: "Síguelo",
                 home_scroll: "Descubrir", home_next_label: "Próxima presentación", home_press_label: "Dicen de él", home_explore_label: "Recorre el sitio",
                 home_quote: "\"Fue una chispa en el podio que llevó a los jóvenes a un frenesí enérgico y contagioso, pero impresionantemente disciplinado.\"",
@@ -3510,94 +3689,137 @@
             if (window.initTilt) initTilt();
         }
 
-        function renderSchedule() {
-            renderHomeNextConcert();
-            const today = new Date();
-            const upcoming = concertsData.filter(c => new Date(c.dateStr) >= new Date(today.getFullYear(), today.getMonth(), today.getDate()));
-            
-            const container = document.getElementById('dynamic-schedule-container');
-            if (!container) return;
+        /* ======================================================= */
+        /* AGENDA: PRÓXIMOS + ARCHIVO AUTOMÁTICO                    */
+        /* ------------------------------------------------------- */
+        /* La lista "concertsData" funciona como base de datos.    */
+        /* "dateStr" debe ser el ÚLTIMO día del concierto.          */
+        /* El concierto se muestra en "Próximas" hasta ese día     */
+        /* inclusive, y al día siguiente pasa solo al archivo.     */
+        /* ======================================================= */
+        function localDate(str) { return new Date(str + 'T00:00:00'); }
+        function todayLocal() { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
+        function isPastConcert(c) { return localDate(c.dateStr) < todayLocal(); }
 
-            if (upcoming.length === 0) {
-                container.innerHTML = `<p style="color: var(--gris-texto); font-style: italic;">${i18n[currentLang].schedule_no_events}</p>`;
-                return;
+        function eventCard(c, opts) {
+            const L = i18n[currentLang];
+            const es = currentLang === 'es';
+            let actions = '';
+            if (!opts.past) {
+                actions = c.ticketLink && c.ticketLink !== '#'
+                    ? `<a href="${c.ticketLink}" target="_blank" rel="noopener" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;" onclick="event.stopPropagation()">${L.schedule_btn}</a>`
+                    : `<span class="ticket-status-btn" onclick="event.stopPropagation()">${L.schedule_tickets_soon}</span>`;
+            } else {
+                actions = `<span class="past-tag">${L.past_done}</span>`;
             }
-
-            const top2 = upcoming.slice(0, 3);
-            const rest = upcoming.slice(3);
-
-            let html = '<div style="display: flex; flex-direction: column; gap: 1rem;">';
-            top2.forEach(c => {
-                const btnHtml = c.ticketLink !== "#" 
-                    ? `<a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;" onclick="event.stopPropagation()">${i18n[currentLang].schedule_btn}</a>`
-                    : `<span class="ticket-status-btn" onclick="event.stopPropagation()">${i18n[currentLang].schedule_tickets_soon}</span>`;
-
-                html += `
-                <div class="event-item reveal" onclick="toggleEventAccordion(this)">
+            return `
+                <div class="event-item${opts.past ? ' past' : ''}" onclick="toggleEventAccordion(this)">
                     <div class="event-top">
                         ${dateBadge(c)}<div class="event-main">
-                            <h3 style="margin-bottom: 0.3rem; font-size: 1.3rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
-                            <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
-                            <p style="color: var(--dorado); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.role_es : c.role_en}</p>
-                            ${c.soloists_en ? `<p style="color: var(--gris-texto); font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.5;">${currentLang === 'es' ? c.soloists_es : c.soloists_en}</p>` : ''}
+                            <h3 style="margin-bottom: 0.3rem; font-size: 1.3rem;">${es ? c.title_es : c.title_en}</h3>
+                            <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 0.3rem;">${es ? c.dateDisplay_es : c.dateDisplay_en}</p>
+                            <p style="color: var(--dorado); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem;">${es ? c.role_es : c.role_en}</p>
+                            ${c.soloists_en ? `<p style="color: var(--gris-texto); font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.5;">${es ? c.soloists_es : c.soloists_en}</p>` : ''}
                         </div>
                         <div class="event-details-group">
-                            <div class="repertoire-trigger-btn">
-                                <span class="repertoire-text">${i18n[currentLang].schedule_view_rep}</span>
+                            ${c.program_en ? `<div class="repertoire-trigger-btn">
+                                <span class="repertoire-text">${L.schedule_view_rep}</span>
                                 <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                            </div>
-                            ${btnHtml}
+                            </div>` : ''}
+                            ${actions}
                         </div>
                     </div>
-                    <div class="event-program">
-                        <strong style="color:var(--dorado); letter-spacing: 1.5px; font-size: 0.8rem; text-transform: uppercase;">${i18n[currentLang].schedule_program_label}</strong><br><br>
-                        ${currentLang === 'es' ? c.program_es : c.program_en}
-                    </div>
+                    ${c.program_en ? `<div class="event-program">
+                        <strong style="color:var(--dorado); letter-spacing: 1.5px; font-size: 0.8rem; text-transform: uppercase;">${L.schedule_program_label}</strong><br><br>
+                        ${es ? c.program_es : c.program_en}
+                    </div>` : ''}
                 </div>`;
-            });
+        }
+
+        function renderSchedule() {
+            renderHomeNextConcert();
+            const container = document.getElementById('dynamic-schedule-container');
+            if (!container) return;
+            const L = i18n[currentLang];
+
+            const upcoming = concertsData.filter(c => !isPastConcert(c)).sort((a, b) => a.dateStr.localeCompare(b.dateStr));
+            const past = concertsData.filter(isPastConcert).sort((a, b) => b.dateStr.localeCompare(a.dateStr));
+
+            // ---------- Pestañas: Próximas / Presentaciones anteriores ----------
+            if (scheduleTab === 'past' && !past.length) scheduleTab = 'up';
+            let html = `
+                <div class="sched-tabs" role="tablist">
+                    <button role="tab" class="sched-tab${scheduleTab === 'up' ? ' on' : ''}" onclick="setScheduleTab('up')">
+                        <span>${L.tab_upcoming}</span><b>${upcoming.length}</b>
+                    </button>
+                    <button role="tab" class="sched-tab${scheduleTab === 'past' ? ' on' : ''}" onclick="setScheduleTab('past')" ${past.length ? '' : 'disabled'}>
+                        <span>${L.past_title}</span><b>${past.length}</b>
+                    </button>
+                    <span class="sched-tab-ink"></span>
+                </div>`;
+
+            // Panel: próximos
+            html += `<div class="sched-panel${scheduleTab === 'up' ? ' on' : ''}" data-panel="up">`;
+            if (upcoming.length === 0) {
+                html += `<p style="color: var(--gris-texto); font-style: italic;">${L.schedule_no_events}</p>`;
+            } else {
+                const first = upcoming.slice(0, 3), rest = upcoming.slice(3);
+                html += '<div style="display: flex; flex-direction: column; gap: 1rem;">' + first.map(c => eventCard(c, {})).join('') + '</div>';
+                if (rest.length) {
+                    html += `<button class="toggle-events-btn" onclick="toggleMoreEvents()" id="toggle-btn">${L.schedule_more}</button>
+                        <div id="more-events"><div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">` +
+                        rest.map(c => eventCard(c, {})).join('') + '</div></div>';
+                }
+            }
+            // Aviso llamativo para que la gente sepa que existe el archivo
+            if (past.length) {
+                const last = past[0];
+                html += `
+                <button class="past-teaser" onclick="setScheduleTab('past', true)">
+                    <span class="pt-icon"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 7v5l3 2M21 12a9 9 0 1 1-3-6.7M21 4v4h-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="pt-text">
+                        <small>${L.past_title}</small>
+                        <strong>${past.length === 1 ? L.past_teaser_one : L.past_teaser.replace('{n}', past.length)}</strong>
+                        <em>${L.past_last}: ${currentLang === 'es' ? last.title_es : last.title_en}</em>
+                    </span>
+                    <span class="pt-arrow">&rarr;</span>
+                </button>`;
+            }
             html += '</div>';
 
-            if (rest.length > 0) {
-                const btnText = i18n[currentLang].schedule_more;
-                html += `
-                <button class="toggle-events-btn" onclick="toggleMoreEvents()" id="toggle-btn">${btnText}</button>
-                <div id="more-events">
-                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">`;
-                
-                rest.forEach(c => {
-                    const btnHtml = c.ticketLink !== "#" 
-                        ? `<a href="${c.ticketLink}" target="_blank" class="btn btn-outline" style="margin: 0; font-size: 0.75rem;" onclick="event.stopPropagation()">${i18n[currentLang].schedule_btn}</a>`
-                        : `<span class="ticket-status-btn" onclick="event.stopPropagation()">${i18n[currentLang].schedule_tickets_soon}</span>`;
-
-                    html += `
-                    <div class="event-item" onclick="toggleEventAccordion(this)">
-                        <div class="event-top">
-                            ${dateBadge(c)}<div class="event-main">
-                                <h3 style="margin-bottom: 0.3rem; font-size: 1.3rem;">${currentLang === 'es' ? c.title_es : c.title_en}</h3>
-                                <p style="color: var(--blanco-texto); font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.dateDisplay_es : c.dateDisplay_en}</p>
-                                <p style="color: var(--dorado); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem;">${currentLang === 'es' ? c.role_es : c.role_en}</p>
-                                ${c.soloists_en ? `<p style="color: var(--gris-texto); font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.5;">${currentLang === 'es' ? c.soloists_es : c.soloists_en}</p>` : ''}
-                            </div>
-                            <div class="event-details-group">
-                                <div class="repertoire-trigger-btn">
-                                    <span class="repertoire-text">${i18n[currentLang].schedule_view_rep}</span>
-                                    <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                </div>
-                                ${btnHtml}
-                            </div>
-                        </div>
-                        <div class="event-program">
-                            <strong style="color:var(--dorado); letter-spacing: 1.5px; font-size: 0.8rem; text-transform: uppercase;">${i18n[currentLang].schedule_program_label}</strong><br><br>
-                            ${currentLang === 'es' ? c.program_es : c.program_en}
-                        </div>
-                    </div>`;
-                });
-
-                html += `</div></div>`;
+            // Panel: presentaciones anteriores
+            if (past.length) {
+                const years = {};
+                past.forEach(c => { const y = c.dateStr.slice(0, 4); (years[y] = years[y] || []).push(c); });
+                html += `<div class="sched-panel${scheduleTab === 'past' ? ' on' : ''}" data-panel="past">
+                    <p class="past-intro">${L.past_intro}</p>` +
+                    Object.keys(years).sort().reverse().map(y =>
+                        `<div class="past-year"><span>${y}</span><i>${years[y].length}</i></div>
+                         <div class="past-list">${years[y].map(c => eventCard(c, { past: true })).join('')}</div>`
+                    ).join('') + '</div>';
             }
+
             container.innerHTML = html;
             if (window.initTilt) initTilt();
         }
+
+        let scheduleTab = 'up';
+        function setScheduleTab(tab, scroll) {
+            scheduleTab = tab;
+            document.querySelectorAll('.sched-tab').forEach((b, i) => b.classList.toggle('on', (i === 0 ? 'up' : 'past') === tab));
+            document.querySelectorAll('.sched-panel').forEach(p => p.classList.toggle('on', p.dataset.panel === tab));
+            if (scroll) {
+                const t = document.querySelector('.sched-tabs');
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Si la página queda abierta, a medianoche se reordena sola
+        (function scheduleMidnightRefresh() {
+            const now = new Date();
+            const next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 5);
+            setTimeout(() => { renderSchedule(); scheduleMidnightRefresh(); }, next - now);
+        })();
 
         function toggleEventAccordion(element) {
             element.classList.toggle('open');

@@ -2411,22 +2411,11 @@
       "award": ["Glenn Gould Protégé Prize"]
     }
     </script>
-    <!-- ESTADÍSTICAS (Google Analytics 4, modo sin cookies) -->
-    <!-- Solo hay que pegar aquí el ID de medición (empieza por G-) -->
-    <script>
-        window.EMO_GA_ID = 'G-XXXXXXXXXX';
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        if (/^G-[A-Z0-9]{6,}$/.test(window.EMO_GA_ID) && window.EMO_GA_ID !== 'G-XXXXXXXXXX') {
-            var gs = document.createElement('script');
-            gs.async = true;
-            gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.EMO_GA_ID;
-            document.head.appendChild(gs);
-            gtag('js', new Date());
-            // Sin cookies ni identificadores guardados en el navegador del visitante
-            gtag('config', window.EMO_GA_ID, { send_page_view: false, client_storage: 'none', anonymize_ip: true });
-        }
-    </script>
+    <!-- ESTADÍSTICAS (GoatCounter: sin cookies, privado) -->
+    <script>window.EMO_STATS_CODE = 'enluismontesolivar';</script>
+    <script data-goatcounter="https://enluismontesolivar.goatcounter.com/count"
+            data-goatcounter-settings='{"no_onload": true}'
+            async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 
@@ -4289,24 +4278,21 @@
         /* ESTADÍSTICAS: visitas por sección y clics importantes   */
         /* ======================================================= */
         (function () {
+            const queue = [];
             let lastPath = null;
+            function ready() { return window.goatcounter && typeof window.goatcounter.count === 'function'; }
+            function send(o) { try { window.goatcounter.count(o); } catch (e) {} }
             window.emoTrack = function (path, title, isEvent) {
-                if (typeof gtag !== 'function') return;
-                if (!isEvent) {
-                    if (path === lastPath) return;
-                    lastPath = path;
-                    gtag('event', 'page_view', {
-                        page_title: title || path,
-                        page_location: location.origin + location.pathname + '#' + path.replace(/^\//, ''),
-                        page_path: path,
-                        language: currentLang
-                    });
-                } else {
-                    const i = path.indexOf(': ');
-                    const name = (i > -1 ? path.slice(0, i) : path).replace(/[^a-z0-9_]/gi, '_').toLowerCase();
-                    gtag('event', name, { detalle: i > -1 ? path.slice(i + 2) : '', descripcion: title || '' });
-                }
+                if (!isEvent) { if (path === lastPath) return; lastPath = path; }
+                const o = { path: path, title: title || path, event: !!isEvent };
+                if (ready()) send(o); else queue.push(o);
             };
+            // Espera a que cargue el contador y envía lo pendiente
+            let tries = 0;
+            const t = setInterval(() => {
+                if (ready()) { clearInterval(t); queue.splice(0).forEach(send); }
+                else if (++tries > 40) clearInterval(t);
+            }, 250);
 
             // Clics que interesa medir
             document.addEventListener('click', e => {

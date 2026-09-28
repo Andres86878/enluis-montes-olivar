@@ -2411,6 +2411,22 @@
       "award": ["Glenn Gould Protégé Prize"]
     }
     </script>
+    <!-- ESTADÍSTICAS (Google Analytics 4, modo sin cookies) -->
+    <!-- Solo hay que pegar aquí el ID de medición (empieza por G-) -->
+    <script>
+        window.EMO_GA_ID = 'G-XXXXXXXXXX';
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        if (/^G-[A-Z0-9]{6,}$/.test(window.EMO_GA_ID) && window.EMO_GA_ID !== 'G-XXXXXXXXXX') {
+            var gs = document.createElement('script');
+            gs.async = true;
+            gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.EMO_GA_ID;
+            document.head.appendChild(gs);
+            gtag('js', new Date());
+            // Sin cookies ni identificadores guardados en el navegador del visitante
+            gtag('config', window.EMO_GA_ID, { send_page_view: false, client_storage: 'none', anonymize_ip: true });
+        }
+    </script>
 </head>
 <body>
 
@@ -3926,6 +3942,7 @@
                 a.classList.toggle('active', a.getAttribute('href') === '#' + id);
             });
             currentPage = id;
+            if (window.emoTrack) emoTrack('/' + id, pageLabel(id));
             updatePager();
             try { window.scrollTo(0, 0); } catch (err) {}
             const titles = { home: 'Enluis Montes Olivar | Orchestra Conductor' };
@@ -4267,6 +4284,53 @@
         document.addEventListener('click', () => setTimeout(syncIgButton, 800));
         window.addEventListener('popstate', () => setTimeout(syncIgButton, 800));
         document.addEventListener('DOMContentLoaded', () => setTimeout(syncIgButton, 50));
+
+        /* ======================================================= */
+        /* ESTADÍSTICAS: visitas por sección y clics importantes   */
+        /* ======================================================= */
+        (function () {
+            let lastPath = null;
+            window.emoTrack = function (path, title, isEvent) {
+                if (typeof gtag !== 'function') return;
+                if (!isEvent) {
+                    if (path === lastPath) return;
+                    lastPath = path;
+                    gtag('event', 'page_view', {
+                        page_title: title || path,
+                        page_location: location.origin + location.pathname + '#' + path.replace(/^\//, ''),
+                        page_path: path,
+                        language: currentLang
+                    });
+                } else {
+                    const i = path.indexOf(': ');
+                    const name = (i > -1 ? path.slice(0, i) : path).replace(/[^a-z0-9_]/gi, '_').toLowerCase();
+                    gtag('event', name, { detalle: i > -1 ? path.slice(i + 2) : '', descripcion: title || '' });
+                }
+            };
+
+            // Clics que interesa medir
+            document.addEventListener('click', e => {
+                const a = e.target.closest('a, button');
+                if (!a) return;
+                const card = a.closest('.event-item');
+                const title = card ? (card.querySelector('h3') || {}).textContent : '';
+                if (a.matches('.event-item a.btn')) emoTrack('entradas: ' + title, 'Clic en Entradas', true);
+                else if (a.matches('a.yt-card')) emoTrack('video: ' + ((a.querySelector('h3') || {}).textContent || ''), 'Video', true);
+                else if (a.matches('a[href^="mailto:"]')) emoTrack('correo: ' + a.getAttribute('href').slice(7).split('?')[0], 'Correo', true);
+                else if (a.matches('.copy-btn')) emoTrack('copiar-correo', 'Copió un correo', true);
+                else if (a.matches('.km-credit')) emoTrack('kromatik', 'Clic en Kromatik', true);
+                else if (a.matches('a[href*="instagram.com"]')) emoTrack('instagram', 'Clic en Instagram', true);
+                else if (a.matches('.sched-tab')) emoTrack('agenda-pestana: ' + ((a.querySelector('span') || a).textContent.trim()), 'Pestaña de agenda', true);
+                else if (a.matches('.past-teaser')) emoTrack('agenda-archivo', 'Abrió presentaciones anteriores', true);
+                else if (a.matches('.lang-btn')) setTimeout(() => emoTrack('idioma: ' + currentLang, 'Cambio de idioma', true), 50);
+            }, true);
+            document.addEventListener('play', e => {
+                if (e.target.tagName === 'AUDIO') {
+                    const c = e.target.closest('.media-card');
+                    emoTrack('audio: ' + (c && c.querySelector('h3') ? c.querySelector('h3').textContent : ''), 'Escuchó audio', true);
+                }
+            }, true);
+        })();
     </script>
 </body>
 </html>

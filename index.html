@@ -2415,7 +2415,7 @@
     <script>window.EMO_STATS_CODE = 'enluismontesolivar';</script>
     <script data-goatcounter="https://enluismontesolivar.goatcounter.com/count"
             data-goatcounter-settings='{"no_onload": true}'
-            async src="https://gc.zgo.at/count.js"></script>
+            async src="https://gc.zgo.at/count.js" onerror="window.EMO_GC_FAILED=true"></script>
 </head>
 <body>
 
@@ -4280,18 +4280,41 @@
         (function () {
             const queue = [];
             let lastPath = null;
+            const GC_ENDPOINT = 'https://enluismontesolivar.goatcounter.com/count';
+            let firstHit = true;
             function ready() { return window.goatcounter && typeof window.goatcounter.count === 'function'; }
-            function send(o) { try { window.goatcounter.count(o); } catch (e) {} }
+            // Envío directo (respaldo) si el script de GoatCounter no carga
+            function pixel(o) {
+                if (navigator.webdriver) return;
+                const q = new URLSearchParams({
+                    p: o.path, t: o.title || '', e: o.event ? 'true' : 'false',
+                    s: [screen.width, screen.height, window.devicePixelRatio || 1].join(','),
+                    rnd: Math.random().toString(36).slice(2)
+                });
+                if (firstHit && !o.event && document.referrer) q.set('r', document.referrer);
+                if (!o.event) firstHit = false;
+                const img = new Image();
+                img.src = GC_ENDPOINT + '?' + q.toString();
+            }
+            function send(o) {
+                if (ready()) { try { window.goatcounter.count(o); return; } catch (e) {} }
+                pixel(o);
+            }
             window.emoTrack = function (path, title, isEvent) {
                 if (!isEvent) { if (path === lastPath) return; lastPath = path; }
                 const o = { path: path, title: title || path, event: !!isEvent };
-                if (ready()) send(o); else queue.push(o);
+                if (ready() || window.EMO_GC_FLUSHED) send(o); else queue.push(o);
             };
             // Espera a que cargue el contador y envía lo pendiente
             let tries = 0;
             const t = setInterval(() => {
-                if (ready()) { clearInterval(t); queue.splice(0).forEach(send); }
-                else if (++tries > 40) clearInterval(t);
+                // Si cargó el script, o falló, o pasaron 6 s: se envía lo pendiente
+                if (ready() || window.EMO_GC_FAILED || ++tries > 24) {
+                    clearInterval(t);
+                    const pending = queue.splice(0);
+                    pending.forEach(send);
+                    window.EMO_GC_FLUSHED = true;
+                }
             }, 250);
 
             // Clics que interesa medir

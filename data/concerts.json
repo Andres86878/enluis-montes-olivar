@@ -1,6 +1,6 @@
 [
   {
-    "title_en": "Dudamel Conducts Prokofiev, Adams & Di Castri / New York Philharmonic",
+    "title_en": "Dudamel Conducts Prokofiev, Adams &amp; Di Castri / New York Philharmonic",
     "title_es": "Dudamel dirige Prokofiev, Adams y Di Castri / Filarmónica de Nueva York",
     "dateStr": "2026-09-19",
     "dateDisplay_en": "Sept. 17–19, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
@@ -58,8 +58,8 @@
     }
   },
   {
-    "title_en": "Dudamel Conducts Mahler & Tania León / New York Philharmonic",
-    "title_es": "Dudamel dirige Mahler & Tania León / Filarmónica de Nueva York",
+    "title_en": "Dudamel Conducts Mahler &amp; Tania León / New York Philharmonic",
+    "title_es": "Dudamel dirige Mahler &amp; Tania León / Filarmónica de Nueva York",
     "dateStr": "2026-09-29",
     "dateDisplay_en": "Sept. 24–29, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
     "dateDisplay_es": "24–29 sept. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
@@ -145,8 +145,8 @@
     }
   },
   {
-    "title_en": "Lang Lang & Gustavo Dudamel / New York Philharmonic",
-    "title_es": "Lang Lang & Gustavo Dudamel / Filarmónica de Nueva York",
+    "title_en": "Lang Lang &amp; Gustavo Dudamel / New York Philharmonic",
+    "title_es": "Lang Lang &amp; Gustavo Dudamel / Filarmónica de Nueva York",
     "dateStr": "2026-10-01",
     "dateDisplay_en": "Oct. 01, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
     "dateDisplay_es": "01 oct. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
@@ -203,8 +203,8 @@
     }
   },
   {
-    "title_en": "Yo-Yo Ma & Gustavo Dudamel / New York Philharmonic",
-    "title_es": "Yo-Yo Ma & Gustavo Dudamel / Filarmónica de Nueva York",
+    "title_en": "Yo-Yo Ma &amp; Gustavo Dudamel / New York Philharmonic",
+    "title_es": "Yo-Yo Ma &amp; Gustavo Dudamel / Filarmónica de Nueva York",
     "dateStr": "2026-10-02",
     "dateDisplay_en": "Oct. 02, 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
     "dateDisplay_es": "02 oct. 2026 — 7:30 PM | Wu Tsai Theater, David Geffen Hall",
@@ -393,7 +393,7 @@
   },
   {
     "title_en": "Dudamel Conducts Tosca at Carnegie Hall / New York Philharmonic",
-    "title_es": "Dudamel dirige Tosca en el Carnegie Hall / Filarmónica de Nueva York",
+    "title_es": "Dudamel dirige Tosca en el Carnegie Hall / Filarmónica de Nueva Yor",
     "dateStr": "2026-11-13",
     "dateDisplay_en": "Nov. 13, 2026 — 7:30 PM | Carnegie Hall, New York",
     "dateDisplay_es": "13 nov. 2026 — 7:30 PM | Carnegie Hall, Nueva York",
@@ -405,21 +405,23 @@
     "program_es": "<strong>Giacomo Puccini</strong><br>Tosca (en concierto)",
     "ticketLink": "#",
     "_f": {
-      "titulo_es": "Dudamel dirige Tosca en el Carnegie Hall",
-      "titulo_en": "Dudamel Conducts Tosca at Carnegie Hall",
-      "orquesta_es": "Filarmónica de Nueva York",
-      "orquesta_en": "New York Philharmonic",
       "fecha": "2026-11-13",
       "fecha_inicio": "",
       "hora": "19:30",
+      "orquesta_es": "Filarmónica de Nueva Yor",
+      "orquesta_en": "New York Philharmonic",
+      "titulo_es": "Dudamel dirige Tosca en el Carnegie Hall",
+      "titulo_en": "Dudamel Conducts Tosca at Carnegie Hall",
       "lugar_es": "Carnegie Hall, Nueva York",
       "lugar_en": "Carnegie Hall, New York",
-      "sala_por_confirmar": false,
       "rol": "cover",
       "rol_es": "",
       "rol_en": "",
       "solistas_es": "Gustavo Dudamel, Conductor\nMarina Rebeka, Jonas Kaufmann, Ludovic Tézier, Andrew Moore, Ben Brady, Ben Reisinger, Benjamin Taylor, Christopher Humbert Jr.\nNew York Philharmonic Chorus\nBrooklyn Youth Chorus",
       "solistas_en": "",
+      "entradas": "",
+      "sala_por_confirmar": false,
+      "sin_hora": false,
       "programa": [
         {
           "compositor": "Giacomo Puccini",
@@ -428,11 +430,7 @@
           "obra_en": "Tosca (in Concert)",
           "estreno": false
         }
-      ],
-      "programa_libre_es": "",
-      "programa_libre_en": "",
-      "entradas": "",
-      "sin_hora": false
+      ]
     }
   },
   {

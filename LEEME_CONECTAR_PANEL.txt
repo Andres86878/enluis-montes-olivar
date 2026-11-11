@@ -1,0 +1,56 @@
+PANEL DE AGENDA — enluismontesolivar.com/admin
+================================================
+
+QUÉ HAY QUE SUBIR A GITHUB (en la raíz del repositorio, donde ya está index.html)
+  - index.html                  -> reemplaza al actual
+  - admin/index.html            -> carpeta nueva "admin"
+  - admin/agenda-builder.js
+  - api/concerts.js             -> carpeta nueva "api"
+  - data/concerts.json          -> carpeta nueva "data" (aquí vive la agenda)
+  (No hace falta volver a subir las fotos.)
+
+CONECTARLO (una sola vez, ~10 minutos)
+
+1) Crear la llave de GitHub
+   GitHub > tu foto > Settings > Developer settings > Personal access tokens
+   > Fine-grained tokens > Generate new token
+     - Nombre: panel-agenda-enluis
+     - Expiration: la más larga que deje (o "No expiration" si aparece)
+     - Repository access: Only select repositories > el repositorio de la web de Enluis
+     - Permissions > Repository permissions > Contents: Read and write
+   Generar y COPIAR la llave (empieza por github_pat_...). Solo se ve una vez.
+
+2) Poner los datos en Vercel
+   Vercel > proyecto de la web > Settings > Environment Variables. Agregar estas 4:
+     ADMIN_PASSWORD   la contraseña que va a usar Enluis (mínimo 10 caracteres)
+     GITHUB_TOKEN     la llave copiada en el paso 1
+     GITHUB_REPO      usuario/repositorio  (tal cual sale en la dirección de GitHub,
+                      ej. si es github.com/kromatik/enluis-web  ->  kromatik/enluis-web)
+     GITHUB_BRANCH    main   (o el nombre de la rama si es otra, ej. master)
+   Marcar "Production" (y si quieres Preview) y guardar.
+
+3) Volver a publicar
+   Vercel > Deployments > el último > ··· > Redeploy
+   (las variables solo se activan después de publicar de nuevo)
+
+4) Probar
+   Abrir https://enluismontesolivar.com/admin  -> poner la contraseña.
+   Cambiar algo pequeño, Guardar y publicar. En ~1 minuto el panel dice
+   "¡Listo! Ya está en la web".
+
+CÓMO LO USA ENLUIS
+  - Entra a enluismontesolivar.com/admin desde el teléfono (puede agregarlo a la
+    pantalla de inicio desde Safari: Compartir > Agregar a inicio).
+  - "+ Nuevo concierto": llena fecha (solo el día del concierto), hora, orquesta,
+    sala, rol, solistas, programa y link de entradas. Abajo ve cómo queda en la web
+    en español e inglés.
+  - Duplicar: para el segundo concierto del mismo programa (solo cambia la fecha).
+  - Editar y Borrar desde la lista.
+  - Los conciertos pasan solos a "Anteriores" al día siguiente.
+
+SI ALGO FALLA
+  - "Contraseña incorrecta": revisar ADMIN_PASSWORD en Vercel.
+  - "El panel aún no está conectado": falta alguna variable o no se hizo Redeploy.
+  - "GitHub respondió 401/404": la llave venció o GITHUB_REPO está mal escrito.
+  - Cada cambio queda guardado en el historial de GitHub, así que siempre se puede
+    volver atrás.

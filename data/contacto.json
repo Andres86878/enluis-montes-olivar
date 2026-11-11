@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "Pablo Vidal Vázquez",
+    "rol_en": "Consultant",
+    "rol_es": "Consultor",
+    "email": "pablo@diamond-artists.com"
+  },
+  {
+    "nombre": "Luisa Martínez",
+    "rol_en": "Administrator",
+    "rol_es": "Administradora",
+    "email": "management@diamond-artists.com"
+  }
+]

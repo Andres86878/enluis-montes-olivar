@@ -1,0 +1,50 @@
+[
+  {
+    "tipo": "archivo",
+    "titulo": "Variaciones Concertantes",
+    "compositor": "Alberto Ginastera",
+    "interpretes": "Suzhou Symphony",
+    "anio": "2026",
+    "url": "Variaciones Concertantes, Ginastera.nuevo.mp3"
+  },
+  {
+    "tipo": "archivo",
+    "titulo": "Symphony No. 36 \"Linz\"",
+    "compositor": "Wolfgang Amadeus Mozart",
+    "interpretes": "Suzhou Symphony",
+    "anio": "2026",
+    "url": "Sinfonia No. 36 _Linz_Mozart nuevo.mp3"
+  },
+  {
+    "tipo": "spotify",
+    "titulo": "Cantata Criolla (Parte 1)",
+    "compositor": "",
+    "interpretes": "",
+    "anio": "",
+    "url": "https://open.spotify.com/track/6X89KSz4qSz6PphhL49mjW"
+  },
+  {
+    "tipo": "spotify",
+    "titulo": "Cantata Criolla (Parte 2)",
+    "compositor": "",
+    "interpretes": "",
+    "anio": "",
+    "url": "https://open.spotify.com/track/0FCRu4zdT00yMiPungrHeE"
+  },
+  {
+    "tipo": "spotify",
+    "titulo": "Santa Cruz de Pacairigua",
+    "compositor": "",
+    "interpretes": "",
+    "anio": "",
+    "url": "https://open.spotify.com/track/4pUHrsoqicQpMNpvcj8fWN"
+  },
+  {
+    "tipo": "spotify",
+    "titulo": "Margariteña",
+    "compositor": "",
+    "interpretes": "",
+    "anio": "",
+    "url": "https://open.spotify.com/track/4lJQar8YFdcEPzRUADtAB4"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "medio": "Columbus State University",
+    "fecha_en": "June 2026",
+    "fecha_es": "Junio 2026",
+    "titular_en": "“Venezuelan conducting prodigy Montes ’26 finds community, growth in Schwob School of Music”",
+    "titular_es": "“Venezuelan conducting prodigy Montes ’26 finds community, growth in Schwob School of Music”",
+    "resumen_en": "Two days before graduating from Columbus State University, Enluis made his debut with the New York Philharmonic. The story of his years at the Schwob School of Music: study, community and growth.",
+    "resumen_es": "Dos días antes de graduarse en Columbus State University, Enluis debutó con la Filarmónica de Nueva York. La historia de sus años en la Schwob School of Music: estudio, comunidad y crecimiento.",
+    "link": "https://news.columbusstate.edu/posts/venezuelan-conducting-prodigy-montes-26-finds-community-growth-in-schwob-school-of-music/",
+    "foto": "/img/prensa/columbus-state.jpg"
+  },
+  {
+    "medio": "El Nacional",
+    "fecha_en": "Interview",
+    "fecha_es": "Entrevista",
+    "titular_en": "“Dirigir en el Hollywood Bowl es una responsabilidad inmensa”",
+    "titular_es": "“Dirigir en el Hollywood Bowl es una responsabilidad inmensa”",
+    "resumen_en": "Entrevista exclusiva sobre el histórico debut del joven director venezolano en uno de los escenarios más importantes de EE.UU.",
+    "resumen_es": "Entrevista exclusiva sobre el histórico debut del joven director venezolano en uno de los escenarios más importantes de EE.UU.",
+    "link": "https://www.elnacional.com",
+    "foto": "/img/prensa/el-nacional.jpg"
+  },
+  {
+    "medio": "El Pitazo",
+    "fecha_en": "Report",
+    "fecha_es": "Reportaje",
+    "titular_en": "“Enluis Montes: la batuta más visible del concierto por el Récord Guinness”",
+    "titular_es": "“Enluis Montes: la batuta más visible del concierto por el Récord Guinness”",
+    "resumen_en": "Reportaje sobre su liderazgo frente a la orquesta y coro más grande del mundo.",
+    "resumen_es": "Reportaje sobre su liderazgo frente a la orquesta y coro más grande del mundo.",
+    "link": "https://elpitazo.net",
+    "foto": "/img/prensa/el-pitazo.jpg"
+  },
+  {
+    "medio": "Venezuela Sinfónica",
+    "fecha_en": "Conversation",
+    "fecha_es": "Conversación",
+    "titular_en": "“El Sistema es una máquina de acción social”",
+    "titular_es": "“El Sistema es una máquina de acción social”",
+    "resumen_en": "Conversación a profundidad sobre el futuro de la dirección orquestal y las raíces musicales en Venezuela.",
+    "resumen_es": "Conversación a profundidad sobre el futuro de la dirección orquestal y las raíces musicales en Venezuela.",
+    "link": "https://venezuelasinfonica.com",
+    "foto": "/img/prensa/venezuela-sinfonica.jpg"
+  }
+]

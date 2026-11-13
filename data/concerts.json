@@ -445,23 +445,25 @@
     "soloists_es": "Gustavo Dudamel, Conductor<br>Marina Rebeka, Jonas Kaufmann, Ludovic Tézier, Andrew Moore, Ben Brady, Ben Reisinger, Benjamin Taylor, Christopher Humbert Jr.<br>New York Philharmonic Chorus<br>Brooklyn Youth Chorus",
     "program_en": "<strong>Giacomo Puccini</strong><br>Tosca (in Concert)",
     "program_es": "<strong>Giacomo Puccini</strong><br>Tosca (en concierto)",
-    "ticketLink": "#",
+    "ticketLink": "https://www.nyphil.org/concerts-tickets/2627/tosca-nov-15",
     "_f": {
-      "titulo_es": "Dudamel dirige Tosca en el Carnegie Hall",
-      "titulo_en": "Dudamel Conducts Tosca at Carnegie Hall",
-      "orquesta_es": "Filarmónica de Nueva York",
-      "orquesta_en": "New York Philharmonic",
       "fecha": "2026-11-15",
       "fecha_inicio": "",
       "hora": "14:00",
+      "orquesta_es": "Filarmónica de Nueva York",
+      "orquesta_en": "New York Philharmonic",
+      "titulo_es": "Dudamel dirige Tosca en el Carnegie Hall",
+      "titulo_en": "Dudamel Conducts Tosca at Carnegie Hall",
       "lugar_es": "Carnegie Hall, Nueva York",
       "lugar_en": "Carnegie Hall, New York",
-      "sala_por_confirmar": false,
       "rol": "cover",
       "rol_es": "",
       "rol_en": "",
       "solistas_es": "Gustavo Dudamel, Conductor\nMarina Rebeka, Jonas Kaufmann, Ludovic Tézier, Andrew Moore, Ben Brady, Ben Reisinger, Benjamin Taylor, Christopher Humbert Jr.\nNew York Philharmonic Chorus\nBrooklyn Youth Chorus",
       "solistas_en": "",
+      "entradas": "https://www.nyphil.org/concerts-tickets/2627/tosca-nov-15",
+      "sala_por_confirmar": false,
+      "sin_hora": false,
       "programa": [
         {
           "compositor": "Giacomo Puccini",
@@ -470,11 +472,7 @@
           "obra_en": "Tosca (in Concert)",
           "estreno": false
         }
-      ],
-      "programa_libre_es": "",
-      "programa_libre_en": "",
-      "entradas": "",
-      "sin_hora": false
+      ]
     }
   },
   {
